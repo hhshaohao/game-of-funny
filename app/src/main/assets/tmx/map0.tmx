@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<map version="1.2" orientation="orthogonal" renderorder="right-down" width="45" height="20" tilewidth="50" tileheight="50" nextobjectid="85">
+  <tileset firstgid="1" name="mabrick" columns="9" tilecount="81" tileheight="52" tilewidth="52">
+    <image source="mabrick.png" width="512" height="512" />
+  </tileset>
+  <tileset firstgid="82" name="font" columns="10" tilecount="110" tileheight="50" tilewidth="50">
+    <image source="../font.png" width="500" height="550" />
+  </tileset>
+  <layer name="层 1" width="45" height="20">
+    <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,19,30,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,30,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,30,30,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,31,31,31,31,31,31,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,31,31,31,31,31,31,31,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,31,31,31,31,31,31,31,31,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,31,31,31,31,31,31,31,31,31,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,31,31,31,31,31,31,31,31,31,31,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,0,0,0,0,0,0,0,0,0,0,31,31,31,31,31,31,31,31,31,31,31,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,27,27,27,27,27,30,30,30,30,30,30,30,30,30,30,31,31,31,31,31,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,24,30,30,30,30,30,30,30,30,30,30,31,31,31,31,31,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,24,30,30,30,30,30,30,30,30,30,30,31,31,31,31,31,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,24,30,30,30,30,30,30,30,30,30,30,31,31,31,31,31,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,24,30,30,30,30,30,30,30,30,30,30,31,31,31,31,31,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,24,30,30,30,30,30,30,30,30,30,30,31,31,31,31,31
+</data>
+  </layer>
+  <objectgroup name="rect">
+    <object name="" type="" id="1" x="0" y="650" width="50" height="50" />
+    <object name="" type="" id="5" x="50" y="650" width="50" height="50" />
+    <object name="" type="" id="6" x="100" y="650" width="50" height="50" />
+    <object name="" type="" id="7" x="150" y="650" width="50" height="50" />
+    <object name="" type="" id="8" x="200" y="650" width="50" height="50" />
+    <object name="" type="" id="9" x="250" y="650" width="50" height="50" />
+    <object name="" type="" id="12" x="300" y="650" width="50" height="50" />
+    <object name="" type="" id="13" x="350" y="650" width="50" height="50" />
+    <object name="" type="" id="14" x="400" y="650" width="50" height="50" />
+    <object name="" type="" id="15" x="450" y="650" width="50" height="50" />
+    <object name="" type="" id="16" x="500" y="650" width="50" height="50" />
+    <object name="" type="" id="17" x="550" y="650" width="50" height="50" />
+    <object name="" type="" id="18" x="600" y="650" width="50" height="50" />
+    <object name="" type="" id="19" x="650" y="650" width="50" height="50" />
+    <object name="" type="" id="20" x="700" y="650" width="50" height="50" />
+    <object name="" type="" id="21" x="750" y="650" width="50" height="50" />
+    <object name="" type="" id="22" x="800" y="650" width="50" height="50" />
+    <object name="" type="" id="23" x="850" y="650" width="50" height="50" />
+    <object name="" type="" id="24" x="900" y="650" width="50" height="50" />
+    <object name="" type="" id="25" x="950" y="650" width="50" height="50" />
+    <object name="" type="" id="26" x="1000" y="650" width="50" height="50" />
+    <object name="" type="" id="27" x="1050" y="650" width="50" height="50" />
+    <object name="" type="" id="28" x="1100" y="650" width="50" height="50" />
+    <object name="" type="" id="29" x="1150" y="650" width="50" height="50" />
+    <object name="" type="" id="30" x="1200" y="700" width="50" height="50" />
+    <object name="" type="" id="31" x="1250" y="700" width="50" height="50" />
+    <object name="" type="" id="32" x="1300" y="700" width="50" height="50" />
+    <object name="" type="" id="33" x="1350" y="700" width="50" height="50" />
+    <object name="" type="" id="34" x="1400" y="700" width="50" height="50" />
+    <object name="" type="" id="35" x="1450" y="700" width="50" height="50" />
+    <object name="" type="" id="36" x="1500" y="700" width="50" height="50" />
+    <object name="" type="" id="37" x="1550" y="700" width="50" height="50" />
+    <object name="" type="" id="38" x="1600" y="700" width="50" height="50" />
+    <object name="" type="" id="39" x="1650" y="700" width="50" height="50" />
+    <object name="" type="" id="40" x="1700" y="650" width="50" height="50" />
+    <object name="" type="" id="41" x="1750" y="600" width="50" height="50" />
+    <object name="" type="" id="42" x="1800" y="550" width="50" height="50" />
+    <object name="" type="" id="43" x="1850" y="500" width="50" height="50" />
+    <object name="" type="" id="44" x="1900" y="450" width="50" height="50" />
+    <object name="" type="" id="45" x="1950" y="400" width="50" height="50" />
+    <object name="" type="" id="46" x="2000" y="400" width="50" height="50" />
+    <object name="" type="" id="47" x="2050" y="400" width="50" height="50" />
+    <object name="" type="" id="48" x="2100" y="350" width="50" height="50" />
+    <object name="" type="" id="49" x="2150" y="300" width="50" height="50" />
+    <object name="" type="" id="50" x="2200" y="250" width="50" height="50" />
+    <object name="" type="" id="51" x="2200" y="200" width="50" height="50" />
+    <object name="" type="" id="52" x="2150" y="250" width="50" height="50" />
+    <object name="" type="" id="53" x="2200" y="300" width="50" height="50" />
+    <object name="" type="" id="54" x="2200" y="350" width="50" height="50" />
+    <object name="" type="" id="55" x="2150" y="350" width="50" height="50" />
+    <object name="" type="" id="63" x="2200" y="100" width="50" height="50" />
+    <object name="" type="" id="64" x="2200" y="50" width="50" height="50" />
+    <object name="" type="" id="65" x="2200" y="0" width="50" height="50" />
+    <object name="" type="" id="66" x="2200" y="150" width="50" height="50" />
+    <object name="" type="" id="67" x="0" y="600" width="50" height="50" />
+    <object name="" type="" id="68" x="0" y="550" width="50" height="50" />
+    <object name="" type="" id="69" x="0" y="500" width="50" height="50" />
+    <object name="" type="" id="70" x="0" y="450" width="50" height="50" />
+    <object name="" type="" id="71" x="0" y="350" width="50" height="50" />
+    <object name="" type="" id="72" x="0" y="400" width="50" height="50" />
+    <object name="" type="" id="73" x="0" y="250" width="50" height="50" />
+    <object name="" type="" id="74" x="0" y="300" width="50" height="50" />
+    <object name="" type="" id="75" x="0" y="200" width="50" height="50" />
+    <object name="" type="" id="76" x="0" y="150" width="50" height="50" />
+    <object name="" type="" id="77" x="0" y="100" width="50" height="50" />
+    <object name="" type="" id="78" x="0" y="50" width="50" height="50" />
+    <object name="" type="" id="79" x="0" y="0" width="50" height="50" />
+  </objectgroup>
+</map>
