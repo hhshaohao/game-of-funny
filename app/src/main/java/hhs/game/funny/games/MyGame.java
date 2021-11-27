@@ -47,27 +47,31 @@ public class MyGame extends Game
 		font = ass.get("font.fnt", BitmapFont.class);	
 
 		h = new hscreen(this, batch);
+		lev = new Level1(batch, this);
+		stu = new lernSkill(this, batch);
+		mario = new Mario(this, batch);
+		m = new mainScreen(this, batch);
+		
 
 		goMain();
 	}
 
 	public void goLevel1()
 	{
-		lev = new Level1(batch, this);
 		Gdx.input.setInputProcessor(lev.st);
 		setScreen(lev);
 	}
 
 	public void goLevel2()
 	{
-		stu = new lernSkill(this, batch);
+		
 		Gdx.input.setInputProcessor(stu.st);
 		setScreen(stu);
 	}
 
 	public void goMario()
 	{
-		mario = new Mario(this, batch);
+		
 		Gdx.input.setInputProcessor(mario.st);
 		setScreen(mario);
 	}
@@ -80,7 +84,7 @@ public class MyGame extends Game
 
 	public void goGame()
 	{
-		m = new mainScreen(this, batch);
+		
 		Gdx.input.setInputProcessor(m.st);
 		font.getData().setScale(1);
 		setScreen(m);
