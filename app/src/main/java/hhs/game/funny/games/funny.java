@@ -13,33 +13,39 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 public class funny extends Sprite
 {
 
-	World world;
-	Body b2body;
-	Fixture fix;
+	public World world;
+	public Body b2body;
+	public Fixture fix;
 
-    public funny ( World world, Vector2 position, String filename, String name, int ra )
+    public funny(World world, Vector2 position, String filename, String name, float ra)
 	{
 		super(MyGame.ass.get(filename, Texture.class));
 		this.world = world;
 		defineBox(position, name, ra);
 	}
-	public funny ( World world, Vector2 position, String filename, String name )
+	public funny(World world, Vector2 position, String filename, String name)
 	{
 		super(MyGame.ass.get(filename, Texture.class));
 		this.world = world;
-		defineBox(position, name, 8);
+		defineBox(position, name, 8 / tool.le1);
 	}
-	public funny ( World world, Vector2 position, String filename )
+	public funny(World world, Vector2 position, String filename)
 	{
 		super(MyGame.ass.get(filename, Texture.class));
 		this.world = world;
-		defineBox(position, "", 8);
+		defineBox(position, "", 8 / tool.le1);
+	}
+	public funny(World world, Vector2 position, String filename, float ra)
+	{
+		super(MyGame.ass.get(filename, Texture.class));
+		this.world = world;
+		defineBox(position, "", ra);
 	}
 
-	private void defineBox ( Vector2 position, String name, int ra )
+	private void defineBox(Vector2 position, String name, float ra)
 	{
 		CircleShape shape = new CircleShape();
-		shape.setRadius(ra / tool.le1);
+		shape.setRadius(ra);
 
 		BodyDef bdef = new BodyDef();
 		bdef.type = BodyDef.BodyType.DynamicBody;

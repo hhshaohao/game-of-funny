@@ -108,7 +108,7 @@ public class Level1 implements Screen
 		this.addListen();
 
 		this.initbox2d();
-		zhu = new funny(world, new Vector2(100 / tool.le1, 300 / tool.le1), "w0.png", "zhu", 8);
+		zhu = new funny(world, new Vector2(100 / tool.le1, 300 / tool.le1), "w0.png", "zhu", 8 / tool.le1);
 
 		world.setContactListener(con);
 
