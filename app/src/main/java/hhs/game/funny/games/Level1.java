@@ -33,7 +33,9 @@ import hhs.game.funny.MainActivity;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import hhs.game.funny.games.Screen.DeadScreen;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
-
+/*
+第一关场景
+*/
 public class Level1 implements Screen
 {
 

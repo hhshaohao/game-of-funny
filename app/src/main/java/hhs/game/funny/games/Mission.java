@@ -25,6 +25,21 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
+/*
+一个弹窗API
+使用方法：
+Mission 变量名 = new Mission(title,main,font){
+	@Override
+	public void cilck(){
+		按确定后执行...
+	}
+}
+在 Render函数中
+if(条件){
+变量名.act();
+变量名.draw();
+}
+*/
 public class Mission extends Stage
 {
 
