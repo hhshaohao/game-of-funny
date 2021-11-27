@@ -10,7 +10,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import hhs.game.funny.games.Res;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-
+/*
+一个死亡复活功能的API
+*/
 public class DeadScreen implements Screen
 {
 
