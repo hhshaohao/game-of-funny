@@ -124,7 +124,7 @@ public class lernSkill implements Screen
 	{
 		world = new World(new Vector2(0, -9.81f), true);
 
-		zhu = new funny(world, new Vector2(32 / ppm, 192 / ppm), "w0.png", "funny", 8);
+		zhu = new funny(world, new Vector2(32 / ppm, 192 / ppm), "w0.png", "funny", 8 / ppm);
 
 		BodyDef bdef = new BodyDef();
 		bdef.type = BodyDef.BodyType.StaticBody;

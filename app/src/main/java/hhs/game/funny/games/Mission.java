@@ -78,7 +78,7 @@ public class Mission extends Stage
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
-					cilck();
+					cilck(dialog);
 					return true;
 				}
 			});
@@ -103,7 +103,7 @@ public class Mission extends Stage
 		batch.end();
 	}
 
-	public void cilck()
+	public void cilck(Dialog dialog)
 	{
 		dialog.remove();
 		Level1.show = false;

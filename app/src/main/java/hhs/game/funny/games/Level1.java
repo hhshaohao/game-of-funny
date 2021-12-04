@@ -1,41 +1,34 @@
 package hhs.game.funny.games;
 
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.Fixture;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.maps.objects.RectangleMapObject;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.CircleShape;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import hhs.game.funny.games.contactListener.contact;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.graphics.Texture;
-import hhs.game.funny.MainActivity;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import hhs.game.funny.games.Screen.DeadScreen;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import hhs.game.funny.games.contactListener.contact;
 /*
-第一关场景
-*/
+ 第一关场景
+ */
 public class Level1 implements Screen
 {
 
@@ -45,7 +38,6 @@ public class Level1 implements Screen
 	private ImageButton b0,b1,b2,skill;
 	private funny zhu;
 	private SpriteBatch batch;
-	private Animation anim;
 	private funny pei[],boss;
 	private Mission mis,next,ng;
 	private MyGame game;
@@ -116,7 +108,7 @@ public class Level1 implements Screen
 		mis = new Mission("任务", "进入终点水管", MyGame.font);
 		ng = new Mission("恭喜", "您已通过第一关", MyGame.font){
 
-			
+
 			public void cilck(Dialog dialog)
 			{
 				MyGame.pre.putInteger("level", 2);
@@ -128,14 +120,14 @@ public class Level1 implements Screen
 		};
 		next  = new Mission("提示", "恭喜通过第一区域\n这一区域有BOSS出现", MyGame.font){
 
-			
+
 			public void cilck(Dialog dialog)
 			{
 				for( int i = 0; i < pei.length; i++ )
 				{
-					world.destroyBody(pei [ i ].b2body);
+					world.destroyBody(pei[i].b2body);
                 }
-				//dialog.remove();
+				dialog.remove();
 				nextS = false;
 				Gdx.input.setInputProcessor(st);
 			}
@@ -161,7 +153,7 @@ public class Level1 implements Screen
 					for( int i =0;i < pei.length;i++ )
 					{
 						//int a = MathUtils.random(0, 2);
-						pei [ i ].b2body.setTransform(new Vector2(1300 / tool.le1 , MathUtils.random(700 / tool.le1, 1500 / tool.le1)), pei [ i ].b2body.getAngle());
+						pei[i].b2body.setTransform(new Vector2(1300 / tool.le1 , MathUtils.random(700 / tool.le1, 1500 / tool.le1)), pei[i].b2body.getAngle());
 					}
 				}
 				if( !nextS )
@@ -182,7 +174,7 @@ public class Level1 implements Screen
 
 		world = new World(new Vector2(0, -9.81f), true);
 		pei = new funny[70];
-		boss = new funny(world, new Vector2(128 / tool.le1 , 32 / tool.le1), "w2.png", "boss", 64);
+		boss = new funny(world, new Vector2(128 / tool.le1 , 32 / tool.le1), "w2.png", "boss", 64 / tool.le1);
 
 		BodyDef bdef = new BodyDef();
 		FixtureDef fdef = new FixtureDef();
@@ -220,7 +212,7 @@ public class Level1 implements Screen
 		for( int i =0;i < pei.length;i++ )
 		{
 			int a = MathUtils.random(0, 2);
-			pei [ i ] = new funny(world, new Vector2(1300 / tool.le1 , MathUtils.random(700 / tool.le1, 1500 / tool.le1)), "w" + a + ".png", "pei", 8);
+			pei[i] = new funny(world, new Vector2(1300 / tool.le1 , MathUtils.random(700 / tool.le1, 1500 / tool.le1)), "w" + a + ".png", "pei", 8 / tool.le1);
 		}
 	}
 	private void addListen()
@@ -325,15 +317,15 @@ public class Level1 implements Screen
 			for( int i = 0; i < pei.length; i++ )
 			{
 				//if (pei[i].b2body.getPosition().x < nx + Res.w / (tool.le1 + suo) && pei[i].b2body.getPosition().x > nx - Res.w / (tool.le1 + suo))
-				if( pei [ i ].b2body.getLinearVelocity().y == 0 )
+				if( pei[i].b2body.getLinearVelocity().y == 0 )
 				{
-					if( zhu.b2body.getPosition().x > pei [ i ].b2body.getPosition().x )
+					if( zhu.b2body.getPosition().x > pei[i].b2body.getPosition().x )
 					{
-						pei [ i ].b2body.applyForceToCenter(new Vector2(speed * 10, 425), true);
+						pei[i].b2body.applyForceToCenter(new Vector2(speed * 10, 425), true);
 					}
 					else
 					{
-						pei [ i ].b2body.applyForceToCenter(new Vector2(-speed * 10, 425), true);
+						pei[i].b2body.applyForceToCenter(new Vector2(-speed * 10, 425), true);
 					}
 				}
 			}
@@ -421,25 +413,16 @@ public class Level1 implements Screen
 		batch.begin();
 		if( nextS )
 		{
-			for( int i = 0; i < pei.length; i++ )
+			for( int i = 0; i < pei.length; ++i )
 			{
-				if( pei [ i ].b2body.getPosition().x < nx + Res.w / (tool.le1 + suo) && pei [ i ].b2body.getPosition().x > nx - Res.w / (tool.le1 + suo) )
+				if( pei[i].b2body.getPosition().x < nx + Res.w / (tool.le1 + suo) && pei[i].b2body.getPosition().x > nx - Res.w / (tool.le1 + suo) )
 				{
-					batch.draw(pei [ i ], pei [ i ].b2body.getPosition().x - ((16 / tool.le1) / 2), pei [ i ].b2body.getPosition().y - ((16 / tool.le1) / 2), 16 / tool.le1, 16 / tool.le1);
-					/*batch.draw(
-					 pei[i],
-					 pei[i].b2body.getPosition().x - ((16 / tool.le1) / 2), pei[i].b2body.getPosition().y - ((16 / tool.le1) / 2),
-					 pei[i].getOriginX(), pei[i].getOriginY(),
-					 16 / tool.le1, 16 / tool.le1,
-					 pei[i].getScaleX(), pei[i].getScaleY(),
-					 tool.d2r(pei[i].b2body.getAngle())
-					 );*/
+					batch.draw(pei[i], pei[i].b2body.getPosition().x - ((16 / tool.le1) / 2), pei[i].b2body.getPosition().y - ((16 / tool.le1) / 2), 16 / tool.le1, 16 / tool.le1);
 				}
 			}
 		}
 		else
 		{
-
 			if( boss.b2body.getPosition().x < nx + Res.w / (tool.le1 + suo) && boss.b2body.getPosition().x > nx - Res.w / (tool.le1 + suo) )
 			{
 				batch.draw(boss, boss.b2body.getPosition().x - ((128 / tool.le1) / 2), boss.b2body.getPosition().y - ((128 / tool.le1) / 2), 128 / tool.le1, 128 / tool.le1);
