@@ -302,14 +302,6 @@ public class Level1 implements Screen
 				MyGame.ass.get("jump.mp3", Sound.class).play();
 				zhu.b2body.applyForceToCenter(new Vector2(0, 450), true);
 			}
-			if( zhu.b2body.getLinearVelocity().y > 1 )
-			{
-				jumping = true;
-			}
-			else
-			{
-				jumping = false;
-			}
 		}
 
 		if( nextS )
@@ -407,10 +399,9 @@ public class Level1 implements Screen
 		render.render();
 
 		batch.begin();
+		
 		batch.draw(zhu, nx, ny, 16 / tool.le1, 16 / tool.le1);
-		batch.end();
-
-		batch.begin();
+		
 		if( nextS )
 		{
 			for( int i = 0; i < pei.length; ++i )
