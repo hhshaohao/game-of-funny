@@ -41,6 +41,25 @@ public class funny extends Sprite
 		this.world = world;
 		defineBox(position, "", ra);
 	}
+	
+	public funny(World world,Vector2 position,String filename,float ra,float re)
+	{
+		super(MyGame.ass.get(filename, Texture.class));
+		this.world = world;
+		CircleShape shape = new CircleShape();
+		shape.setRadius(ra);
+
+		BodyDef bdef = new BodyDef();
+		bdef.type = BodyDef.BodyType.DynamicBody;
+		bdef.position.set(position);
+		b2body = world.createBody(bdef);
+
+		FixtureDef fdef = new FixtureDef();
+		fdef.shape = shape;
+		fdef.restitution = re;
+		fix = b2body.createFixture(fdef);
+		fix.setUserData("");
+	}
 
 	private void defineBox(Vector2 position, String name, float ra)
 	{

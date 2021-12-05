@@ -25,7 +25,7 @@ public class MyGame extends Game
 	startScreen ss;
 	static mainScreen m;
 	static SpriteBatch batch;
-	so o;
+	so so;
 	static hscreen h;
 	static Level1 lev;
 	Stage st;
@@ -51,7 +51,7 @@ public class MyGame extends Game
 		stu = new lernSkill(this, batch);
 		mario = new Mario(this, batch);
 		m = new mainScreen(this, batch);
-		
+		so = new so(this);
 
 		goMain();
 	}
@@ -78,8 +78,9 @@ public class MyGame extends Game
 
 	public void goSo()
 	{
-		Gdx.input.setInputProcessor(o.st);
-		setScreen(o);
+		Gdx.input.setInputProcessor(so.st);
+		font.getData().setScale(1.5f);
+		setScreen(so);
 	}
 
 	public void goGame()
@@ -93,7 +94,7 @@ public class MyGame extends Game
 	public void goMain()
 	{
 		Gdx.input.setInputProcessor(h.st);
-		font.getData().setScale(4);
+		font.getData().setScale(4 / tool.le1);
 		setScreen(h);
 	}
 
