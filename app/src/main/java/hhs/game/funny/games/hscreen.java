@@ -21,6 +21,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import hhs.game.funny.games.Screen.Jumper;
 /*
 选关页面
 */
@@ -37,8 +38,7 @@ public class hscreen implements Screen
 	boolean z;
 	OrthographicCamera cam;
 	
-	World world;
-	funny role[];
+	Jumper j;
 	//Box2DDebugRenderer ren = new Box2DDebugRenderer();
 
 	public hscreen ( MyGame m, SpriteBatch batch )
@@ -83,80 +83,32 @@ public class hscreen implements Screen
 		MyGame.font.setColor(Color.BLACK);
 		
 		cam = new OrthographicCamera();
-		cam.setToOrtho(false,Res.w / (tool.le1 ),Res.h / (tool.le1 ));
+		cam.setToOrtho(false,Res.w ,Res.h);
 		
-		initBox2d();
-
+		j = MyGame.jump;
+		
 		Gdx.input.setInputProcessor(st);
 	}
 	
-	void initBox2d()
-	{
-		world = new World(new Vector2(0,-9.81f),true);
-		
-		BodyDef bdef = new BodyDef();
-		FixtureDef fdef= new FixtureDef();
-		Body body;
-		
-		bdef.type = BodyDef.BodyType.StaticBody;
-		
-		PolygonShape shape = new PolygonShape();
-		shape.setAsBox(Res.w / tool.le1,1 / tool.le1);
-		//下层框
-		fdef.shape = shape;
-		bdef.position.set(shape.getRadius() / tool.le1,shape.getRadius() / tool.le1);
-		body = world.createBody(bdef);
-		body.createFixture(fdef);
-		//上层框
-		bdef.position.set(shape.getRadius() / tool.le1,(Res.h + shape.getRadius()) / tool.le1);
-		body = world.createBody(bdef);
-		body.createFixture(fdef);
-		//左层框
-		shape.setAsBox(1 / tool.le1,Res. h / tool.le1);
-		fdef.shape = shape;
-		bdef.position.set(shape.getRadius() / tool.le1,shape.getRadius() / tool.le1);
-		body = world.createBody(bdef);
-		body.createFixture(fdef);
-		//右层框
-		bdef.position.set((Res.w + shape.getRadius()) / tool.le1,shape.getRadius() / tool.le1);
-		body = world.createBody(bdef);
-		body.createFixture(fdef);
-		
-		role = new funny[7];
-		for (int i = 0; i < role.length; ++i) {
-			role[i] = new funny(world,new Vector2(MathUtils.random(8 / tool.le1,Res.w / tool.le1),MathUtils.random(8 / tool.le1,Res.h / tool.le1)),
-			"w"+MathUtils.random(0,2)+".png",32 / tool.le1,1.0f);
-			
-		}
-	}
+	
 
 	@Override
 	public void show ( )
 	{
 	}
 
-	void move()
-	{
-		for (int i = 0; i < role.length; i++) {
-			if(role[i].b2body.getLinearVelocity().y == 0)
-			{
-				role[i].b2body.applyForceToCenter(MathUtils.random(-500,500),0,true);
-			}
-		}
-	}
+	
 	
 	@Override
 	public void render ( float p1 )
 	{
-		this.move();
-		world.step(1 / 60f,1,1);
 
 		batch.setProjectionMatrix(cam.combined);
 		batch.begin();
-		batch.draw(l, 0, 0, Res.w / 2 / tool.le1, Res.h / tool.le1);
-		batch.draw(r, Res.w / 2 / tool.le1, 0, Res.w / 2 / tool.le1, Res.h / tool.le1);
+		batch.draw(l, 0, 0, Res.w / 2, Res.h);
+		batch.draw(r, Res.w / 2, 0, Res.w / 2, Res.h);
 
-		MyGame.font.draw(batch, "沙雕之主", Res.w / 2 / tool.le1, (Res.h / 2 + 50) / tool.le1);
+		MyGame.font.draw(batch, "沙雕之主", Res.w / 2, (Res.h / 2 + 50));
 		MyGame.font.setColor(0, 0, 0, t);
 		if ( z )
 		{
@@ -173,14 +125,11 @@ public class hscreen implements Screen
 			
 		batch.end();
 
+		j.act();
+		j.draw();
+		
 		st.act();
 		st.draw();
-		
-		batch.begin();
-		for (int i = 0; i < role.length; i++) {
-			batch.draw(role[i], role[i].b2body.getPosition().x - ((64 / tool.le1) / 2), role[i].b2body.getPosition().y - ((64 / tool.le1) / 2), 64 / tool.le1, 64 / tool.le1);
-		}
-		batch.end();
 		
 		//ren.render(world,cam.combined);
 	}
@@ -294,8 +243,5 @@ public class hscreen implements Screen
 		l.dispose();
 		r.dispose();
 	}
-
-
-
 
 }

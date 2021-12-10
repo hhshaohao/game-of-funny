@@ -13,9 +13,7 @@ android {
     }
     buildTypes {
         release {
-			minifyEnabled true//开启混淆
-			shrinkResources true//打开资源压缩
-			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'//混淆配置文件,as默认自动生成了
+			//proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'//混淆配置文件,as默认自动生成了
 			signingConfig signingConfigs.release
         }
     }

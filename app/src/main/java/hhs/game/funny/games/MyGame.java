@@ -18,6 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.Preferences;
+import hhs.game.funny.games.Screen.Jumper;
 
 public class MyGame extends Game
 {
@@ -25,6 +26,8 @@ public class MyGame extends Game
 	startScreen ss;
 	static mainScreen m;
 	static SpriteBatch batch;
+	lernSkill stu;
+	Mario mario;
 	so so;
 	static hscreen h;
 	static Level1 lev;
@@ -32,15 +35,12 @@ public class MyGame extends Game
 	static Label fps;
 	public static BitmapFont font;
 	public static AssetManager ass;
-	//static Animation anim0,anim1;
 	public static Preferences pre;
-	public static Res r;
-	lernSkill stu;
-	Mario mario;
+	public static Jumper jump;
 
 	public void finish()
 	{
-		r = new Res();
+		jump = new Jumper();
 
 		pre = Gdx.app.getPreferences("data");
 
