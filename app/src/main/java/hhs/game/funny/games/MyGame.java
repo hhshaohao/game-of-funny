@@ -94,7 +94,7 @@ public class MyGame extends Game
 	public void goMain()
 	{
 		Gdx.input.setInputProcessor(h.st);
-		font.getData().setScale(4 / tool.le1);
+		font.getData().setScale(4);
 		setScreen(h);
 	}
 
