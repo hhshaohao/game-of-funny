@@ -84,6 +84,7 @@ public class MagicLand implements Screen
 			@Override
 			public void cilk(ImageButton bu)
 			{
+				zhu.b2body.setLinearVelocity(0,0);
 				zhu.b2body.setTransform(new Vector2(16 / ppm, 50 * 16 / ppm),zhu.b2body.getAngle());
 				Gdx.input.setInputProcessor(MagicLand.st);
 				game.setScreen(MagicLand.this);

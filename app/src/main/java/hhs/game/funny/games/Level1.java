@@ -140,6 +140,7 @@ public class Level1 implements Screen
 			@Override
 			public void cilk(ImageButton bu)
 			{
+				zhu.b2body.setLinearVelocity(0,0);
 				zhu.b2body.setTransform(new Vector2(100 / tool.le1, 300 / tool.le1), zhu.b2body.getAngle());
 				jump = left = jumping = false;
 				s = true;
