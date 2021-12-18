@@ -81,6 +81,9 @@ public class so implements Screen
 	@Override
 	public void render ( float p1 )
 	{
+		MyGame.jump.act();
+		MyGame.jump.draw();
+		
 		st.act();
 		st.draw();
 	}
