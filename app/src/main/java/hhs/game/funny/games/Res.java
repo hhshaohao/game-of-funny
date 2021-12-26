@@ -6,6 +6,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 
 public class Res
 {
@@ -15,9 +18,9 @@ public class Res
     static float tx = w / tool.PPM;
     static float ty = h / tool.PPM;
 
-	public ImageButton b0,b1,b2;
+	public ImageButton b0,b1,b2,exit;
 
-	public Res ( )
+	public Res (final MyGame game)
 	{
 
 		TextureRegion a = tool.createRegion("move3.png");
@@ -34,9 +37,21 @@ public class Res
         b2 = new ImageButton(new TextureRegionDrawable(b), new TextureRegionDrawable(c));
 
 		b0.setPosition(0, 0);
-        b1.setPosition(2 * b0.getWidth(), 0);
+        b1.setPosition(1.5f * b0.getWidth(), 0);
         b2.setPosition(Res.w - b2.getWidth(), 0);
+		
+		exit = tool.createButton(MyGame.ass.get("ui8.png",Texture.class));
+		exit.setPosition(0,Res.h - exit.getHeight());
+		exit.addListener(new InputListener()
+			{
 
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
+				{
+					game.goMain();
+					return true;
+				}
+		});
 	}
 
 }

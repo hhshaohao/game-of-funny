@@ -67,7 +67,7 @@ public class MagicLand implements Screen
 		map = new TmxMapLoader().load("tmx/MagicLand.tmx");
 		render = new OrthogonalTiledMapRenderer(map, 1 / ppm);
 
-		Res r = new Res();
+		Res r = new Res(game);
 		b0 = r.b0;
 		b1 = r.b1;
 		b2 = r.b2;
@@ -75,6 +75,7 @@ public class MagicLand implements Screen
 		st.addActor(b0);
 		st.addActor(b1);
 		st.addActor(b2);
+		st.addActor(r.exit);
 
 		this.initBox2d();
 		

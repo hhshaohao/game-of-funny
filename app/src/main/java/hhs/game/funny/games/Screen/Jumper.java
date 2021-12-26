@@ -62,11 +62,11 @@ public class Jumper extends BackDraw
 		body = world.createBody(bdef);
 		body.createFixture(fdef);
 
-		role = new funny[7];
+		role = new funny[15];
 		for (int i = 0; i < role.length; ++i) {
 			role[i] = new funny(world,new Vector2(MathUtils.random(8 / tool.le1,Res.w / tool.le1),MathUtils.random(8 / tool.le1,Res.h / tool.le1)),
 								"w"+MathUtils.random(0,2)+".png",32 / tool.le1,1.0f);
-
+			role[i].b2body.setLinearVelocity(MathUtils.random(-50,50),0);
 		}
 	}
 	
@@ -74,7 +74,7 @@ public class Jumper extends BackDraw
 	public void act()
 	{
 		batch.setProjectionMatrix(cam.combined);
-		world.step(1 / 60f,1,1);
+		world.step(1 / 45f,1,1);
 		this.move();
 	}
 	

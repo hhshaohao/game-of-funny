@@ -99,10 +99,11 @@ public class lernSkill implements Screen
 
 		this.batch = batch;
 
-		Res r = new Res();
+		Res r = new Res(game);
 		b0 = r.b0;
 		b1 = r.b1;
 		b2 = r.b2;
+		st.addActor(r.exit);
 
 		TextureRegionDrawable d1 = new TextureRegionDrawable(new TextureRegion(MyGame.ass.get("skill.png", Texture.class), 0, 0, 192, 192));
 		TextureRegionDrawable d2 = new TextureRegionDrawable(new TextureRegion(MyGame.ass.get("skill.png", Texture.class), 192, 0, 192, 192));

@@ -59,7 +59,7 @@ public class Mario implements Screen
 		map = new TmxMapLoader().load("tmx/level1.tmx");
 		render = new OrthogonalTiledMapRenderer(map, 1 / ppm);
 
-		Res r = new Res();
+		Res r = new Res(game);
 		b0 = r.b0;
 		b1 = r.b1;
 		b2 = r.b2;
@@ -67,6 +67,7 @@ public class Mario implements Screen
 		st.addActor(b0);
 		st.addActor(b1);
 		st.addActor(b2);
+		st.addActor(r.exit);
 		
 		this.initBox2d();
 	}

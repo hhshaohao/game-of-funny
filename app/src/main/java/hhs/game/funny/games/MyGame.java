@@ -25,18 +25,19 @@ public class MyGame extends Game
 
 	startScreen ss;
 	static mainScreen m;
-	static SpriteBatch batch;
 	lernSkill stu;
 	Mario mario;
 	so so;
+	MagicLand magic;
 	static hscreen h;
 	static Level1 lev;
 	Stage st;
 	static Label fps;
-	public static BitmapFont font;
-	public static AssetManager ass;
-	public static Preferences pre;
-	public static Jumper jump;
+	public static SpriteBatch batch,Misbatch;	//公共资源：画笔
+	public static BitmapFont font;				//中文支持
+	public static AssetManager ass;				//图像资源
+	public static Preferences pre;				//存档读取（暂未使用)
+	public static Jumper jump;					//滑稽跳舞
 
 	public void finish()
 	{
@@ -100,9 +101,10 @@ public class MyGame extends Game
 
 	public void goMagicLand()
 	{
-		MagicLand l = new MagicLand(this, batch);
-		Gdx.input.setInputProcessor(l.st);
-		setScreen(l);
+		if(magic == null)
+			magic = new MagicLand(this, batch);
+		Gdx.input.setInputProcessor(magic.st);
+		setScreen(magic);
 	}
 
 	@Override
@@ -113,8 +115,9 @@ public class MyGame extends Game
 
 		ss = new startScreen(batch);
 
-		setScreen(ss);
-		ass.load("font.fnt", BitmapFont.class);
+		setScreen(ss);	//初始场景设置(加载资源时展示的场景)
+		
+		ass.load("font.fnt", BitmapFont.class);	//加载资源
 
 		ass.load("s0.png", Texture.class);
 		ass.load("s1.png", Texture.class);
@@ -130,6 +133,7 @@ public class MyGame extends Game
 		ass.load("skill.png", Texture.class);
 		ass.load("background/dead.jpg", Texture.class);
 		ass.load("ui5.png", Texture.class);
+		ass.load("ui8.png",Texture.class);
 
 		st = new Stage();
 
@@ -150,14 +154,14 @@ public class MyGame extends Game
 	    Gdx.gl.glClearColor(1, 1, 1, 1);
 	    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		fps.setText("fps:" + Gdx.graphics.getFramesPerSecond());
+		fps.setText("fps:" + Gdx.graphics.getFramesPerSecond());	//帧率显示
 
 		super.render();
 
 		st.act();
 		st.draw();
 
-		if( ss.isOk )
+		if( ss.isOk )	//加载完成
 		{
 			finish();
 			ss.isOk = false;

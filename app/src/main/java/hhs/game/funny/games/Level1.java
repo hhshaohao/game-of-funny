@@ -66,12 +66,13 @@ public class Level1 implements Screen
 		this.game = game;
 
 		ren = new Box2DDebugRenderer();
-		bu = new Res();
+		bu = new Res(game);
 
 		this.batch = batch;
 		//anim = MyGame.anim1;
 
 		st = new Stage();
+		st.addActor(bu.exit);
 
 		cam = new OrthographicCamera();
 		cam.setToOrtho(false, Res.w / (tool.le1 + suo), Res.h / (tool.le1 + suo));

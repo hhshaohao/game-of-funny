@@ -37,7 +37,7 @@ public class startScreen implements Screen
 		batch.begin();
 		batch.draw(t, Res.w / 2 - 250, Res.h / 2 - 250);
 		batch.draw(j, 0, 0, Res.w * s, 100);
-		font.draw(batch, "Loading:" + (int)(s * 100), Res.w / 2 - 100, Res.h / 4);
+		font.draw(batch, "Loading:" + (int)(s * 100)+"%", Res.w / 2 - 100, Res.h / 4);
 		batch.end();
 		if ( MyGame.ass.update() )
 		{
