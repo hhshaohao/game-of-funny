@@ -111,6 +111,7 @@ public class MyGame extends Game
 	public void create()
 	{
 		batch = new SpriteBatch();
+		Misbatch = new SpriteBatch();
 		ass = new AssetManager();
 
 		ss = new startScreen(batch);
@@ -181,6 +182,8 @@ public class MyGame extends Game
 			lev.dispose();
 		if( batch != null )
 			batch.dispose();
+		if(Misbatch!=null)
+			Misbatch.dispose();
 		ass.dispose();
 
 	}

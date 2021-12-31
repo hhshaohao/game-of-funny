@@ -435,12 +435,18 @@ public class Level1 implements Screen
 
 		if( show )
 		{
+			b0.setChecked(false);
+			b1.setChecked(false);
+			b2.setChecked(false);
 			Gdx.input.setInputProcessor(mis);
 			mis.act();
 			mis.draw();
 		}
 		if( nextS && ny < 16 * 4 / tool.le1 )
 		{
+			b0.setChecked(false);
+			b1.setChecked(false);
+			b2.setChecked(false);
 			Gdx.input.setInputProcessor(next);
 			next.act();
 			next.draw();

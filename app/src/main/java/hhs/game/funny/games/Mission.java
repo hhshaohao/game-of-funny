@@ -53,7 +53,7 @@ public class Mission extends Stage
 	{
 		this.title = title;
 		skin = new Skin();
-		batch = new SpriteBatch();
+		batch = MyGame.Misbatch;
 		map.setColor(Color.BLACK);
 		font = map;
 

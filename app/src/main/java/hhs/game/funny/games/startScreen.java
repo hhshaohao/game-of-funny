@@ -4,6 +4,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.Gdx;
 
 public class startScreen implements Screen
 {
@@ -13,7 +14,7 @@ public class startScreen implements Screen
 	float temp;
 	BitmapFont font;
 	static boolean isOk;
-
+	
 	public startScreen ( SpriteBatch batch )
 	{
 		this.batch = batch;

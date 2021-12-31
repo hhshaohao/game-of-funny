@@ -192,7 +192,6 @@ public class mainScreen implements Screen
 				public boolean touchDown ( InputEvent event, float x, float y, int pointer, int button )
 				{
 					game.goLevel1();
-					dispose();
 					return true;
 					//return super.touchDown(event, x, y, pointer, button);
 				}
