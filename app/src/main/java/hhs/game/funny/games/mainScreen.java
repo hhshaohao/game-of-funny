@@ -69,7 +69,7 @@ public class mainScreen implements Screen
 		//rectm = new Rectangle[3];
 
         cam = new OrthographicCamera();
-        cam.setToOrtho(false, (Res.w / (tool.PPM + screenZoom)), (Res.h / (tool.PPM + screenZoom)));
+        cam.setToOrtho(false, (Res.w / (tool.PPM + screenZoom + MyGame.zoom)), (Res.h / (tool.PPM + screenZoom + MyGame.zoom)));
 
         map = new TmxMapLoader().load("tmx/map0.tmx");
         tiledRender = new OrthogonalTiledMapRenderer(map, 1 / tool.PPM);

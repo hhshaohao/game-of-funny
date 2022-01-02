@@ -32,7 +32,7 @@ public class hscreen implements Screen
 	SpriteBatch batch;
 	Stage st;
 	Table ta;
-	ImageButton start,br,so,mario,openWorld;
+	ImageButton start,br,so,mario,openWorld,setting;
 	Texture l,r;
 	float t;
 	boolean z;
@@ -66,12 +66,15 @@ public class hscreen implements Screen
 		
 		mario = tool.createButton("ui6.png");
 		openWorld = tool.createButton("ui7.png");
+		setting = tool.createButton("ui9.png");
 
+		setting.setPosition(Res.w - 200,Res.h - 100);
 		mario.setPosition(0,Res.h - 100);
 		openWorld.setPosition(mario.getX(),mario.getHeight() - 100);
 		
 		st.addActor(mario);
 		st.addActor(openWorld);
+		st.addActor(setting);
 		
 		this.addListener();
 
@@ -211,6 +214,20 @@ public class hscreen implements Screen
 				public void touchUp ( InputEvent event, float x, float y, int pointer, int button )
 				{
 					g.goMagicLand();
+					//super.touchUp(event, x, y, pointer, button);
+				}
+			});
+		setting.addListener(new InputListener(){
+				@Override
+				public boolean touchDown ( InputEvent event, float x, float y, int pointer, int button )
+				{
+					return true;
+				}
+
+				@Override
+				public void touchUp ( InputEvent event, float x, float y, int pointer, int button )
+				{
+					g.goSetting();
 					//super.touchUp(event, x, y, pointer, button);
 				}
 			});

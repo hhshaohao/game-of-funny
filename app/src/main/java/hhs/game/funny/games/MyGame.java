@@ -19,31 +19,46 @@ import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.Preferences;
 import hhs.game.funny.games.Screen.Jumper;
+import hhs.game.funny.games.Screen.SettingScreen;
 
 public class MyGame extends Game
 {
 
+	Stage st;
+	
 	startScreen ss;
-	static mainScreen m;
+	mainScreen m;
 	lernSkill stu;
 	Mario mario;
 	so so;
 	MagicLand magic;
-	static hscreen h;
-	static Level1 lev;
-	Stage st;
-	static Label fps;
+	SettingScreen settingscreen;
+	
+	hscreen h;
+	Level1 lev;
+	public static Label fps;					//帧率显示
 	public static SpriteBatch batch,Misbatch;	//公共资源：画笔
 	public static BitmapFont font;				//中文支持
 	public static AssetManager ass;				//图像资源
-	public static Preferences pre;				//存档读取（暂未使用)
+	public static Preferences archive,setting;	//存档读取（暂未使用)
 	public static Jumper jump;					//滑稽跳舞
+	public static int zoom;						//屏幕缩放
 
 	public void finish()
 	{
 		jump = new Jumper();
 
-		pre = Gdx.app.getPreferences("data");
+		archive = Gdx.app.getPreferences("data");
+		setting = Gdx.app.getPreferences("setting");
+
+		if( setting.contains("zoom") )
+		{
+			zoom = setting.getInteger("zoom");
+		}
+		else
+		{
+			zoom = 0;
+		}
 
 		font = ass.get("font.fnt", BitmapFont.class);	
 
@@ -53,6 +68,7 @@ public class MyGame extends Game
 		mario = new Mario(this, batch);
 		m = new mainScreen(this, batch);
 		so = new so(this);
+		settingscreen = new SettingScreen(this);
 
 		goMain();
 	}
@@ -65,14 +81,14 @@ public class MyGame extends Game
 
 	public void goLevel2()
 	{
-		
+
 		Gdx.input.setInputProcessor(stu.st);
 		setScreen(stu);
 	}
 
 	public void goMario()
 	{
-		
+
 		Gdx.input.setInputProcessor(mario.st);
 		setScreen(mario);
 	}
@@ -86,7 +102,7 @@ public class MyGame extends Game
 
 	public void goGame()
 	{
-		
+
 		Gdx.input.setInputProcessor(m.st);
 		font.getData().setScale(1);
 		setScreen(m);
@@ -101,23 +117,29 @@ public class MyGame extends Game
 
 	public void goMagicLand()
 	{
-		if(magic == null)
+		if( magic == null )
 			magic = new MagicLand(this, batch);
 		Gdx.input.setInputProcessor(magic.st);
 		setScreen(magic);
+	}
+	public void goSetting()
+	{
+		Gdx.input.setInputProcessor(settingscreen.st);
+		font.getData().setScale(1.5f);
+		setScreen(settingscreen);
 	}
 
 	@Override
 	public void create()
 	{
-		batch = new SpriteBatch();
+		batch = new SpriteBatch();	//初始化画笔
 		Misbatch = new SpriteBatch();
-		ass = new AssetManager();
+		ass = new AssetManager();	//资源管理器
 
 		ss = new startScreen(batch);
 
 		setScreen(ss);	//初始场景设置(加载资源时展示的场景)
-		
+
 		ass.load("font.fnt", BitmapFont.class);	//加载资源
 
 		ass.load("s0.png", Texture.class);
@@ -134,7 +156,7 @@ public class MyGame extends Game
 		ass.load("skill.png", Texture.class);
 		ass.load("background/dead.jpg", Texture.class);
 		ass.load("ui5.png", Texture.class);
-		ass.load("ui8.png",Texture.class);
+		ass.load("ui8.png", Texture.class);
 
 		st = new Stage();
 
@@ -173,7 +195,7 @@ public class MyGame extends Game
 	@Override
 	public void dispose()
 	{
-		pre.flush();
+		archive.flush();
 		if( m != null )
 			m.dispose();
 		if( h != null )
@@ -182,9 +204,12 @@ public class MyGame extends Game
 			lev.dispose();
 		if( batch != null )
 			batch.dispose();
-		if(Misbatch!=null)
+		if( Misbatch != null )
 			Misbatch.dispose();
-		ass.dispose();
+		if( jump != null )
+			jump.dispose();
+		if( ass != null )
+			ass.dispose();
 
 	}
 

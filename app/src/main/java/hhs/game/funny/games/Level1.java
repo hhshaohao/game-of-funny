@@ -26,6 +26,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import hhs.game.funny.games.Screen.DeadScreen;
 import hhs.game.funny.games.contactListener.contact;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 /*
  第一关场景
  */
@@ -35,7 +36,7 @@ public class Level1 implements Screen
 	private TiledMap map;
 	private OrthogonalTiledMapRenderer render;
 	private OrthographicCamera cam;
-	private ImageButton b0,b1,b2,skill;
+	private ImageButton b0,b1,b2;
 	private funny zhu;
 	private SpriteBatch batch;
 	private funny pei[],boss;
@@ -75,7 +76,7 @@ public class Level1 implements Screen
 		st.addActor(bu.exit);
 
 		cam = new OrthographicCamera();
-		cam.setToOrtho(false, Res.w / (tool.le1 + suo), Res.h / (tool.le1 + suo));
+		cam.setToOrtho(false, Res.w / (tool.le1 + suo + MyGame.zoom), Res.h / (tool.le1 + suo + MyGame.zoom));
 
 		map = new TmxMapLoader().load("tmx/le1.tmx");
 
@@ -112,8 +113,8 @@ public class Level1 implements Screen
 
 			public void cilck(Dialog dialog)
 			{
-				MyGame.pre.putInteger("level", 2);
-				MyGame.pre.flush();
+				MyGame.archive.putInteger("level", 2);
+				MyGame.archive.flush();
 				game.goLevel2();
 				this.dispose();
 			}
@@ -363,7 +364,7 @@ public class Level1 implements Screen
 		cam.update();
 
 		cam.position.y = tmp;
-		if( ny > cam.position.y + (Res.h / (tool.le1 + suo)) / 4 )
+		if( ny > cam.position.y + (Res.h / (tool.le1 + suo + MyGame.zoom)) / 4 )
 		{
 			tmp += 2 / tool.le1;
 		}
@@ -408,7 +409,7 @@ public class Level1 implements Screen
 		{
 			for( int i = 0; i < pei.length; ++i )
 			{
-				if( pei[i].b2body.getPosition().x < nx + Res.w / (tool.le1 + suo) && pei[i].b2body.getPosition().x > nx - Res.w / (tool.le1 + suo) )
+				if( pei[i].b2body.getPosition().x < nx + Res.w / (tool.le1 + suo + MyGame.zoom) && pei[i].b2body.getPosition().x > nx - Res.w / (tool.le1 + suo + MyGame.zoom) )
 				{
 					batch.draw(pei[i], pei[i].b2body.getPosition().x - ((16 / tool.le1) / 2), pei[i].b2body.getPosition().y - ((16 / tool.le1) / 2), 16 / tool.le1, 16 / tool.le1);
 				}
@@ -416,7 +417,7 @@ public class Level1 implements Screen
 		}
 		else
 		{
-			if( boss.b2body.getPosition().x < nx + Res.w / (tool.le1 + suo) && boss.b2body.getPosition().x > nx - Res.w / (tool.le1 + suo) )
+			if( boss.b2body.getPosition().x < nx + Res.w / (tool.le1 + suo + game.zoom) && boss.b2body.getPosition().x > nx - Res.w / (tool.le1 + suo + game.zoom) )
 			{
 				batch.draw(boss, boss.b2body.getPosition().x - ((128 / tool.le1) / 2), boss.b2body.getPosition().y - ((128 / tool.le1) / 2), 128 / tool.le1, 128 / tool.le1);
 			}

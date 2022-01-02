@@ -92,7 +92,7 @@ public class lernSkill implements Screen
 		ppm = tool.le1;
 
 		cam = new OrthographicCamera();
-		cam.setToOrtho(false, Res.w / (ppm + suo), Res.h / (ppm + suo));
+		cam.setToOrtho(false, Res.w / (ppm + suo + MyGame.zoom), Res.h / (ppm + suo + MyGame.zoom));
 		render = new OrthoCachedTiledMapRenderer(map, 1f / ppm);
 
 		st = new Stage();

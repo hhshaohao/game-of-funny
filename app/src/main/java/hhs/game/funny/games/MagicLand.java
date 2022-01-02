@@ -62,7 +62,7 @@ public class MagicLand implements Screen
 		stop = left = true;
 
 		cam = new OrthographicCamera();
-		cam.setToOrtho(false, Res.w / (ppm + suo), Res.h / (ppm + suo));
+		cam.setToOrtho(false, Res.w / (ppm + suo + MyGame.zoom), Res.h / (ppm + suo + MyGame.zoom));
 
 		map = new TmxMapLoader().load("tmx/MagicLand.tmx");
 		render = new OrthogonalTiledMapRenderer(map, 1 / ppm);
