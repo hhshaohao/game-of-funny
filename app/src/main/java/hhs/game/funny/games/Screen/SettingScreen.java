@@ -82,11 +82,15 @@ public class SettingScreen implements Screen
 					return true;
 				}
 			});
+			
+		b0.setPosition(0,0);
+		b1.setPosition(0,0);
+			
 		ta.setFillParent(true);
-		ta.center();
-		ta.addActor(b0);
-		ta.addActor(l0);
-		ta.addActor(b1);
+		ta.center().top();
+		ta.add(b0);
+		ta.add(l0);
+		ta.add(b1);
 
 		st.addActor(ta);
 	}
