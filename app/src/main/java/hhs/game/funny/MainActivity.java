@@ -8,7 +8,6 @@ import android.widget.Toast;
 import android.app.Activity;
 import hhs.game.funny.games.Tools.NativeUse;
 import android.content.Context;
-import com.simple.spiderman.SpiderMan;
  
 public class MainActivity extends AndroidApplication { 
      
