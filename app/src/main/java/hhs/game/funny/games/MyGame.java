@@ -20,6 +20,8 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.Preferences;
 import hhs.game.funny.games.Screen.Jumper;
 import hhs.game.funny.games.Screen.SettingScreen;
+import hhs.game.funny.games.Tools.NativeUse;
+import hhs.game.funny.MainActivity;
 
 public class MyGame extends Game
 {
