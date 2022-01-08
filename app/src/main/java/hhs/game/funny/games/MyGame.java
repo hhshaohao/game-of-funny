@@ -120,6 +120,7 @@ public class MyGame extends Game
 
 	public void goMagicLand()
 	{
+		MainActivity.use.showQuickTip("加载中哦……");
 		if( magic == null )
 			magic = new MagicLand(this, batch);
 		Gdx.input.setInputProcessor(magic.st);

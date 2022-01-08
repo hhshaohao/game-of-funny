@@ -1,9 +1,29 @@
 package hhs.game.funny.games.Screen;
 
 import com.badlogic.gdx.Screen;
+import hhs.game.funny.games.Stage.UserInterface;
+import hhs.game.funny.games.MyGame;
+import hhs.game.funny.games.Runnable.RoleLogic;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class CommonlyScreen implements Screen
 {
+	UserInterface ui;
+	MyGame game;
+	Stage gs;
+	boolean showUI = true;
+
+	public CommonlyScreen(MyGame game, RoleLogic r)
+	{
+		ui = new UserInterface(game, r);
+		gs = new Stage();
+	}
+	
+	public CommonlyScreen(MyGame game,Stage gs, RoleLogic r)
+	{
+		ui = new UserInterface(game, r);
+		this.gs = gs;
+	}
 
 	@Override
 	public void show()
@@ -13,6 +33,14 @@ public class CommonlyScreen implements Screen
 	@Override
 	public void render(float p1)
 	{
+		gs.act();
+		gs.draw();
+
+		if( showUI )
+		{
+			ui.act();
+			ui.draw();
+		}
 	}
 
 	@Override
@@ -39,8 +67,14 @@ public class CommonlyScreen implements Screen
 	public void dispose()
 	{
 	}
+
+	public void setStage(Stage st)
+	{
+		gs = st;
+	}
 	
-    
-    
-    
+	public void setShowUI(boolean b)
+	{
+		showUI = b;
+	}
 }

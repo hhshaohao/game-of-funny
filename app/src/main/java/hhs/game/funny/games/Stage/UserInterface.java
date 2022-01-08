@@ -66,9 +66,9 @@ public class UserInterface extends Stage
 	}
 
 	@Override
-	public void act(float delta)
+	public void act()
 	{
-		super.act(delta);
+		super.act();
 	}
 
 	@Override
