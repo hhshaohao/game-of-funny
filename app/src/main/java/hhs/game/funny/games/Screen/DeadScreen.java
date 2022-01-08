@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import hhs.game.funny.games.Res;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.graphics.Color;
 /*
 一个死亡复活功能的API
 */
@@ -59,6 +60,7 @@ public class DeadScreen implements Screen
 	@Override
 	public void render ( float p1 )
 	{
+		
 		batch.begin();
 		batch.draw(back, 0, 0, Res.w, Res.h);
 		batch.end();

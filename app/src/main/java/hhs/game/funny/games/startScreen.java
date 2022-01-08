@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 
 public class startScreen implements Screen
 {
@@ -34,6 +35,7 @@ public class startScreen implements Screen
 	@Override
 	public void render ( float p1 )
 	{
+		//tool.clearScreen(Color.WHITE);
 		float s = MyGame.ass.getProgress();
 		batch.begin();
 		batch.draw(t, Res.w / 2 - 250, Res.h / 2 - 250);

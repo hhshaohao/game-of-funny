@@ -25,6 +25,7 @@ import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.ChainShape;
 import hhs.game.funny.games.Screen.DeadScreen;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 
 public class MagicLand implements Screen
 {
@@ -178,6 +179,7 @@ public class MagicLand implements Screen
 	@Override
 	public void render(float p1)
 	{
+		
 		this.update(p1);
 
 		render.render();

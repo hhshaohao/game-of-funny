@@ -1,16 +1,16 @@
 package hhs.game.funny.games.Screen;
+
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import hhs.game.funny.games.MyGame;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import hhs.game.funny.games.Res;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import hhs.game.funny.games.MyGame;
+import hhs.game.funny.games.Res;
+import hhs.game.funny.games.tool;
 
 public class SettingScreen implements Screen
 {
@@ -103,6 +103,7 @@ public class SettingScreen implements Screen
 	@Override
 	public void render(float p1)
 	{
+		
 		l0.setText("屏幕缩放为" + zoom);
 
 		MyGame.jump.act();

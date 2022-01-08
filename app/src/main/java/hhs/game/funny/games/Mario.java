@@ -19,6 +19,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.graphics.Color;
 
 public class Mario implements Screen
 {
@@ -173,6 +174,7 @@ public class Mario implements Screen
 	@Override
 	public void render ( float p1 )
 	{
+		
 		this.update(p1);
 		
 		render.render();

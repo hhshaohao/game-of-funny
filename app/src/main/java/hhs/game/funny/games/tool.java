@@ -1,11 +1,13 @@
 package hhs.game.funny.games;
 
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 /*
 一些快捷工具
@@ -66,6 +68,11 @@ public class tool
 	public static TextureRegion createRegion(Texture a)
 	{
 		return new TextureRegion(a);
+	}
+	public static void clearScreen(Color c)
+	{
+		Gdx.gl.glClearColor(c.r,c.g,c.b,c.a);
+	    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	}
 
 }

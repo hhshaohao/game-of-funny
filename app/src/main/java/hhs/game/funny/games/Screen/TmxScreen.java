@@ -1,11 +1,13 @@
 package hhs.game.funny.games.Screen;
 
-import hhs.game.funny.games.MyGame;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import hhs.game.funny.games.Res;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
+import hhs.game.funny.games.MyGame;
+import hhs.game.funny.games.Res;
+import hhs.game.funny.games.tool;
 
 public class TmxScreen extends GS {
 
@@ -28,6 +30,7 @@ public class TmxScreen extends GS {
 
 	@Override
 	public void render(float p1) {
+		
 		render.setView(cam);
 		render.render();
 	}

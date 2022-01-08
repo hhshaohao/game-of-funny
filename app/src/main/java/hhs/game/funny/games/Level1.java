@@ -27,6 +27,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import hhs.game.funny.games.Screen.DeadScreen;
 import hhs.game.funny.games.contactListener.contact;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.graphics.Color;
 /*
  第一关场景
  */

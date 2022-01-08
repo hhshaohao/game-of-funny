@@ -45,6 +45,7 @@ public class MyGame extends Game
 	public static Preferences archive,setting;	//存档读取（暂未使用)
 	public static Jumper jump;					//滑稽跳舞
 	public static int zoom;						//屏幕缩放
+	public static Color clearColor;				//清屏颜色
 
 	public void finish()
 	{
@@ -134,6 +135,7 @@ public class MyGame extends Game
 	@Override
 	public void create()
 	{
+		clearColor = Color.WHITE;
 		batch = new SpriteBatch();	//初始化画笔
 		Misbatch = new SpriteBatch();
 		ass = new AssetManager();	//资源管理器
@@ -176,9 +178,7 @@ public class MyGame extends Game
 	@Override
 	public void render()
 	{
-	    Gdx.gl.glClearColor(1, 1, 1, 1);
-	    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
+		tool.clearScreen(clearColor);
 		fps.setText("fps:" + Gdx.graphics.getFramesPerSecond());	//帧率显示
 
 		super.render();

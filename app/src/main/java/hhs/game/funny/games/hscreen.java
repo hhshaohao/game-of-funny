@@ -105,7 +105,7 @@ public class hscreen implements Screen
 	@Override
 	public void render ( float p1 )
 	{
-
+		
 		batch.setProjectionMatrix(cam.combined);
 		batch.begin();
 		batch.draw(l, 0, 0, Res.w / 2, Res.h);
