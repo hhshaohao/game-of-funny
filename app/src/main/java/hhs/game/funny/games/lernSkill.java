@@ -23,6 +23,9 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.Gdx;
+import hhs.game.funny.games.Stage.MissionStage;
 
 public class lernSkill implements Screen
 {
@@ -73,7 +76,9 @@ public class lernSkill implements Screen
 	public OrthographicCamera cam;
 	public TiledMap map;
 	private MyGame game;
-	Box2DDebugRenderer ren;
+	private Mission first,second;
+	private MissionStage ms;
+	boolean start;
 	Stage st;
 	World world;
 	funny zhu;
@@ -82,9 +87,7 @@ public class lernSkill implements Screen
 
     public lernSkill ( MyGame game, SpriteBatch batch )
 	{
-		stop = right = true;
-
-		ren = new Box2DDebugRenderer();
+		stop = right = start = true;
 
 		this.game = game;
 		map = new TmxMapLoader().load("tmx/le2.tmx");
@@ -118,6 +121,28 @@ public class lernSkill implements Screen
 		st.addActor(skill);
 
 		initBox2d();
+		
+		ms = new MissionStage(2);
+		first = new Mission("技能学习","同时按下跳跃和技能可以跳得更高",MyGame.font)
+		{
+			public void cilck(Dialog dialog)
+			{
+				Gdx.input.setInputProcessor(second);
+				isShow = false;
+				start = false;
+				second.isShow = true;
+			}
+		};
+		second = new Mission("任务","跳过这座山到达终点",MyGame.font)
+		{
+			public void cilck(Dialog dialog)
+			{
+				Gdx.input.setInputProcessor(st);
+				isShow = false;
+			}
+		};
+		ms.addMission(first);
+		ms.addMission(second);
 	}
 
 
@@ -203,7 +228,13 @@ public class lernSkill implements Screen
 
 		st.act();
 		st.draw();
-
+		
+		if(start)
+		{
+			first.isShow = true;
+		}
+		ms.act();
+		ms.draw();
 		//ren.render(world, cam.combined);
 	}
 

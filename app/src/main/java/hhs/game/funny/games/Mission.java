@@ -48,6 +48,7 @@ public class Mission extends Stage
 	SpriteBatch batch;
 	String title;
 	Skin skin;
+	public boolean isShow;
 
     public Mission(String title, String main, BitmapFont map)
 	{
@@ -108,6 +109,11 @@ public class Mission extends Stage
 		dialog.remove();
 		Level1.show = false;
 		Gdx.input.setInputProcessor(Level1.st);
+	}
+	
+	public void setShow(boolean b)
+	{
+		isShow = b;
 	}
 
 }
