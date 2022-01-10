@@ -6,10 +6,15 @@
 >你可以在手机aide上编译
 
 ## Linux 下编译  
-''' sudo apt install open-jdk
-''' sudo apt install gradle android-sdk
-
+```
+sudo apt install open-jdk
+sudo apt install gradle android-sdk
+cd game-of-funny
+gradle build
+```
 ## Windows 和 Mac
 
-''' 安装AndroidStduio
+```
+安装AndroidStduio
+```
 
