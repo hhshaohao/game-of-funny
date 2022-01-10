@@ -225,12 +225,14 @@ public class MyGame extends Game
 	@Override
 	public void pause()
 	{
+		MainActivity.use.showQuickTip("暂停");
 		super.pause();
 	}
 
 	@Override
 	public void resume()
 	{
+		MainActivity.use.showQuickTip("返回");
 		super.resume();
 	}
 
