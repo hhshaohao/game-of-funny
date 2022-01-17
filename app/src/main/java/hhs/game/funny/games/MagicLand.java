@@ -66,7 +66,7 @@ public class MagicLand implements Screen
 		cam.setToOrtho(false, Res.w / (ppm + suo + MyGame.zoom), Res.h / (ppm + suo + MyGame.zoom));
 
 		map = new TmxMapLoader().load("tmx/MagicLand.tmx");
-		render = new OrthogonalTiledMapRenderer(map, 1 / ppm);
+		render = new OrthogonalTiledMapRenderer(map, 1 / ppm,batch);
 
 		Res r = new Res(game);
 		b0 = r.b0;

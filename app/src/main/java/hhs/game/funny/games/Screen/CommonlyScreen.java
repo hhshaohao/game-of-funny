@@ -6,12 +6,12 @@ import hhs.game.funny.games.MyGame;
 import hhs.game.funny.games.Runnable.RoleLogic;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
-public class CommonlyScreen implements Screen
+public class CommonlyScreen extends UniversalScreen
 {
-	UserInterface ui;
-	MyGame game;
-	Stage gs;
-	boolean showUI = true;
+	public UserInterface ui;
+	public MyGame game;
+	public Stage gs;
+	public boolean showUI = true;
 
 	public CommonlyScreen(MyGame game, RoleLogic r)
 	{
@@ -33,8 +33,8 @@ public class CommonlyScreen implements Screen
 	@Override
 	public void render(float p1)
 	{
-		gs.act();
-		gs.draw();
+		//gs.act();
+		//gs.draw();
 
 		if( showUI )
 		{

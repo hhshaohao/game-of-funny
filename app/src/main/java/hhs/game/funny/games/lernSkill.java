@@ -26,6 +26,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.Gdx;
 import hhs.game.funny.games.Stage.MissionStage;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 public class lernSkill implements Screen
 {
@@ -72,11 +73,11 @@ public class lernSkill implements Screen
 	private boolean right,stop,up;
 	public static int suo = 100;
 	public float ppm;
-	public OrthoCachedTiledMapRenderer render;
+	public OrthogonalTiledMapRenderer render;
 	public OrthographicCamera cam;
 	public TiledMap map;
 	private MyGame game;
-	private Mission first,second;
+	private Mission first,second,end;
 	private MissionStage ms;
 	boolean start;
 	Stage st;
@@ -85,7 +86,7 @@ public class lernSkill implements Screen
 	float nx,ny,time1;
 	static int speed = Level1.speed;
 
-    public lernSkill ( MyGame game, SpriteBatch batch )
+    public lernSkill ( final MyGame game, SpriteBatch batch )
 	{
 		stop = right = start = true;
 
@@ -96,7 +97,7 @@ public class lernSkill implements Screen
 
 		cam = new OrthographicCamera();
 		cam.setToOrtho(false, Res.w / (ppm + suo + MyGame.zoom), Res.h / (ppm + suo + MyGame.zoom));
-		render = new OrthoCachedTiledMapRenderer(map, 1f / ppm);
+		render = new OrthogonalTiledMapRenderer(map, 1f / ppm,batch);
 
 		st = new Stage();
 
@@ -141,8 +142,16 @@ public class lernSkill implements Screen
 				isShow = false;
 			}
 		};
+		end = new Mission("恭喜","下一关",MyGame.font)
+		{
+			public void cilck(Dialog dialog)
+			{
+				game.goMainLine();
+			}
+		};
 		ms.addMission(first);
 		ms.addMission(second);
+		ms.addMission(end);
 	}
 
 
@@ -233,6 +242,8 @@ public class lernSkill implements Screen
 		{
 			first.isShow = true;
 		}
+		if(nx > 1520 / ppm)
+			end.isShow = true;
 		ms.act();
 		ms.draw();
 		//ren.render(world, cam.combined);

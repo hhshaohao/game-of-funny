@@ -22,6 +22,10 @@ import hhs.game.funny.games.Screen.Jumper;
 import hhs.game.funny.games.Screen.SettingScreen;
 import hhs.game.funny.games.Tools.NativeUse;
 import hhs.game.funny.MainActivity;
+import com.badlogic.gdx.Screen;
+import hhs.game.funny.games.Screen.CommonlyScreen;
+import hhs.game.funny.games.Screen.UniversalScreen;
+import hhs.game.funny.games.MainLineLevel.level1;
 
 public class MyGame extends Game
 {
@@ -73,9 +77,28 @@ public class MyGame extends Game
 		so = new so(this);
 		settingscreen = new SettingScreen(this);
 
-		goMain();
+		goMainLine();
 	}
 
+	/*public <T extends UniversalScreen> void goClass(Stage st)
+	{
+		Gdx.input.setInputProcessor(st);	
+		setScreen();
+	}*/
+	
+	public void goMainLine()
+	{
+		level1 l = new level1(this,batch);
+		Gdx.input.setInputProcessor(l.ui);
+		setScreen(l);
+	}
+	
+	public void goScreen(Screen s,Stage st)
+	{
+		Gdx.input.setInputProcessor(st);
+		setScreen(s);
+	}
+	
 	public void goLevel1()
 	{
 		Gdx.input.setInputProcessor(lev.st);

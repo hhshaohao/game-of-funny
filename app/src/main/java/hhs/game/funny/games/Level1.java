@@ -81,7 +81,7 @@ public class Level1 implements Screen
 
 		map = new TmxMapLoader().load("tmx/le1.tmx");
 
-		render = new OrthogonalTiledMapRenderer(map, 1f / tool.le1);
+		render = new OrthogonalTiledMapRenderer(map, 1f / tool.le1,batch);
 
 		//TextureRegionDrawable d1 = new TextureRegionDrawable(new TextureRegion(MyGame.ass.get("skill.png", Texture.class), 0, 0, 192, 192));
 		//TextureRegionDrawable d2 = new TextureRegionDrawable(new TextureRegion(MyGame.ass.get("skill.png", Texture.class), 192, 0, 192, 192));

@@ -14,7 +14,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 public class FastRoleActor extends Actor{
     
     World world;
-	Body b2body;
+	public Body b2body;
 	Texture texture;
 	float sx,sy,radius;	//self X,self Y
 	Controler con;
@@ -37,6 +37,8 @@ public class FastRoleActor extends Actor{
 		bdef.position.set(ve);
 		b2body = world.createBody(bdef);
 		b2body.createFixture(fdef);
+		
+		con = null;
 	}
 
 	@Override
@@ -44,7 +46,8 @@ public class FastRoleActor extends Actor{
 	{
 		sx = b2body.getPosition().x - radius;
 		sy = b2body.getPosition().y - radius;
-		con.frameCall(b2body);
+		if(con != null)
+			con.frameCall(b2body);
 	}
 
 	@Override

@@ -72,7 +72,7 @@ public class mainScreen implements Screen
         cam.setToOrtho(false, (Res.w / (tool.PPM + screenZoom + MyGame.zoom)), (Res.h / (tool.PPM + screenZoom + MyGame.zoom)));
 
         map = new TmxMapLoader().load("tmx/map0.tmx");
-        tiledRender = new OrthogonalTiledMapRenderer(map, 1 / tool.PPM);
+        tiledRender = new OrthogonalTiledMapRenderer(map, 1 / tool.PPM,batch);
 
         msprite = new Sprite(new Texture("w0.png"));
 

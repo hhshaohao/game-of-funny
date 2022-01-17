@@ -15,6 +15,7 @@ public class UserInterface extends Stage
 
 	ImageButton b0,b1,b2;
 	RoleLogic logic;
+	boolean u0,u1,u2;
 
 	public UserInterface(final MyGame game,RoleLogic l)
 	{
@@ -41,8 +42,14 @@ public class UserInterface extends Stage
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
-					logic.leftAction();
+					u0 = true;
 					return true;
+				}
+
+				@Override
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button)
+				{
+					u0 = false;
 				}
 			});
 		b1.addListener(new InputListener()
@@ -50,8 +57,13 @@ public class UserInterface extends Stage
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
-					logic.rightAction();
+					u1 = true;
 					return true;
+				}
+				@Override
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button)
+				{
+					u1 = false;
 				}
 			});
 		b2.addListener(new InputListener()
@@ -59,8 +71,13 @@ public class UserInterface extends Stage
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
-					logic.upAction();
+					u2 = true;
 					return true;
+				}
+				@Override
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button)
+				{
+					u2 = false;
 				}
 			});
 	}
@@ -68,6 +85,18 @@ public class UserInterface extends Stage
 	@Override
 	public void act()
 	{
+		if(u0)
+		{
+			logic.leftAction();
+		}
+		if(u1)
+		{
+			logic.rightAction();
+		}
+		if(u2)
+		{
+			logic.upAction();
+		}
 		super.act();
 	}
 
