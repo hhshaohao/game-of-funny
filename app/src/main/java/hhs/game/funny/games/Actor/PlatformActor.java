@@ -10,9 +10,11 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import hhs.game.funny.games.Tools.RendererObject;
 
-public class PlatformActor extends Actor
+public class PlatformActor implements RendererObject
 {
+	
 	float left,right,ra;
 	Texture text;
 	World world;
@@ -44,9 +46,8 @@ public class PlatformActor extends Actor
 		
 		ra = shape.getRadius();
 	}
-	
 	@Override
-	public void act(float delta)
+	public void act(float p1)
 	{
 		pos.x = plat.getPosition().x - ra;
 		pos.y = plat.getPosition().y - ra;
@@ -59,11 +60,15 @@ public class PlatformActor extends Actor
 			plat.setLinearVelocity(-speed.x,-speed.y);
 		}
 	}
-	
 	@Override
-	public void draw(Batch batch, float parentAlpha)
+	public void draw(SpriteBatch batch)
 	{
 		batch.draw(text,pos.x,pos.y,size.x,size.y);
+	}
+	@Override
+	public void setSize(float size)
+	{
+		
 	}
     
 }

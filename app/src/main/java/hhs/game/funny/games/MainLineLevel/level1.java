@@ -24,16 +24,21 @@ import hhs.game.funny.games.Tools.Controler;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import hhs.game.funny.games.funny;
 import hhs.game.funny.games.tool;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import hhs.game.funny.games.Tools.Drawist;
+import hhs.game.funny.games.contactListener.jumpConcat;
 
 public class level1 extends CommonlyScreen
 {
 	MyGame game;
 	SpriteBatch batch;
+	Drawist dist;
 	float nx,ny;
 	OrthographicCamera cam;
 	float zoom = 100,ppm = 20f;
 	static int speed = 8;
 	Box2DDebugRenderer en  = new Box2DDebugRenderer();
+	static jumpConcat c;
 
 	TiledMap map;
 	OrthogonalTiledMapRenderer render;
@@ -63,22 +68,25 @@ public class level1 extends CommonlyScreen
 				@Override
 				public void upAction()
 				{
-					if( ac.b2body.getLinearVelocity().y < 0.1f && ac.b2body.getLinearVelocity().y > -0.1f )
+					if(c.is)
 					{
-						ac.b2body.applyForceToCenter(new  Vector2(0, 600), true);
+						ac.b2body.applyForceToCenter(new  Vector2(0, 250), true);
+						c.is = false;
 					}
 				}
 			});
 		this.batch = batch;
-
+		
 		cam = new OrthographicCamera();
 		cam.setToOrtho(false, Res.w / (ppm + zoom + game.zoom), Res.h / (ppm + zoom + game.zoom));
 		//cam.setToOrtho(false,Res.w / ppm,Res.h /ppm);
 		map = new TmxMapLoader().load("tmx/ml1.tmx");
 		render = new OrthogonalTiledMapRenderer(map, 1f / ppm, batch);
 
+		dist = new Drawist(4);
+		
 		initBox2d();
-
+		world.setContactListener(c = new jumpConcat());
 		ac = new funny(world,new Vector2(36 / ppm,36 / ppm),"w0.png",9 / ppm);
 		nx = ny = 0;
 	}
@@ -101,8 +109,12 @@ public class level1 extends CommonlyScreen
 		render.render();
 		
 		batch.begin();
+		
 		batch.draw(ac,nx,ny,18 / ppm,18 / ppm);
-		batch.draw(ac,0,0,18 / ppm,18 / ppm);
+		
+		dist.act(p1);
+		dist.draw(batch);
+		
 		batch.end();
 		
 		super.render(p1);
@@ -131,7 +143,7 @@ public class level1 extends CommonlyScreen
 			b = world.createBody(bdef);
 			b.createFixture(fdef);
 		}
-		/*for( RectangleMapObject ro : map.getLayers().get("moveAble").getObjects().getByType(RectangleMapObject.class) )
+		for( RectangleMapObject ro : map.getLayers().get("moveAble").getObjects().getByType(RectangleMapObject.class) )
 		{
 			Rectangle r = ro.getRectangle();
 			bdef.type = BodyDef.BodyType.KinematicBody;
@@ -139,15 +151,15 @@ public class level1 extends CommonlyScreen
 			shape.setAsBox(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm);
 			bdef.position.set(r.getX() / ppm + shape.getRadius(), r.getY() / ppm + shape.getRadius());
 
-			gs.addActor(new PlatformActor(new Texture("background/dead.jpg"),
+			dist.addRenderer(new PlatformActor(new Texture("background/dead.jpg"),
 										  new Vector2(r.getX() / ppm + shape.getRadius(), r.getY() / ppm + shape.getRadius()),
 										  shape,
 										  r.getX() / ppm + shape.getRadius(),
 										  r.getX() / ppm + shape.getRadius() + 306,
-										  new Vector2(10 / ppm, 0),
+										  new Vector2(20 / ppm, 0),
 										  world,
 										  new Vector2(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm)));
-		}*/
+		}
 	}
 
 }

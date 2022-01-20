@@ -9,6 +9,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.physics.box2d.ChainShape;
 
 public class funny extends Sprite
 {
@@ -33,13 +34,13 @@ public class funny extends Sprite
 	{
 		super(MyGame.ass.get(filename, Texture.class));
 		this.world = world;
-		defineBox(position, "", 8 / tool.le1);
+		defineBox(position, null, 8 / tool.le1);
 	}
 	public funny(World world, Vector2 position, String filename, float ra)
 	{
 		super(MyGame.ass.get(filename, Texture.class));
 		this.world = world;
-		defineBox(position, "", ra);
+		defineBox(position, null, ra);
 	}
 	
 	public funny(World world,Vector2 position,String filename,float ra,float re)
@@ -75,6 +76,11 @@ public class funny extends Sprite
 		fdef.shape = shape;
 		fix = b2body.createFixture(fdef);
 		fix.setUserData(name);
+		ChainShape sh = new ChainShape();
+		
+		sh.createChain(new float[]{-0.5f * ra,-ra,0.5f * ra,-ra});
+		fix = b2body.createFixture(sh,1);
+		fix.setUserData("p");
 	}
 
 
