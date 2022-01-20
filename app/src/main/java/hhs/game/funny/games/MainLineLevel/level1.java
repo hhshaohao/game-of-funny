@@ -22,6 +22,8 @@ import hhs.game.funny.games.Screen.CommonlyScreen;
 import hhs.game.funny.games.Actor.FastRoleActor;
 import hhs.game.funny.games.Tools.Controler;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import hhs.game.funny.games.funny;
+import hhs.game.funny.games.tool;
 
 public class level1 extends CommonlyScreen
 {
@@ -29,7 +31,7 @@ public class level1 extends CommonlyScreen
 	SpriteBatch batch;
 	float nx,ny;
 	OrthographicCamera cam;
-	int zoom = 100,ppm = 20;
+	float zoom = 100,ppm = 20f;
 	static int speed = 8;
 	Box2DDebugRenderer en  = new Box2DDebugRenderer();
 
@@ -38,7 +40,7 @@ public class level1 extends CommonlyScreen
 
 	World world;
 
-	static FastRoleActor ac;
+	static funny ac;
 
     public level1(MyGame game, SpriteBatch batch)
 	{
@@ -70,14 +72,15 @@ public class level1 extends CommonlyScreen
 		this.batch = batch;
 
 		cam = new OrthographicCamera();
-		cam.setToOrtho(false, Res.w / (zoom + game.zoom), Res.h / (zoom + game.zoom));
+		cam.setToOrtho(false, Res.w / (ppm + zoom + game.zoom), Res.h / (ppm + zoom + game.zoom));
 		//cam.setToOrtho(false,Res.w / ppm,Res.h /ppm);
 		map = new TmxMapLoader().load("tmx/ml1.tmx");
 		render = new OrthogonalTiledMapRenderer(map, 1f / ppm, batch);
 
 		initBox2d();
 
-		gs.addActor(ac = new FastRoleActor(world, MyGame.ass.get("w0.png", Texture.class), 9 / ppm, new Vector2(54 / ppm, 54 / ppm)));
+		ac = new funny(world,new Vector2(36 / ppm,36 / ppm),"w0.png",9 / ppm);
+		nx = ny = 0;
 	}
 
 	@Override
@@ -89,12 +92,22 @@ public class level1 extends CommonlyScreen
 		cam.position.y = ac.b2body.getPosition().y;
 		cam.update();
 		
+		nx = ac.b2body.getPosition().x - 9 / ppm;
+		ny = ac.b2body.getPosition().y - 9 / ppm;
+		
 		render.setView(cam);
+		batch.setProjectionMatrix(cam.combined);
 		
 		render.render();
-		super.render(p1);
 		
+		batch.begin();
+		batch.draw(ac,nx,ny,18 / ppm,18 / ppm);
+		batch.draw(ac,0,0,18 / ppm,18 / ppm);
+		batch.end();
+		
+		super.render(p1);
 		en.render(world,cam.combined);
+		//en.render(ac.world,cam.combined);
 	}
 
 	void initBox2d()
@@ -118,7 +131,7 @@ public class level1 extends CommonlyScreen
 			b = world.createBody(bdef);
 			b.createFixture(fdef);
 		}
-		for( RectangleMapObject ro : map.getLayers().get("moveAble").getObjects().getByType(RectangleMapObject.class) )
+		/*for( RectangleMapObject ro : map.getLayers().get("moveAble").getObjects().getByType(RectangleMapObject.class) )
 		{
 			Rectangle r = ro.getRectangle();
 			bdef.type = BodyDef.BodyType.KinematicBody;
@@ -134,7 +147,7 @@ public class level1 extends CommonlyScreen
 										  new Vector2(10 / ppm, 0),
 										  world,
 										  new Vector2(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm)));
-		}
+		}*/
 	}
 
 }

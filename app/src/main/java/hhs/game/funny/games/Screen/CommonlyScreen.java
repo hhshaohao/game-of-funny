@@ -10,19 +10,16 @@ public class CommonlyScreen extends UniversalScreen
 {
 	public UserInterface ui;
 	public MyGame game;
-	public Stage gs;
 	public boolean showUI = true;
 
 	public CommonlyScreen(MyGame game, RoleLogic r)
 	{
 		ui = new UserInterface(game, r);
-		gs = new Stage();
 	}
 	
 	public CommonlyScreen(MyGame game,Stage gs, RoleLogic r)
 	{
 		ui = new UserInterface(game, r);
-		this.gs = gs;
 	}
 
 	@Override
@@ -33,9 +30,6 @@ public class CommonlyScreen extends UniversalScreen
 	@Override
 	public void render(float p1)
 	{
-		//gs.act();
-		//gs.draw();
-
 		if( showUI )
 		{
 			ui.act();
@@ -66,11 +60,6 @@ public class CommonlyScreen extends UniversalScreen
 	@Override
 	public void dispose()
 	{
-	}
-
-	public void setStage(Stage st)
-	{
-		gs = st;
 	}
 	
 	public void setShowUI(boolean b)
