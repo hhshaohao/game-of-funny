@@ -68,14 +68,10 @@ public class MyGame extends Game
 		}
 
 		font = ass.get("font.fnt", BitmapFont.class);	
-
+		
 		h = new hscreen(this, batch);
-		lev = new Level1(batch, this);
-		stu = new lernSkill(this, batch);
-		mario = new Mario(this, batch);
-		m = new mainScreen(this, batch);
-		so = new so(this);
 		settingscreen = new SettingScreen(this);
+		so = new so(this);
 
 		goMainLine();
 	}
@@ -101,20 +97,24 @@ public class MyGame extends Game
 	
 	public void goLevel1()
 	{
+		if(lev == null)
+		lev = new Level1(batch, this);
 		Gdx.input.setInputProcessor(lev.st);
 		setScreen(lev);
 	}
 
 	public void goLevel2()
 	{
-
+		if(stu == null)
+		stu = new lernSkill(this, batch);
 		Gdx.input.setInputProcessor(stu.st);
 		setScreen(stu);
 	}
 
 	public void goMario()
 	{
-
+		if(mario == null)
+			mario = new Mario(this, batch);
 		Gdx.input.setInputProcessor(mario.st);
 		setScreen(mario);
 	}
@@ -128,7 +128,8 @@ public class MyGame extends Game
 
 	public void goGame()
 	{
-
+		if(m == null)
+			m = new mainScreen(this, batch);
 		Gdx.input.setInputProcessor(m.st);
 		font.getData().setScale(1);
 		setScreen(m);

@@ -17,7 +17,7 @@ import com.badlogic.gdx.graphics.Color;
 public class DeadScreen implements Screen
 {
 
-	SpriteBatch batch;
+	public SpriteBatch batch;
 	ImageButton fu;
 	Texture back;
 	public Stage st;

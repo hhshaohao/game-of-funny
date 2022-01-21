@@ -11,22 +11,22 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import hhs.game.funny.games.Actor.PlatformActor;
 import hhs.game.funny.games.MyGame;
 import hhs.game.funny.games.Res;
 import hhs.game.funny.games.Runnable.RoleLogic;
 import hhs.game.funny.games.Screen.CommonlyScreen;
-import hhs.game.funny.games.Actor.FastRoleActor;
-import hhs.game.funny.games.Tools.Controler;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import hhs.game.funny.games.funny;
-import hhs.game.funny.games.tool;
-import com.badlogic.gdx.scenes.scene2d.Stage;
+import hhs.game.funny.games.Screen.DeadScreen;
 import hhs.game.funny.games.Tools.Drawist;
 import hhs.game.funny.games.contactListener.jumpConcat;
+import hhs.game.funny.games.funny;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.Matrix4;
 
 public class level1 extends CommonlyScreen
 {
@@ -39,6 +39,7 @@ public class level1 extends CommonlyScreen
 	static int speed = 8;
 	Box2DDebugRenderer en  = new Box2DDebugRenderer();
 	static jumpConcat c;
+	DeadScreen ds;
 
 	TiledMap map;
 	OrthogonalTiledMapRenderer render;
@@ -47,7 +48,7 @@ public class level1 extends CommonlyScreen
 
 	static funny ac;
 
-    public level1(MyGame game, SpriteBatch batch)
+    public level1(final MyGame game, SpriteBatch batch)
 	{
 		super(game, new RoleLogic(){
 
@@ -89,6 +90,19 @@ public class level1 extends CommonlyScreen
 		world.setContactListener(c = new jumpConcat());
 		ac = new funny(world,new Vector2(36 / ppm,36 / ppm),"w0.png",9 / ppm);
 		nx = ny = 0;
+		
+		this.game = game;
+		ds = new DeadScreen(game,batch)
+		{
+			@Override
+			public void cilk(ImageButton bu)
+			{
+				ac.b2body.setTransform(36 / ppm,36 / ppm,ac.b2body.getAngle());
+				ac.b2body.setLinearVelocity(0,0);
+				Gdx.input.setInputProcessor(ui);
+				game.setScreen(level1.this);
+			}
+		};
 	}
 
 	@Override
@@ -118,8 +132,15 @@ public class level1 extends CommonlyScreen
 		batch.end();
 		
 		super.render(p1);
-		en.render(world,cam.combined);
+		//en.render(world,cam.combined);
 		//en.render(ac.world,cam.combined);
+		
+		if(ny < 0)
+		{
+			ui.cancelTouchFocus();
+			Gdx.input.setInputProcessor(ds.st);
+			game.setScreen(ds);
+		}
 	}
 
 	void initBox2d()
