@@ -73,7 +73,7 @@ public class MyGame extends Game
 		settingscreen = new SettingScreen(this);
 		so = new so(this);
 
-		goMainLine();
+		goMain();
 	}
 
 	/*public <T extends UniversalScreen> void goClass(Stage st)

@@ -35,7 +35,7 @@ public class level1 extends CommonlyScreen
 	Drawist dist;
 	float nx,ny;
 	OrthographicCamera cam;
-	float zoom = 100,ppm = 20f;
+	float zoom = 50,ppm = 20f;
 	static int speed = 8;
 	Box2DDebugRenderer en  = new Box2DDebugRenderer();
 	static jumpConcat c;
@@ -71,7 +71,7 @@ public class level1 extends CommonlyScreen
 				{
 					if(c.is)
 					{
-						ac.b2body.applyForceToCenter(new  Vector2(0, 250), true);
+						ac.b2body.applyForceToCenter(new  Vector2(0, 300), true);
 						c.is = false;
 					}
 				}
@@ -89,8 +89,9 @@ public class level1 extends CommonlyScreen
 		initBox2d();
 		world.setContactListener(c = new jumpConcat());
 		ac = new funny(world,new Vector2(36 / ppm,36 / ppm),"w0.png",9 / ppm);
-		nx = ny = 0;
-		
+		nx = 1602 / ppm;
+		ny  = 108 / ppm;
+		ac.b2body.setTransform(nx = 1602 / ppm,ny  = 108 / ppm,ac.b2body.getAngle());
 		this.game = game;
 		ds = new DeadScreen(game,batch)
 		{
@@ -132,7 +133,7 @@ public class level1 extends CommonlyScreen
 		batch.end();
 		
 		super.render(p1);
-		//en.render(world,cam.combined);
+		en.render(world,cam.combined);
 		//en.render(ac.world,cam.combined);
 		
 		if(ny < 0)
@@ -175,11 +176,12 @@ public class level1 extends CommonlyScreen
 			dist.addRenderer(new PlatformActor(new Texture("background/dead.jpg"),
 										  new Vector2(r.getX() / ppm + shape.getRadius(), r.getY() / ppm + shape.getRadius()),
 										  shape,
-										  r.getX() / ppm + shape.getRadius(),
-										  r.getX() / ppm + shape.getRadius() + 306,
-										  new Vector2(20 / ppm, 0),
+										  r.getX() / ppm + r.getWidth() / 2 / ppm,
+										  r.getX() / ppm + r.getWidth() / 2 / ppm + 330 / ppm,
+										  new Vector2(2, 0),
 										  world,
-										  new Vector2(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm)));
+										  new Vector2(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm),
+										  new Vector2(r.getWidth() / ppm,r.getHeight() / ppm)));
 		}
 	}
 
