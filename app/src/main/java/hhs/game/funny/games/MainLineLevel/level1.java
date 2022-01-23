@@ -27,6 +27,9 @@ import hhs.game.funny.games.contactListener.jumpConcat;
 import hhs.game.funny.games.funny;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Matrix4;
+import hhs.game.funny.games.Stage.MissionStage;
+import hhs.game.funny.games.Mission;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 
 public class level1 extends CommonlyScreen
 {
@@ -47,6 +50,10 @@ public class level1 extends CommonlyScreen
 	World world;
 
 	static funny ac;
+	
+	MissionStage ms;
+	Mission mis;
+	boolean start = true;;
 
     public level1(final MyGame game, SpriteBatch batch)
 	{
@@ -72,7 +79,6 @@ public class level1 extends CommonlyScreen
 					if(c.is)
 					{
 						ac.b2body.applyForceToCenter(new  Vector2(0, 300), true);
-						c.is = false;
 					}
 				}
 			});
@@ -102,6 +108,18 @@ public class level1 extends CommonlyScreen
 				ac.b2body.setLinearVelocity(0,0);
 				Gdx.input.setInputProcessor(ui);
 				game.setScreen(level1.this);
+			}
+		};
+		
+		ms = new MissionStage(3);
+		mis = new Mission("恭喜","你逃出了一众表情的围捕,\n下面努力到达比赛地吧!",game.font)
+		{
+
+			@Override
+			public void cilck(Dialog dialog)
+			{
+				Gdx.input.setInputProcessor(ui);
+				start = false;isShow = false;
 			}
 		};
 	}
@@ -135,6 +153,15 @@ public class level1 extends CommonlyScreen
 		super.render(p1);
 		en.render(world,cam.combined);
 		//en.render(ac.world,cam.combined);
+		
+		ms.act();
+		ms.draw();
+		
+		if(start)
+		{
+			mis.isShow = true;
+			Gdx.input.setInputProcessor(mis);
+		}
 		
 		if(ny < 0)
 		{
@@ -174,7 +201,7 @@ public class level1 extends CommonlyScreen
 			bdef.position.set(r.getX() / ppm + shape.getRadius(), r.getY() / ppm + shape.getRadius());
 
 			dist.addRenderer(new PlatformActor(new Texture("background/dead.jpg"),
-										  new Vector2(r.getX() / ppm + shape.getRadius(), r.getY() / ppm + shape.getRadius()),
+										  new Vector2(r.getX() / ppm + r.getWidth() / 2 / ppm, r.getY() / ppm + r.getHeight() / 2 / ppm),
 										  shape,
 										  r.getX() / ppm + r.getWidth() / 2 / ppm,
 										  r.getX() / ppm + r.getWidth() / 2 / ppm + 330 / ppm,

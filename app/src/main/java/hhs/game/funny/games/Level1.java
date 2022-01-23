@@ -116,7 +116,7 @@ public class Level1 implements Screen
 			{
 				MyGame.archive.putInteger("level", 2);
 				MyGame.archive.flush();
-				game.goLevel2();
+				game.goMainLine();
 				this.dispose();
 			}
 

@@ -24,7 +24,9 @@ public class PlatformActor implements RendererObject
 	Body plat;
 	Vector2 speed,pos,size;
 	float w,h;
-	int time = 0;
+	float time = 0;
+	
+	boolean r = true;
 
 	public PlatformActor(Texture text, Vector2 pos, Shape shape, float left, float right, Vector2 speed, World world, Vector2 size, Vector2 r)
 	{
@@ -53,24 +55,28 @@ public class PlatformActor implements RendererObject
 		plat.setLinearVelocity(speed.x, 0);
 		w = r.x;
 		h = r.y;
+		plat.setTransform(pos.x = left + 1,pos.y,plat.getAngle());
 	}
 	@Override
 	public void act(float p1)
 	{
 		pos.x = plat.getPosition().x - w / 2;
 		pos.y = plat.getPosition().y - h / 2;
-
-		if( left  > pos.x && pos.x > right )
+		
+		if(r)
 		{
-			time++;
-		}
-		if( time % 2 == 0 )
+			plat.setLinearVelocity(speed);
+			if(pos.x > right)
+			{
+				r = false;
+			}
+		}else
 		{
-			plat.setLinearVelocity(speed.x, 0);
-		}
-		else
-		{
-			plat.setLinearVelocity(-speed.x, 0);
+			plat.setLinearVelocity(-speed.x,0);
+			if(pos.x < left)
+			{
+				r = true;
+			}
 		}
 	}
 	@Override

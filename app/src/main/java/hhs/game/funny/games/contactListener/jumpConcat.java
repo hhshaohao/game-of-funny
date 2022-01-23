@@ -21,7 +21,7 @@ public class jumpConcat implements ContactListener
 		{
 			is = true;
 			/*Fixture ground;
-			ground = a.getUserData() == "ground" ? a : b;*/
+			 ground = a.getUserData() == "ground" ? a : b;*/
 		}
 	}
 
@@ -33,7 +33,7 @@ public class jumpConcat implements ContactListener
 		//MainActivity.use.showQuickTip("开始"+a.getUserData()+b.getUserData());
 		if(a.getUserData() != null || b.getUserData() != null)
 		{
-			is = true;
+			is = false;
 			/*Fixture ground;
 			 ground = a.getUserData() == "ground" ? a : b;*/
 		}
@@ -47,6 +47,7 @@ public class jumpConcat implements ContactListener
 	@Override
 	public void postSolve(Contact p1, ContactImpulse p2)
 	{
+		
 	}
 	
     
