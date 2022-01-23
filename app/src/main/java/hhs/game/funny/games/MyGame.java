@@ -26,6 +26,8 @@ import com.badlogic.gdx.Screen;
 import hhs.game.funny.games.Screen.CommonlyScreen;
 import hhs.game.funny.games.Screen.UniversalScreen;
 import hhs.game.funny.games.MainLineLevel.level1;
+import com.badlogic.gdx.utils.viewport.Viewport;
+import hhs.game.funny.games.MainLineLevel.MainLineLevelLoader;
 
 public class MyGame extends Game
 {
@@ -42,6 +44,7 @@ public class MyGame extends Game
 	
 	hscreen h;
 	Level1 lev;
+	
 	public static Label fps;					//帧率显示
 	public static SpriteBatch batch,Misbatch;	//公共资源：画笔
 	public static BitmapFont font;				//中文支持

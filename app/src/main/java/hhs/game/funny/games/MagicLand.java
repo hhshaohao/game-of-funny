@@ -80,7 +80,7 @@ public class MagicLand implements Screen
 
 		this.initBox2d();
 		
-		ds = new DeadScreen(game,batch)
+		ds = new DeadScreen(game,MyGame.Misbatch)
 		{
 
 			@Override

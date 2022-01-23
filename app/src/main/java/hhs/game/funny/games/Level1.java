@@ -138,7 +138,7 @@ public class Level1 implements Screen
 
 		cam.position.y = 300 / tool.le1;
 
-		dead = new DeadScreen(game, batch){
+		dead = new DeadScreen(game, MyGame.Misbatch){
 
 			@Override
 			public void cilk(ImageButton bu)

@@ -99,7 +99,7 @@ public class level1 extends CommonlyScreen
 		ny  = 108 / ppm;
 		ac.b2body.setTransform(nx = 1602 / ppm,ny  = 108 / ppm,ac.b2body.getAngle());
 		this.game = game;
-		ds = new DeadScreen(game,batch)
+		ds = new DeadScreen(game,MyGame.Misbatch)
 		{
 			@Override
 			public void cilk(ImageButton bu)

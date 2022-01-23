@@ -17,6 +17,7 @@ public class funny extends Sprite
 	public World world;
 	public Body b2body;
 	public Fixture fix;
+	public float ra;
 
     public funny(World world, Vector2 position, String filename, String name, float ra)
 	{
@@ -64,6 +65,7 @@ public class funny extends Sprite
 
 	private void defineBox(Vector2 position, String name, float ra)
 	{
+		this.ra = ra;
 		CircleShape shape = new CircleShape();
 		shape.setRadius(ra);
 
