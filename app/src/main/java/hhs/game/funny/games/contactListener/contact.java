@@ -34,8 +34,6 @@ public class contact implements ContactListener
 			lost = fixb;
 		if( zhu != null && lost != null )
 		{
-			//Gdx.app.log("ok","");
-			//zhu.getBody().applyForceToCenter(0,1000,true);
 			is = true;
 		}
 	}
