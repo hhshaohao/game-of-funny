@@ -7,6 +7,8 @@ import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.Gdx;
 import hhs.game.funny.MainActivity;
+import hhs.game.funny.games.MyGame;
+import com.badlogic.gdx.audio.Sound;
 
 public class jumpConcat implements ContactListener
 {
@@ -19,6 +21,7 @@ public class jumpConcat implements ContactListener
 		//MainActivity.use.showQuickTip("开始"+a.getUserData()+b.getUserData());
 		if(a.getUserData() != null || b.getUserData() != null)
 		{
+			MyGame.ass.get("down.mp3",Sound.class).play();
 			is = true;
 			/*Fixture ground;
 			 ground = a.getUserData() == "ground" ? a : b;*/

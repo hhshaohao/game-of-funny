@@ -206,6 +206,7 @@ public class MyGame extends Game
 		ass.load("background/dead.jpg", Texture.class);
 		ass.load("ui5.png", Texture.class);
 		ass.load("ui8.png", Texture.class);
+		ass.load("down.mp3",Sound.class);
 
 		st = new Stage();
 

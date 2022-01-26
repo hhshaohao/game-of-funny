@@ -30,6 +30,7 @@ import com.badlogic.gdx.math.Matrix4;
 import hhs.game.funny.games.Stage.MissionStage;
 import hhs.game.funny.games.Mission;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.audio.Sound;
 
 public class level1 extends CommonlyScreen
 {
@@ -78,6 +79,7 @@ public class level1 extends CommonlyScreen
 				{
 					if(c.is)
 					{
+						game.ass.get("jump.mp3",Sound.class).play();
 						ac.b2body.applyForceToCenter(new  Vector2(0, 300), true);
 					}
 				}

@@ -26,6 +26,7 @@ import hhs.game.funny.games.Screen.CommonlyScreen;
 import hhs.game.funny.games.Screen.DeadScreen;
 import hhs.game.funny.games.contactListener.jumpConcat;
 import hhs.game.funny.games.funny;
+import com.badlogic.gdx.audio.Sound;
 
 public class MainLineLevelLoader extends CommonlyScreen
 {
@@ -45,7 +46,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 	World world;
 	static jumpConcat c;
 
-    public MainLineLevelLoader(MyGame game, String tmxFile)
+    public MainLineLevelLoader(final MyGame game, String tmxFile)
 	{
 		super(game, new  RoleLogic()
 			{
@@ -69,6 +70,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 				{
 					if( c.is )
 					{
+						game.ass.get("jump.mp3",Sound.class).play();
 						zhu.b2body.applyForceToCenter(new  Vector2(0, 300), true);
 					}
 				}
