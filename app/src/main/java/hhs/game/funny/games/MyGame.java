@@ -28,6 +28,7 @@ import hhs.game.funny.games.Screen.UniversalScreen;
 import hhs.game.funny.games.MainLineLevel.level1;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import hhs.game.funny.games.MainLineLevel.MainLineLevelLoader;
+import hhs.game.funny.games.Screen.ChooseCustomsScreen;
 
 public class MyGame extends Game
 {
@@ -44,6 +45,8 @@ public class MyGame extends Game
 	
 	hscreen h;
 	Level1 lev;
+	ChooseCustomsScreen ccs;
+	level1 l;
 	
 	public static Label fps;					//帧率显示
 	public static SpriteBatch batch,Misbatch;	//公共资源：画笔
@@ -75,8 +78,10 @@ public class MyGame extends Game
 		h = new hscreen(this, batch);
 		settingscreen = new SettingScreen(this);
 		so = new so(this);
+		ccs = new ChooseCustomsScreen(this);
 
-		goMain();
+		goMainLine();
+		//Gdx.input.setInputProcessor(l.ui);
 	}
 
 	/*public <T extends UniversalScreen> void goClass(Stage st)
@@ -85,9 +90,17 @@ public class MyGame extends Game
 		setScreen();
 	}*/
 	
+	public void goChooser()
+	{
+		font.getData().setScale(1);
+		font.setColor(Color.BLACK);
+		Gdx.input.setInputProcessor(ccs.st);
+		this.setScreen(ccs);
+	}
+	
 	public void goMainLine()
 	{
-		level1 l = new level1(this,batch);
+		l = new level1(this,batch);
 		Gdx.input.setInputProcessor(l.ui);
 		setScreen(l);
 	}
@@ -124,6 +137,7 @@ public class MyGame extends Game
 
 	public void goSo()
 	{
+		font.setColor(Color.BLACK);
 		Gdx.input.setInputProcessor(so.st);
 		font.getData().setScale(1.5f);
 		setScreen(so);
@@ -131,6 +145,7 @@ public class MyGame extends Game
 
 	public void goGame()
 	{
+		font.setColor(Color.BLACK);
 		if(m == null)
 			m = new mainScreen(this, batch);
 		Gdx.input.setInputProcessor(m.st);
@@ -140,6 +155,7 @@ public class MyGame extends Game
 
 	public void goMain()
 	{
+		font.setColor(Color.BLACK);
 		Gdx.input.setInputProcessor(h.st);
 		font.getData().setScale(4);
 		setScreen(h);
@@ -155,6 +171,7 @@ public class MyGame extends Game
 	}
 	public void goSetting()
 	{
+		font.setColor(Color.BLACK);
 		Gdx.input.setInputProcessor(settingscreen.st);
 		font.getData().setScale(1.5f);
 		setScreen(settingscreen);

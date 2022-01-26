@@ -17,14 +17,15 @@ import com.badlogic.gdx.physics.box2d.ChainShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import hhs.game.funny.MainActivity;
 import hhs.game.funny.games.MyGame;
 import hhs.game.funny.games.Res;
 import hhs.game.funny.games.Runnable.RoleLogic;
 import hhs.game.funny.games.Screen.CommonlyScreen;
+import hhs.game.funny.games.Screen.DeadScreen;
 import hhs.game.funny.games.contactListener.jumpConcat;
 import hhs.game.funny.games.funny;
-import hhs.game.funny.games.Screen.DeadScreen;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 
 public class MainLineLevelLoader extends CommonlyScreen
 {
@@ -33,20 +34,20 @@ public class MainLineLevelLoader extends CommonlyScreen
 	float ppm = 20,zoom = 50;
 	SpriteBatch batch;
 	DeadScreen ds;
-	
+
 	static float speed = 8;
 	float nx,ny,ox,oy;
 	static funny zhu;
-	
+
 	TiledMap map;
 	OrthogonalTiledMapRenderer render;
-	
+
 	World world;
 	static jumpConcat c;
-	
-    public MainLineLevelLoader(MyGame game,String tmxFile)
+
+    public MainLineLevelLoader(MyGame game, String tmxFile)
 	{
-		super(game,new  RoleLogic()
+		super(game, new  RoleLogic()
 			{
 
 				@Override
@@ -66,28 +67,29 @@ public class MainLineLevelLoader extends CommonlyScreen
 				@Override
 				public void upAction()
 				{
-					if(c.is)
+					if( c.is )
 					{
 						zhu.b2body.applyForceToCenter(new  Vector2(0, 300), true);
 					}
 				}
-		});
+			});
 		this.game = game;
 		cam = new OrthographicCamera();
-		cam.setToOrtho(false,Res.w / (ppm + zoom + MyGame.zoom),Res.h / (ppm + zoom + MyGame.zoom));
+		cam.setToOrtho(false, Res.w / (ppm + zoom + MyGame.zoom), Res.h / (ppm + zoom + MyGame.zoom));
 		batch = MyGame.batch;
 		
 		map = new TmxMapLoader().load(tmxFile);
-		render = new OrthogonalTiledMapRenderer(map,1 / ppm);
-		
+
+		render = new OrthogonalTiledMapRenderer(map, 1 / ppm);
+
 		this.initBox2d();
-		
-		ds = new DeadScreen(game,MyGame.Misbatch)
+
+		ds = new DeadScreen(game, MyGame.Misbatch)
 		{
 			@Override
 			public void cilk(ImageButton bu)
 			{
-				zhu.b2body.setTransform(ox,oy,zhu.b2body.getAngle());
+				zhu.b2body.setTransform(ox, oy, zhu.b2body.getAngle());
 				Gdx.input.setInputProcessor(ui);
 				cam.position.x = ox;
 				cam.position.y = oy;
@@ -95,92 +97,92 @@ public class MainLineLevelLoader extends CommonlyScreen
 			}
 		};
 	}
-	
+
 	@Override
 	public void render(float p1)
 	{
-		world.step(p1,1,1);
-		
+		world.step(p1, 1, 1);
+
 		nx = zhu.b2body.getPosition().x - zhu.ra;
 		ny = zhu.b2body.getPosition().y - zhu.ra;
-		
+
 		cam.position.x = zhu.b2body.getPosition().x;
 		cam.position.y = zhu.b2body.getPosition().y;
-		
+
 		cam.update();
-		
+
 		render.setView(cam);
 		batch.setProjectionMatrix(cam.combined);
-		
+
 		render.render();
-		
+
 		batch.begin();
-		batch.draw(zhu,nx,ny,zhu.ra * 2,zhu.ra * 2);
+		batch.draw(zhu, nx, ny, zhu.ra * 2, zhu.ra * 2);
 		batch.end();
-		
+
 		super.render(p1);
-		
-		if(ny < 0)
+
+		if( ny < 0 )
 		{
 			ui.cancelTouchFocus();
 			Gdx.input.setInputProcessor(ds.st);
 			this.game.setScreen(ds);
 		}
 	}
-    
+
 	void initBox2d()
 	{
-		world = new World(new Vector2(0,-9.81f),true);
+		world = new World(new Vector2(0, -9.81f), true);
 		world.setContactListener(c = new jumpConcat());
 		BodyDef bdef = new BodyDef();
 		bdef.type = BodyDef.BodyType.StaticBody;
-		
+
 		Body body;
-		
+
 		PolygonShape shape = new PolygonShape();
-		
+
 		FixtureDef fdef = new FixtureDef();
 		fdef.shape = shape;
-		
-		for(RectangleMapObject ro : map.getLayers().get("ground").getObjects().getByType(RectangleMapObject.class))
+
+		for( RectangleMapObject ro : map.getLayers().get("ground").getObjects().getByType(RectangleMapObject.class) )
 		{
 			Rectangle r = ro.getRectangle();
-			
-			shape.setAsBox(r.getWidth() / 2 / ppm,r.getHeight() / 2 / ppm);
-			
-			bdef.position.set((r.getX() + r.getWidth() / 2) / ppm,(r.getY() + r.getHeight() / 2) / ppm);
-			
+
+			shape.setAsBox(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm);
+
+			bdef.position.set((r.getX() + r.getWidth() / 2) / ppm, (r.getY() + r.getHeight() / 2) / ppm);
+
 			body = world.createBody(bdef);
-			
+
 			body.createFixture(fdef);
 		}
 		ChainShape chain = new ChainShape();
-		for(PolylineMapObject po : map.getLayers().get("ground").getObjects().getByType(PolylineMapObject.class))
+		for( PolylineMapObject po : map.getLayers().get("ground").getObjects().getByType(PolylineMapObject.class) )
 		{
 			Polyline p = po.getPolyline();
-			
+
 			float[] pos = p.getVertices();
-			for (int i = 0; i < pos.length; i++)
+			for( int i = 0; i < pos.length; i++ )
 			{
 				pos[i] = pos[i] / ppm;
 			}
 			chain.createChain(pos);
-			
+
 			fdef.shape = chain;
-			
+
 			bdef.position.set((p.getX() + chain.getRadius()) / ppm, (p.getY() + chain.getRadius()) / ppm);
-			
+
 			body = world.createBody(bdef);
 			body.createFixture(fdef);
 		}
-		for(RectangleMapObject ro : map.getLayers().get("born").getObjects().getByType(RectangleMapObject.class))
+		for( RectangleMapObject ro : map.getLayers().get("born").getObjects().getByType(RectangleMapObject.class) )
 		{
 			Rectangle r = ro.getRectangle();
 			zhu = new funny(world,
-				new Vector2(ox = (r.getX() + r.getWidth() / 2) / ppm,oy = (r.getY() + r.getHeight() / 2) / ppm),
-				"w0.png",r.getWidth() / 2 / ppm
-			);
+							new Vector2(ox = (r.getX() + r.getWidth() / 2) / ppm, oy = (r.getY() + r.getHeight() / 2) / ppm),
+							"w0.png", r.getWidth() / 2 / ppm
+							);
 		}
 	}
-    
+
 }

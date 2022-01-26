@@ -17,11 +17,6 @@ public class CommonlyScreen extends UniversalScreen
 		ui = new UserInterface(game, r);
 	}
 	
-	public CommonlyScreen(MyGame game,Stage gs, RoleLogic r)
-	{
-		ui = new UserInterface(game, r);
-	}
-
 	@Override
 	public void show()
 	{

@@ -80,7 +80,7 @@ public class funny extends Sprite
 		fix.setUserData(name);
 		ChainShape sh = new ChainShape();
 		
-		sh.createChain(new float[]{-0.5f * ra,-ra,0.5f * ra,-ra});
+		sh.createChain(new float[]{-0.1f * ra,-ra,0.1f * ra,-ra});
 		fix = b2body.createFixture(sh,1);
 		fix.setUserData("p");
 	}

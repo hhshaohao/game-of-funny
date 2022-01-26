@@ -97,7 +97,7 @@ public class level1 extends CommonlyScreen
 		ac = new funny(world,new Vector2(36 / ppm,36 / ppm),"w0.png",9 / ppm);
 		nx = 1602 / ppm;
 		ny  = 108 / ppm;
-		ac.b2body.setTransform(nx = 1602 / ppm,ny  = 108 / ppm,ac.b2body.getAngle());
+		//ac.b2body.setTransform(nx = 1602 / ppm,ny  = 108 / ppm,ac.b2body.getAngle());
 		this.game = game;
 		ds = new DeadScreen(game,MyGame.Misbatch)
 		{
@@ -112,7 +112,7 @@ public class level1 extends CommonlyScreen
 		};
 		
 		ms = new MissionStage(3);
-		mis = new Mission("恭喜","你逃出了一众表情的围捕,\n下面努力到达比赛地吧!",game.font)
+		mis = new Mission("恭喜","你逃出了一众表情的围捕,\n下面努力比赛吧!",game.font)
 		{
 
 			@Override
@@ -122,6 +122,7 @@ public class level1 extends CommonlyScreen
 				start = false;isShow = false;
 			}
 		};
+		
 	}
 
 	@Override
@@ -157,17 +158,22 @@ public class level1 extends CommonlyScreen
 		ms.act();
 		ms.draw();
 		
-		if(start)
+		/*if(start)
 		{
 			mis.isShow = true;
 			Gdx.input.setInputProcessor(mis);
-		}
+		}*/
 		
 		if(ny < 0)
 		{
 			ui.cancelTouchFocus();
 			Gdx.input.setInputProcessor(ds.st);
 			game.setScreen(ds);
+		}
+		if(nx > 3546 / ppm)
+		{
+			MyGame.archive.putBoolean("MAIN",true);
+			MyGame.archive.flush();
 		}
 	}
 
@@ -182,7 +188,7 @@ public class level1 extends CommonlyScreen
 		bdef.type = BodyDef.BodyType.StaticBody;
 		fdef.shape = shape;
 
-		for( RectangleMapObject ro : map.getLayers().get("b").getObjects().getByType(RectangleMapObject.class) )
+		for( RectangleMapObject ro : map.getLayers().get("ground").getObjects().getByType(RectangleMapObject.class) )
 		{
 			Rectangle r = ro.getRectangle();
 
@@ -204,7 +210,7 @@ public class level1 extends CommonlyScreen
 										  new Vector2(r.getX() / ppm + r.getWidth() / 2 / ppm, r.getY() / ppm + r.getHeight() / 2 / ppm),
 										  shape,
 										  r.getX() / ppm + r.getWidth() / 2 / ppm,
-										  r.getX() / ppm + r.getWidth() / 2 / ppm + 330 / ppm,
+										  r.getX() / ppm + r.getWidth() / 2 / ppm + ro.getProperties().get("move",330,Integer.class) / ppm,
 										  new Vector2(2, 0),
 										  world,
 										  new Vector2(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm),
