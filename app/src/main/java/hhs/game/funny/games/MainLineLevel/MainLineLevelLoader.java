@@ -97,6 +97,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 				cam.position.x = ox;
 				cam.position.y = oy;
 				cam.update();
+				game.setScreen(MainLineLevelLoader.this);
 			}
 		};
 	}

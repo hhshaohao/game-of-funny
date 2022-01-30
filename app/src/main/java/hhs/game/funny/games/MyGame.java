@@ -256,7 +256,7 @@ public class MyGame extends Game
 	public void transition()
 	{
 		image.setColor(Color.BLACK);
-		image.addAction(Actions.color(Color.CLEAR, 0.5f));
+		image.addAction(Actions.color(Color.CLEAR, 2f));
 	}
 
 	@Override
