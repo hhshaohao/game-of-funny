@@ -15,18 +15,25 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import hhs.game.funny.MainActivity;
 
-public class NativeUse implements PlatformResolver {
+public class NativeUse implements PlatformResolver
+{
 	Context _context;
 	Handler hd;
-	public NativeUse(Context context){
-		_context=context;
-		hd=new Handler();
+	public NativeUse(Context context)
+	{
+		_context = context;
+		hd = new Handler();
 	}
-	public boolean isNetEnable() {
+
+	public void showDialog(String p0, String p1, Object runnable)
+	{
+	}
+	public boolean isNetEnable()
+	{
 		// TODO Auto-generated method stub
 		ConnectivityManager connectivityManager = (ConnectivityManager) _context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
-		if (connectivityManager == null)
+		if( connectivityManager == null )
 		{
 			return false;
 		}
@@ -34,13 +41,13 @@ public class NativeUse implements PlatformResolver {
 		{
 			NetworkInfo[] networkInfo = connectivityManager.getAllNetworkInfo();
 
-			if (networkInfo != null && networkInfo.length > 0)
+			if( networkInfo != null && networkInfo.length > 0 )
 			{
-				for (int i = 0; i < networkInfo.length; i++)
+				for( int i = 0; i < networkInfo.length; i++ )
 				{
 					System.out.println(i + "==net state==" + networkInfo[i].getState());
 					System.out.println(i + "===net type===" + networkInfo[i].getTypeName());
-					if (networkInfo[i].getState() == NetworkInfo.State.CONNECTED)
+					if( networkInfo[i].getState() == NetworkInfo.State.CONNECTED )
 					{
 						return true;
 					}
@@ -51,12 +58,14 @@ public class NativeUse implements PlatformResolver {
 	}
 
 
-	public void showQuickTip(final String context) {
+	public void showQuickTip(final String context)
+	{
 		// TODO Auto-generated method stub
 		hd.post(new Runnable() {
 
 				@Override
-				public void run() {
+				public void run()
+				{
 					// TODO Auto-generated method stub
 					Toast.makeText(_context, context, Toast.LENGTH_LONG).show();
 				}
@@ -65,19 +74,22 @@ public class NativeUse implements PlatformResolver {
 
 	}
 
-	public BitmapFont getFont(String characters) {
+	public BitmapFont getFont(String characters)
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public void callPay(final String payee,final int money) {
+	public void callPay(final String payee, final int money)
+	{
 		// TODO Auto-generated method stub
 		hd.post(new Runnable() {
-				public void run() {
+				public void run()
+				{
 					Intent intent=new Intent(_context, MainActivity.class);
 
 					Bundle bundle=new Bundle();
-					bundle.putString("payee",payee);
+					bundle.putString("payee", payee);
 					bundle.putInt("money", money);
 
 					intent.putExtras(bundle);
@@ -90,20 +102,23 @@ public class NativeUse implements PlatformResolver {
 
 	}
 	@Override
-	public void showQucikDialog(final String title, final String context, final Runnable callback) {
+	public void showQucikDialog(final String title, final String context, final Runnable callback)
+	{
 		// TODO Auto-generated method stub
 		hd.post(new Runnable() {
 
 				@Override
-				public void run() {
+				public void run()
+				{
 					// TODO Auto-generated method stub
 					new  AlertDialog.Builder(_context)    
-						.setTitle(title )  
+						.setTitle(title)  
 						.setMessage(context)  
-						.setPositiveButton("确定" ,new OnClickListener() {
+						.setPositiveButton("确定" , new OnClickListener() {
 
 							@Override
-							public void onClick(DialogInterface dialog, int which) {
+							public void onClick(DialogInterface dialog, int which)
+							{
 								// TODO Auto-generated method stub
 								Gdx.app.postRunnable(callback);
 
@@ -113,6 +128,41 @@ public class NativeUse implements PlatformResolver {
 				}
 			});
 
+	}
+
+	public void showDialog(final String title, final String context, final Runnable ok, final Runnable cancel)
+	{
+		hd.post(new Runnable() {
+
+				@Override
+				public void run()
+				{
+					// TODO Auto-generated method stub
+					new  AlertDialog.Builder(_context)    
+						.setTitle(title)  
+						.setMessage(context)
+						.setPositiveButton("取消", new OnClickListener(){
+							@Override
+							public void onClick(DialogInterface dialog, int which)
+							{
+								// TODO Auto-generated method stub
+								Gdx.app.postRunnable(cancel);
+
+							}
+						})
+						.setPositiveButton("确定" , new OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog, int which)
+							{
+								// TODO Auto-generated method stub
+								Gdx.app.postRunnable(ok);
+
+							}
+						})  
+						.show();
+				}
+			});
 	}
 
 }

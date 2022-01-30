@@ -1,28 +1,18 @@
 package hhs.game.funny.games;
 
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import hhs.game.funny.games.Screen.Jumper;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import hhs.game.funny.MainActivity;
+import hhs.game.funny.games.Screen.Jumper;
 /*
  选关页面
  */
@@ -33,7 +23,7 @@ public class hscreen implements Screen
 	SpriteBatch batch;
 	Stage st;
 	Table ta;
-	ImageButton start,br,so,mario,openWorld,setting,goC;
+	ImageButton start,br,so,mario,openWorld,setting,goC,newStart;
 	Texture l,r;
 	float t;
 	boolean z;
@@ -54,12 +44,13 @@ public class hscreen implements Screen
 		start = tool.createButton("ui1.png", "s0.png");
 		br = tool.createButton("ui0.png", "s0.png");
 		so = tool.createButton("ui2.png", "s1.png");
-		goC = tool.createButton("ui10.png","s1.png");
+		goC = tool.createButton("ui10.png", "s1.png");
+		newStart = tool.createButton("ui11.png", "s0.png");
 		ta.setFillParent(true);
 		ta.center();
-		
-		ta.add(goC);
-		if(MyGame.archive.getBoolean("MAIN"))
+
+		ta.add(newStart).padRight(50);
+		if( MyGame.archive.getBoolean("MAIN") )
 		{
 			ta.add(goC);
 			MainActivity.use.showQuickTip("恭喜");
@@ -256,6 +247,36 @@ public class hscreen implements Screen
 					//super.touchUp(event, x, y, pointer, button);
 				}
 			});
+
+		newStart.addListener(new InputListener()
+			{
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
+				{
+					return true;
+				}
+
+				@Override
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button)
+				{
+					MainActivity.use.showDialog("重新开始?", "清除所有游戏进度?", new Runnable(){
+							@Override
+							public void run()
+							{
+								g.archive.putBoolean("MAIN",false);
+								g.archive.flush();
+								g.goGame();
+							}
+						}, new Runnable(){
+							@Override
+							public void run()
+							{
+							}
+						});
+					//super.touchUp(event, x, y, pointer, button);
+				}
+			});
+
 	}
 
 	@Override

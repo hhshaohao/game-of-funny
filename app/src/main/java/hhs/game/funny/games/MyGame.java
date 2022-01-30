@@ -1,40 +1,30 @@
 package hhs.game.funny.games;
 
-import com.badlogic.gdx.ApplicationListener;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.Graphics;
-import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import hhs.game.funny.MainActivity;
+import hhs.game.funny.games.MainLineLevel.level1;
+import hhs.game.funny.games.Screen.ChooseCustomsScreen;
 import hhs.game.funny.games.Screen.Jumper;
 import hhs.game.funny.games.Screen.SettingScreen;
-import hhs.game.funny.games.Tools.NativeUse;
-import hhs.game.funny.MainActivity;
-import com.badlogic.gdx.Screen;
-import hhs.game.funny.games.Screen.CommonlyScreen;
-import hhs.game.funny.games.Screen.UniversalScreen;
-import hhs.game.funny.games.MainLineLevel.level1;
-import com.badlogic.gdx.utils.viewport.Viewport;
-import hhs.game.funny.games.MainLineLevel.MainLineLevelLoader;
-import hhs.game.funny.games.Screen.ChooseCustomsScreen;
 
 public class MyGame extends Game
 {
 
 	Stage st;
-	
+
 	startScreen ss;
 	mainScreen m;
 	lernSkill stu;
@@ -42,12 +32,12 @@ public class MyGame extends Game
 	so so;
 	MagicLand magic;
 	SettingScreen settingscreen;
-	
+
 	hscreen h;
 	Level1 lev;
 	ChooseCustomsScreen ccs;
 	level1 l;
-	
+
 	public static Label fps;					//帧率显示
 	public static SpriteBatch batch,Misbatch;	//公共资源：画笔
 	public static BitmapFont font;				//中文支持
@@ -56,6 +46,7 @@ public class MyGame extends Game
 	public static Jumper jump;					//滑稽跳舞
 	public static int zoom;						//屏幕缩放
 	public static Color clearColor;				//清屏颜色
+	public static Image image;					//场景过渡
 
 	public void finish()
 	{
@@ -74,62 +65,69 @@ public class MyGame extends Game
 		}
 
 		font = ass.get("font.fnt", BitmapFont.class);	
-		
+
 		h = new hscreen(this, batch);
 		settingscreen = new SettingScreen(this);
 		so = new so(this);
 		ccs = new ChooseCustomsScreen(this);
 
-		goMainLine();
+		goMain();
 		//Gdx.input.setInputProcessor(l.ui);
 	}
 
 	/*public <T extends UniversalScreen> void goClass(Stage st)
-	{
-		Gdx.input.setInputProcessor(st);	
-		setScreen();
-	}*/
-	
+	 {
+	 Gdx.input.setInputProcessor(st);	
+	 setScreen();
+	 }*/
+
 	public void goChooser()
 	{
+		transition();
+		transition();
 		font.getData().setScale(1);
 		font.setColor(Color.BLACK);
 		Gdx.input.setInputProcessor(ccs.st);
 		this.setScreen(ccs);
 	}
-	
+
 	public void goMainLine()
 	{
-		l = new level1(this,batch);
+		transition();
+		l = new level1(this, batch);
 		Gdx.input.setInputProcessor(l.ui);
 		setScreen(l);
 	}
-	
-	public void goScreen(Screen s,Stage st)
+
+	public void goScreen(Screen s, Stage st)
 	{
+		transition();
 		Gdx.input.setInputProcessor(st);
 		setScreen(s);
 	}
-	
+
 	public void goLevel1()
 	{
-		if(lev == null)
-		lev = new Level1(batch, this);
+		transition();
+		if( lev == null )
+			lev = new Level1(batch, this);
 		Gdx.input.setInputProcessor(lev.st);
 		setScreen(lev);
 	}
 
 	public void goLevel2()
 	{
-		if(stu == null)
-		stu = new lernSkill(this, batch);
+		transition();
+		if( stu == null )
+			stu = new lernSkill(this, batch);
 		Gdx.input.setInputProcessor(stu.st);
 		setScreen(stu);
 	}
 
 	public void goMario()
 	{
-		if(mario == null)
+		transition();
+		if( mario == null )
 			mario = new Mario(this, batch);
 		Gdx.input.setInputProcessor(mario.st);
 		setScreen(mario);
@@ -137,6 +135,7 @@ public class MyGame extends Game
 
 	public void goSo()
 	{
+		transition();
 		font.setColor(Color.BLACK);
 		Gdx.input.setInputProcessor(so.st);
 		font.getData().setScale(1.5f);
@@ -145,8 +144,9 @@ public class MyGame extends Game
 
 	public void goGame()
 	{
+		transition();
 		font.setColor(Color.BLACK);
-		if(m == null)
+		if( m == null )
 			m = new mainScreen(this, batch);
 		Gdx.input.setInputProcessor(m.st);
 		font.getData().setScale(1);
@@ -155,6 +155,7 @@ public class MyGame extends Game
 
 	public void goMain()
 	{
+		transition();
 		font.setColor(Color.BLACK);
 		Gdx.input.setInputProcessor(h.st);
 		font.getData().setScale(4);
@@ -163,6 +164,7 @@ public class MyGame extends Game
 
 	public void goMagicLand()
 	{
+		transition();
 		MainActivity.use.showQuickTip("加载中哦……");
 		if( magic == null )
 			magic = new MagicLand(this, batch);
@@ -171,6 +173,7 @@ public class MyGame extends Game
 	}
 	public void goSetting()
 	{
+		transition();
 		font.setColor(Color.BLACK);
 		Gdx.input.setInputProcessor(settingscreen.st);
 		font.getData().setScale(1.5f);
@@ -196,8 +199,6 @@ public class MyGame extends Game
 		ass.load("f0.jpg", Texture.class);
 		ass.load("f1.jpg", Texture.class);
 		ass.load("ui3.png", Texture.class);
-		ass.load("anim0.png", Texture.class);
-		ass.load("anim1.png", Texture.class);
 		ass.load("w0.png", Texture.class);
 		ass.load("w1.png", Texture.class);
 		ass.load("w2.png", Texture.class);
@@ -206,7 +207,7 @@ public class MyGame extends Game
 		ass.load("background/dead.jpg", Texture.class);
 		ass.load("ui5.png", Texture.class);
 		ass.load("ui8.png", Texture.class);
-		ass.load("down.mp3",Sound.class);
+		ass.load("down.mp3", Sound.class);
 
 		st = new Stage();
 
@@ -218,6 +219,13 @@ public class MyGame extends Game
 		fps = new Label("fps:", s);
 
 		st.addActor(fps);
+		image = new Image(new Texture("tran.jpg"));
+		image.setSize(st.getWidth(), st.getHeight()); 
+		image.setOrigin(st.getWidth() / 2, st.getHeight() / 2); 
+		image.setColor(Color.CLEAR); 
+
+		st.addActor(image); 
+
 
 	}
 
@@ -238,6 +246,17 @@ public class MyGame extends Game
 			ss.isOk = false;
 			ss.dispose();
 		}
+	}
+
+	public void transition(Color c,float t)
+	{
+		image.setColor(c);
+		image.addAction(Actions.color(Color.CLEAR,t));
+	}
+	public void transition()
+	{
+		image.setColor(Color.BLACK);
+		image.addAction(Actions.color(Color.CLEAR, 0.5f));
 	}
 
 	@Override

@@ -61,15 +61,16 @@ public class ChooseCustomsScreen implements Screen
 		ta.center().top();
 		for( i = 0;i < ib.length;i++ )
 		{
+			final String file = "tmx/" + i + ".tmx";
 			ib[i].addListener(new InputListener()
 				{
 
 					@Override
 					public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
-					{
-						FileHandle fh =  Gdx.files.internal(i+ ".tmx");
+					{	
+						FileHandle fh =  Gdx.files.internal(file);
 						if(fh.exists()){
-							MainLineLevelLoader mll = new MainLineLevelLoader(game, i + ".tmx");
+							MainLineLevelLoader mll = new MainLineLevelLoader(game,file);
 							Gdx.input.setInputProcessor(mll.ui);
 							game.setScreen(mll);
 						}else
@@ -79,7 +80,7 @@ public class ChooseCustomsScreen implements Screen
 									@Override
 									public void run()
 									{
-										MainActivity.use.showQuickTip("抱歉");
+										MainActivity.use.showQuickTip("抱歉"+file);
 									}
 								});
 						}

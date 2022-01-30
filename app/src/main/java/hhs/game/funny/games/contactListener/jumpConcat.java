@@ -18,7 +18,7 @@ public class jumpConcat implements ContactListener
 	{
 		Fixture a = p1.getFixtureA();
 		Fixture b = p1.getFixtureB();
-		//MainActivity.use.showQuickTip("开始"+a.getUserData()+b.getUserData());
+		System.out.println("开始"+a.getUserData()+" " + b.getUserData());
 		if(a.getUserData() != null || b.getUserData() != null)
 		{
 			MyGame.ass.get("down.mp3",Sound.class).play();

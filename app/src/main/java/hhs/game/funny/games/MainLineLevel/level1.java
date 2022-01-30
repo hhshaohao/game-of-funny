@@ -1,5 +1,7 @@
 package hhs.game.funny.games.MainLineLevel;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -15,22 +17,19 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import hhs.game.funny.games.Actor.PlatformActor;
+import hhs.game.funny.games.Mission;
 import hhs.game.funny.games.MyGame;
 import hhs.game.funny.games.Res;
 import hhs.game.funny.games.Runnable.RoleLogic;
 import hhs.game.funny.games.Screen.CommonlyScreen;
 import hhs.game.funny.games.Screen.DeadScreen;
+import hhs.game.funny.games.Stage.MissionStage;
 import hhs.game.funny.games.Tools.Drawist;
 import hhs.game.funny.games.contactListener.jumpConcat;
 import hhs.game.funny.games.funny;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.Matrix4;
-import hhs.game.funny.games.Stage.MissionStage;
-import hhs.game.funny.games.Mission;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
-import com.badlogic.gdx.audio.Sound;
 
 public class level1 extends CommonlyScreen
 {
@@ -80,7 +79,8 @@ public class level1 extends CommonlyScreen
 					if(c.is)
 					{
 						game.ass.get("jump.mp3",Sound.class).play();
-						ac.b2body.applyForceToCenter(new  Vector2(0, 300), true);
+						ac.b2body.applyForceToCenter(new  Vector2(0, 600), true);
+						c.is = false;
 					}
 				}
 			});
@@ -124,6 +124,7 @@ public class level1 extends CommonlyScreen
 				start = false;isShow = false;
 			}
 		};
+		ms.addMission(mis);
 		
 	}
 
@@ -160,11 +161,11 @@ public class level1 extends CommonlyScreen
 		ms.act();
 		ms.draw();
 		
-		/*if(start)
+		if(start)
 		{
 			mis.isShow = true;
 			Gdx.input.setInputProcessor(mis);
-		}*/
+		}
 		
 		if(ny < 0)
 		{

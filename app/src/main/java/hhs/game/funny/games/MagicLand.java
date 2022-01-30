@@ -197,6 +197,7 @@ public class MagicLand implements Screen
 
 	void cilk(){
 		if(ny < 0){
+			st.cancelTouchFocus();
 			Gdx.input.setInputProcessor(ds.st);
 			game.setScreen(ds);
 		}

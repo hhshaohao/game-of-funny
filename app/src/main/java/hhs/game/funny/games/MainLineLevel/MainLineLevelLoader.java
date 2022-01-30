@@ -32,7 +32,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 {
 	MyGame game;
 	OrthographicCamera cam;
-	float ppm = 20,zoom = 50;
+	float ppm = 20,zoom = 100;
 	SpriteBatch batch;
 	DeadScreen ds;
 
@@ -71,7 +71,8 @@ public class MainLineLevelLoader extends CommonlyScreen
 					if( c.is )
 					{
 						game.ass.get("jump.mp3",Sound.class).play();
-						zhu.b2body.applyForceToCenter(new  Vector2(0, 300), true);
+						zhu.b2body.applyForceToCenter(new  Vector2(0, 600), true);
+						c.is = false;
 					}
 				}
 			});
@@ -103,7 +104,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 	@Override
 	public void render(float p1)
 	{
-		world.step(p1, 1, 1);
+		world.step(1 / 60f, 2, 6);
 
 		nx = zhu.b2body.getPosition().x - zhu.ra;
 		ny = zhu.b2body.getPosition().y - zhu.ra;
@@ -128,7 +129,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 		{
 			ui.cancelTouchFocus();
 			Gdx.input.setInputProcessor(ds.st);
-			this.game.setScreen(ds);
+			game.setScreen(ds);
 		}
 	}
 
