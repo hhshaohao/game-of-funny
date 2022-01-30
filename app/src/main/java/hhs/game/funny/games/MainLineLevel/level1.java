@@ -89,7 +89,7 @@ public class level1 extends CommonlyScreen
 		cam = new OrthographicCamera();
 		cam.setToOrtho(false, Res.w / (ppm + zoom + game.zoom), Res.h / (ppm + zoom + game.zoom));
 		//cam.setToOrtho(false,Res.w / ppm,Res.h /ppm);
-		map = new TmxMapLoader().load("tmx/ml1.tmx");
+		map = new TmxMapLoader().load("tmx/0.tmx");
 		render = new OrthogonalTiledMapRenderer(map, 1f / ppm, batch);
 
 		dist = new Drawist(4);

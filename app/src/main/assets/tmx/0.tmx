@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
-<map version="1.2" orientation="orthogonal" renderorder="right-down" width="200" height="40" tilewidth="18" tileheight="18" nextobjectid="82">
+<map version="1.2" orientation="orthogonal" renderorder="right-down" width="200" height="40" tilewidth="18" tileheight="18" nextobjectid="83">
   <tileset firstgid="1" name="tileset_gutter" columns="33" tilecount="924" tileheight="18" tilewidth="18">
     <image source="tileset_gutter.png" width="594" height="504" />
   </tileset>
@@ -78,5 +78,8 @@
   </objectgroup>
   <objectgroup name="born">
     <object name="" type="" id="81" x="72" y="648" width="18" height="18" />
+  </objectgroup>
+  <objectgroup name="e">
+    <object name="" type="" id="82" x="3510" y="594" width="18" height="18" />
   </objectgroup>
 </map>

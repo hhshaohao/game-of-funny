@@ -18,28 +18,28 @@ public class jumpConcat implements ContactListener
 	{
 		Fixture a = p1.getFixtureA();
 		Fixture b = p1.getFixtureB();
-		System.out.println("开始"+a.getUserData()+" " + b.getUserData());
-		if(a.getUserData() != null || b.getUserData() != null)
-		{
-			MyGame.ass.get("down.mp3",Sound.class).play();
-			is = true;
-			/*Fixture ground;
-			 ground = a.getUserData() == "ground" ? a : b;*/
-		}
+		if( !is )
+			if( a.getUserData() != null || b.getUserData() != null )
+			{
+				MyGame.ass.get("down.mp3", Sound.class).play();
+				is = true;
+				/*Fixture ground;
+				 ground = a.getUserData() == "ground" ? a : b;*/
+			}
 	}
 
 	@Override
 	public void endContact(Contact p1)
 	{
-		Fixture a = p1.getFixtureA();
-		Fixture b = p1.getFixtureB();
-		//MainActivity.use.showQuickTip("开始"+a.getUserData()+b.getUserData());
-		if(a.getUserData() != null || b.getUserData() != null)
-		{
-			is = false;
-			/*Fixture ground;
-			 ground = a.getUserData() == "ground" ? a : b;*/
-		}
+//		Fixture a = p1.getFixtureA();
+//		Fixture b = p1.getFixtureB();
+//		//MainActivity.use.showQuickTip("开始"+a.getUserData()+b.getUserData());
+//		if( a.getUserData() != null || b.getUserData() != null )
+//		{
+//			is = false;
+//			/*Fixture ground;
+//			 ground = a.getUserData() == "ground" ? a : b;*/
+//		}
 	}
 
 	@Override
@@ -50,10 +50,6 @@ public class jumpConcat implements ContactListener
 	@Override
 	public void postSolve(Contact p1, ContactImpulse p2)
 	{
-		
+
 	}
-	
-    
-    
-    
 }

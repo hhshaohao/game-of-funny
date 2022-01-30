@@ -62,6 +62,7 @@ public class ChooseCustomsScreen implements Screen
 		for( i = 0;i < ib.length;i++ )
 		{
 			final String file = "tmx/" + i + ".tmx";
+			final int l = i;
 			ib[i].addListener(new InputListener()
 				{
 
@@ -70,12 +71,12 @@ public class ChooseCustomsScreen implements Screen
 					{	
 						FileHandle fh =  Gdx.files.internal(file);
 						if(fh.exists()){
-							MainLineLevelLoader mll = new MainLineLevelLoader(game,file);
+							MainLineLevelLoader mll = new MainLineLevelLoader(game,file,l);
 							Gdx.input.setInputProcessor(mll.ui);
 							game.setScreen(mll);
 						}else
 						{
-							MainActivity.use.showQucikDialog("提示", "暂未开发", new Runnable()
+							MainActivity.use.showQucikDialog("抱歉", "此关暂未开发暂未开发", new Runnable()
 								{
 									@Override
 									public void run()

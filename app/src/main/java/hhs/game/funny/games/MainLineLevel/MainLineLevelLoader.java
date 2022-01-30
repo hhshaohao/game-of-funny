@@ -1,7 +1,10 @@
 package hhs.game.funny.games.MainLineLevel;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.objects.PolylineMapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
@@ -17,36 +20,45 @@ import com.badlogic.gdx.physics.box2d.ChainShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import hhs.game.funny.MainActivity;
+import hhs.game.funny.games.Actor.PlatformActor;
+import hhs.game.funny.games.Mission;
 import hhs.game.funny.games.MyGame;
 import hhs.game.funny.games.Res;
 import hhs.game.funny.games.Runnable.RoleLogic;
 import hhs.game.funny.games.Screen.CommonlyScreen;
 import hhs.game.funny.games.Screen.DeadScreen;
+import hhs.game.funny.games.Stage.MissionStage;
+import hhs.game.funny.games.Tools.Drawist;
 import hhs.game.funny.games.contactListener.jumpConcat;
 import hhs.game.funny.games.funny;
-import com.badlogic.gdx.audio.Sound;
 
 public class MainLineLevelLoader extends CommonlyScreen
 {
 	MyGame game;
 	OrthographicCamera cam;
-	float ppm = 20,zoom = 100;
+	float ppm = 20,zoom = 30;
 	SpriteBatch batch;
 	DeadScreen ds;
 
 	static float speed = 8;
-	float nx,ny,ox,oy;
+	float nx,ny,ox,oy,ex;
 	static funny zhu;
 
 	TiledMap map;
 	OrthogonalTiledMapRenderer render;
 
 	World world;
+	Drawist dist;
 	static jumpConcat c;
 
-    public MainLineLevelLoader(final MyGame game, String tmxFile)
+	Mission mis;
+	MissionStage ms;
+	int l;
+
+    public MainLineLevelLoader(final MyGame game, String tmxFile, final int l)
 	{
 		super(game, new  RoleLogic()
 			{
@@ -70,7 +82,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 				{
 					if( c.is )
 					{
-						game.ass.get("jump.mp3",Sound.class).play();
+						game.ass.get("jump.mp3", Sound.class).play();
 						zhu.b2body.applyForceToCenter(new  Vector2(0, 600), true);
 						c.is = false;
 					}
@@ -80,11 +92,11 @@ public class MainLineLevelLoader extends CommonlyScreen
 		cam = new OrthographicCamera();
 		cam.setToOrtho(false, Res.w / (ppm + zoom + MyGame.zoom), Res.h / (ppm + zoom + MyGame.zoom));
 		batch = MyGame.batch;
-		
+
 		map = new TmxMapLoader().load(tmxFile);
 
 		render = new OrthogonalTiledMapRenderer(map, 1 / ppm);
-
+		dist = new Drawist();
 		this.initBox2d();
 
 		ds = new DeadScreen(game, MyGame.Misbatch)
@@ -93,6 +105,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 			public void cilk(ImageButton bu)
 			{
 				zhu.b2body.setTransform(ox, oy, zhu.b2body.getAngle());
+				zhu.b2body.setLinearVelocity(0, 0);
 				Gdx.input.setInputProcessor(ui);
 				cam.position.x = ox;
 				cam.position.y = oy;
@@ -100,6 +113,36 @@ public class MainLineLevelLoader extends CommonlyScreen
 				game.setScreen(MainLineLevelLoader.this);
 			}
 		};
+
+		mis = new Mission("恭喜", "您成功通过第" + l + "关", MyGame.font)
+		{
+			@Override
+			public void cilck(Dialog dialog)
+			{
+				String s = "tmx/" + (l + 1) + ".tmx";
+				FileHandle fh =  Gdx.files.internal(s);
+				if( fh.exists() )
+				{
+					MainLineLevelLoader mll = new MainLineLevelLoader(game, s, l + 1);
+					Gdx.input.setInputProcessor(mll.ui);
+					game.setScreen(mll);
+				}
+				else
+				{
+					MainActivity.use.showQucikDialog("抱歉", "此关暂未开发暂未开发", new Runnable()
+						{
+							@Override
+							public void run()
+							{
+								MainActivity.use.showQuickTip("抱歉");
+							}
+						});
+				}
+			}
+		};
+		mis.isShow = false;
+		ms = new MissionStage();
+		ms.addMission(mis);
 	}
 
 	@Override
@@ -122,7 +165,14 @@ public class MainLineLevelLoader extends CommonlyScreen
 
 		batch.begin();
 		batch.draw(zhu, nx, ny, zhu.ra * 2, zhu.ra * 2);
+
+		dist.act(p1);
+		dist.draw(batch);
+
 		batch.end();
+
+		ms.act();
+		ms.draw();
 
 		super.render(p1);
 
@@ -131,6 +181,12 @@ public class MainLineLevelLoader extends CommonlyScreen
 			ui.cancelTouchFocus();
 			Gdx.input.setInputProcessor(ds.st);
 			game.setScreen(ds);
+		}
+		if( nx > ex )
+		{
+			ui.cancelTouchFocus();
+			Gdx.input.setInputProcessor(mis);
+			mis.isShow = true;
 		}
 	}
 
@@ -177,6 +233,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 			bdef.position.set((p.getX() + chain.getRadius()) / ppm, (p.getY() + chain.getRadius()) / ppm);
 
 			body = world.createBody(bdef);
+			body.setUserData("g");
 			body.createFixture(fdef);
 		}
 		for( RectangleMapObject ro : map.getLayers().get("born").getObjects().getByType(RectangleMapObject.class) )
@@ -186,6 +243,28 @@ public class MainLineLevelLoader extends CommonlyScreen
 							new Vector2(ox = (r.getX() + r.getWidth() / 2) / ppm, oy = (r.getY() + r.getHeight() / 2) / ppm),
 							"w0.png", r.getWidth() / 2 / ppm
 							);
+		}
+		for( RectangleMapObject ro : map.getLayers().get("moveAble").getObjects().getByType(RectangleMapObject.class) )
+		{
+			Rectangle r = ro.getRectangle();
+			bdef.type = BodyDef.BodyType.KinematicBody;
+
+			shape.setAsBox(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm);
+			bdef.position.set(r.getX() / ppm + shape.getRadius(), r.getY() / ppm + shape.getRadius());
+
+			dist.addRenderer(new PlatformActor(new Texture("background/dead.jpg"),
+											   new Vector2(r.getX() / ppm + r.getWidth() / 2 / ppm, r.getY() / ppm + r.getHeight() / 2 / ppm),
+											   shape,
+											   r.getX() / ppm + r.getWidth() / 2 / ppm,
+											   r.getX() / ppm + r.getWidth() / 2 / ppm + ro.getProperties().get("move", 330, Integer.class) / ppm,
+											   new Vector2(2, 0),
+											   world,
+											   new Vector2(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm),
+											   new Vector2(r.getWidth() / ppm, r.getHeight() / ppm)));
+		}
+		for( RectangleMapObject ro : map.getLayers().get("e").getObjects().getByType(RectangleMapObject.class) )
+		{
+			ex = ro.getRectangle().getX() / ppm;
 		}
 	}
 

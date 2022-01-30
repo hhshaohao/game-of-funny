@@ -47,8 +47,9 @@ public class PlatformActor implements RendererObject
 
 		fdef.density = 1;
 		fdef.friction = 1;
+		
 		plat = world.createBody(bdef);
-
+		plat.setUserData("g");
 		plat.createFixture(fdef);
 
 		ra = shape.getRadius();

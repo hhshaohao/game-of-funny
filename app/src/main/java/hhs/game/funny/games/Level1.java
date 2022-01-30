@@ -114,6 +114,7 @@ public class Level1 implements Screen
 
 			public void cilck(Dialog dialog)
 			{
+				game.archive.putBoolean("MAIN",true);
 				game.goMainLine();
 				this.dispose();
 			}
