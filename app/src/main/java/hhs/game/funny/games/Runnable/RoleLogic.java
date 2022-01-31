@@ -1,6 +1,7 @@
 package hhs.game.funny.games.Runnable;
 
-public abstract class RoleLogic {
+public abstract class RoleLogic
+{
 	//左移动按钮被点击
     public abstract void leftAction();
     //右移动按钮被点击

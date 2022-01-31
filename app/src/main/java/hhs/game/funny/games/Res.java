@@ -1,14 +1,12 @@
 package hhs.game.funny.games;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public class Res
 {
@@ -20,7 +18,7 @@ public class Res
 
 	public ImageButton b0,b1,b2,exit;
 
-	public Res (final MyGame game)
+	public Res(final MyGame game)
 	{
 
 		TextureRegion a = tool.createRegion("move3.png");
@@ -39,9 +37,9 @@ public class Res
 		b0.setPosition(0, 0);
         b1.setPosition(1.5f * b0.getWidth(), 0);
         b2.setPosition(Res.w - b2.getWidth(), 0);
-		
-		exit = tool.createButton(MyGame.ass.get("ui8.png",Texture.class));
-		exit.setPosition(0,Res.h - exit.getHeight());
+
+		exit = tool.createButton(MyGame.ass.get("ui8.png", Texture.class));
+		exit.setPosition(0, Res.h - exit.getHeight());
 		exit.addListener(new InputListener()
 			{
 
@@ -51,7 +49,7 @@ public class Res
 					game.goMain();
 					return true;
 				}
-		});
+			});
 	}
 
 }

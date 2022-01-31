@@ -10,8 +10,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 /*
-一些快捷工具
-*/
+ 一些快捷工具
+ */
 public class tool
 {
 
@@ -21,46 +21,46 @@ public class tool
 	static String TAG = "当你在注视代码时，代码也在注视你";
 	static LabelStyle style = new LabelStyle(MyGame.font, Color.BLUE);
 
-    public static ImageButton createButton ( String a, String b )
+    public static ImageButton createButton(String a, String b)
 	{
         ImageButton c = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(a))),
                                         new TextureRegionDrawable(new TextureRegion(new Texture(b))));
         return c;
     }
 
-	public static float d2r ( float d )
+	public static float d2r(float d)
 	{
 		return (float)M_PI / 180 * d;
 	}
 
-    public static ImageButton createButton ( String a )
+    public static ImageButton createButton(String a)
 	{
         ImageButton c = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(a))));
         return c;
 
     }
-	public static ImageButton createButton ( Texture a, Texture b )
+	public static ImageButton createButton(Texture a, Texture b)
 	{
 		return new ImageButton(new TextureRegionDrawable(new TextureRegion(a)),
 							   new TextureRegionDrawable(new TextureRegion(b)));
 	}
-    public static ImageButton createButton ( Texture a )
+    public static ImageButton createButton(Texture a)
 	{
 		return new ImageButton(new TextureRegionDrawable(new TextureRegion(a)));
 	}
-    public static TextureRegionDrawable createDrawable ( String a )
+    public static TextureRegionDrawable createDrawable(String a)
 	{
         TextureRegionDrawable b = new TextureRegionDrawable(new TextureRegion(new Texture(a)));
         return b;
     }
 
-	public static TextureRegionDrawable createDrawable ( Texture a )
+	public static TextureRegionDrawable createDrawable(Texture a)
 	{
         TextureRegionDrawable b = new TextureRegionDrawable(new TextureRegion(a));
         return b;
     }
 
-    public static TextureRegion createRegion ( String a )
+    public static TextureRegion createRegion(String a)
 	{
         TextureRegion b = new TextureRegion(new Texture(a));
         return b;
@@ -71,7 +71,7 @@ public class tool
 	}
 	public static void clearScreen(Color c)
 	{
-		Gdx.gl.glClearColor(c.r,c.g,c.b,c.a);
+		Gdx.gl.glClearColor(c.r, c.g, c.b, c.a);
 	    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	}
 

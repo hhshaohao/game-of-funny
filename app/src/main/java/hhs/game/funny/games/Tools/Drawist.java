@@ -1,11 +1,13 @@
 package hhs.game.funny.games.Tools;
-import java.util.ArrayList;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Drawist {
-	
-   public  ArrayList<RendererObject> arr;
-    
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import java.util.ArrayList;
+
+public class Drawist
+{
+
+	public  ArrayList<RendererObject> arr;
+
     public Drawist()
 	{
 		arr = new ArrayList<>();
@@ -20,14 +22,14 @@ public class Drawist {
 	}
 	public void act(float p1)
 	{
-		for(RendererObject ro : arr)
+		for( RendererObject ro : arr )
 		{
 			ro.act(p1);
 		}
 	}
 	public void draw(SpriteBatch batch)
 	{
-		for(RendererObject ro : arr)
+		for( RendererObject ro : arr )
 		{
 			ro.draw(batch);
 		}

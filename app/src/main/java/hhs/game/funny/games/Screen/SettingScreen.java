@@ -10,7 +10,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import hhs.game.funny.games.MyGame;
 import hhs.game.funny.games.Res;
-import hhs.game.funny.games.tool;
 
 public class SettingScreen implements Screen
 {
@@ -45,7 +44,7 @@ public class SettingScreen implements Screen
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
-					MyGame.setting.putInteger("zoom",zoom);
+					MyGame.setting.putInteger("zoom", zoom);
 					MyGame.setting.flush();
 					MyGame.zoom = zoom;
 					game.goMain();
@@ -68,7 +67,7 @@ public class SettingScreen implements Screen
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
-					zoom-=10;
+					zoom -= 10;
 					return true;
 				}
 			});
@@ -78,14 +77,14 @@ public class SettingScreen implements Screen
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
-					zoom+=10;
+					zoom += 10;
 					return true;
 				}
 			});
-			
-		b0.setPosition(0,0);
-		b1.setPosition(0,0);
-			
+
+		b0.setPosition(0, 0);
+		b1.setPosition(0, 0);
+
 		ta.setFillParent(true);
 		ta.center().top();
 		ta.add(b0);
@@ -103,7 +102,7 @@ public class SettingScreen implements Screen
 	@Override
 	public void render(float p1)
 	{
-		
+
 		l0.setText("屏幕缩放为" + zoom);
 
 		MyGame.jump.act();

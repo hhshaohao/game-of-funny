@@ -123,6 +123,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 				FileHandle fh =  Gdx.files.internal(s);
 				if( fh.exists() )
 				{
+					game.transition();
 					MainLineLevelLoader mll = new MainLineLevelLoader(game, s, l + 1);
 					Gdx.input.setInputProcessor(mll.ui);
 					game.setScreen(mll);
@@ -178,9 +179,10 @@ public class MainLineLevelLoader extends CommonlyScreen
 
 		if( ny < 0 )
 		{
-			ui.cancelTouchFocus();
-			Gdx.input.setInputProcessor(ds.st);
-			game.setScreen(ds);
+			zhu.b2body.applyForceToCenter(new Vector2(0, 1200), true);
+			/*ui.cancelTouchFocus();
+			 Gdx.input.setInputProcessor(ds.st);
+			 game.setScreen(ds);*/
 		}
 		if( nx > ex )
 		{

@@ -263,7 +263,7 @@ public class hscreen implements Screen
 							@Override
 							public void run()
 							{
-								g.archive.putBoolean("MAIN",false);
+								g.archive.putBoolean("MAIN", false);
 								g.archive.flush();
 								g.goGame();
 							}

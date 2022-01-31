@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -26,8 +25,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import hhs.game.funny.games.Screen.DeadScreen;
 import hhs.game.funny.games.contactListener.contact;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.graphics.Color;
 /*
  第一关场景
  */
@@ -81,7 +78,7 @@ public class Level1 implements Screen
 
 		map = new TmxMapLoader().load("tmx/le1.tmx");
 
-		render = new OrthogonalTiledMapRenderer(map, 1f / tool.le1,batch);
+		render = new OrthogonalTiledMapRenderer(map, 1f / tool.le1, batch);
 
 		//TextureRegionDrawable d1 = new TextureRegionDrawable(new TextureRegion(MyGame.ass.get("skill.png", Texture.class), 0, 0, 192, 192));
 		//TextureRegionDrawable d2 = new TextureRegionDrawable(new TextureRegion(MyGame.ass.get("skill.png", Texture.class), 192, 0, 192, 192));
@@ -114,7 +111,7 @@ public class Level1 implements Screen
 
 			public void cilck(Dialog dialog)
 			{
-				game.archive.putBoolean("MAIN",true);
+				game.archive.putBoolean("MAIN", true);
 				game.goMainLine();
 				this.dispose();
 			}
@@ -142,7 +139,7 @@ public class Level1 implements Screen
 			@Override
 			public void cilk(ImageButton bu)
 			{
-				zhu.b2body.setLinearVelocity(0,0);
+				zhu.b2body.setLinearVelocity(0, 0);
 				zhu.b2body.setTransform(new Vector2(100 / tool.le1, 300 / tool.le1), zhu.b2body.getAngle());
 				jump = left = jumping = false;
 				s = true;
@@ -402,9 +399,9 @@ public class Level1 implements Screen
 		render.render();
 
 		batch.begin();
-		
+
 		batch.draw(zhu, nx, ny, 16 / tool.le1, 16 / tool.le1);
-		
+
 		if( nextS )
 		{
 			for( int i = 0; i < pei.length; ++i )

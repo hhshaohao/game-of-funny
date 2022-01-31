@@ -1,14 +1,12 @@
 package hhs.game.funny.games.contactListener;
 
-import com.badlogic.gdx.physics.box2d.ContactListener;
-import com.badlogic.gdx.physics.box2d.Contact;
-import com.badlogic.gdx.physics.box2d.Manifold;
-import com.badlogic.gdx.physics.box2d.ContactImpulse;
-import com.badlogic.gdx.physics.box2d.Fixture;
-import com.badlogic.gdx.Gdx;
-import hhs.game.funny.MainActivity;
-import hhs.game.funny.games.MyGame;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.physics.box2d.Contact;
+import com.badlogic.gdx.physics.box2d.ContactImpulse;
+import com.badlogic.gdx.physics.box2d.ContactListener;
+import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.physics.box2d.Manifold;
+import hhs.game.funny.games.MyGame;
 
 public class jumpConcat implements ContactListener
 {

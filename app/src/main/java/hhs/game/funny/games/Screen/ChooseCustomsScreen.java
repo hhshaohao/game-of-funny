@@ -2,18 +2,18 @@ package hhs.game.funny.games.Screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import hhs.game.funny.MainActivity;
 import hhs.game.funny.games.MainLineLevel.MainLineLevelLoader;
 import hhs.game.funny.games.MyGame;
 import hhs.game.funny.games.Res;
 import hhs.game.funny.games.tool;
-import com.badlogic.gdx.files.FileHandle;
-import hhs.game.funny.MainActivity;
 
 public class ChooseCustomsScreen implements Screen
 {
@@ -70,18 +70,21 @@ public class ChooseCustomsScreen implements Screen
 					public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 					{	
 						FileHandle fh =  Gdx.files.internal(file);
-						if(fh.exists()){
-							MainLineLevelLoader mll = new MainLineLevelLoader(game,file,l);
+						if( fh.exists() )
+						{
+							game.transition();
+							MainLineLevelLoader mll = new MainLineLevelLoader(game, file, l);
 							Gdx.input.setInputProcessor(mll.ui);
 							game.setScreen(mll);
-						}else
+						}
+						else
 						{
 							MainActivity.use.showQucikDialog("抱歉", "此关暂未开发暂未开发", new Runnable()
 								{
 									@Override
 									public void run()
 									{
-										MainActivity.use.showQuickTip("抱歉"+file);
+										MainActivity.use.showQuickTip("抱歉" + file);
 									}
 								});
 						}

@@ -2,7 +2,8 @@ package hhs.game.funny.games.Tools;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
-public interface PlatformResolver {
+public interface PlatformResolver
+{
 	/**
 	 * 返回网络是否连接
 	 * @return
@@ -19,8 +20,8 @@ public interface PlatformResolver {
 	 * @param context 窗口内容文字
 	 * @param callback 按钮按下的在游戏线程中的回调，
 	 */
-	public void showQucikDialog(String title,String context,Runnable callback);
+	public void showQucikDialog(String title, String context, Runnable callback);
 	public BitmapFont getFont(String characters);
-	public void callPay(String payee,int money);
+	public void callPay(String payee, int money);
 }
 

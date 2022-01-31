@@ -1,29 +1,29 @@
 package hhs.game.funny.games.Screen;
 
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.Texture;
-import hhs.game.funny.games.tool;
-import hhs.game.funny.games.MyGame;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import hhs.game.funny.games.Res;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import hhs.game.funny.games.MyGame;
+import hhs.game.funny.games.Res;
+import hhs.game.funny.games.tool;
 /*
-一个死亡复活功能的API
-*/
+ 一个死亡复活功能的API
+ */
 public class DeadScreen implements Screen
 {
 
 	public SpriteBatch batch;
 	ImageButton fu;
-	Texture back;
+	Texture back,g;
 	public Stage st;
 	MyGame game;
+	float time;
 
-	public DeadScreen ( final MyGame game, SpriteBatch batch )
+	public DeadScreen(final MyGame game, SpriteBatch batch)
 	{
 		this.game = game;
 		this.batch = batch;
@@ -37,7 +37,7 @@ public class DeadScreen implements Screen
 		fu.addListener(new InputListener(){
 
 				@Override
-				public boolean touchDown ( InputEvent event, float x, float y, int pointer, int button )
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
 					cilk(fu);
 					return true;
@@ -45,56 +45,61 @@ public class DeadScreen implements Screen
 			});
 
 		st.addActor(fu);
+
+		//g = game.ass.get("GameOver.png",Texture.class);
 	}
 
-	public void cilk ( ImageButton bu )
+	public void cilk(ImageButton bu)
 	{
 
 	}
 
 	@Override
-	public void show ( )
+	public void show()
 	{
 	}
 
 	@Override
-	public void render ( float p1 )
+	public void render(float p1)
 	{
-		
+		time += p1;
 		batch.begin();
 		batch.draw(back, 0, 0, Res.w, Res.h);
+		//batch.draw(g,Res.w / 2 - g.getWidth() / 2,Res.h / 2 - g.getHeight() / 2);
+		//batch.draw(game.boom.getKeyFrame(time,true),0,0,200,200);
 		batch.end();
+
 
 		st.act();
 		st.draw();
 	}
 
 	@Override
-	public void resize ( int p1, int p2 )
+	public void resize(int p1, int p2)
 	{
 
 	}
 
 	@Override
-	public void pause ( )
+	public void pause()
 	{
 
 	}
 
 	@Override
-	public void resume ( )
+	public void resume()
 	{
 
 	}
 
 	@Override
-	public void hide ( )
+	public void hide()
 	{
 
 	}
 
 	@Override
-	public void dispose ( )
+	public void dispose()
 	{
 
 	}

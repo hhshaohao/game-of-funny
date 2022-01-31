@@ -50,7 +50,7 @@ public class level1 extends CommonlyScreen
 	World world;
 
 	static funny ac;
-	
+
 	MissionStage ms;
 	Mission mis;
 	boolean start = true;;
@@ -76,16 +76,16 @@ public class level1 extends CommonlyScreen
 				@Override
 				public void upAction()
 				{
-					if(c.is)
+					if( c.is )
 					{
-						game.ass.get("jump.mp3",Sound.class).play();
+						game.ass.get("jump.mp3", Sound.class).play();
 						ac.b2body.applyForceToCenter(new  Vector2(0, 600), true);
 						c.is = false;
 					}
 				}
 			});
 		this.batch = batch;
-		
+
 		cam = new OrthographicCamera();
 		cam.setToOrtho(false, Res.w / (ppm + zoom + game.zoom), Res.h / (ppm + zoom + game.zoom));
 		//cam.setToOrtho(false,Res.w / ppm,Res.h /ppm);
@@ -93,28 +93,28 @@ public class level1 extends CommonlyScreen
 		render = new OrthogonalTiledMapRenderer(map, 1f / ppm, batch);
 
 		dist = new Drawist(4);
-		
+
 		initBox2d();
 		world.setContactListener(c = new jumpConcat());
-		ac = new funny(world,new Vector2(36 / ppm,36 / ppm),"w0.png",9 / ppm);
+		ac = new funny(world, new Vector2(36 / ppm, 36 / ppm), "w0.png", 9 / ppm);
 		nx = 1602 / ppm;
 		ny  = 108 / ppm;
 		//ac.b2body.setTransform(nx = 1602 / ppm,ny  = 108 / ppm,ac.b2body.getAngle());
 		this.game = game;
-		ds = new DeadScreen(game,MyGame.Misbatch)
+		ds = new DeadScreen(game, MyGame.Misbatch)
 		{
 			@Override
 			public void cilk(ImageButton bu)
 			{
-				ac.b2body.setTransform(36 / ppm,36 / ppm,ac.b2body.getAngle());
-				ac.b2body.setLinearVelocity(0,0);
+				ac.b2body.setTransform(36 / ppm, 36 / ppm, ac.b2body.getAngle());
+				ac.b2body.setLinearVelocity(0, 0);
 				Gdx.input.setInputProcessor(ui);
 				game.setScreen(level1.this);
 			}
 		};
-		
+
 		ms = new MissionStage(3);
-		mis = new Mission("恭喜","你逃出了一众表情的围捕,\n下面努力比赛吧!",game.font)
+		mis = new Mission("恭喜", "你逃出了一众表情的围捕,\n下面努力比赛吧!", game.font)
 		{
 
 			@Override
@@ -125,57 +125,57 @@ public class level1 extends CommonlyScreen
 			}
 		};
 		ms.addMission(mis);
-		
+
 	}
 
 	@Override
 	public void render(float p1)
 	{
-		world.step(1 / 60f,2,6);
-		
+		world.step(1 / 60f, 2, 6);
+
 		cam.position.x = ac.b2body.getPosition().x;
 		cam.position.y = ac.b2body.getPosition().y;
 		cam.update();
-		
+
 		nx = ac.b2body.getPosition().x - 9 / ppm;
 		ny = ac.b2body.getPosition().y - 9 / ppm;
-		
+
 		render.setView(cam);
 		batch.setProjectionMatrix(cam.combined);
-		
+
 		render.render();
-		
+
 		batch.begin();
-		
-		batch.draw(ac,nx,ny,18 / ppm,18 / ppm);
-		
+
+		batch.draw(ac, nx, ny, 18 / ppm, 18 / ppm);
+
 		dist.act(p1);
 		dist.draw(batch);
-		
+
 		batch.end();
-		
+
 		super.render(p1);
-		en.render(world,cam.combined);
+		en.render(world, cam.combined);
 		//en.render(ac.world,cam.combined);
-		
+
 		ms.act();
 		ms.draw();
-		
-		if(start)
+
+		if( start )
 		{
 			mis.isShow = true;
 			Gdx.input.setInputProcessor(mis);
 		}
-		
-		if(ny < 0)
+
+		if( ny < 0 )
 		{
 			ui.cancelTouchFocus();
 			Gdx.input.setInputProcessor(ds.st);
 			game.setScreen(ds);
 		}
-		if(nx > 3546 / ppm)
+		if( nx > 3546 / ppm )
 		{
-			MyGame.archive.putBoolean("MAIN",true);
+			MyGame.archive.putBoolean("MAIN", true);
 			MyGame.archive.flush();
 		}
 	}
@@ -210,14 +210,14 @@ public class level1 extends CommonlyScreen
 			bdef.position.set(r.getX() / ppm + shape.getRadius(), r.getY() / ppm + shape.getRadius());
 
 			dist.addRenderer(new PlatformActor(new Texture("background/dead.jpg"),
-										  new Vector2(r.getX() / ppm + r.getWidth() / 2 / ppm, r.getY() / ppm + r.getHeight() / 2 / ppm),
-										  shape,
-										  r.getX() / ppm + r.getWidth() / 2 / ppm,
-										  r.getX() / ppm + r.getWidth() / 2 / ppm + ro.getProperties().get("move",330,Integer.class) / ppm,
-										  new Vector2(2, 0),
-										  world,
-										  new Vector2(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm),
-										  new Vector2(r.getWidth() / ppm,r.getHeight() / ppm)));
+											   new Vector2(r.getX() / ppm + r.getWidth() / 2 / ppm, r.getY() / ppm + r.getHeight() / 2 / ppm),
+											   shape,
+											   r.getX() / ppm + r.getWidth() / 2 / ppm,
+											   r.getX() / ppm + r.getWidth() / 2 / ppm + ro.getProperties().get("move", 330, Integer.class) / ppm,
+											   new Vector2(2, 0),
+											   world,
+											   new Vector2(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm),
+											   new Vector2(r.getWidth() / ppm, r.getHeight() / ppm)));
 		}
 	}
 

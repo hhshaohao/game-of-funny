@@ -1,14 +1,10 @@
 package hhs.game.funny.games.Screen;
+
 import com.badlogic.gdx.Screen;
 
 public class UniversalScreen implements Screen
 {
 
-	public UniversalScreen()
-	{
-		
-	}
-	
 	@Override
 	public void show()
 	{

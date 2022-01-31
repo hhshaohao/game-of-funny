@@ -1,37 +1,32 @@
 package hhs.game.funny.games;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.CircleShape;
-import com.badlogic.gdx.maps.objects.RectangleMapObject;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.graphics.g2d.PolygonRegion;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
-import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public class mainScreen implements Screen
 {
@@ -61,7 +56,7 @@ public class mainScreen implements Screen
 
     int speed = 7;
 
-	public mainScreen ( MyGame game, SpriteBatch batch )
+	public mainScreen(MyGame game, SpriteBatch batch)
 	{
         this.game = game;
         this.batch = batch;
@@ -72,7 +67,7 @@ public class mainScreen implements Screen
         cam.setToOrtho(false, (Res.w / (tool.PPM + screenZoom + MyGame.zoom)), (Res.h / (tool.PPM + screenZoom + MyGame.zoom)));
 
         map = new TmxMapLoader().load("tmx/map0.tmx");
-        tiledRender = new OrthogonalTiledMapRenderer(map, 1 / tool.PPM,batch);
+        tiledRender = new OrthogonalTiledMapRenderer(map, 1 / tool.PPM, batch);
 
         msprite = new Sprite(new Texture("w0.png"));
 
@@ -126,13 +121,13 @@ public class mainScreen implements Screen
         this.init_box2d();
     }
 
-    public void addListen ( )
+    public void addListen()
 	{
 
         b0.addListener(new InputListener(){
 
                 @Override
-                public boolean touchDown ( InputEvent event, float x, float y, int pointer, int button )
+                public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
 					right = false;
 					stop = false;
@@ -141,7 +136,7 @@ public class mainScreen implements Screen
                 }
 
                 @Override
-                public void touchUp ( InputEvent event, float x, float y, int pointer, int button )
+                public void touchUp(InputEvent event, float x, float y, int pointer, int button)
 				{
                     stop = true;
                     // super.touchUp(event, x, y, pointer, button);
@@ -152,7 +147,7 @@ public class mainScreen implements Screen
         b1.addListener(new InputListener(){
 
                 @Override
-                public boolean touchDown ( InputEvent event, float x, float y, int pointer, int button )
+                public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
 					right  = true;
 					stop = false;
@@ -161,7 +156,7 @@ public class mainScreen implements Screen
                 }
 
                 @Override
-                public void touchUp ( InputEvent event, float x, float y, int pointer, int button )
+                public void touchUp(InputEvent event, float x, float y, int pointer, int button)
 				{
                     stop = true;
                     //super.touchUp(event, x, y, pointer, button);
@@ -171,7 +166,7 @@ public class mainScreen implements Screen
         b2.addListener(new InputListener(){
 
                 @Override
-                public boolean touchDown ( InputEvent event, float x, float y, int pointer, int button )
+                public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
                     jump = true;
                     return true;
@@ -179,7 +174,7 @@ public class mainScreen implements Screen
                 }
 
 				@Override
-                public void touchUp ( InputEvent event, float x, float y, int pointer, int button )
+                public void touchUp(InputEvent event, float x, float y, int pointer, int button)
 				{
                     jump = false;
                     //super.touchUp(event, x, y, pointer, button);
@@ -189,7 +184,7 @@ public class mainScreen implements Screen
 		b3.addListener(new InputListener(){
 
 				@Override
-				public boolean touchDown ( InputEvent event, float x, float y, int pointer, int button )
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
 					game.goLevel1();
 					return true;
@@ -198,7 +193,7 @@ public class mainScreen implements Screen
 			});
     }
 
-    public void init_box2d ( )
+    public void init_box2d()
 	{
 		funb = new Body[3];
 
@@ -216,7 +211,7 @@ public class mainScreen implements Screen
         fdef.shape = shape;
         mbody.createFixture(fdef);
 
-        for ( RectangleMapObject mo: map.getLayers().get("rect").getObjects().getByType(RectangleMapObject.class) )
+        for( RectangleMapObject mo: map.getLayers().get("rect").getObjects().getByType(RectangleMapObject.class) )
 		{
 			Rectangle rect = mo.getRectangle();
 			//if (!mo.getProperties().get("name").equals("im")) {
@@ -237,20 +232,20 @@ public class mainScreen implements Screen
 
 		fdef.restitution = 0;
 		bdef.type = BodyDef.BodyType.DynamicBody;
-		for ( int i = 0; i < funb.length; i++ )
+		for( int i = 0; i < funb.length; i++ )
 		{
 			bdef.position.set(MathUtils.random(90 / tool.PPM, 300 / tool.PPM), MathUtils.random(500 / tool.PPM, 600 / tool.PPM));
-			funb [ i ] = world.createBody(bdef);
+			funb[i] = world.createBody(bdef);
 			CircleShape ms;
 			ms = new CircleShape();
 			ms.setRadius(26 / tool.PPM);
 			fdef.shape = ms;
-			funb [ i ].createFixture(fdef);
+			funb[i].createFixture(fdef);
 		}
     }
 
     //在绘图前更新相机，坐标，世界
-    public void update ( )
+    public void update()
 	{
         cam.update();
         cam.position.x = mbody.getPosition().x;
@@ -266,32 +261,32 @@ public class mainScreen implements Screen
 	}
 
     @Override
-    public void show ( )
+    public void show()
 	{
     }
 
-    public void move ( )
+    public void move()
 	{
-		if ( !stop )
+		if( !stop )
 		{
-			if ( right )
+			if( right )
 			{
-				if ( mbody.getLinearVelocity().x < speed )
+				if( mbody.getLinearVelocity().x < speed )
 				{
 					mbody.applyForceToCenter(new Vector2(speed, 0), true);
 				}
 			}
 			else
 			{
-				if ( mbody.getLinearVelocity().x > -speed )
+				if( mbody.getLinearVelocity().x > -speed )
 				{
 					mbody.applyForceToCenter(new Vector2(-speed, 0), true);
 				}
 			}
 		}
-		if ( jump )
+		if( jump )
 		{
-			if ( mbody.getLinearVelocity().y < 0.01f && mbody.getLinearVelocity().y > -0.01f )
+			if( mbody.getLinearVelocity().y < 0.01f && mbody.getLinearVelocity().y > -0.01f )
 			{
 				mbody.applyForceToCenter(new Vector2(0, 300f), true);
 			}
@@ -299,7 +294,7 @@ public class mainScreen implements Screen
     }
 
     @Override
-    public void render ( float p1 )
+    public void render(float p1)
 	{
         this.update();
         this.move();
@@ -311,10 +306,10 @@ public class mainScreen implements Screen
 
         batch.begin();
 
-		for ( int i = 0; i < funb.length; i++ )
+		for( int i = 0; i < funb.length; i++ )
 		{
-			batch.draw(fun, funb [ i ].getPosition().x - (52 / tool.PPM) / 2, funb [ i ].getPosition().y - (52 / tool.PPM) / 2, 52 / tool.PPM, 52 / tool.PPM);
-			let(funb [ i ]);
+			batch.draw(fun, funb[i].getPosition().x - (52 / tool.PPM) / 2, funb[i].getPosition().y - (52 / tool.PPM) / 2, 52 / tool.PPM, 52 / tool.PPM);
+			let(funb[i]);
 		}
 
       	batch.draw(msprite, nx, ny, 52 / tool.PPM, 52 / tool.PPM);
@@ -322,7 +317,7 @@ public class mainScreen implements Screen
         batch.end();
 
 		welcome.setColor(0, 0, time, 1);
-		if ( time > 1 )
+		if( time > 1 )
 			time = 0;
 		/*if(t>10f){
 		 game.goMain();
@@ -334,36 +329,36 @@ public class mainScreen implements Screen
         //renderofb.render(world, cam.combined);
     }
 
-	private void let ( Body funb )
+	private void let(Body funb)
 	{
-		if ( funb.getLinearVelocity().y == 0 )
+		if( funb.getLinearVelocity().y == 0 )
 			funb.applyForceToCenter(new Vector2(7f, 400f), true);
 	}
 
     @Override
-    public void resize ( int p1, int p2 )
+    public void resize(int p1, int p2)
 	{
         Res.w = Gdx.graphics.getWidth();
         Res.h = Gdx.graphics.getHeight();
     }
 
     @Override
-    public void pause ( )
+    public void pause()
 	{
     }
 
     @Override
-    public void resume ( )
+    public void resume()
 	{
     }
 
     @Override
-    public void hide ( )
+    public void hide()
 	{
     }
 
     @Override
-    public void dispose ( )
+    public void dispose()
 	{
 		msprite.getTexture().dispose();
         st.dispose();

@@ -1,11 +1,11 @@
 package hhs.game.funny.games.Stage;
 
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import hhs.game.funny.games.MyGame;
 import hhs.game.funny.games.Res;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import hhs.game.funny.games.Runnable.RoleLogic;
 
 public class UserInterface extends Stage
@@ -17,7 +17,7 @@ public class UserInterface extends Stage
 	RoleLogic logic;
 	boolean u0,u1,u2;
 
-	public UserInterface(final MyGame game,RoleLogic l)
+	public UserInterface(final MyGame game, RoleLogic l)
 	{
 		this.game = game;
 
@@ -25,7 +25,7 @@ public class UserInterface extends Stage
 		b0 = r.b0;
 		b1 = r.b1;
 		b2 = r.b2;
-		
+
 		this.logic = l;
 		this.addButtonAction();
 
@@ -85,15 +85,15 @@ public class UserInterface extends Stage
 	@Override
 	public void act()
 	{
-		if(u0)
+		if( u0 )
 		{
 			logic.leftAction();
 		}
-		if(u1)
+		if( u1 )
 		{
 			logic.rightAction();
 		}
-		if(u2)
+		if( u2 )
 		{
 			logic.upAction();
 		}

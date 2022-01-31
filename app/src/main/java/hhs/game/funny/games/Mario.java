@@ -18,8 +18,6 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.graphics.Color;
 
 public class Mario implements Screen
 {
@@ -45,12 +43,12 @@ public class Mario implements Screen
 	World world;
 	//Box2DDebugRenderer ren;
 
-	public Mario ( MyGame game, SpriteBatch batch )
+	public Mario(MyGame game, SpriteBatch batch)
 	{
 		this.game = game;
 		this.batch = batch;
 		st = new Stage();
-		
+
 		ppm = tool.le1;
 		stop = left = true;
 
@@ -58,7 +56,7 @@ public class Mario implements Screen
 		cam.setToOrtho(false, Res.w / (ppm + suo + MyGame.zoom), Res.h / (ppm + suo + MyGame.zoom));
 
 		map = new TmxMapLoader().load("tmx/level1.tmx");
-		render = new OrthogonalTiledMapRenderer(map, 1 / ppm,batch);
+		render = new OrthogonalTiledMapRenderer(map, 1 / ppm, batch);
 
 		Res r = new Res(game);
 		b0 = r.b0;
@@ -69,11 +67,11 @@ public class Mario implements Screen
 		st.addActor(b1);
 		st.addActor(b2);
 		st.addActor(r.exit);
-		
+
 		this.initBox2d();
 	}
 
-	void initBox2d ( )
+	void initBox2d()
 	{
 		world = new World(new Vector2(0, -9.81f), true);
 
@@ -84,7 +82,7 @@ public class Mario implements Screen
 
 		bdef.type = BodyDef.BodyType.StaticBody;
 
-		for ( RectangleMapObject rt : map.getLayers().get("Ground").getObjects().getByType(RectangleMapObject.class) )
+		for( RectangleMapObject rt : map.getLayers().get("Ground").getObjects().getByType(RectangleMapObject.class) )
 		{
 			Rectangle rect = rt.getRectangle();
 
@@ -96,8 +94,8 @@ public class Mario implements Screen
 
 			body.createFixture(fdef);
 		}
-		
-		for ( RectangleMapObject rt : map.getLayers().get("Pipes").getObjects().getByType(RectangleMapObject.class) )
+
+		for( RectangleMapObject rt : map.getLayers().get("Pipes").getObjects().getByType(RectangleMapObject.class) )
 		{
 			Rectangle rect = rt.getRectangle();
 
@@ -109,8 +107,8 @@ public class Mario implements Screen
 
 			body.createFixture(fdef);
 		}
-		
-		for ( RectangleMapObject rt : map.getLayers().get("Bricks").getObjects().getByType(RectangleMapObject.class) )
+
+		for( RectangleMapObject rt : map.getLayers().get("Bricks").getObjects().getByType(RectangleMapObject.class) )
 		{
 			Rectangle rect = rt.getRectangle();
 
@@ -122,8 +120,8 @@ public class Mario implements Screen
 
 			body.createFixture(fdef);
 		}
-		
-		for ( RectangleMapObject rt : map.getLayers().get("Coins").getObjects().getByType(RectangleMapObject.class) )
+
+		for( RectangleMapObject rt : map.getLayers().get("Coins").getObjects().getByType(RectangleMapObject.class) )
 		{
 			Rectangle rect = rt.getRectangle();
 
@@ -135,32 +133,32 @@ public class Mario implements Screen
 
 			body.createFixture(fdef);
 		}
-		
-		bdef.position.set(-16 / ppm + 4 / ppm,0);
+
+		bdef.position.set(-16 / ppm + 4 / ppm, 0);
 		Body body;
 		body = world.createBody(bdef);
-		shape.setAsBox(8 / ppm,128);
+		shape.setAsBox(8 / ppm, 128);
 		fdef.shape = shape;
 		body.createFixture(fdef);
-		
+
 		zhu = new funny(world, new Vector2(4 * 16 / ppm, 16 / ppm), "w0.png");
-		
+
 		//ren = new Box2DDebugRenderer();
 	}
 
 	@Override
-	public void show ( )
+	public void show()
 	{
 	}
 
-	void update ( float time )
+	void update(float time)
 	{
 		world.step(1 / 60f, 2, 6);
 
 		cam.update();
 		cam.position.x = nx;
 		cam.position.y = ny;
-		
+
 		batch.setProjectionMatrix(cam.combined);
 
 		render.setView(cam);
@@ -172,74 +170,74 @@ public class Mario implements Screen
 	}
 
 	@Override
-	public void render ( float p1 )
+	public void render(float p1)
 	{
-		
+
 		this.update(p1);
-		
+
 		render.render();
-		
+
 		batch.begin();
-		batch.draw(zhu, nx, ny,16 / ppm,16 / ppm);
+		batch.draw(zhu, nx, ny, 16 / ppm, 16 / ppm);
 		batch.end();
-		
+
 		st.act();
 		st.draw();
-		
+
 		//ren.render(world,cam.combined);
 	}
 
-	void move ( )
+	void move()
 	{
-		if ( !stop )
+		if( !stop )
 		{
-			if ( left && zhu.b2body.getLinearVelocity().x > -speed)
+			if( left && zhu.b2body.getLinearVelocity().x > -speed )
 			{
 				zhu.b2body.applyForceToCenter(new Vector2(-speed, 0), true);
 			}
-			else if(zhu.b2body.getLinearVelocity().x < speed)
+			else if( zhu.b2body.getLinearVelocity().x < speed )
 			{
 				zhu.b2body.applyForceToCenter(new Vector2(speed, 0), true);
 			}
 		}
-		if ( up && zhu.b2body.getLinearVelocity().y < 0.01f && zhu.b2body.getLinearVelocity().y > -0.01f )
+		if( up && zhu.b2body.getLinearVelocity().y < 0.01f && zhu.b2body.getLinearVelocity().y > -0.01f )
 		{
 			zhu.b2body.applyForceToCenter(new  Vector2(0, 500), true);
 		}
 	}
 
 	@Override
-	public void resize ( int p1, int p2 )
+	public void resize(int p1, int p2)
 	{
 	}
 
 	@Override
-	public void pause ( )
+	public void pause()
 	{
 	}
 
 	@Override
-	public void resume ( )
+	public void resume()
 	{
 	}
 
 	@Override
-	public void hide ( )
+	public void hide()
 	{
 	}
 
 	@Override
-	public void dispose ( )
+	public void dispose()
 	{
 	}
 
 
-    void addListener ( )
+    void addListener()
 	{
 		b0.addListener(new InputListener(){
 
 				@Override
-				public boolean touchDown ( InputEvent event, float x, float y, int pointer, int button )
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
 					left = true;
 					stop = false;
@@ -247,7 +245,7 @@ public class Mario implements Screen
 				}
 
 				@Override
-				public void touchUp ( InputEvent event, float x, float y, int pointer, int button )
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button)
 				{
 					stop = true;
 				}
@@ -256,7 +254,7 @@ public class Mario implements Screen
 		b1.addListener(new InputListener(){
 
 				@Override
-				public boolean touchDown ( InputEvent event, float x, float y, int pointer, int button )
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
 					left = false;
 					stop = false;
@@ -264,7 +262,7 @@ public class Mario implements Screen
 				}
 
 				@Override
-				public void touchUp ( InputEvent event, float x, float y, int pointer, int button )
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button)
 				{
 					stop = true;
 				}
@@ -273,14 +271,14 @@ public class Mario implements Screen
 		b2.addListener(new InputListener(){
 
 				@Override
-				public boolean touchDown ( InputEvent event, float x, float y, int pointer, int button )
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
 					up = true;
 					return true;
 				}
 
 				@Override
-				public void touchUp ( InputEvent event, float x, float y, int pointer, int button )
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button)
 				{
 					up = false;
 				}

@@ -9,7 +9,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.widget.Toast;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -25,9 +24,6 @@ public class NativeUse implements PlatformResolver
 		hd = new Handler();
 	}
 
-	public void showDialog(String p0, String p1, Object runnable)
-	{
-	}
 	public boolean isNetEnable()
 	{
 		// TODO Auto-generated method stub

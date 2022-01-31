@@ -8,6 +8,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -47,6 +48,7 @@ public class MyGame extends Game
 	public static int zoom;						//屏幕缩放
 	public static Color clearColor;				//清屏颜色
 	public static Image image;					//场景过渡
+	public static Animation boom;				//爆炸效果
 
 	public void finish()
 	{
@@ -70,6 +72,14 @@ public class MyGame extends Game
 		settingscreen = new SettingScreen(this);
 		so = new so(this);
 		ccs = new ChooseCustomsScreen(this);
+
+		/*TextureRegion[] tr = new TextureRegion[14];
+
+		 for (int i = 1; i <= 14; i++) 
+		 {
+		 tr[i - 1] =new TextureRegion(ass.get("anim/e" + i + ".png",Texture.class));
+		 }
+		 boom = new Animation(0.1f,tr);*/
 
 		goMain();
 		//Gdx.input.setInputProcessor(l.ui);
@@ -208,6 +218,10 @@ public class MyGame extends Game
 		ass.load("ui5.png", Texture.class);
 		ass.load("ui8.png", Texture.class);
 		ass.load("down.mp3", Sound.class);
+		/*for (int i = 1; i <= 14; i++) {
+		 ass.load("anim/e" + i + ".gif",Texture.class);
+		 }*/
+		//ass.load("anim/GameOver.png",Texture.class);
 
 		st = new Stage();
 
@@ -248,10 +262,10 @@ public class MyGame extends Game
 		}
 	}
 
-	public void transition(Color c,float t)
+	public void transition(Color c, float t)
 	{
 		image.setColor(c);
-		image.addAction(Actions.color(Color.CLEAR,t));
+		image.addAction(Actions.color(Color.CLEAR, t));
 	}
 	public void transition()
 	{

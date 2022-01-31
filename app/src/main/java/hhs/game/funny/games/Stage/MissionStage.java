@@ -1,20 +1,21 @@
 package hhs.game.funny.games.Stage;
 
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import java.util.ArrayList;
-import hhs.game.funny.games.Mission;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import hhs.game.funny.games.Mission;
+import java.util.ArrayList;
 
-public class MissionStage extends Stage{
-    
+public class MissionStage extends Stage
+{
+
 	private ArrayList<Mission> mis;
 	public int total;
-	
+
 	public MissionStage(int value)
 	{
 		mis = new ArrayList<Mission>(value);
 	}
-    
+
 	public MissionStage()
 	{
 		mis = new ArrayList<Mission>();
@@ -25,7 +26,7 @@ public class MissionStage extends Stage{
 		mis.add(m);
 		total++;
 	}
-	
+
 	@Override
 	public void act()
 	{
@@ -35,9 +36,9 @@ public class MissionStage extends Stage{
 	@Override
 	public void draw()
 	{
-		for(Mission m : mis)
+		for( Mission m : mis )
 		{
-			if(m.isShow)
+			if( m.isShow )
 			{
 				Gdx.input.setInputProcessor(m);
 				m.act();
@@ -45,6 +46,6 @@ public class MissionStage extends Stage{
 			}
 		}
 	}
-    
-	
+
+
 }

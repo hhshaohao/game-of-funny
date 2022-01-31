@@ -1,10 +1,8 @@
 package hhs.game.funny.games.Screen;
 
-import com.badlogic.gdx.Screen;
-import hhs.game.funny.games.Stage.UserInterface;
 import hhs.game.funny.games.MyGame;
 import hhs.game.funny.games.Runnable.RoleLogic;
-import com.badlogic.gdx.scenes.scene2d.Stage;
+import hhs.game.funny.games.Stage.UserInterface;
 
 public class CommonlyScreen extends UniversalScreen
 {
@@ -16,7 +14,7 @@ public class CommonlyScreen extends UniversalScreen
 	{
 		ui = new UserInterface(game, r);
 	}
-	
+
 	@Override
 	public void show()
 	{
@@ -56,7 +54,7 @@ public class CommonlyScreen extends UniversalScreen
 	public void dispose()
 	{
 	}
-	
+
 	public void setShowUI(boolean b)
 	{
 		showUI = b;

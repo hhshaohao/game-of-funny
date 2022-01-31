@@ -1,15 +1,15 @@
 package hhs.game.funny.games;
 
-import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.CircleShape;
-import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.ChainShape;
+import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.World;
 
 public class funny extends Sprite
 {
@@ -43,8 +43,8 @@ public class funny extends Sprite
 		this.world = world;
 		defineBox(position, null, ra);
 	}
-	
-	public funny(World world,Vector2 position,String filename,float ra,float re)
+
+	public funny(World world, Vector2 position, String filename, float ra, float re)
 	{
 		super(MyGame.ass.get(filename, Texture.class));
 		this.world = world;
@@ -79,9 +79,9 @@ public class funny extends Sprite
 		fix = b2body.createFixture(fdef);
 		fix.setUserData(name);
 		ChainShape sh = new ChainShape();
-		
+
 		sh.createChain(new float[]{-0.1f * ra,-ra,0.1f * ra,-ra});
-		fix = b2body.createFixture(sh,1);
+		fix = b2body.createFixture(sh, 1);
 		fix.setUserData("p");
 	}
 

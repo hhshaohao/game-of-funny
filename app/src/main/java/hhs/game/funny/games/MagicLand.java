@@ -1,5 +1,6 @@
 package hhs.game.funny.games;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -13,7 +14,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.ChainShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
@@ -21,11 +22,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.physics.box2d.EdgeShape;
-import com.badlogic.gdx.physics.box2d.ChainShape;
 import hhs.game.funny.games.Screen.DeadScreen;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 
 public class MagicLand implements Screen
 {
@@ -66,7 +63,7 @@ public class MagicLand implements Screen
 		cam.setToOrtho(false, Res.w / (ppm + suo + MyGame.zoom), Res.h / (ppm + suo + MyGame.zoom));
 
 		map = new TmxMapLoader().load("tmx/MagicLand.tmx");
-		render = new OrthogonalTiledMapRenderer(map, 1 / ppm,batch);
+		render = new OrthogonalTiledMapRenderer(map, 1 / ppm, batch);
 
 		Res r = new Res(game);
 		b0 = r.b0;
@@ -79,19 +76,19 @@ public class MagicLand implements Screen
 		st.addActor(r.exit);
 
 		this.initBox2d();
-		
-		ds = new DeadScreen(game,MyGame.Misbatch)
+
+		ds = new DeadScreen(game, MyGame.Misbatch)
 		{
 
 			@Override
 			public void cilk(ImageButton bu)
 			{
-				zhu.b2body.setLinearVelocity(0,0);
-				zhu.b2body.setTransform(new Vector2(16 / ppm, 50 * 16 / ppm),zhu.b2body.getAngle());
+				zhu.b2body.setLinearVelocity(0, 0);
+				zhu.b2body.setTransform(new Vector2(16 / ppm, 50 * 16 / ppm), zhu.b2body.getAngle());
 				Gdx.input.setInputProcessor(MagicLand.st);
 				game.setScreen(MagicLand.this);
 			}
-			
+
 		};
 	}
 
@@ -125,13 +122,14 @@ public class MagicLand implements Screen
 			float d[] = po.getPolyline().getVertices();
 			Polyline p = po.getPolyline();
 			ChainShape edge = new ChainShape();
-			
-			for (int i = 0; i < d.length; i++) {
+
+			for( int i = 0; i < d.length; i++ )
+			{
 				d[i] = d[i] / ppm;
 			}
-			
+
 			edge.createChain(d);
-			
+
 			bdef.position.set((p.getX() + edge.getRadius()) / ppm, (p.getY() + edge.getRadius()) / ppm);
 
 			Body body;
@@ -179,7 +177,7 @@ public class MagicLand implements Screen
 	@Override
 	public void render(float p1)
 	{
-		
+
 		this.update(p1);
 
 		render.render();
@@ -190,19 +188,21 @@ public class MagicLand implements Screen
 
 		st.act();
 		st.draw();
-		
+
 		this.cilk();
 		//ren.render(world, cam.combined);
 	}
 
-	void cilk(){
-		if(ny < 0){
+	void cilk()
+	{
+		if( ny < 0 )
+		{
 			st.cancelTouchFocus();
 			Gdx.input.setInputProcessor(ds.st);
 			game.setScreen(ds);
 		}
 	}
-	
+
 	void move()
 	{
 		if( !stop )

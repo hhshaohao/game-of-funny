@@ -3,6 +3,7 @@ package hhs.game.funny.games;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -11,7 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 public class so implements Screen
 {
@@ -23,7 +23,7 @@ public class so implements Screen
 	ImageButton back;
 	int t;
 
-	public so ( MyGame g )
+	public so(MyGame g)
 	{
 		m = g;
 
@@ -32,7 +32,7 @@ public class so implements Screen
 		back.setY(Res.h - 100);
 		back.addListener(new InputListener(){
 				@Override
-				public boolean touchDown ( InputEvent event, float x, float y, int pointer, int button )
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
 					m.goMain();
 					return true;
@@ -74,42 +74,42 @@ public class so implements Screen
 	}
 
 	@Override
-	public void show ( )
+	public void show()
 	{
 	}
 
 	@Override
-	public void render ( float p1 )
+	public void render(float p1)
 	{
 		MyGame.jump.act();
 		MyGame.jump.draw();
-		
+
 		st.act();
 		st.draw();
 	}
 
 	@Override
-	public void resize ( int p1, int p2 )
+	public void resize(int p1, int p2)
 	{
 	}
 
 	@Override
-	public void pause ( )
+	public void pause()
 	{
 	}
 
 	@Override
-	public void resume ( )
+	public void resume()
 	{
 	}
 
 	@Override
-	public void hide ( )
+	public void hide()
 	{
 	}
 
 	@Override
-	public void dispose ( )
+	public void dispose()
 	{
 	}
 

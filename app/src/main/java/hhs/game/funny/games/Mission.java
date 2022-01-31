@@ -1,45 +1,34 @@
 package hhs.game.funny.games;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
-import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.scenes.scene2d.ui.Window.WindowStyle;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Window.WindowStyle;
 
 /*
-一个弹窗API
-使用方法：
-Mission 变量名 = new Mission(title,main,font){
-	@Override
-	public void cilck(){
-		按确定后执行...
-	}
-}
-在 Render函数中
-if(条件){
-变量名.act();
-变量名.draw();
-}
-*/
+ 一个弹窗API
+ 使用方法：
+ Mission 变量名 = new Mission(title,main,font){
+ @Override
+ public void cilck(){
+ 按确定后执行...
+ }
+ }
+ 在 Render函数中
+ if(条件){
+ 变量名.act();
+ 变量名.draw();
+ }
+ */
 public class Mission extends Stage
 {
 
@@ -110,7 +99,7 @@ public class Mission extends Stage
 		Level1.show = false;
 		Gdx.input.setInputProcessor(Level1.st);
 	}
-	
+
 	public void setShow(boolean b)
 	{
 		isShow = b;

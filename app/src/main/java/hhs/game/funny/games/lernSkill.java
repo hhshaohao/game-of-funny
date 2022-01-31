@@ -1,7 +1,7 @@
 package hhs.game.funny.games;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -9,60 +9,57 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
-import com.badlogic.gdx.Gdx;
 import hhs.game.funny.games.Stage.MissionStage;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 public class lernSkill implements Screen
 {
 
 	@Override
-	public void show ( )
+	public void show()
 	{
 
 	}
 
 	@Override
-	public void resize ( int p1, int p2 )
+	public void resize(int p1, int p2)
 	{
 
 	}
 
 	@Override
-	public void pause ( )
+	public void pause()
 	{
 
 	}
 
 	@Override
-	public void resume ( )
+	public void resume()
 	{
 
 	}
 
 	@Override
-	public void hide ( )
+	public void hide()
 	{
 
 	}
 
 	@Override
-	public void dispose ( )
+	public void dispose()
 	{
 
 	}
@@ -86,7 +83,7 @@ public class lernSkill implements Screen
 	float nx,ny,time1;
 	static int speed = Level1.speed;
 
-    public lernSkill ( final MyGame game, SpriteBatch batch )
+    public lernSkill(final MyGame game, SpriteBatch batch)
 	{
 		stop = right = start = true;
 
@@ -97,7 +94,7 @@ public class lernSkill implements Screen
 
 		cam = new OrthographicCamera();
 		cam.setToOrtho(false, Res.w / (ppm + suo + MyGame.zoom), Res.h / (ppm + suo + MyGame.zoom));
-		render = new OrthogonalTiledMapRenderer(map, 1f / ppm,batch);
+		render = new OrthogonalTiledMapRenderer(map, 1f / ppm, batch);
 
 		st = new Stage();
 
@@ -122,9 +119,9 @@ public class lernSkill implements Screen
 		st.addActor(skill);
 
 		initBox2d();
-		
+
 		ms = new MissionStage(2);
-		first = new Mission("技能学习","同时按下跳跃和技能可以跳得更高",MyGame.font)
+		first = new Mission("技能学习", "同时按下跳跃和技能可以跳得更高", MyGame.font)
 		{
 			public void cilck(Dialog dialog)
 			{
@@ -134,7 +131,7 @@ public class lernSkill implements Screen
 				second.isShow = true;
 			}
 		};
-		second = new Mission("任务","跳过这座山到达终点",MyGame.font)
+		second = new Mission("任务", "跳过这座山到达终点", MyGame.font)
 		{
 			public void cilck(Dialog dialog)
 			{
@@ -142,7 +139,7 @@ public class lernSkill implements Screen
 				isShow = false;
 			}
 		};
-		end = new Mission("恭喜","下一关",MyGame.font)
+		end = new Mission("恭喜", "下一关", MyGame.font)
 		{
 			public void cilck(Dialog dialog)
 			{
@@ -155,7 +152,7 @@ public class lernSkill implements Screen
 	}
 
 
-	public void initBox2d ( )
+	public void initBox2d()
 	{
 		world = new World(new Vector2(0, -9.81f), true);
 
@@ -169,7 +166,7 @@ public class lernSkill implements Screen
 		shape.setAsBox(8 / ppm, 8 / ppm);
 		fdef.shape = shape;
 
-		for ( RectangleMapObject rect : map.getLayers().get("rect").getObjects().getByType(RectangleMapObject.class) )
+		for( RectangleMapObject rect : map.getLayers().get("rect").getObjects().getByType(RectangleMapObject.class) )
 		{
 			Body body;
 			Rectangle r = rect.getRectangle();
@@ -181,7 +178,7 @@ public class lernSkill implements Screen
 		}
 	}
 
-	public void update ( )
+	public void update()
 	{
 		world.step(1 / 60f, 2, 6);
 
@@ -199,32 +196,32 @@ public class lernSkill implements Screen
 		this.move();
 	}
 
-	public void move ( )
+	public void move()
 	{
-		if ( !stop )
+		if( !stop )
 		{
-			if ( right )
+			if( right )
 			{
-				if ( zhu.b2body.getLinearVelocity().x < speed )
+				if( zhu.b2body.getLinearVelocity().x < speed )
 					zhu.b2body.applyForceToCenter(new Vector2(speed, 0), true);
 			}
 			else
 			{
-				if ( zhu.b2body.getLinearVelocity().x > -speed )
+				if( zhu.b2body.getLinearVelocity().x > -speed )
 					zhu.b2body.applyForceToCenter(new Vector2(-speed, 0), true);
 
 			}
 		}
-		if ( up && zhu.b2body.getLinearVelocity().y < 0.01 && zhu.b2body.getLinearVelocity().y > -0.01 )
+		if( up && zhu.b2body.getLinearVelocity().y < 0.01 && zhu.b2body.getLinearVelocity().y > -0.01 )
 		{
 			zhu.b2body.applyForceToCenter(new Vector2(0, 450), true);
 		}
 	}
 
 	@Override
-	public void render ( float p1 )
+	public void render(float p1)
 	{
-		
+
 		time1 += p1;
 
 		this.update();
@@ -237,12 +234,12 @@ public class lernSkill implements Screen
 
 		st.act();
 		st.draw();
-		
-		if(start)
+
+		if( start )
 		{
 			first.isShow = true;
 		}
-		if(nx > 1520 / ppm)
+		if( nx > 1520 / ppm )
 			end.isShow = true;
 		ms.act();
 		ms.draw();
@@ -250,12 +247,12 @@ public class lernSkill implements Screen
 	}
 
 
-	public void addListener ( )
+	public void addListener()
 	{
 		b0.addListener(new InputListener(){
 
 				@Override
-				public boolean touchDown ( InputEvent event, float x, float y, int pointer, int button )
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
 					right = false;
 					stop = false;
@@ -263,7 +260,7 @@ public class lernSkill implements Screen
 				}
 
 				@Override
-				public void touchUp ( InputEvent event, float x, float y, int pointer, int button )
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button)
 				{
 					stop = true;
 				}
@@ -272,7 +269,7 @@ public class lernSkill implements Screen
 		b1.addListener(new InputListener(){
 
 				@Override
-				public boolean touchDown ( InputEvent event, float x, float y, int pointer, int button )
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
 					right = true;
 					stop = false;
@@ -280,7 +277,7 @@ public class lernSkill implements Screen
 				}
 
 				@Override
-				public void touchUp ( InputEvent event, float x, float y, int pointer, int button )
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button)
 				{
 					stop = true;
 				}
@@ -289,14 +286,14 @@ public class lernSkill implements Screen
 		b2.addListener(new InputListener(){
 
 				@Override
-				public boolean touchDown ( InputEvent event, float x, float y, int pointer, int button )
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
 					up = true;
 					return true;
 				}
 
 				@Override
-				public void touchUp ( InputEvent event, float x, float y, int pointer, int button )
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button)
 				{
 					up = false;
 				}
@@ -306,9 +303,9 @@ public class lernSkill implements Screen
 		skill.addListener(new InputListener(){
 
 				@Override
-				public boolean touchDown ( InputEvent event, float x, float y, int pointer, int button )
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
-					if ( time1 > 2f )
+					if( time1 > 2f )
 					{
 						time1 = 0;
 						zhu.b2body.applyForceToCenter(0, 600, true);
@@ -321,7 +318,7 @@ public class lernSkill implements Screen
 				}
 
 				@Override
-				public void touchUp ( InputEvent event, float x, float y, int pointer, int button )
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button)
 				{
 
 				}
