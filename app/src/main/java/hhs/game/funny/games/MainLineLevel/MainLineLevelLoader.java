@@ -34,6 +34,7 @@ import hhs.game.funny.games.Stage.MissionStage;
 import hhs.game.funny.games.Tools.Drawist;
 import hhs.game.funny.games.contactListener.jumpConcat;
 import hhs.game.funny.games.funny;
+import com.badlogic.gdx.math.MathUtils;
 
 public class MainLineLevelLoader extends CommonlyScreen
 {
@@ -130,7 +131,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 				}
 				else
 				{
-					MainActivity.use.showQucikDialog("抱歉", "此关暂未开发暂未开发", new Runnable()
+					MainActivity.use.showQucikDialog("抱歉", "此关暂未开发", new Runnable()
 						{
 							@Override
 							public void run()
@@ -179,10 +180,10 @@ public class MainLineLevelLoader extends CommonlyScreen
 
 		if( ny < 0 )
 		{
-			zhu.b2body.applyForceToCenter(new Vector2(0, 1200), true);
-			/*ui.cancelTouchFocus();
+			//zhu.b2body.applyForceToCenter(new Vector2(0, 1200), true);
+			ui.cancelTouchFocus();
 			 Gdx.input.setInputProcessor(ds.st);
-			 game.setScreen(ds);*/
+			 game.setScreen(ds);
 		}
 		if( nx > ex )
 		{
@@ -255,10 +256,10 @@ public class MainLineLevelLoader extends CommonlyScreen
 			bdef.position.set(r.getX() / ppm + shape.getRadius(), r.getY() / ppm + shape.getRadius());
 
 			dist.addRenderer(new PlatformActor(new Texture("background/dead.jpg"),
-											   new Vector2(r.getX() / ppm + r.getWidth() / 2 / ppm, r.getY() / ppm + r.getHeight() / 2 / ppm),
+											   new Vector2(MathUtils.random(Integer.parseInt( ro.getProperties().get("s",String.class)),Integer.parseInt( ro.getProperties().get("e", String.class))) / ppm, r.getY() / ppm + r.getHeight() / 2 / ppm),
 											   shape,
-											   r.getX() / ppm + r.getWidth() / 2 / ppm,
-											   r.getX() / ppm + r.getWidth() / 2 / ppm + ro.getProperties().get("move", 330, Integer.class) / ppm,
+											   Integer.parseInt( ro.getProperties().get("s",String.class)) / ppm,
+											   Integer.parseInt( ro.getProperties().get("e", String.class)) / ppm,
 											   new Vector2(2, 0),
 											   world,
 											   new Vector2(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm),

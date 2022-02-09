@@ -51,7 +51,7 @@ public class PlatformActor implements RendererObject
 		plat.setLinearVelocity(speed.x, 0);
 		w = r.x;
 		h = r.y;
-		plat.setTransform(pos.x = left + 1, pos.y, plat.getAngle());
+		//plat.setTransform(pos.x = left + 1, pos.y, plat.getAngle());
 	}
 	@Override
 	public void act(float p1)

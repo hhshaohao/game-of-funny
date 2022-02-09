@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<map version="1.2" orientation="orthogonal" renderorder="right-down" width="60" height="20" tilewidth="18" tileheight="18" nextobjectid="126">
+  <tileset firstgid="1" name="tileset_gutter" columns="33" tilecount="924" tileheight="18" tilewidth="18">
+    <image source="tileset_gutter.png" width="594" height="504" />
+  </tileset>
+  <layer name="层 1" width="60" height="20">
+    <data encoding="base64" compression="zlib">
+   eJztwzEJAAAMA7Ay/4bqrjZ2JJBeUlVVVVV9eop+bL4=
+  </data>
+  </layer>
+  <layer name="g" width="60" height="20">
+    <data encoding="base64" compression="zlib">
+   eJztlzsSwCAIRJH7HzpNikwK5bOIkBRb6QBvYUYcRDQc4lueGFXEE3X0Zsb75pL4scpxOq/GD038ysyr2bcwo+5E8bIxnqQexJ0I3iifpD2SnGezomagm77G++TOruHXGT3uMPvWtz277kq8WZ5p60ey7mbOeoMz8qL3YM1uHb2DR/Nq/hM7/hzefmjZPJLkRrBejncH1g==
+  </data>
+  </layer>
+  <objectgroup name="born">
+    <object name="" type="" id="125" x="18" y="270" width="18" height="18" />
+  </objectgroup>
+  <objectgroup name="e">
+    <object name="" type="" id="124" x="1062" y="198" width="18" height="18" />
+  </objectgroup>
+  <objectgroup name="moveAble" />
+  <objectgroup name="ground">
+    <object name="" type="" id="1" x="0" y="216" width="18" height="18" />
+    <object name="" type="" id="2" x="0" y="234" width="18" height="18" />
+    <object name="" type="" id="3" x="0" y="252" width="18" height="18" />
+    <object name="" type="" id="4" x="0" y="270" width="18" height="18" />
+    <object name="" type="" id="5" x="18" y="288" width="18" height="18" />
+    <object name="" type="" id="6" x="18" y="306" width="18" height="18" />
+    <object name="" type="" id="7" x="18" y="324" width="18" height="18" />
+    <object name="" type="" id="8" x="36" y="342" width="18" height="18" />
+    <object name="" type="" id="9" x="0" y="162" width="18" height="18" />
+    <object name="" type="" id="10" x="0" y="144" width="18" height="18" />
+    <object name="" type="" id="11" x="0" y="126" width="18" height="18" />
+    <object name="" type="" id="12" x="0" y="108" width="18" height="18" />
+    <object name="" type="" id="13" x="18" y="90" width="18" height="18" />
+    <object name="" type="" id="14" x="36" y="72" width="18" height="18" />
+    <object name="" type="" id="15" x="54" y="72" width="18" height="18" />
+    <object name="" type="" id="16" x="72" y="90" width="18" height="18" />
+    <object name="" type="" id="17" x="90" y="108" width="18" height="18" />
+    <object name="" type="" id="18" x="108" y="126" width="18" height="18" />
+    <object name="" type="" id="19" x="126" y="126" width="18" height="18" />
+    <object name="" type="" id="20" x="144" y="126" width="18" height="18" />
+    <object name="" type="" id="21" x="162" y="234" width="18" height="18" />
+    <object name="" type="" id="22" x="162" y="252" width="18" height="18" />
+    <object name="" type="" id="23" x="180" y="216" width="18" height="18" />
+    <object name="" type="" id="24" x="198" y="216" width="18" height="18" />
+    <object name="" type="" id="25" x="180" y="270" width="18" height="18" />
+    <object name="" type="" id="26" x="198" y="270" width="18" height="18" />
+    <object name="" type="" id="27" x="216" y="234" width="18" height="18" />
+    <object name="" type="" id="28" x="216" y="252" width="18" height="18" />
+    <object name="" type="" id="29" x="162" y="108" width="18" height="18" />
+    <object name="" type="" id="30" x="180" y="90" width="18" height="18" />
+    <object name="" type="" id="31" x="216" y="90" width="18" height="18" />
+    <object name="" type="" id="32" x="198" y="90" width="18" height="18" />
+    <object name="" type="" id="33" x="234" y="108" width="18" height="18" />
+    <object name="" type="" id="34" x="252" y="126" width="18" height="18" />
+    <object name="" type="" id="35" x="270" y="108" width="18" height="18" />
+    <object name="" type="" id="36" x="270" y="90" width="18" height="18" />
+    <object name="" type="" id="37" x="270" y="72" width="18" height="18" />
+    <object name="" type="" id="38" x="252" y="54" width="18" height="18" />
+    <object name="" type="" id="39" x="252" y="36" width="18" height="18" />
+    <object name="" type="" id="40" x="252" y="18" width="18" height="18" />
+    <object name="" type="" id="41" x="270" y="0" width="18" height="18" />
+    <object name="" type="" id="42" x="180" y="342" width="18" height="18" />
+    <object name="" type="" id="43" x="198" y="342" width="18" height="18" />
+    <object name="" type="" id="44" x="216" y="342" width="18" height="18" />
+    <object name="" type="" id="45" x="234" y="342" width="18" height="18" />
+    <object name="" type="" id="46" x="252" y="342" width="18" height="18" />
+    <object name="" type="" id="47" x="270" y="324" width="18" height="18" />
+    <object name="" type="" id="48" x="288" y="306" width="18" height="18" />
+    <object name="" type="" id="49" x="396" y="306" width="18" height="18" />
+    <object name="" type="" id="50" x="378" y="306" width="18" height="18" />
+    <object name="" type="" id="51" x="360" y="306" width="18" height="18" />
+    <object name="" type="" id="52" x="342" y="306" width="18" height="18" />
+    <object name="" type="" id="53" x="324" y="306" width="18" height="18" />
+    <object name="" type="" id="54" x="306" y="306" width="18" height="18" />
+    <object name="" type="" id="55" x="414" y="324" width="18" height="18" />
+    <object name="" type="" id="56" x="432" y="342" width="18" height="18" />
+    <object name="" type="" id="57" x="450" y="342" width="18" height="18" />
+    <object name="" type="" id="58" x="468" y="324" width="18" height="18" />
+    <object name="" type="" id="59" x="486" y="306" width="18" height="18" />
+    <object name="" type="" id="60" x="486" y="288" width="18" height="18" />
+    <object name="" type="" id="61" x="486" y="270" width="18" height="18" />
+    <object name="" type="" id="62" x="504" y="252" width="18" height="18" />
+    <object name="" type="" id="63" x="522" y="252" width="18" height="18" />
+    <object name="" type="" id="64" x="540" y="270" width="18" height="18" />
+    <object name="" type="" id="65" x="558" y="288" width="18" height="18" />
+    <object name="" type="" id="66" x="576" y="306" width="18" height="18" />
+    <object name="" type="" id="67" x="576" y="324" width="18" height="18" />
+    <object name="" type="" id="68" x="594" y="342" width="18" height="18" />
+    <object name="" type="" id="69" x="324" y="0" width="18" height="18" />
+    <object name="" type="" id="70" x="342" y="0" width="18" height="18" />
+    <object name="" type="" id="71" x="360" y="0" width="18" height="18" />
+    <object name="" type="" id="72" x="378" y="0" width="18" height="18" />
+    <object name="" type="" id="73" x="396" y="18" width="18" height="18" />
+    <object name="" type="" id="74" x="432" y="36" width="18" height="18" />
+    <object name="" type="" id="75" x="414" y="36" width="18" height="18" />
+    <object name="" type="" id="76" x="450" y="36" width="18" height="18" />
+    <object name="" type="" id="77" x="468" y="18" width="18" height="18" />
+    <object name="" type="" id="78" x="486" y="0" width="18" height="18" />
+    <object name="" type="" id="79" x="504" y="0" width="18" height="18" />
+    <object name="" type="" id="80" x="522" y="18" width="18" height="18" />
+    <object name="" type="" id="81" x="540" y="36" width="18" height="18" />
+    <object name="" type="" id="82" x="558" y="54" width="18" height="18" />
+    <object name="" type="" id="83" x="576" y="54" width="18" height="18" />
+    <object name="" type="" id="84" x="594" y="72" width="18" height="18" />
+    <object name="" type="" id="85" x="612" y="90" width="18" height="18" />
+    <object name="" type="" id="87" x="630" y="90" width="18" height="18" />
+    <object name="" type="" id="88" x="648" y="72" width="18" height="18" />
+    <object name="" type="" id="89" x="666" y="72" width="18" height="18" />
+    <object name="" type="" id="90" x="684" y="54" width="18" height="18" />
+    <object name="" type="" id="91" x="702" y="36" width="18" height="18" />
+    <object name="" type="" id="92" x="720" y="18" width="18" height="18" />
+    <object name="" type="" id="93" x="738" y="18" width="18" height="18" />
+    <object name="" type="" id="94" x="756" y="18" width="18" height="18" />
+    <object name="" type="" id="95" x="774" y="36" width="18" height="18" />
+    <object name="" type="" id="96" x="792" y="36" width="18" height="18" />
+    <object name="" type="" id="97" x="810" y="54" width="18" height="18" />
+    <object name="" type="" id="98" x="828" y="72" width="18" height="18" />
+    <object name="" type="" id="99" x="846" y="90" width="18" height="18" />
+    <object name="" type="" id="100" x="864" y="108" width="18" height="18" />
+    <object name="" type="" id="101" x="882" y="108" width="18" height="18" />
+    <object name="" type="" id="102" x="900" y="90" width="18" height="18" />
+    <object name="" type="" id="103" x="918" y="90" width="18" height="18" />
+    <object name="" type="" id="104" x="936" y="72" width="18" height="18" />
+    <object name="" type="" id="105" x="954" y="54" width="18" height="18" />
+    <object name="" type="" id="106" x="972" y="54" width="18" height="18" />
+    <object name="" type="" id="107" x="990" y="72" width="18" height="18" />
+    <object name="" type="" id="108" x="1008" y="90" width="18" height="18" />
+    <object name="" type="" id="109" x="1008" y="108" width="18" height="18" />
+    <object name="" type="" id="110" x="1008" y="126" width="18" height="18" />
+    <object name="" type="" id="111" x="756" y="342" width="18" height="18" />
+    <object name="" type="" id="112" x="738" y="342" width="18" height="18" />
+    <object name="" type="" id="113" x="990" y="342" width="18" height="18" />
+    <object name="" type="" id="114" x="1008" y="324" width="18" height="18" />
+    <object name="" type="" id="115" x="1008" y="306" width="18" height="18" />
+    <object name="" type="" id="116" x="1008" y="288" width="18" height="18" />
+    <object name="" type="" id="117" x="1026" y="270" width="18" height="18" />
+    <object name="" type="" id="118" x="1044" y="252" width="18" height="18" />
+    <object name="" type="" id="119" x="1062" y="234" width="18" height="18" />
+    <object name="" type="" id="120" x="1062" y="216" width="18" height="18" />
+    <object name="" type="" id="121" x="1062" y="162" width="18" height="18" />
+    <object name="" type="" id="122" x="1044" y="144" width="18" height="18" />
+    <object name="" type="" id="123" x="1026" y="144" width="18" height="18" />
+  </objectgroup>
+</map>

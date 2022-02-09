@@ -32,7 +32,7 @@ public class Mario implements Screen
 	funny zhu;
 
 	OrthographicCamera cam;
-	public static int suo = 100;
+	public static int suo = 90;
 	public static float ppm;
 
 	TiledMap map;
@@ -54,7 +54,8 @@ public class Mario implements Screen
 
 		cam = new OrthographicCamera();
 		cam.setToOrtho(false, Res.w / (ppm + suo + MyGame.zoom), Res.h / (ppm + suo + MyGame.zoom));
-
+		cam.position.y = Res.h / (ppm + suo + MyGame.zoom) / 2;
+		
 		map = new TmxMapLoader().load("tmx/level1.tmx");
 		render = new OrthogonalTiledMapRenderer(map, 1 / ppm, batch);
 
@@ -157,7 +158,6 @@ public class Mario implements Screen
 
 		cam.update();
 		cam.position.x = nx;
-		cam.position.y = ny;
 
 		batch.setProjectionMatrix(cam.combined);
 

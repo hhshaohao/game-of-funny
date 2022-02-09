@@ -1,85 +1,94 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
-<map version="1.2" orientation="orthogonal" renderorder="right-down" width="200" height="40" tilewidth="18" tileheight="18" nextobjectid="83">
+<map version="1.2" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="18" tileheight="18" nextobjectid="59">
   <tileset firstgid="1" name="tileset_gutter" columns="33" tilecount="924" tileheight="18" tilewidth="18">
     <image source="tileset_gutter.png" width="594" height="504" />
   </tileset>
-  <tileset firstgid="1148" name="mytileset" columns="6" tilecount="30" tileheight="16" tilewidth="16">
-    <image source="mytileset.png" width="96" height="80" />
-  </tileset>
-  <layer name="back" width="200" height="40">
-    <data encoding="base64" compression="zlib">
-   eJzt07ENACEMBEHz/XdMQgV+EAhZQhNMfsFt/yI6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAZS3mqjdCFX1ATh+cioc/og/I6YMq2b9WPrnjZOOfATgKlj4=
-  </data>
+  <layer name="层 1" width="20" height="20">
+    <data encoding="csv">
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,697,697,697,697,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,697,697,697,697,697,697,1,1,1,1,1,1,1,1,
+1,1,1,1,1,697,697,697,697,697,697,697,697,697,697,697,697,1,1,1,
+1,1,1,1,697,697,697,697,697,697,697,697,697,697,697,697,697,697,1,1,
+1,1,1,1,697,697,697,697,697,697,697,697,697,697,697,697,697,697,1,1,
+1,1,1,1,1,697,697,697,697,697,697,697,697,697,697,697,697,697,697,1,
+1,1,1,1,1,697,697,697,697,697,697,697,697,697,697,697,697,697,697,1,
+1,1,1,1,1,1,697,697,697,697,697,697,697,697,697,697,697,697,697,1,
+1,1,1,1,1,1,697,697,697,697,697,697,697,697,697,697,697,697,697,697,
+1,1,1,1,1,1,697,697,697,697,697,697,697,697,697,697,697,697,697,697,
+1,697,697,1,1,1,697,697,697,697,697,697,697,697,697,697,697,697,697,697,
+697,697,697,697,697,697,697,697,697,697,697,697,697,697,697,697,697,697,697,697,
+697,697,697,697,697,697,697,697,697,697,697,697,697,697,697,697,697,697,697,697,
+1,697,697,697,697,697,697,697,697,697,697,697,697,697,697,697,697,697,697,1,
+1,697,697,697,697,697,697,697,697,697,697,1,1,1,1,697,697,697,697,1,
+1,697,697,697,697,697,697,697,697,1,1,1,1,1,1,1,697,697,1,1,
+1,697,697,697,697,697,697,697,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,697,697,697,697,697,697,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,697,697,1,1,1,1,1,1,1,1,1,1,1,1,1
+</data>
   </layer>
-  <layer name="层 1" width="200" height="40">
-    <data encoding="base64" compression="zlib">
-   eJztmlFOGzEQhtO9QeAmpLeAN67RPnIUqAScAyrRPnCKggS8wCEoUmknSqpUaTbetcf2jPN90jytdtb2zm/PzO5kAgAAAAAAAACbOO0mkzOxL13tkQDY40p0cS32FX1AJOyxUJoHibVHsacMMacdzxp7LBqDMfySOHkX+50hXmrmDH06KD0m9Lgg5z4M47GSz6PHBTn34W38kOfdid1XXA+r72QXsbIvWOFV1uGn2FvF9eCdAAAA9HMu5+OF2CXnZBOEahMLtYsnbmSdvol9j1gvarR4csVpqDbRql1492FSa7Tca2y5/2qhxk5Bqz5HZ/3k7oEM7b9ayzmsjScnfTFA3m+H0F4+JF41Y9r72aLB0LwfHdVnSLy2EtPe8p2U+hnqo10D5c69WvvuF9L7puu7cCZZqc21/0HROqc8/cObQkjvm65vO5Nyaae0Jmv9G+WFVv/hzU2ufI48EQBClO7deu0VW8rRYonJmTzVPjliq3Sfy2tfrYUcLSZnKplnpca3xneRGMb69XRGeNofWyf33pnL/1i/ns4I6tAwLeSW3rHS/4b/aSG39A79bwAAAChFt2aw4rnbbgBj0dRbbc1+6LFazy31fA28jnssu3y2oA+AzdSMz5A+hhgs2BuxGB5qjfl81sdZYqyWYs+DPjzo8lgGdCK2rzCwQ/FxFOkn5d5/mYqPmdJ8xuIh9jzoxgpzbRws9fFRIaY+yf2fI32k3PuX6XI+M6X5hLAcY+gjnb75v3Qry7WeGn5vu5XF3jvEd8pzWtTHrujmD5MfBLs=
-  </data>
-  </layer>
-  <objectgroup name="moveAble">
-    <object name="" type="" id="71" x="1712" y="630" width="64" height="18">
-      <properties>
-        <property name="long" value="330" />
-      </properties>
-    </object>
-    <object name="" type="" id="74" x="3240" y="648" width="64" height="18">
-      <properties>
-        <property name="long" value="108" />
-      </properties>
-    </object>
-  </objectgroup>
-  <objectgroup name="ground">
-    <object name="" type="" id="4" x="0" y="702" width="108" height="18" />
-    <object name="" type="" id="5" x="162" y="702" width="306" height="18" />
-    <object name="" type="" id="6" x="234" y="648" width="72" height="18" />
-    <object name="" type="" id="7" x="324" y="576" width="72" height="18" />
-    <object name="" type="" id="12" x="468" y="612" width="54" height="18" />
-    <object name="" type="" id="15" x="360" y="666" width="36" height="36" />
-    <object name="" type="" id="16" x="630" y="666" width="36" height="36" />
-    <object name="" type="" id="17" x="684" y="594" width="72" height="18" />
-    <object name="" type="" id="18" x="558" y="702" width="305" height="18" />
-    <object name="" type="" id="19" x="1026" y="594" width="36" height="18" />
-    <object name="" type="" id="20" x="990" y="648" width="89" height="18" />
-    <object name="" type="" id="21" x="918" y="702" width="216" height="18" />
-    <object name="" type="" id="22" x="1170" y="702" width="108" height="18" />
-    <object name="" type="" id="26" x="1602" y="594" width="108" height="18" />
-    <object name="" type="" id="27" x="1584" y="630" width="18" height="18" />
-    <object name="" type="" id="28" x="1602" y="612" width="18" height="18" />
-    <object name="" type="" id="29" x="1512" y="648" width="108" height="18" />
-    <object name="" type="" id="30" x="1512" y="666" width="18" height="18" />
-    <object name="" type="" id="31" x="1440" y="684" width="108" height="18" />
-    <object name="" type="" id="33" x="1386" y="702" width="56" height="18" />
-    <object name="" type="" id="36" x="2142" y="594" width="144" height="18" />
-    <object name="" type="" id="37" x="2268" y="612" width="18" height="18" />
-    <object name="" type="" id="38" x="2286" y="630" width="160" height="18" />
-    <object name="" type="" id="39" x="2430" y="648" width="18" height="18" />
-    <object name="" type="" id="40" x="2448" y="666" width="108" height="18" />
-    <object name="" type="" id="41" x="2538" y="684" width="18" height="18" />
-    <object name="" type="" id="42" x="2556" y="702" width="108" height="18" />
-    <object name="" type="" id="44" x="2700" y="702" width="18" height="18" />
-    <object name="" type="" id="45" x="2718" y="702" width="18" height="18" />
-    <object name="" type="" id="47" x="2808" y="702" width="394" height="18" />
-    <object name="" type="" id="54" x="3438" y="612" width="18" height="18" />
-    <object name="" type="" id="55" x="3438" y="630" width="18" height="18" />
-    <object name="" type="" id="56" x="3438" y="648" width="18" height="18" />
-    <object name="" type="" id="57" x="3438" y="666" width="18" height="18" />
-    <object name="" type="" id="58" x="3438" y="684" width="18" height="18" />
-    <object name="" type="" id="59" x="3438" y="702" width="18" height="18" />
-    <object name="" type="" id="60" x="3456" y="612" width="18" height="18" />
-    <object name="" type="" id="61" x="3474" y="612" width="18" height="18" />
-    <object name="" type="" id="62" x="3492" y="612" width="18" height="18" />
-    <object name="" type="" id="63" x="3510" y="612" width="18" height="18" />
-    <object name="" type="" id="64" x="3528" y="612" width="18" height="18" />
-    <object name="" type="" id="65" x="3546" y="612" width="18" height="18" />
-    <object name="" type="" id="66" x="3564" y="612" width="18" height="18" />
-    <object name="" type="" id="67" x="3582" y="612" width="18" height="18" />
-    <object name="" type="" id="68" x="2880" y="648" width="108" height="18" />
-    <object name="" type="" id="69" x="3024" y="594" width="90" height="18" />
-  </objectgroup>
   <objectgroup name="born">
-    <object name="" type="" id="81" x="72" y="648" width="18" height="18" />
+    <object name="" type="" id="1" x="18" y="306" width="18" height="18" />
   </objectgroup>
   <objectgroup name="e">
-    <object name="" type="" id="82" x="3510" y="594" width="18" height="18" />
+    <object name="" type="" id="2" x="324" y="270" width="18" height="18" />
   </objectgroup>
+  <objectgroup name="ground">
+    <object name="" type="" id="3" x="0" y="252" width="18" height="18" />
+    <object name="" type="" id="4" x="0" y="270" width="18" height="18" />
+    <object name="" type="" id="5" x="0" y="288" width="18" height="18" />
+    <object name="" type="" id="6" x="0" y="306" width="18" height="18" />
+    <object name="" type="" id="7" x="18" y="324" width="18" height="18" />
+    <object name="" type="" id="8" x="36" y="342" width="18" height="18" />
+    <object name="" type="" id="9" x="54" y="342" width="18" height="18" />
+    <object name="" type="" id="10" x="72" y="342" width="18" height="18" />
+    <object name="" type="" id="11" x="0" y="198" width="18" height="18" />
+    <object name="" type="" id="12" x="18" y="180" width="18" height="18" />
+    <object name="" type="" id="13" x="36" y="180" width="18" height="18" />
+    <object name="" type="" id="15" x="54" y="198" width="18" height="18" />
+    <object name="" type="" id="16" x="72" y="198" width="18" height="18" />
+    <object name="" type="" id="17" x="90" y="198" width="18" height="18" />
+    <object name="" type="" id="18" x="90" y="180" width="18" height="18" />
+    <object name="" type="" id="19" x="90" y="162" width="18" height="18" />
+    <object name="" type="" id="20" x="90" y="144" width="18" height="18" />
+    <object name="" type="" id="21" x="72" y="126" width="18" height="18" />
+    <object name="" type="" id="22" x="72" y="108" width="18" height="18" />
+    <object name="" type="" id="23" x="54" y="90" width="18" height="18" />
+    <object name="" type="" id="24" x="54" y="72" width="18" height="18" />
+    <object name="" type="" id="25" x="72" y="54" width="18" height="18" />
+    <object name="" type="" id="26" x="90" y="36" width="18" height="18" />
+    <object name="" type="" id="27" x="108" y="18" width="18" height="18" />
+    <object name="" type="" id="28" x="126" y="0" width="18" height="18" />
+    <object name="" type="" id="29" x="144" y="0" width="18" height="18" />
+    <object name="" type="" id="30" x="162" y="0" width="18" height="18" />
+    <object name="" type="" id="31" x="180" y="0" width="18" height="18" />
+    <object name="" type="" id="32" x="198" y="18" width="18" height="18" />
+    <object name="" type="" id="33" x="216" y="36" width="18" height="18" />
+    <object name="" type="" id="34" x="234" y="36" width="18" height="18" />
+    <object name="" type="" id="35" x="252" y="36" width="18" height="18" />
+    <object name="" type="" id="36" x="270" y="36" width="18" height="18" />
+    <object name="" type="" id="37" x="288" y="36" width="18" height="18" />
+    <object name="" type="" id="38" x="306" y="54" width="18" height="18" />
+    <object name="" type="" id="39" x="324" y="72" width="18" height="18" />
+    <object name="" type="" id="40" x="324" y="90" width="18" height="18" />
+    <object name="" type="" id="41" x="342" y="108" width="18" height="18" />
+    <object name="" type="" id="42" x="342" y="126" width="18" height="18" />
+    <object name="" type="" id="43" x="342" y="144" width="18" height="18" />
+    <object name="" type="" id="44" x="342" y="252" width="18" height="18" />
+    <object name="" type="" id="45" x="342" y="270" width="18" height="18" />
+    <object name="" type="" id="46" x="324" y="288" width="18" height="18" />
+    <object name="" type="" id="47" x="306" y="306" width="18" height="18" />
+    <object name="" type="" id="48" x="288" y="306" width="18" height="18" />
+    <object name="" type="" id="49" x="270" y="288" width="18" height="18" />
+    <object name="" type="" id="50" x="252" y="270" width="18" height="18" />
+    <object name="" type="" id="51" x="234" y="270" width="18" height="18" />
+    <object name="" type="" id="52" x="216" y="270" width="18" height="18" />
+    <object name="" type="" id="53" x="198" y="270" width="18" height="18" />
+    <object name="" type="" id="54" x="180" y="288" width="18" height="18" />
+    <object name="" type="" id="55" x="162" y="288" width="18" height="18" />
+    <object name="" type="" id="56" x="144" y="306" width="18" height="18" />
+    <object name="" type="" id="57" x="144" y="324" width="18" height="18" />
+    <object name="" type="" id="58" x="126" y="342" width="18" height="18" />
+  </objectgroup>
+  <objectgroup name="moveAble" />
 </map>
