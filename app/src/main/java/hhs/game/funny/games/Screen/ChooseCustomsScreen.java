@@ -79,7 +79,7 @@ public class ChooseCustomsScreen implements Screen
 						}
 						else
 						{
-							MainActivity.use.showQucikDialog("抱歉", "此关暂未开发暂未开发", new Runnable()
+							MainActivity.use.showQucikDialog("抱歉", "此关暂未开发", new Runnable()
 								{
 									@Override
 									public void run()
