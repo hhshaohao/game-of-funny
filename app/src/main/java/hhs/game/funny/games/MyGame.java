@@ -20,6 +20,7 @@ import hhs.game.funny.games.MainLineLevel.level1;
 import hhs.game.funny.games.Screen.ChooseCustomsScreen;
 import hhs.game.funny.games.Screen.Jumper;
 import hhs.game.funny.games.Screen.SettingScreen;
+import hhs.game.funny.games.MainLineLevel.MainLineLevelLoader;
 
 public class MyGame extends Game
 {
@@ -34,10 +35,10 @@ public class MyGame extends Game
 	MagicLand magic;
 	SettingScreen settingscreen;
 
-	hscreen h;
-	Level1 lev;
-	ChooseCustomsScreen ccs;
-	level1 l;
+	public hscreen h;
+	public Level1 lev;
+	public ChooseCustomsScreen ccs;
+	public level1 l;
 
 	public static Label fps;					//帧率显示
 	public static SpriteBatch batch,Misbatch;	//公共资源：画笔
@@ -104,9 +105,9 @@ public class MyGame extends Game
 	public void goMainLine()
 	{
 		transition();
-		l = new level1(this, batch);
-		Gdx.input.setInputProcessor(l.ui);
-		setScreen(l);
+		MainLineLevelLoader a = new MainLineLevelLoader(this,"tmx/0.tmx",0);
+		Gdx.input.setInputProcessor(a.ui);
+		setScreen(new MainLineLevelLoader(this,"tmx/0.tmx",0));
 	}
 
 	public void goScreen(Screen s, Stage st)

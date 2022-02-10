@@ -35,6 +35,7 @@ import hhs.game.funny.games.Tools.Drawist;
 import hhs.game.funny.games.contactListener.jumpConcat;
 import hhs.game.funny.games.funny;
 import com.badlogic.gdx.math.MathUtils;
+import hhs.game.funny.games.hscreen;
 
 public class MainLineLevelLoader extends CommonlyScreen
 {
@@ -135,7 +136,10 @@ public class MainLineLevelLoader extends CommonlyScreen
 						{
 							@Override
 							public void run()
-							{
+							{							
+								game.archive.putBoolean("WIN",true);
+								game.archive.flush();
+								game.h = new hscreen(game,batch);
 								game.goMagicLand();
 							}
 						});

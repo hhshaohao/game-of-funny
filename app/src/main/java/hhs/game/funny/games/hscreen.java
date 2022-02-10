@@ -74,7 +74,10 @@ public class hscreen implements Screen
 		openWorld.setPosition(mario.getX(), mario.getHeight() - 100);
 
 		st.addActor(mario);
-		st.addActor(openWorld);
+		if(MyGame.archive.getBoolean("WIN"))
+		{
+			st.addActor(openWorld);
+		}
 		st.addActor(setting);
 
 		this.addListener();
@@ -264,6 +267,7 @@ public class hscreen implements Screen
 							public void run()
 							{
 								g.archive.putBoolean("MAIN", false);
+								g.archive.putBoolean("WIN",false);
 								g.archive.flush();
 								g.goGame();
 							}
