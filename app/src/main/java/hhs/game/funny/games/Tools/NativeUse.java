@@ -137,7 +137,7 @@ public class NativeUse implements PlatformResolver
 					new  AlertDialog.Builder(_context)    
 						.setTitle(title)  
 						.setMessage(context)
-						.setPositiveButton("取消", new OnClickListener(){
+						.setNegativeButton("取消", new OnClickListener(){
 							@Override
 							public void onClick(DialogInterface dialog, int which)
 							{
@@ -159,6 +159,7 @@ public class NativeUse implements PlatformResolver
 						.show();
 				}
 			});
+		
 	}
 
 }

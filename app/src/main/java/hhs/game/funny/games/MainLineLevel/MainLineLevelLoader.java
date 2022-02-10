@@ -131,12 +131,12 @@ public class MainLineLevelLoader extends CommonlyScreen
 				}
 				else
 				{
-					MainActivity.use.showQucikDialog("抱歉", "此关暂未开发", new Runnable()
+					MainActivity.use.showQucikDialog("恭喜", "你通关了。\n你成功当上了沙雕之主\n你可以去往你的沙雕宫殿了", new Runnable()
 						{
 							@Override
 							public void run()
 							{
-								MainActivity.use.showQuickTip("抱歉");
+								game.goMagicLand();
 							}
 						});
 				}
