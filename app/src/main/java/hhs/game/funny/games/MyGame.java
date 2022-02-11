@@ -21,27 +21,26 @@ import hhs.game.funny.games.Screen.ChooseCustomsScreen;
 import hhs.game.funny.games.Screen.Jumper;
 import hhs.game.funny.games.Screen.SettingScreen;
 import hhs.game.funny.games.MainLineLevel.MainLineLevelLoader;
-
+//游戏入口类
 public class MyGame extends Game
 {
 
-	Stage st;
+	Stage st;	//最上层舞台
 
-	startScreen ss;
-	mainScreen m;
-	lernSkill stu;
-	Mario mario;
-	so so;
-	MagicLand magic;
-	SettingScreen settingscreen;
+	startScreen ss;					//开始场景
+	mainScreen m;					//教学场景
+	Mario mario;					//马里奥场景
+	so so;							//背景故事场景
+	MagicLand magic;				//胜利后宫殿
+	SettingScreen settingscreen;	//设置界面
+	//lernSkill stu;
 
-	public hscreen h;
-	public Level1 lev;
-	public ChooseCustomsScreen ccs;
-	public level1 l;
+	public hscreen h;					//选择页
+	public Level1 lev;					//第一关
+	public ChooseCustomsScreen ccs;		//选关页面
 
 	public static Label fps;					//帧率显示
-	public static SpriteBatch batch,Misbatch;	//公共资源：画笔
+	public static SpriteBatch batch,Misbatch;	//公共资源：渲染器
 	public static BitmapFont font;				//中文支持
 	public static AssetManager ass;				//图像资源
 	public static Preferences archive,setting;	//存档读取（暂未使用)
@@ -50,7 +49,7 @@ public class MyGame extends Game
 	public static Color clearColor;				//清屏颜色
 	public static Image image;					//场景过渡
 	public static Animation boom;				//爆炸效果
-
+	//当主要静态资源加载完毕后
 	public void finish()
 	{
 		jump = new Jumper();
@@ -126,14 +125,14 @@ public class MyGame extends Game
 		setScreen(lev);
 	}
 
-	public void goLevel2()
+	/*public void goLevel2()
 	{
 		transition();
 		if( stu == null )
 			stu = new lernSkill(this, batch);
 		Gdx.input.setInputProcessor(stu.st);
 		setScreen(stu);
-	}
+	}*/
 
 	public void goMario()
 	{
@@ -190,7 +189,7 @@ public class MyGame extends Game
 		font.getData().setScale(1.5f);
 		setScreen(settingscreen);
 	}
-
+	//初始化线程
 	@Override
 	public void create()
 	{
@@ -243,7 +242,7 @@ public class MyGame extends Game
 
 
 	}
-
+	//主渲染线程
 	@Override
 	public void render()
 	{
@@ -262,7 +261,7 @@ public class MyGame extends Game
 			ss.dispose();
 		}
 	}
-
+	//游戏过渡动作
 	public void transition(Color c, float t)
 	{
 		image.setColor(c);
@@ -273,7 +272,8 @@ public class MyGame extends Game
 		image.setColor(Color.BLACK);
 		image.addAction(Actions.color(Color.CLEAR, 0.5f));
 	}
-
+	//游戏生命周期
+	//当游戏退出时，释放内存，防止内存泄露
 	@Override
 	public void dispose()
 	{
@@ -294,20 +294,22 @@ public class MyGame extends Game
 			ass.dispose();
 
 	}
-
+	//当手机分辨率变化时
 	@Override
 	public void resize(int width, int height)
 	{
+		Res.w = width;
+		Res.h = height;
 		super.resize(width, height);
 	}
-
+	//当游戏进入后台
 	@Override
 	public void pause()
 	{
 		MainActivity.use.showQuickTip("暂停");
 		super.pause();
 	}
-
+	//当游戏进程回复时
 	@Override
 	public void resume()
 	{

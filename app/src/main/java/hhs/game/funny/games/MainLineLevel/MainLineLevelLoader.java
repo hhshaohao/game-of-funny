@@ -36,7 +36,7 @@ import hhs.game.funny.games.contactListener.jumpConcat;
 import hhs.game.funny.games.funny;
 import com.badlogic.gdx.math.MathUtils;
 import hhs.game.funny.games.hscreen;
-
+//主线关卡
 public class MainLineLevelLoader extends CommonlyScreen
 {
 	MyGame game;

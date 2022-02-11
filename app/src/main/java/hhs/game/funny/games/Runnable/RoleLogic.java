@@ -1,5 +1,5 @@
 package hhs.game.funny.games.Runnable;
-
+//移动逻辑
 public abstract class RoleLogic
 {
 	//左移动按钮被点击

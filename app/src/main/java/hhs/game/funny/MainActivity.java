@@ -9,6 +9,7 @@ import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import hhs.game.funny.games.MyGame;
 import hhs.game.funny.games.Tools.NativeUse;
 
+//android程序入口类
 public class MainActivity extends AndroidApplication
 { 
 
@@ -33,7 +34,7 @@ public class MainActivity extends AndroidApplication
 		dialog.show();
 		use = new NativeUse(this);
         AndroidApplicationConfiguration conf = new AndroidApplicationConfiguration();
-		initialize(new MyGame(), conf);
+		initialize(new MyGame(), conf);	//进入游戏
 
     }
 

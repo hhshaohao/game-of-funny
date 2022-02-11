@@ -18,7 +18,6 @@ public class tool
     public static final float PPM = 70f;
 	public static final float le1 = 20f;
 	public static final double M_PI = 3.1415;
-	static String TAG = "当你在注视代码时，代码也在注视你";
 	static LabelStyle style = new LabelStyle(MyGame.font, Color.BLUE);
 
     public static ImageButton createButton(String a, String b)

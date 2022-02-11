@@ -7,7 +7,7 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import hhs.game.funny.games.MyGame;
-
+//碰撞检测
 public class jumpConcat implements ContactListener
 {
 	public boolean is = false;

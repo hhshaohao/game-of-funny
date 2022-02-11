@@ -23,7 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import hhs.game.funny.games.Screen.DeadScreen;
-
+//胜利后宫殿
 public class MagicLand implements Screen
 {
 

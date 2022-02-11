@@ -30,7 +30,7 @@ import hhs.game.funny.games.Stage.MissionStage;
 import hhs.game.funny.games.Tools.Drawist;
 import hhs.game.funny.games.contactListener.jumpConcat;
 import hhs.game.funny.games.funny;
-
+//主线关卡
 public class level1 extends CommonlyScreen
 {
 	MyGame game;

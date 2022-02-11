@@ -9,7 +9,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 import hhs.game.funny.games.Tools.RendererObject;
-
+//移动平台角色
 public class PlatformActor implements RendererObject
 {
 

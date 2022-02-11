@@ -24,7 +24,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import hhs.game.funny.games.Stage.MissionStage;
-
+//已废除
 public class lernSkill implements Screen
 {
 

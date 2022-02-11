@@ -10,7 +10,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import hhs.game.funny.games.Tools.Controler;
-
+//快捷演员
 public class FastRoleActor extends Actor
 {
 

@@ -14,7 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import hhs.game.funny.MainActivity;
 import hhs.game.funny.games.Screen.Jumper;
 /*
- 选关页面
+ 选择主页面
  */
 public class hscreen implements Screen
 {
