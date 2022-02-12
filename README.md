@@ -5,16 +5,17 @@
 >该游戏是我用手机写的，AndroidStudio可能编译不了
 >你可以在手机aide上编译
 
-## Linux 下编译  
-```
-sudo apt install open-jdk
-sudo apt install gradle android-sdk
-cd game-of-funny
-gradle build
-```
-## Windows 和 Mac
+## 软件编译
+
+## PC端
 
 ```
 安装AndroidStduio
+```
+
+## 手机端
+
+```
+安装AIDE
 ```
 
