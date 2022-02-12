@@ -14,7 +14,7 @@ import hhs.game.funny.games.MainLineLevel.MainLineLevelLoader;
 import hhs.game.funny.games.MyGame;
 import hhs.game.funny.games.Res;
 import hhs.game.funny.games.tool;
-
+//选择关卡页
 public class ChooseCustomsScreen implements Screen
 {
 	MyGame game;
@@ -33,7 +33,7 @@ public class ChooseCustomsScreen implements Screen
 
 		st = new Stage();
 
-		ib = new ImageButton[40];
+		ib = new ImageButton[10];
 		int max = (Res.w - 200) / 225;
 		int b = 0;//一行的量
 		int c = 0;//下多少行
