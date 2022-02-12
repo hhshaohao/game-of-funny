@@ -4,13 +4,13 @@
     <image source="tileset_gutter.png" width="594" height="504" />
   </tileset>
   <layer name="层 6" width="100" height="30">
-    <data encoding="base64" compression="zlib">
-   eJztwzEJAAAMA7Ay/4bqrjL2JJBeUlVVVVVVVVVVVVVVfT4O4o/h
+    <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAAO3DMQkAAAwDsDL/huquMvYkkF5SVVVVVVVVVVVVVVV9Po6N3HjgLgAA
   </data>
   </layer>
   <layer name="层 1" width="100" height="30">
-    <data encoding="base64" compression="zlib">
-   eJzt0cEJwDAAA7F0/6X79gDlKJHAC5zPAQAAAAAA6Dw/2g3qxv5YdWN/rLqxP1bd2B+rbuyPVTf2x6ob+2PVjf2x6sb+WHVjf6y6sT9W3dgfq27sj/VFtxfCwQJw
+    <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAAO3RwQnAMAADsXT/pfv2AOUokcALnM8BAAAAAADoPD/aDerG/lh1Y3+surE/Vt3YH6tu7I9VN/bHqhv7Y9WN/bHqxv5YdWN/rLqxP1bd2B+rbuyP9UW3F7t/C97gLgAA
   </data>
   </layer>
   <objectgroup name="ground" visible="false">

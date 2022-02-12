@@ -4,8 +4,8 @@
     <image source="tileset_gutter.png" width="594" height="504" />
   </tileset>
   <layer name="层 1" width="80" height="20">
-    <data encoding="base64" compression="zlib">
-   eJztllEOgDAIQzfvf0sv4peJMWNuUKCLM+EPSnnTSS2l1B1inEc7ernZnt++UVoodpLeTG70maO0svhFMkT2t+hoeDAwRPb/mqenqalF8ou6d6z8NBy8+Wlrtb4RmpqI5DdSb/HOwM8y+6hn1Jys/KS+LN/MKvzu3tqHhZ8nw83P38Pq/LI9sPKT/Ef0nTk/Zn6ZMfreb35z/Cwa2TOtxu/PDFH/rMw7PMsbandC7RCtPKu2107z1LkAfToZag==
+    <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAAO2WUQ6AMAhDN+9/Sy/il4kxY25QoIsz4Q9KedNJLaXUHWKcRzt6udme375RWih2kt5MbvSZo7Sy+EUyRPa36Gh4MDBE9v+ap6epqUXyi7p3rPw0HLz5aWu1vhGamojkN1Jv8c7AzzL7qGfUnKz8pL4s38wq/O7e2oeFnyfDzc/fw+r8sj2w8pP8R/SdOT9mfpkx+t5vfnP8LBrZM63G788MUf+szDs8yxtqd0LtEK08q7bXTvPUuQATDmWtABkAAA==
   </data>
   </layer>
   <objectgroup name="born">

@@ -250,6 +250,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 							new Vector2(ox = (r.getX() + r.getWidth() / 2) / ppm, oy = (r.getY() + r.getHeight() / 2) / ppm),
 							"w0.png", r.getWidth() / 2 / ppm
 							);
+			break;
 		}
 		for( RectangleMapObject ro : map.getLayers().get("moveAble").getObjects().getByType(RectangleMapObject.class) )
 		{
@@ -272,6 +273,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 		for( RectangleMapObject ro : map.getLayers().get("e").getObjects().getByType(RectangleMapObject.class) )
 		{
 			ex = ro.getRectangle().getX() / ppm;
+			break;
 		}
 	}
 

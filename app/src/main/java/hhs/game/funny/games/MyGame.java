@@ -6,6 +6,7 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -16,11 +17,10 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import hhs.game.funny.MainActivity;
-import hhs.game.funny.games.MainLineLevel.level1;
+import hhs.game.funny.games.MainLineLevel.MainLineLevelLoader;
 import hhs.game.funny.games.Screen.ChooseCustomsScreen;
 import hhs.game.funny.games.Screen.Jumper;
 import hhs.game.funny.games.Screen.SettingScreen;
-import hhs.game.funny.games.MainLineLevel.MainLineLevelLoader;
 //游戏入口类
 public class MyGame extends Game
 {
@@ -103,10 +103,29 @@ public class MyGame extends Game
 
 	public void goMainLine()
 	{
-		transition();
-		MainLineLevelLoader a = new MainLineLevelLoader(this,"tmx/0.tmx",0);
-		Gdx.input.setInputProcessor(a.ui);
-		setScreen(new MainLineLevelLoader(this,"tmx/0.tmx",0));
+		String s = "tmx/0.tmx";
+		FileHandle fh =  Gdx.files.internal(s);
+		if( fh.exists() )
+		{
+			transition();
+			MainLineLevelLoader mll = new MainLineLevelLoader(this, s,1);
+			Gdx.input.setInputProcessor(mll.ui);
+			setScreen(mll);
+		}
+		else
+		{
+			MainActivity.use.showQucikDialog("恭喜", "你通关了。\n你成功当上了沙雕之主\n你可以去往你的沙雕宫殿了", new Runnable()
+				{
+					@Override
+					public void run()
+					{							
+						archive.putBoolean("WIN",true);
+						archive.flush();
+						h = new hscreen(MyGame.this,batch);
+						goMagicLand();
+					}
+				});
+		}
 	}
 
 	public void goScreen(Screen s, Stage st)
