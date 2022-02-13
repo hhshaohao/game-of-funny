@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
-<map version="1.2" orientation="orthogonal" renderorder="right-down" width="320" height="20" tilewidth="18" tileheight="18" nextobjectid="632">
+<map version="1.2" orientation="orthogonal" renderorder="right-down" width="320" height="20" tilewidth="18" tileheight="18" nextobjectid="637">
   <tileset firstgid="1" name="tileset_gutter" columns="33" tilecount="924" tileheight="18" tilewidth="18">
     <image source="tileset_gutter.png" width="594" height="504" />
   </tileset>
@@ -625,5 +625,11 @@
     <object name="" type="" id="630" x="5490" y="54" width="18" height="18" />
     <object name="" type="" id="631" x="5472" y="54" width="18" height="18" />
   </objectgroup>
-  <objectgroup name="moveAble" />
+  <objectgroup name="moveAble">
+    <object name="" type="" id="632" x="1548" y="342" width="18" height="18" />
+    <object name="" type="" id="633" x="1548" y="324" width="18" height="18" />
+    <object name="" type="" id="634" x="1530" y="324" width="18" height="18" />
+    <object name="" type="" id="635" x="1494" y="342" width="18" height="18" />
+    <object name="" type="" id="636" x="1512" y="342" width="18" height="18" />
+  </objectgroup>
 </map>
