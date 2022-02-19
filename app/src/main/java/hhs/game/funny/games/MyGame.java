@@ -31,15 +31,15 @@ public class MyGame extends Game
 	mainScreen m;					//教学场景
 	Mario mario;					//马里奥场景
 	so so;							//背景故事场景
-	MagicLand magic;				//胜利后宫殿
+	MagicLand magic;				//胜利宫殿
 	SettingScreen settingscreen;	//设置界面
 	//lernSkill stu;
 
 	public hscreen h;					//选择页
 	public Level1 lev;					//第一关
 	public ChooseCustomsScreen ccs;		//选关页面
-
-	public static Label fps;					//帧率显示
+//公众资源
+	public static Label fps,heap;				//帧率显示
 	public static SpriteBatch batch,Misbatch;	//公共资源：渲染器
 	public static BitmapFont font;				//中文支持
 	public static AssetManager ass;				//图像资源
@@ -250,8 +250,11 @@ public class MyGame extends Game
 		s.fontColor = Color.BLUE;
 
 		fps = new Label("fps:", s);
+		heap = new Label("",s);
+		heap.setPosition(0,fps.getHeight());
 
 		st.addActor(fps);
+		st.addActor(heap);
 		image = new Image(new Texture("tran.jpg"));
 		image.setSize(st.getWidth(), st.getHeight()); 
 		image.setOrigin(st.getWidth() / 2, st.getHeight() / 2); 
@@ -267,6 +270,7 @@ public class MyGame extends Game
 	{
 		tool.clearScreen(clearColor);
 		fps.setText("fps:" + Gdx.graphics.getFramesPerSecond());	//帧率显示
+		heap.setText(((Gdx.app.getJavaHeap() / 1048576) + (Gdx.app.getNativeHeap() / 1048576)) + "MB");
 
 		super.render();
 
