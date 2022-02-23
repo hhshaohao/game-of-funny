@@ -33,7 +33,7 @@ public class ChooseCustomsScreen implements Screen
 
 		st = new Stage();
 
-		ib = new ImageButton[10];
+		ib = new ImageButton[11];
 		int max = (Res.w - 200) / 225;
 		int b = 0;//一行的量
 		int c = 0;//下多少行

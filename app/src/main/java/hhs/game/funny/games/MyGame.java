@@ -94,7 +94,6 @@ public class MyGame extends Game
 	public void goChooser()
 	{
 		transition();
-		transition();
 		font.getData().setScale(1);
 		font.setColor(Color.BLACK);
 		Gdx.input.setInputProcessor(ccs.st);
@@ -103,6 +102,7 @@ public class MyGame extends Game
 
 	public void goMainLine()
 	{
+		font.getData().setScale(1);
 		String s = "tmx/0.tmx";
 		FileHandle fh =  Gdx.files.internal(s);
 		if( fh.exists() )
@@ -131,6 +131,7 @@ public class MyGame extends Game
 	public void goScreen(Screen s, Stage st)
 	{
 		transition();
+		font.getData().setScale(1);
 		Gdx.input.setInputProcessor(st);
 		setScreen(s);
 	}
@@ -138,6 +139,7 @@ public class MyGame extends Game
 	public void goLevel1()
 	{
 		transition();
+		font.getData().setScale(1);
 		if( lev == null )
 			lev = new Level1(batch, this);
 		Gdx.input.setInputProcessor(lev.st);
@@ -156,6 +158,7 @@ public class MyGame extends Game
 	public void goMario()
 	{
 		transition();
+		font.getData().setScale(1);
 		if( mario == null )
 			mario = new Mario(this, batch);
 		Gdx.input.setInputProcessor(mario.st);
