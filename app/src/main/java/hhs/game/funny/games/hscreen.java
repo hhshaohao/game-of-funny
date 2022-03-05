@@ -269,7 +269,7 @@ public class hscreen implements Screen
 								g.archive.putBoolean("MAIN", false);
 								g.archive.putBoolean("WIN",false);
 								g.archive.flush();
-								g.goGame();
+								g.reStart();
 							}
 						}, new Runnable(){
 							@Override

@@ -487,7 +487,6 @@ public class Level1 implements Screen
 	public void dispose()
 	{
 		world.dispose();
-		zhu.getTexture().dispose();
 		render.dispose();
 		map.dispose();
 		st.dispose();

@@ -211,6 +211,15 @@ public class MyGame extends Game
 		font.getData().setScale(1.5f);
 		setScreen(settingscreen);
 	}
+	public void reStart()
+	{
+		transition();
+		font.getData().setScale(1);
+		lev.dispose();
+		lev = new Level1(batch,this);
+		Gdx.input.setInputProcessor(lev.st);
+		setScreen(lev);
+	}
 	//初始化线程
 	@Override
 	public void create()
@@ -229,7 +238,7 @@ public class MyGame extends Game
 		ass.load("s0.png", Texture.class);
 		ass.load("s1.png", Texture.class);
 		ass.load("f0.jpg", Texture.class);
-		ass.load("f1.jpg", Texture.class);
+		ass.load("f1.jpg",Texture.class);
 		ass.load("ui3.png", Texture.class);
 		ass.load("w0.png", Texture.class);
 		ass.load("w1.png", Texture.class);
