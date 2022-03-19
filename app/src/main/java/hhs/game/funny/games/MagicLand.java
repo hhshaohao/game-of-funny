@@ -74,6 +74,7 @@ public class MagicLand implements Screen
 		st.addActor(b1);
 		st.addActor(b2);
 		st.addActor(r.exit);
+		st.addActor(r.getChange(zhu));
 
 		this.initBox2d();
 

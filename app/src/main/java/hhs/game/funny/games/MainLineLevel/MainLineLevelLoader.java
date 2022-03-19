@@ -223,7 +223,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 
 			body.createFixture(fdef);
 		}
-		ChainShape chain = new ChainShape();
+		/*ChainShape chain = new ChainShape();
 		for( PolylineMapObject po : map.getLayers().get("ground").getObjects().getByType(PolylineMapObject.class) )
 		{
 			Polyline p = po.getPolyline();
@@ -242,7 +242,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 			body = world.createBody(bdef);
 			body.setUserData("g");
 			body.createFixture(fdef);
-		}
+		}*/
 		for( RectangleMapObject ro : map.getLayers().get("born").getObjects().getByType(RectangleMapObject.class) )
 		{
 			Rectangle r = ro.getRectangle();
@@ -250,6 +250,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 							new Vector2(ox = (r.getX() + r.getWidth() / 2) / ppm, oy = (r.getY() + r.getHeight() / 2) / ppm),
 							"w0.png", r.getWidth() / 2 / ppm
 							);
+			super.ac(zhu);
 			break;
 		}
 		for( RectangleMapObject ro : map.getLayers().get("moveAble").getObjects().getByType(RectangleMapObject.class) )
