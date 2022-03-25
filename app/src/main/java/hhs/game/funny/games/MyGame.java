@@ -219,7 +219,7 @@ public class MyGame extends Game
 		lev = null;
 		lev = new Level1(batch,this);
 		Gdx.input.setInputProcessor(lev.st);
-		setScreen(new Level1(batch,this));
+		setScreen(lev);
 	}
 	//初始化线程
 	@Override

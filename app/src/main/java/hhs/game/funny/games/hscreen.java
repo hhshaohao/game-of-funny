@@ -53,12 +53,8 @@ public class hscreen implements Screen
 		if( MyGame.archive.getBoolean("MAIN") )
 		{
 			ta.add(goC);
-			MainActivity.use.showQuickTip("恭喜");
 		}
-		else
-		{
-			ta.add(start);
-		}
+		ta.add(start).padLeft(50);
 		ta.add(so).padLeft(50);
 		ta.row();
 		ta.add(br).padTop(100);

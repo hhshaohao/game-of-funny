@@ -49,6 +49,8 @@ public class MagicLand implements Screen
 
 	World world;
 	//Box2DDebugRenderer ren;
+	
+	Res r;
 
 	public MagicLand(final MyGame game, SpriteBatch batch)
 	{
@@ -65,7 +67,7 @@ public class MagicLand implements Screen
 		map = new TmxMapLoader().load("tmx/MagicLand.tmx");
 		render = new OrthogonalTiledMapRenderer(map, 1 / ppm, batch);
 
-		Res r = new Res(game);
+		r = new Res(game);
 		b0 = r.b0;
 		b1 = r.b1;
 		b2 = r.b2;
@@ -74,7 +76,6 @@ public class MagicLand implements Screen
 		st.addActor(b1);
 		st.addActor(b2);
 		st.addActor(r.exit);
-		st.addActor(r.getChange(zhu));
 
 		this.initBox2d();
 
@@ -148,7 +149,7 @@ public class MagicLand implements Screen
 		body.createFixture(fdef);
 
 		zhu = new funny(world, new Vector2(16 / ppm, 50 * 16 / ppm), "w0.png");
-
+		st.addActor(r.getChange(zhu));
 		//ren = new Box2DDebugRenderer();
 	}
 
