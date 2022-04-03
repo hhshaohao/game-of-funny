@@ -32,7 +32,7 @@ public class Jumper extends BackDraw
 
 	void initBox2d()
 	{
-		world = new World(new Vector2(0, -9.81f), true);
+		world = new World(new Vector2(0, -10f), true);
 
 		BodyDef bdef = new BodyDef();
 		FixtureDef fdef= new FixtureDef();

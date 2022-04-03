@@ -7,23 +7,20 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.scenes.scene2d.utils.Disableable;
-import com.badlogic.gdx.utils.Disposable;
 //游戏内静态变量储存
-public class Res implements Disposable
+public class Res
 {
+
     public static int w = Gdx.graphics.getWidth();
 	public static int h = Gdx.graphics.getHeight();
     static float tx = w / tool.PPM;
     static float ty = h / tool.PPM;
 
-	public ImageButton b0,b1,b2,exit,cSkin;
-	public funny role;
-	public int cv;
+	public ImageButton b0,b1,b2,exit;
 
 	public Res(final MyGame game)
 	{
-		cv = 0;
+
 		TextureRegion a = tool.createRegion("move3.png");
         a.flip(true, false);
         TextureRegion b,c,d;
@@ -39,7 +36,7 @@ public class Res implements Disposable
 
 		b0.setPosition(0, 0);
         b1.setPosition(1.5f * b0.getWidth(), 0);
-        b2.setPosition(Res.w - b2.getWidth(), 0);
+        b2.setPosition(Res.w - b2.getWidth() - 50, 0);
 
 		exit = tool.createButton(MyGame.ass.get("ui8.png", Texture.class));
 		exit.setPosition(0, Res.h - exit.getHeight());
@@ -53,38 +50,7 @@ public class Res implements Disposable
 					return true;
 				}
 			});
-		
-		
 	}
-	public ImageButton getChange(final funny role)
-	{
-		this.role = role;
-		cSkin = tool.createButton("ui12.png","s0.png");
-		cSkin.setPosition(w - cSkin.getWidth(),h / 2 - cSkin.getHeight() / 2);
-		cSkin.addListener(new InputListener()
-			{
-				@Override
-				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
-				{
-					if(cv < 2)
-					{
-						cv += 1;
-						tool.changeSkin(role,cv);
-					}else{
-						cv = -1;
-					}
-					return true;
-				}
-			});
-		return cSkin;
-	}
-	
-	@Override
-	public void dispose()
-	{
-		
-	}
-	
 
 }
 enum sprite

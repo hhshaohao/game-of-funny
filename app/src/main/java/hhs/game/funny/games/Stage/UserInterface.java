@@ -7,13 +7,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import hhs.game.funny.games.MyGame;
 import hhs.game.funny.games.Res;
 import hhs.game.funny.games.Runnable.RoleLogic;
-import hhs.game.funny.games.funny;
 
 public class UserInterface extends Stage
 {
 
 	MyGame game;
-	Res r;
 
 	ImageButton b0,b1,b2;
 	RoleLogic logic;
@@ -23,7 +21,7 @@ public class UserInterface extends Stage
 	{
 		this.game = game;
 
-		r = new Res(game);
+		Res r = new Res(game);
 		b0 = r.b0;
 		b1 = r.b1;
 		b2 = r.b2;
@@ -35,11 +33,6 @@ public class UserInterface extends Stage
 		this.addActor(b0);
 		this.addActor(b1);
 		this.addActor(b2);
-	}
-	
-	public void ac(funny role)
-	{
-		this.addActor(r.getChange(role));
 	}
 
 	private void addButtonAction()

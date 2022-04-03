@@ -197,7 +197,7 @@ public class mainScreen implements Screen
 	{
 		funb = new Body[3];
 
-        world = new World(new Vector2(0, -9.81f), true);
+        world = new World(new Vector2(0, -10f), true);
         BodyDef bdef = new BodyDef();
         bdef.type = BodyDef.BodyType.DynamicBody;
         bdef.position.set(50 / tool.PPM, 500 / tool.PPM);

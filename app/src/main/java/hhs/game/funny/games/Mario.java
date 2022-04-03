@@ -68,14 +68,13 @@ public class Mario implements Screen
 		st.addActor(b1);
 		st.addActor(b2);
 		st.addActor(r.exit);
-		st.addActor(r.getChange(zhu));
 
 		this.initBox2d();
 	}
 
 	void initBox2d()
 	{
-		world = new World(new Vector2(0, -9.81f), true);
+		world = new World(new Vector2(0, -10f), true);
 
 		BodyDef bdef = new BodyDef();
 		FixtureDef fdef = new FixtureDef();

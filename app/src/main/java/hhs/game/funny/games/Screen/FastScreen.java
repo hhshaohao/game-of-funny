@@ -84,7 +84,7 @@ public class FastScreen implements Screen
 
 	void initBox2d(int x, int y)
 	{
-		world = new World(new Vector2(0, 9.81f), true);
+		world = new World(new Vector2(0, 10f), true);
 
 		BodyDef bdef = new BodyDef();
 		FixtureDef fdef = new FixtureDef();
