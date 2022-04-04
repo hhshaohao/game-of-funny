@@ -182,7 +182,7 @@ public class level1 extends CommonlyScreen
 
 	void initBox2d()
 	{
-		world = new World(new Vector2(0, -10f), true);
+		world = new World(new Vector2(0, -9.81f), true);
 		BodyDef bdef = new BodyDef();
 		FixtureDef fdef = new FixtureDef();
 		PolygonShape shape = new PolygonShape();

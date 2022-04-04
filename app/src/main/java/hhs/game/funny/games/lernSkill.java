@@ -154,7 +154,7 @@ public class lernSkill implements Screen
 
 	public void initBox2d()
 	{
-		world = new World(new Vector2(0, -10f), true);
+		world = new World(new Vector2(0, -9.81f), true);
 
 		zhu = new funny(world, new Vector2(32 / ppm, 192 / ppm), "w0.png", "funny", 8 / ppm);
 

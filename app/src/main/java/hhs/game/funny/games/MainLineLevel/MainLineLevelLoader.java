@@ -41,7 +41,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 {
 	MyGame game;
 	OrthographicCamera cam;
-	float ppm = 20,zoom = 40;
+	float ppm = 20,zoom = 30;
 	SpriteBatch batch;
 	DeadScreen ds;
 
@@ -68,24 +68,23 @@ public class MainLineLevelLoader extends CommonlyScreen
 				@Override
 				public void leftAction()
 				{
-					if( zhu.b2body.getLinearVelocity().x > -speed )
+					if (zhu.b2body.getLinearVelocity().x > -speed)
 						zhu.b2body.applyForceToCenter(new Vector2(-speed, 0), true);	
 				}
 
 				@Override
 				public void rightAction()
 				{
-					if( zhu.b2body.getLinearVelocity().x < speed )
+					if (zhu.b2body.getLinearVelocity().x < speed)
 						zhu.b2body.applyForceToCenter(new Vector2(speed, 0), true);
 				}
 
 				@Override
 				public void upAction()
 				{
-					if( c.is )
-					{
+					if (c.is) {
 						game.ass.get("jump.mp3", Sound.class).play();
-						zhu.b2body.applyForceToCenter(new  Vector2(0, 650), true);
+						zhu.b2body.applyForceToCenter(new  Vector2(0, 600), true);
 						c.is = false;
 					}
 				}
@@ -123,23 +122,20 @@ public class MainLineLevelLoader extends CommonlyScreen
 			{
 				String s = "tmx/" + (l + 1) + ".tmx";
 				FileHandle fh =  Gdx.files.internal(s);
-				if( fh.exists() )
-				{
+				if (fh.exists()) {
 					game.transition();
 					MainLineLevelLoader mll = new MainLineLevelLoader(game, s, l + 1);
 					Gdx.input.setInputProcessor(mll.ui);
 					game.setScreen(mll);
-				}
-				else
-				{
+				} else {
 					MainActivity.use.showQucikDialog("恭喜", "你通关了。\n你成功当上了沙雕之主\n你可以去往你的沙雕宫殿了", new Runnable()
 						{
 							@Override
 							public void run()
 							{							
-								game.archive.putBoolean("WIN",true);
+								game.archive.putBoolean("WIN", true);
 								game.archive.flush();
-								game.h = new hscreen(game,batch);
+								game.h = new hscreen(game, batch);
 								game.goMagicLand();
 							}
 						});
@@ -154,16 +150,13 @@ public class MainLineLevelLoader extends CommonlyScreen
 	@Override
 	public void render(float p1)
 	{
-		world.step(1 / 60f, 6, 2);
+		world.step(1 / 60f, 2, 6);
 
 		nx = zhu.b2body.getPosition().x - zhu.ra;
 		ny = zhu.b2body.getPosition().y - zhu.ra;
 
 		cam.position.x = zhu.b2body.getPosition().x;
-		if(zhu.b2body.getPosition().y > Res.h / ppm / 2)
-		{
-			cam.position.y = zhu.b2body.getPosition().y;
-		}
+		cam.position.y = zhu.b2body.getPosition().y;
 
 		cam.update();
 
@@ -185,15 +178,13 @@ public class MainLineLevelLoader extends CommonlyScreen
 
 		super.render(p1);
 
-		if( ny < 0 )
-		{
+		if (ny < 0) {
 			//zhu.b2body.applyForceToCenter(new Vector2(0, 1200), true);
 			ui.cancelTouchFocus();
-			 Gdx.input.setInputProcessor(ds.st);
-			 game.setScreen(ds);
+			Gdx.input.setInputProcessor(ds.st);
+			game.setScreen(ds);
 		}
-		if( nx > ex )
-		{
+		if (nx > ex) {
 			ui.cancelTouchFocus();
 			Gdx.input.setInputProcessor(mis);
 			mis.isShow = true;
@@ -202,7 +193,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 
 	void initBox2d()
 	{
-		world = new World(new Vector2(0, -10f), true);
+		world = new World(new Vector2(0, -9.81f), true);
 		world.setContactListener(c = new jumpConcat());
 		BodyDef bdef = new BodyDef();
 		bdef.type = BodyDef.BodyType.StaticBody;
@@ -214,8 +205,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 		FixtureDef fdef = new FixtureDef();
 		fdef.shape = shape;
 
-		for( RectangleMapObject ro : map.getLayers().get("ground").getObjects().getByType(RectangleMapObject.class) )
-		{
+		for (RectangleMapObject ro : map.getLayers().get("ground").getObjects().getByType(RectangleMapObject.class)) {
 			Rectangle r = ro.getRectangle();
 
 			shape.setAsBox(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm);
@@ -226,37 +216,36 @@ public class MainLineLevelLoader extends CommonlyScreen
 
 			body.createFixture(fdef);
 		}
-		ChainShape chain = new ChainShape();
-		for( PolylineMapObject po : map.getLayers().get("ground").getObjects().getByType(PolylineMapObject.class) )
-		{
-			Polyline p = po.getPolyline();
+		/*ChainShape chain = new ChainShape();
+		 for( PolylineMapObject po : map.getLayers().get("ground").getObjects().getByType(PolylineMapObject.class) )
+		 {
+		 Polyline p = po.getPolyline();
 
-			float[] pos = p.getVertices();
-			for( int i = 0; i < pos.length; i++ )
-			{
-				pos[i] = pos[i] / ppm;
-			}
-			chain.createChain(pos);
+		 float[] pos = p.getVertices();
+		 for( int i = 0; i < pos.length; i++ )
+		 {
+		 pos[i] = pos[i] / ppm;
+		 }
+		 chain.createChain(pos);
 
-			fdef.shape = chain;
+		 fdef.shape = chain;
 
-			bdef.position.set((p.getX() + chain.getRadius()) / ppm, (p.getY() + chain.getRadius()) / ppm);
+		 bdef.position.set((p.getX() + chain.getRadius()) / ppm, (p.getY() + chain.getRadius()) / ppm);
 
-			body = world.createBody(bdef);
-			body.setUserData("g");
-			body.createFixture(fdef);
-		}
-		for( RectangleMapObject ro : map.getLayers().get("born").getObjects().getByType(RectangleMapObject.class) )
-		{
+		 body = world.createBody(bdef);
+		 body.setUserData("g");
+		 body.createFixture(fdef);
+		 }*/
+		for (RectangleMapObject ro : map.getLayers().get("born").getObjects().getByType(RectangleMapObject.class)) {
 			Rectangle r = ro.getRectangle();
 			zhu = new funny(world,
 							new Vector2(ox = (r.getX() + r.getWidth() / 2) / ppm, oy = (r.getY() + r.getHeight() / 2) / ppm),
 							"w0.png", r.getWidth() / 2 / ppm
 							);
+			super.ac(zhu);
 			break;
 		}
-		for( RectangleMapObject ro : map.getLayers().get("moveAble").getObjects().getByType(RectangleMapObject.class) )
-		{
+		for (RectangleMapObject ro : map.getLayers().get("moveAble").getObjects().getByType(RectangleMapObject.class)) {
 			Rectangle r = ro.getRectangle();
 			bdef.type = BodyDef.BodyType.KinematicBody;
 
@@ -264,17 +253,16 @@ public class MainLineLevelLoader extends CommonlyScreen
 			bdef.position.set(r.getX() / ppm + shape.getRadius(), r.getY() / ppm + shape.getRadius());
 
 			dist.addRenderer(new PlatformActor(new Texture("background/dead.jpg"),
-											   new Vector2(MathUtils.random(Integer.parseInt( ro.getProperties().get("s",String.class)),Integer.parseInt( ro.getProperties().get("e", String.class))) / ppm, r.getY() / ppm + r.getHeight() / 2 / ppm),
+											   new Vector2(MathUtils.random(Integer.parseInt(ro.getProperties().get("s", String.class)), Integer.parseInt(ro.getProperties().get("e", String.class))) / ppm, r.getY() / ppm + r.getHeight() / 2 / ppm),
 											   shape,
-											   Integer.parseInt( ro.getProperties().get("s",String.class)) / ppm,
-											   Integer.parseInt( ro.getProperties().get("e", String.class)) / ppm,
+											   Integer.parseInt(ro.getProperties().get("s", String.class)) / ppm,
+											   Integer.parseInt(ro.getProperties().get("e", String.class)) / ppm,
 											   new Vector2(2, 0),
 											   world,
 											   new Vector2(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm),
 											   new Vector2(r.getWidth() / ppm, r.getHeight() / ppm)));
 		}
-		for( RectangleMapObject ro : map.getLayers().get("e").getObjects().getByType(RectangleMapObject.class) )
-		{
+		for (RectangleMapObject ro : map.getLayers().get("e").getObjects().getByType(RectangleMapObject.class)) {
 			ex = ro.getRectangle().getX() / ppm;
 			break;
 		}

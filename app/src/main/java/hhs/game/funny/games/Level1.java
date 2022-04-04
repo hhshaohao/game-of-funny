@@ -101,7 +101,8 @@ public class Level1 implements Screen
 
 		this.initbox2d();
 		zhu = new funny(world, new Vector2(100 / tool.le1, 300 / tool.le1), "w0.png", "zhu", 8 / tool.le1);
-
+		st.addActor(bu.getChange(zhu));
+		
 		world.setContactListener(con);
 
 		//Gdx.input.setInputProcessor(st);
@@ -174,7 +175,7 @@ public class Level1 implements Screen
 	{
 		con = new contact();
 
-		world = new World(new Vector2(0, -10f), true);
+		world = new World(new Vector2(0, -9.81f), true);
 		pei = new funny[70];
 		boss = new funny(world, new Vector2(128 / tool.le1 , 32 / tool.le1), "w2.png", "boss", 64 / tool.le1);
 

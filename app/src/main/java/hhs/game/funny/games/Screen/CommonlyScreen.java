@@ -3,6 +3,7 @@ package hhs.game.funny.games.Screen;
 import hhs.game.funny.games.MyGame;
 import hhs.game.funny.games.Runnable.RoleLogic;
 import hhs.game.funny.games.Stage.UserInterface;
+import hhs.game.funny.games.funny;
 
 public class CommonlyScreen extends UniversalScreen
 {
@@ -15,6 +16,11 @@ public class CommonlyScreen extends UniversalScreen
 		ui = new UserInterface(game, r);
 	}
 
+	public void ac(funny role)
+	{
+		ui.ac(role);
+	}
+	
 	@Override
 	public void show()
 	{
