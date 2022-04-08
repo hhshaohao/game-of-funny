@@ -197,6 +197,7 @@ public class MyGame extends Game
 	public void goMagicLand()
 	{
 		transition();
+		font.getData().setScale(1);
 		MainActivity.use.showQuickTip("加载中哦……");
 		if( magic == null )
 			magic = new MagicLand(this, batch);

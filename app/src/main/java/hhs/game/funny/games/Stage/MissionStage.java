@@ -47,5 +47,14 @@ public class MissionStage extends Stage
 		}
 	}
 
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		for(Mission m : mis)
+		{
+			m.dispose();
+		}
+	}
 
 }

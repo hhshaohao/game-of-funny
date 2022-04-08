@@ -75,7 +75,7 @@ public class Jumper extends BackDraw
 	public void act()
 	{
 		batch.setProjectionMatrix(cam.combined);
-		world.step(1 / 45f, 1, 1);
+		world.step(1 / 30f, 1, 1);
 		this.move();
 	}
 

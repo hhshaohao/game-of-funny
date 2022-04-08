@@ -23,6 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import hhs.game.funny.games.Screen.DeadScreen;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 //胜利后宫殿
 public class MagicLand implements Screen
 {
@@ -51,6 +52,8 @@ public class MagicLand implements Screen
 	//Box2DDebugRenderer ren;
 	
 	Res r;
+	
+	Mission mis;
 
 	public MagicLand(final MyGame game, SpriteBatch batch)
 	{
@@ -92,6 +95,17 @@ public class MagicLand implements Screen
 			}
 
 		};
+		mis = new Mission("提示","长按跳跃键可以重复跳",MyGame.font)
+		{
+			@Override
+			public void cilck(Dialog dialog)
+			{
+				this.isShow = false;
+				Gdx.input.setInputProcessor(MagicLand.this.st);
+				mis.dispose();
+			}
+		};
+		mis.isShow = true;
 	}
 
 	void initBox2d()
@@ -190,7 +204,13 @@ public class MagicLand implements Screen
 
 		st.act();
 		st.draw();
-
+		
+		if(mis.isShow){
+			Gdx.input.setInputProcessor(mis);
+			mis.act();
+			mis.draw();
+		}
+		
 		this.cilk();
 		//ren.render(world, cam.combined);
 	}

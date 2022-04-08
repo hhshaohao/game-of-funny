@@ -93,6 +93,14 @@ public class Mission extends Stage
 		batch.end();
 	}
 
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		skin.dispose();
+	}
+
+	
 	public void cilck(Dialog dialog)
 	{
 		dialog.remove();
@@ -106,15 +114,3 @@ public class Mission extends Stage
 	}
 
 }
-
-
-/**
- * <b>类名称：</b>ExitDialog
- * <b>类描述：</b>退出游戏对话框
- * <b>创建人：</b>wanglong
- * <b>修改人：</b>wanglong
- * <b>修改时间：</b>2014-12-14 上午3:54:18
- * <b>修改备注：</b>类初始化
- * @version 1.0.0<br/>
- */
-

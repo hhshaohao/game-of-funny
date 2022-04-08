@@ -3,11 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="hhs.game.funny">
 
-    <!-- 修改或删除您的USB存储设备中的内容 -->
+    <!-- 修改或删除您的SD卡中的内容 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
-    <!-- 与蓝牙设备配对 -->
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <!-- 查看网络连接 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <!-- 完全的网络访问权限 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:icon="@drawable/ic_gamepad_variant_outline"

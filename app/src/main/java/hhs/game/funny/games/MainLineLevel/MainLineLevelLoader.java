@@ -127,6 +127,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 					MainLineLevelLoader mll = new MainLineLevelLoader(game, s, l + 1);
 					Gdx.input.setInputProcessor(mll.ui);
 					game.setScreen(mll);
+					MainLineLevelLoader.this.dispose();
 				} else {
 					MainActivity.use.showQucikDialog("恭喜", "你通关了。\n你成功当上了沙雕之主\n你可以去往你的沙雕宫殿了", new Runnable()
 						{
@@ -137,6 +138,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 								game.archive.flush();
 								game.h = new hscreen(game, batch);
 								game.goMagicLand();
+								MainLineLevelLoader.this.dispose();
 							}
 						});
 				}
@@ -268,4 +270,14 @@ public class MainLineLevelLoader extends CommonlyScreen
 		}
 	}
 
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		ds.dispose();
+		map.dispose();
+		render.dispose();
+		world.dispose();
+		ms.dispose();
+	}
 }

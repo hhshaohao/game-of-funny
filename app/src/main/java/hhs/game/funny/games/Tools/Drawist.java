@@ -2,10 +2,10 @@ package hhs.game.funny.games.Tools;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.ArrayList;
+import com.badlogic.gdx.utils.Disposable;
 
 public class Drawist
 {
-
 	public  ArrayList<RendererObject> arr;
 
     public Drawist()

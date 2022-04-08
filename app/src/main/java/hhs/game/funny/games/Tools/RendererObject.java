@@ -1,6 +1,7 @@
 package hhs.game.funny.games.Tools;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Disposable;
 
 public abstract interface RendererObject
 {
