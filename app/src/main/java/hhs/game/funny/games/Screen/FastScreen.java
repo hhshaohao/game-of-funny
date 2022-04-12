@@ -91,9 +91,9 @@ public class FastScreen implements Screen
 		bdef.type = BodyDef.BodyType.StaticBody;
 
 		PolygonShape shape = new PolygonShape();
-		for( String i : r )
+		for (String i : r)
 		{
-			for( RectangleMapObject ro : map.getLayers().get(i).getObjects().getByType(RectangleMapObject.class) )
+			for (RectangleMapObject ro : map.getLayers().get(i).getObjects().getByType(RectangleMapObject.class))
 			{
 				Rectangle r = ro.getRectangle();
 
@@ -105,13 +105,13 @@ public class FastScreen implements Screen
 				body = world.createBody(bdef);
 				body.createFixture(fdef);
 			}
-			for( PolylineMapObject po : map.getLayers().get("ground").getObjects().getByType(PolylineMapObject.class) )
+			for (PolylineMapObject po : map.getLayers().get("ground").getObjects().getByType(PolylineMapObject.class))
 			{
 				float d[] = po.getPolyline().getVertices();
 				Polyline p = po.getPolyline();
 				ChainShape edge = new ChainShape();
 
-				for( int b = 0; b < d.length; ++b )
+				for (int b = 0; b < d.length; ++b)
 				{
 					d[b] = d[b] / ppm;
 				}
@@ -170,20 +170,20 @@ public class FastScreen implements Screen
 
 	void move()
 	{
-		if( !stop )
+		if (!stop)
 		{
-			if( left && zhu.b2body.getLinearVelocity().x < speed )
+			if (left && zhu.b2body.getLinearVelocity().x < speed)
 			{
 				zhu.b2body.applyForceToCenter(speed, 0, true);
 			}
-			else if( zhu.b2body.getLinearVelocity().x > -speed )
+			else if (zhu.b2body.getLinearVelocity().x > -speed)
 			{
 				zhu.b2body.applyForceToCenter(-speed, 0, true);
 			}
 		}
-		if( up )
+		if (up)
 		{
-			if( zhu.b2body.getLinearVelocity().y < 0.01f && zhu.b2body.getLinearVelocity().y > -0.01 )
+			if (zhu.b2body.getLinearVelocity().y < 0.01f && zhu.b2body.getLinearVelocity().y > -0.01)
 			{
 				zhu.b2body.applyForceToCenter(0, jumpH, true);
 			}

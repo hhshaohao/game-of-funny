@@ -36,7 +36,7 @@ public class UserInterface extends Stage
 		this.addActor(b1);
 		this.addActor(b2);
 	}
-	
+
 	public void ac(funny role)
 	{
 		this.addActor(r.getChange(role));
@@ -92,15 +92,15 @@ public class UserInterface extends Stage
 	@Override
 	public void act()
 	{
-		if( u0 )
+		if (u0)
 		{
 			logic.leftAction();
 		}
-		if( u1 )
+		if (u1)
 		{
 			logic.rightAction();
 		}
-		if( u2 )
+		if (u2)
 		{
 			logic.upAction();
 		}

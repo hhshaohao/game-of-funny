@@ -50,7 +50,7 @@ public class hscreen implements Screen
 		ta.center();
 
 		ta.add(newStart).padRight(50);
-		if( MyGame.archive.getBoolean("MAIN") )
+		if (MyGame.archive.getBoolean("MAIN"))
 		{
 			ta.add(goC);
 		}
@@ -70,7 +70,7 @@ public class hscreen implements Screen
 		openWorld.setPosition(mario.getX(), mario.getHeight() - 100);
 
 		st.addActor(mario);
-		if(MyGame.archive.getBoolean("WIN"))
+		if (MyGame.archive.getBoolean("WIN"))
 		{
 			st.addActor(openWorld);
 		}
@@ -113,16 +113,16 @@ public class hscreen implements Screen
 
 		MyGame.font.draw(batch, "沙雕之主", Res.w / 2, (Res.h / 2 + 50));
 		MyGame.font.setColor(0, 0, 0, t);
-		if( z )
+		if (z)
 		{
 			t -= p1;
-			if( t < 0 )
+			if (t < 0)
 				z = false;
 		}
 		else
 		{
 			t += p1;
-			if( t > 1 )
+			if (t > 1)
 				z = true;
 		}
 
@@ -263,7 +263,7 @@ public class hscreen implements Screen
 							public void run()
 							{
 								g.archive.putBoolean("MAIN", false);
-								g.archive.putBoolean("WIN",false);
+								g.archive.putBoolean("WIN", false);
 								g.archive.flush();
 								g.reStart();
 							}

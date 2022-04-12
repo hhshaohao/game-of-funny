@@ -53,24 +53,26 @@ public class Res implements Disposable
 					return true;
 				}
 			});
-		
-		
+
+
 	}
 	public ImageButton getChange(final funny role)
 	{
 		this.role = role;
-		cSkin = tool.createButton("ui12.png","s0.png");
-		cSkin.setPosition(w - cSkin.getWidth(),h / 2 - cSkin.getHeight() / 2);
+		cSkin = tool.createButton("ui12.png", "s0.png");
+		cSkin.setPosition(w - cSkin.getWidth(), h / 2 - cSkin.getHeight() / 2);
 		cSkin.addListener(new InputListener()
 			{
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
-					if(cv < 2)
+					if (cv < 2)
 					{
 						cv += 1;
-						tool.changeSkin(role,cv);
-					}else{
+						tool.changeSkin(role, cv);
+					}
+					else
+					{
 						cv = -1;
 					}
 					return true;
@@ -78,13 +80,13 @@ public class Res implements Disposable
 			});
 		return cSkin;
 	}
-	
+
 	@Override
 	public void dispose()
 	{
-		
+
 	}
-	
+
 
 }
 enum sprite

@@ -166,7 +166,7 @@ public class lernSkill implements Screen
 		shape.setAsBox(8 / ppm, 8 / ppm);
 		fdef.shape = shape;
 
-		for( RectangleMapObject rect : map.getLayers().get("rect").getObjects().getByType(RectangleMapObject.class) )
+		for (RectangleMapObject rect : map.getLayers().get("rect").getObjects().getByType(RectangleMapObject.class))
 		{
 			Body body;
 			Rectangle r = rect.getRectangle();
@@ -198,21 +198,21 @@ public class lernSkill implements Screen
 
 	public void move()
 	{
-		if( !stop )
+		if (!stop)
 		{
-			if( right )
+			if (right)
 			{
-				if( zhu.b2body.getLinearVelocity().x < speed )
+				if (zhu.b2body.getLinearVelocity().x < speed)
 					zhu.b2body.applyForceToCenter(new Vector2(speed, 0), true);
 			}
 			else
 			{
-				if( zhu.b2body.getLinearVelocity().x > -speed )
+				if (zhu.b2body.getLinearVelocity().x > -speed)
 					zhu.b2body.applyForceToCenter(new Vector2(-speed, 0), true);
 
 			}
 		}
-		if( up && zhu.b2body.getLinearVelocity().y < 0.01 && zhu.b2body.getLinearVelocity().y > -0.01 )
+		if (up && zhu.b2body.getLinearVelocity().y < 0.01 && zhu.b2body.getLinearVelocity().y > -0.01)
 		{
 			zhu.b2body.applyForceToCenter(new Vector2(0, 450), true);
 		}
@@ -235,11 +235,11 @@ public class lernSkill implements Screen
 		st.act();
 		st.draw();
 
-		if( start )
+		if (start)
 		{
 			first.isShow = true;
 		}
-		if( nx > 1520 / ppm )
+		if (nx > 1520 / ppm)
 			end.isShow = true;
 		ms.act();
 		ms.draw();
@@ -305,7 +305,7 @@ public class lernSkill implements Screen
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
-					if( time1 > 2f )
+					if (time1 > 2f)
 					{
 						time1 = 0;
 						zhu.b2body.applyForceToCenter(0, 600, true);

@@ -59,10 +59,10 @@ public class PlatformActor implements RendererObject
 		pos.x = plat.getPosition().x - w / 2;
 		pos.y = plat.getPosition().y - h / 2;
 
-		if( r )
+		if (r)
 		{
 			plat.setLinearVelocity(speed);
-			if( pos.x > right )
+			if (pos.x > right)
 			{
 				r = false;
 			}
@@ -70,7 +70,7 @@ public class PlatformActor implements RendererObject
 		else
 		{
 			plat.setLinearVelocity(-speed.x, 0);
-			if( pos.x < left )
+			if (pos.x < left)
 			{
 				r = true;
 			}

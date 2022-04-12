@@ -211,7 +211,7 @@ public class mainScreen implements Screen
         fdef.shape = shape;
         mbody.createFixture(fdef);
 
-        for( RectangleMapObject mo: map.getLayers().get("rect").getObjects().getByType(RectangleMapObject.class) )
+        for (RectangleMapObject mo: map.getLayers().get("rect").getObjects().getByType(RectangleMapObject.class))
 		{
 			Rectangle rect = mo.getRectangle();
 			//if (!mo.getProperties().get("name").equals("im")) {
@@ -232,7 +232,7 @@ public class mainScreen implements Screen
 
 		fdef.restitution = 0;
 		bdef.type = BodyDef.BodyType.DynamicBody;
-		for( int i = 0; i < funb.length; i++ )
+		for (int i = 0; i < funb.length; i++)
 		{
 			bdef.position.set(MathUtils.random(90 / tool.PPM, 300 / tool.PPM), MathUtils.random(500 / tool.PPM, 600 / tool.PPM));
 			funb[i] = world.createBody(bdef);
@@ -267,26 +267,26 @@ public class mainScreen implements Screen
 
     public void move()
 	{
-		if( !stop )
+		if (!stop)
 		{
-			if( right )
+			if (right)
 			{
-				if( mbody.getLinearVelocity().x < speed )
+				if (mbody.getLinearVelocity().x < speed)
 				{
 					mbody.applyForceToCenter(new Vector2(speed, 0), true);
 				}
 			}
 			else
 			{
-				if( mbody.getLinearVelocity().x > -speed )
+				if (mbody.getLinearVelocity().x > -speed)
 				{
 					mbody.applyForceToCenter(new Vector2(-speed, 0), true);
 				}
 			}
 		}
-		if( jump )
+		if (jump)
 		{
-			if( mbody.getLinearVelocity().y < 0.01f && mbody.getLinearVelocity().y > -0.01f )
+			if (mbody.getLinearVelocity().y < 0.01f && mbody.getLinearVelocity().y > -0.01f)
 			{
 				mbody.applyForceToCenter(new Vector2(0, 300f), true);
 			}
@@ -306,7 +306,7 @@ public class mainScreen implements Screen
 
         batch.begin();
 
-		for( int i = 0; i < funb.length; i++ )
+		for (int i = 0; i < funb.length; i++)
 		{
 			batch.draw(fun, funb[i].getPosition().x - (52 / tool.PPM) / 2, funb[i].getPosition().y - (52 / tool.PPM) / 2, 52 / tool.PPM, 52 / tool.PPM);
 			let(funb[i]);
@@ -317,7 +317,7 @@ public class mainScreen implements Screen
         batch.end();
 
 		welcome.setColor(0, 0, time, 1);
-		if( time > 1 )
+		if (time > 1)
 			time = 0;
 		/*if(t>10f){
 		 game.goMain();
@@ -331,7 +331,7 @@ public class mainScreen implements Screen
 
 	private void let(Body funb)
 	{
-		if( funb.getLinearVelocity().y == 0 )
+		if (funb.getLinearVelocity().y == 0)
 			funb.applyForceToCenter(new Vector2(7f, 400f), true);
 	}
 

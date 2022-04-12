@@ -47,7 +47,7 @@ public class FastRoleActor extends Actor
 	{
 		sx = b2body.getPosition().x - radius;
 		sy = b2body.getPosition().y - radius;
-		if( con != null )
+		if (con != null)
 			con.frameCall(b2body);
 	}
 

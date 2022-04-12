@@ -82,7 +82,8 @@ public class MainLineLevelLoader extends CommonlyScreen
 				@Override
 				public void upAction()
 				{
-					if (c.is) {
+					if (c.is)
+					{
 						game.ass.get("jump.mp3", Sound.class).play();
 						zhu.b2body.applyForceToCenter(new  Vector2(0, 600), true);
 						c.is = false;
@@ -122,13 +123,16 @@ public class MainLineLevelLoader extends CommonlyScreen
 			{
 				String s = "tmx/" + (l + 1) + ".tmx";
 				FileHandle fh =  Gdx.files.internal(s);
-				if (fh.exists()) {
+				if (fh.exists())
+				{
 					game.transition();
 					MainLineLevelLoader mll = new MainLineLevelLoader(game, s, l + 1);
 					Gdx.input.setInputProcessor(mll.ui);
 					game.setScreen(mll);
 					MainLineLevelLoader.this.dispose();
-				} else {
+				}
+				else
+				{
 					MainActivity.use.showQucikDialog("恭喜", "你通关了。\n你成功当上了沙雕之主\n你可以去往你的沙雕宫殿了", new Runnable()
 						{
 							@Override
@@ -180,13 +184,15 @@ public class MainLineLevelLoader extends CommonlyScreen
 
 		super.render(p1);
 
-		if (ny < 0) {
+		if (ny < 0)
+		{
 			//zhu.b2body.applyForceToCenter(new Vector2(0, 1200), true);
 			ui.cancelTouchFocus();
 			Gdx.input.setInputProcessor(ds.st);
 			game.setScreen(ds);
 		}
-		if (nx > ex) {
+		if (nx > ex)
+		{
 			ui.cancelTouchFocus();
 			Gdx.input.setInputProcessor(mis);
 			mis.isShow = true;
@@ -207,7 +213,8 @@ public class MainLineLevelLoader extends CommonlyScreen
 		FixtureDef fdef = new FixtureDef();
 		fdef.shape = shape;
 
-		for (RectangleMapObject ro : map.getLayers().get("ground").getObjects().getByType(RectangleMapObject.class)) {
+		for (RectangleMapObject ro : map.getLayers().get("ground").getObjects().getByType(RectangleMapObject.class))
+		{
 			Rectangle r = ro.getRectangle();
 
 			shape.setAsBox(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm);
@@ -238,7 +245,8 @@ public class MainLineLevelLoader extends CommonlyScreen
 		 body.setUserData("g");
 		 body.createFixture(fdef);
 		 }*/
-		for (RectangleMapObject ro : map.getLayers().get("born").getObjects().getByType(RectangleMapObject.class)) {
+		for (RectangleMapObject ro : map.getLayers().get("born").getObjects().getByType(RectangleMapObject.class))
+		{
 			Rectangle r = ro.getRectangle();
 			zhu = new funny(world,
 							new Vector2(ox = (r.getX() + r.getWidth() / 2) / ppm, oy = (r.getY() + r.getHeight() / 2) / ppm),
@@ -247,7 +255,8 @@ public class MainLineLevelLoader extends CommonlyScreen
 			super.ac(zhu);
 			break;
 		}
-		for (RectangleMapObject ro : map.getLayers().get("moveAble").getObjects().getByType(RectangleMapObject.class)) {
+		for (RectangleMapObject ro : map.getLayers().get("moveAble").getObjects().getByType(RectangleMapObject.class))
+		{
 			Rectangle r = ro.getRectangle();
 			bdef.type = BodyDef.BodyType.KinematicBody;
 
@@ -264,7 +273,8 @@ public class MainLineLevelLoader extends CommonlyScreen
 											   new Vector2(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm),
 											   new Vector2(r.getWidth() / ppm, r.getHeight() / ppm)));
 		}
-		for (RectangleMapObject ro : map.getLayers().get("e").getObjects().getByType(RectangleMapObject.class)) {
+		for (RectangleMapObject ro : map.getLayers().get("e").getObjects().getByType(RectangleMapObject.class))
+		{
 			ex = ro.getRectangle().getX() / ppm;
 			break;
 		}

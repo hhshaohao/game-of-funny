@@ -62,21 +62,21 @@ public class level1 extends CommonlyScreen
 				@Override
 				public void leftAction()
 				{
-					if( ac.b2body.getLinearVelocity().x > -speed )
+					if (ac.b2body.getLinearVelocity().x > -speed)
 						ac.b2body.applyForceToCenter(new Vector2(-speed, 0), true);	
 				}
 
 				@Override
 				public void rightAction()
 				{
-					if( ac.b2body.getLinearVelocity().x < speed )
+					if (ac.b2body.getLinearVelocity().x < speed)
 						ac.b2body.applyForceToCenter(new Vector2(speed, 0), true);
 				}
 
 				@Override
 				public void upAction()
 				{
-					if( c.is )
+					if (c.is)
 					{
 						game.ass.get("jump.mp3", Sound.class).play();
 						ac.b2body.applyForceToCenter(new  Vector2(0, 600), true);
@@ -161,19 +161,19 @@ public class level1 extends CommonlyScreen
 		ms.act();
 		ms.draw();
 
-		if( start )
+		if (start)
 		{
 			mis.isShow = true;
 			Gdx.input.setInputProcessor(mis);
 		}
 
-		if( ny < 0 )
+		if (ny < 0)
 		{
 			ui.cancelTouchFocus();
 			Gdx.input.setInputProcessor(ds.st);
 			game.setScreen(ds);
 		}
-		if( nx > 3546 / ppm )
+		if (nx > 3546 / ppm)
 		{
 			MyGame.archive.putBoolean("MAIN", true);
 			MyGame.archive.flush();
@@ -191,7 +191,7 @@ public class level1 extends CommonlyScreen
 		bdef.type = BodyDef.BodyType.StaticBody;
 		fdef.shape = shape;
 
-		for( RectangleMapObject ro : map.getLayers().get("ground").getObjects().getByType(RectangleMapObject.class) )
+		for (RectangleMapObject ro : map.getLayers().get("ground").getObjects().getByType(RectangleMapObject.class))
 		{
 			Rectangle r = ro.getRectangle();
 
@@ -201,7 +201,7 @@ public class level1 extends CommonlyScreen
 			b = world.createBody(bdef);
 			b.createFixture(fdef);
 		}
-		for( RectangleMapObject ro : map.getLayers().get("moveAble").getObjects().getByType(RectangleMapObject.class) )
+		for (RectangleMapObject ro : map.getLayers().get("moveAble").getObjects().getByType(RectangleMapObject.class))
 		{
 			Rectangle r = ro.getRectangle();
 			bdef.type = BodyDef.BodyType.KinematicBody;

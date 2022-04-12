@@ -57,7 +57,7 @@ public class MyGame extends Game
 		archive = Gdx.app.getPreferences("data");
 		setting = Gdx.app.getPreferences("setting");
 
-		if( setting.contains("zoom") )
+		if (setting.contains("zoom"))
 		{
 			zoom = setting.getInteger("zoom");
 		}
@@ -105,10 +105,10 @@ public class MyGame extends Game
 		font.getData().setScale(1);
 		String s = "tmx/0.tmx";
 		FileHandle fh =  Gdx.files.internal(s);
-		if( fh.exists() )
+		if (fh.exists())
 		{
 			transition();
-			MainLineLevelLoader mll = new MainLineLevelLoader(this, s,1);
+			MainLineLevelLoader mll = new MainLineLevelLoader(this, s, 1);
 			Gdx.input.setInputProcessor(mll.ui);
 			setScreen(mll);
 		}
@@ -119,9 +119,9 @@ public class MyGame extends Game
 					@Override
 					public void run()
 					{							
-						archive.putBoolean("WIN",true);
+						archive.putBoolean("WIN", true);
 						archive.flush();
-						h = new hscreen(MyGame.this,batch);
+						h = new hscreen(MyGame.this, batch);
 						goMagicLand();
 					}
 				});
@@ -140,26 +140,26 @@ public class MyGame extends Game
 	{
 		transition();
 		font.getData().setScale(1);
-		if( lev == null )
+		if (lev == null)
 			lev = new Level1(batch, this);
 		Gdx.input.setInputProcessor(lev.st);
 		setScreen(lev);
 	}
 
 	/*public void goLevel2()
-	{
-		transition();
-		if( stu == null )
-			stu = new lernSkill(this, batch);
-		Gdx.input.setInputProcessor(stu.st);
-		setScreen(stu);
-	}*/
+	 {
+	 transition();
+	 if( stu == null )
+	 stu = new lernSkill(this, batch);
+	 Gdx.input.setInputProcessor(stu.st);
+	 setScreen(stu);
+	 }*/
 
 	public void goMario()
 	{
 		transition();
 		font.getData().setScale(1);
-		if( mario == null )
+		if (mario == null)
 			mario = new Mario(this, batch);
 		Gdx.input.setInputProcessor(mario.st);
 		setScreen(mario);
@@ -178,7 +178,7 @@ public class MyGame extends Game
 	{
 		transition();
 		font.setColor(Color.BLACK);
-		if( m == null )
+		if (m == null)
 			m = new mainScreen(this, batch);
 		Gdx.input.setInputProcessor(m.st);
 		font.getData().setScale(1);
@@ -199,7 +199,7 @@ public class MyGame extends Game
 		transition();
 		font.getData().setScale(1);
 		MainActivity.use.showQuickTip("加载中哦……");
-		if( magic == null )
+		if (magic == null)
 			magic = new MagicLand(this, batch);
 		Gdx.input.setInputProcessor(magic.st);
 		setScreen(magic);
@@ -218,7 +218,7 @@ public class MyGame extends Game
 		font.getData().setScale(1);
 		lev.dispose();
 		lev = null;
-		lev = new Level1(batch,this);
+		lev = new Level1(batch, this);
 		Gdx.input.setInputProcessor(lev.st);
 		setScreen(lev);
 	}
@@ -240,7 +240,7 @@ public class MyGame extends Game
 		ass.load("s0.png", Texture.class);
 		ass.load("s1.png", Texture.class);
 		ass.load("f0.jpg", Texture.class);
-		ass.load("f1.jpg",Texture.class);
+		ass.load("f1.jpg", Texture.class);
 		ass.load("ui3.png", Texture.class);
 		ass.load("w0.png", Texture.class);
 		ass.load("w1.png", Texture.class);
@@ -264,8 +264,8 @@ public class MyGame extends Game
 		s.fontColor = Color.BLUE;
 
 		fps = new Label("fps:", s);
-		heap = new Label("",s);
-		heap.setPosition(0,fps.getHeight());
+		heap = new Label("", s);
+		heap.setPosition(0, fps.getHeight());
 
 		st.addActor(fps);
 		st.addActor(heap);
@@ -291,7 +291,7 @@ public class MyGame extends Game
 		st.act();
 		st.draw();
 
-		if( ss.isOk )	//加载完成
+		if (ss.isOk)	//加载完成
 		{
 			finish();
 			ss.isOk = false;
@@ -315,19 +315,19 @@ public class MyGame extends Game
 	public void dispose()
 	{
 		archive.flush();
-		if( m != null )
+		if (m != null)
 			m.dispose();
-		if( h != null )
+		if (h != null)
 			h.dispose();
-		if( lev != null )
+		if (lev != null)
 			lev.dispose();
-		if( batch != null )
+		if (batch != null)
 			batch.dispose();
-		if( Misbatch != null )
+		if (Misbatch != null)
 			Misbatch.dispose();
-		if( jump != null )
+		if (jump != null)
 			jump.dispose();
-		if( ass != null )
+		if (ass != null)
 			ass.dispose();
 
 	}

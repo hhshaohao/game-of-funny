@@ -29,7 +29,7 @@ public class NativeUse implements PlatformResolver
 		// TODO Auto-generated method stub
 		ConnectivityManager connectivityManager = (ConnectivityManager) _context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
-		if( connectivityManager == null )
+		if (connectivityManager == null)
 		{
 			return false;
 		}
@@ -37,13 +37,13 @@ public class NativeUse implements PlatformResolver
 		{
 			NetworkInfo[] networkInfo = connectivityManager.getAllNetworkInfo();
 
-			if( networkInfo != null && networkInfo.length > 0 )
+			if (networkInfo != null && networkInfo.length > 0)
 			{
-				for( int i = 0; i < networkInfo.length; i++ )
+				for (int i = 0; i < networkInfo.length; i++)
 				{
 					System.out.println(i + "==net state==" + networkInfo[i].getState());
 					System.out.println(i + "===net type===" + networkInfo[i].getTypeName());
-					if( networkInfo[i].getState() == NetworkInfo.State.CONNECTED )
+					if (networkInfo[i].getState() == NetworkInfo.State.CONNECTED)
 					{
 						return true;
 					}
@@ -159,7 +159,7 @@ public class NativeUse implements PlatformResolver
 						.show();
 				}
 			});
-		
+
 	}
 
 }

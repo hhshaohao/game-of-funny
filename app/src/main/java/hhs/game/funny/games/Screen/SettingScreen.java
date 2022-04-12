@@ -26,7 +26,7 @@ public class SettingScreen implements Screen
 	{
 		this.game = game;
 
-		if( !MyGame.setting.contains("zoom") )
+		if (!MyGame.setting.contains("zoom"))
 		{
 			MyGame.setting.putInteger("zoom", 0);
 		}

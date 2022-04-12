@@ -63,7 +63,7 @@ public class Jumper extends BackDraw
 		body.createFixture(fdef);
 
 		role = new funny[15];
-		for( int i = 0; i < role.length; ++i )
+		for (int i = 0; i < role.length; ++i)
 		{
 			role[i] = new funny(world, new Vector2(MathUtils.random(8 / tool.le1, Res.w / tool.le1), MathUtils.random(8 / tool.le1, Res.h / tool.le1)),
 								"w" + MathUtils.random(0, 2) + ".png", 32 / tool.le1, 1.0f);
@@ -81,9 +81,9 @@ public class Jumper extends BackDraw
 
 	void move()
 	{
-		for( int i = 0; i < role.length; i++ )
+		for (int i = 0; i < role.length; i++)
 		{
-			if( role[i].b2body.getLinearVelocity().y == 0 )
+			if (role[i].b2body.getLinearVelocity().y == 0)
 			{
 				role[i].b2body.applyForceToCenter(MathUtils.random(-500, 500), 0, true);
 			}
@@ -94,7 +94,7 @@ public class Jumper extends BackDraw
 	public void draw()
 	{
 		batch.begin();
-		for( int i = 0; i < role.length; i++ )
+		for (int i = 0; i < role.length; i++)
 		{
 			batch.draw(role[i], role[i].b2body.getPosition().x - ((64 / tool.le1) / 2), role[i].b2body.getPosition().y - ((64 / tool.le1) / 2), 64 / tool.le1, 64 / tool.le1);
 		}

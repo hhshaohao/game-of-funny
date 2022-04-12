@@ -102,7 +102,7 @@ public class Level1 implements Screen
 		this.initbox2d();
 		zhu = new funny(world, new Vector2(100 / tool.le1, 300 / tool.le1), "w0.png", "zhu", 8 / tool.le1);
 		st.addActor(bu.getChange(zhu));
-		
+
 		world.setContactListener(con);
 
 		//Gdx.input.setInputProcessor(st);
@@ -114,7 +114,7 @@ public class Level1 implements Screen
 			{
 				game.archive.putBoolean("MAIN", true);
 				game.archive.flush();
-				game.h = new hscreen(game,batch);
+				game.h = new hscreen(game, batch);
 				game.goMainLine();
 				this.dispose();
 			}
@@ -125,7 +125,7 @@ public class Level1 implements Screen
 
 			public void cilck(Dialog dialog)
 			{
-				for( int i = 0; i < pei.length; i++ )
+				for (int i = 0; i < pei.length; i++)
 				{
 					world.destroyBody(pei[i].b2body);
                 }
@@ -151,15 +151,15 @@ public class Level1 implements Screen
 				stop = true;
 
 				super.cilk(bu);
-				if( nextS )
+				if (nextS)
 				{
-					for( int i =0;i < pei.length;i++ )
+					for (int i =0;i < pei.length;i++)
 					{
 						//int a = MathUtils.random(0, 2);
 						pei[i].b2body.setTransform(new Vector2(1300 / tool.le1 , MathUtils.random(700 / tool.le1, 1500 / tool.le1)), pei[i].b2body.getAngle());
 					}
 				}
-				if( !nextS )
+				if (!nextS)
 				{
 					boss.b2body.setTransform(new Vector2(128 / tool.le1 , 32 / tool.le1), boss.b2body.getAngle());
 				}
@@ -187,7 +187,7 @@ public class Level1 implements Screen
 		shape.setAsBox(8 / tool.le1, 8 / tool.le1);
 		fdef.shape = shape;
 
-		for( RectangleMapObject re : map.getLayers().get("rect").getObjects().getByType(RectangleMapObject.class) )
+		for (RectangleMapObject re : map.getLayers().get("rect").getObjects().getByType(RectangleMapObject.class))
 		{
 			Rectangle rect = re.getRectangle();
 
@@ -212,7 +212,7 @@ public class Level1 implements Screen
 		 fix.setUserData("lost");
 		 }*/
 
-		for( int i =0;i < pei.length;i++ )
+		for (int i =0;i < pei.length;i++)
 		{
 			int a = MathUtils.random(0, 2);
 			pei[i] = new funny(world, new Vector2(1300 / tool.le1 , MathUtils.random(700 / tool.le1, 1500 / tool.le1)), "w" + a + ".png", "pei", 8 / tool.le1);
@@ -276,14 +276,14 @@ public class Level1 implements Screen
 
 	public void move()
 	{
-		if( left == true && stop == false )
+		if (left == true && stop == false)
 		{
-			if( zhu.b2body.getLinearVelocity().x > -speed )
+			if (zhu.b2body.getLinearVelocity().x > -speed)
 				zhu.b2body.applyForceToCenter(new Vector2(-speed, 0), true);
 		}
-		else if( stop == false )
+		else if (stop == false)
 		{
-			if( zhu.b2body.getLinearVelocity().x < speed )
+			if (zhu.b2body.getLinearVelocity().x < speed)
 				zhu.b2body.applyForceToCenter(new Vector2(speed, 0), true);
 		}
 
@@ -298,23 +298,23 @@ public class Level1 implements Screen
 		 jumping = false;
 		 }
 		 }*/
-		if( jump == true )
+		if (jump == true)
 		{
-			if( zhu.b2body.getLinearVelocity().y < 0.1f && zhu.b2body.getLinearVelocity().y > -0.1f )
+			if (zhu.b2body.getLinearVelocity().y < 0.1f && zhu.b2body.getLinearVelocity().y > -0.1f)
 			{
 				MyGame.ass.get("jump.mp3", Sound.class).play();
 				zhu.b2body.applyForceToCenter(new Vector2(0, 450), true);
 			}
 		}
 
-		if( nextS )
+		if (nextS)
 		{
-			for( int i = 0; i < pei.length; i++ )
+			for (int i = 0; i < pei.length; i++)
 			{
 				//if (pei[i].b2body.getPosition().x < nx + Res.w / (tool.le1 + suo) && pei[i].b2body.getPosition().x > nx - Res.w / (tool.le1 + suo))
-				if( pei[i].b2body.getLinearVelocity().y == 0 )
+				if (pei[i].b2body.getLinearVelocity().y == 0)
 				{
-					if( zhu.b2body.getPosition().x > pei[i].b2body.getPosition().x )
+					if (zhu.b2body.getPosition().x > pei[i].b2body.getPosition().x)
 					{
 						pei[i].b2body.applyForceToCenter(new Vector2(speed * 10, 425), true);
 					}
@@ -329,9 +329,9 @@ public class Level1 implements Screen
 		{
 
 			//if (pei[i].b2body.getPosition().x < nx + Res.w / (tool.le1 + suo) && pei[i].b2body.getPosition().x > nx - Res.w / (tool.le1 + suo))
-			if( boss.b2body.getLinearVelocity().y == 0 )
+			if (boss.b2body.getLinearVelocity().y == 0)
 			{
-				if( zhu.b2body.getPosition().x > boss.b2body.getPosition().x )
+				if (zhu.b2body.getPosition().x > boss.b2body.getPosition().x)
 				{
 					boss.b2body.applyForceToCenter(new Vector2(speed * 15, 500), true);
 				}
@@ -352,10 +352,10 @@ public class Level1 implements Screen
 
 	private void update()
 	{
-		if( !show )
+		if (!show)
 			this.move();
 		cam.position.x = nx;
-		if( first )
+		if (first)
 		{
 			tmp = cam.position.y;
 			first = false;
@@ -364,11 +364,11 @@ public class Level1 implements Screen
 		cam.update();
 
 		cam.position.y = tmp;
-		if( ny > cam.position.y + (Res.h / (tool.le1 + suo + MyGame.zoom)) / 4 )
+		if (ny > cam.position.y + (Res.h / (tool.le1 + suo + MyGame.zoom)) / 4)
 		{
 			tmp += 2 / tool.le1;
 		}
-		if( ny < cam.position.y )
+		if (ny < cam.position.y)
 		{
 			tmp -= 2 / tool.le1;
 		}
@@ -405,11 +405,11 @@ public class Level1 implements Screen
 
 		batch.draw(zhu, nx, ny, 16 / tool.le1, 16 / tool.le1);
 
-		if( nextS )
+		if (nextS)
 		{
-			for( int i = 0; i < pei.length; ++i )
+			for (int i = 0; i < pei.length; ++i)
 			{
-				if( pei[i].b2body.getPosition().x < nx + Res.w / (tool.le1 + suo + MyGame.zoom) && pei[i].b2body.getPosition().x > nx - Res.w / (tool.le1 + suo + MyGame.zoom) )
+				if (pei[i].b2body.getPosition().x < nx + Res.w / (tool.le1 + suo + MyGame.zoom) && pei[i].b2body.getPosition().x > nx - Res.w / (tool.le1 + suo + MyGame.zoom))
 				{
 					batch.draw(pei[i], pei[i].b2body.getPosition().x - ((16 / tool.le1) / 2), pei[i].b2body.getPosition().y - ((16 / tool.le1) / 2), 16 / tool.le1, 16 / tool.le1);
 				}
@@ -417,11 +417,11 @@ public class Level1 implements Screen
 		}
 		else
 		{
-			if( boss.b2body.getPosition().x < nx + Res.w / (tool.le1 + suo + game.zoom) && boss.b2body.getPosition().x > nx - Res.w / (tool.le1 + suo + game.zoom) )
+			if (boss.b2body.getPosition().x < nx + Res.w / (tool.le1 + suo + game.zoom) && boss.b2body.getPosition().x > nx - Res.w / (tool.le1 + suo + game.zoom))
 			{
 				batch.draw(boss, boss.b2body.getPosition().x - ((128 / tool.le1) / 2), boss.b2body.getPosition().y - ((128 / tool.le1) / 2), 128 / tool.le1, 128 / tool.le1);
 			}
-			if( nx < 32 / tool.le1 )
+			if (nx < 32 / tool.le1)
 			{
 				Gdx.input.setInputProcessor(ng);
 				ng.act();
@@ -434,21 +434,21 @@ public class Level1 implements Screen
 		st.act();
 		st.draw();
 
-		if( show )
+		if (show)
 		{
 			st.cancelTouchFocus();
 			Gdx.input.setInputProcessor(mis);
 			mis.act();
 			mis.draw();
 		}
-		if( nextS && ny < 16 * 4 / tool.le1 )
+		if (nextS && ny < 16 * 4 / tool.le1)
 		{
 			st.cancelTouchFocus();
 			Gdx.input.setInputProcessor(next);
 			next.act();
 			next.draw();
 		}
-		if( ny < 0 && !ndead )
+		if (ny < 0 && !ndead)
 		{
 			ndead = true;
 			Gdx.input.setInputProcessor(dead.st);

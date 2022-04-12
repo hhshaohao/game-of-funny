@@ -73,10 +73,10 @@ public class tool
 		Gdx.gl.glClearColor(c.r, c.g, c.b, c.a);
 	    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	}
-	
-	public static void changeSkin(funny role,int b)
+
+	public static void changeSkin(funny role, int b)
 	{
-		role.setTexture(MyGame.ass.get("w" + b + ".png",Texture.class));
+		role.setTexture(MyGame.ass.get("w" + b + ".png", Texture.class));
 	}
 
 }

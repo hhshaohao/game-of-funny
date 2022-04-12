@@ -37,9 +37,9 @@ public class ChooseCustomsScreen implements Screen
 		int max = (Res.w - 200) / 225;
 		int b = 0;//一行的量
 		int c = 0;//下多少行
-		for( int a = 0; a < ib.length; a++ )
+		for (int a = 0; a < ib.length; a++)
 		{
-			if( b < max )
+			if (b < max)
 			{
 				ib[a] = tool.createButton("s0.png");
 				ib[a].setBounds((b + 1) * 225, Res.h -  (c + 1) * 200, 200, 100);
@@ -59,7 +59,7 @@ public class ChooseCustomsScreen implements Screen
 		ta  = new Table();
 		ta.setFillParent(true);
 		ta.center().top();
-		for( i = 0;i < ib.length;i++ )
+		for (i = 0;i < ib.length;i++)
 		{
 			final String file = "tmx/" + i + ".tmx";
 			final int l = i;
@@ -70,7 +70,7 @@ public class ChooseCustomsScreen implements Screen
 					public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 					{	
 						FileHandle fh =  Gdx.files.internal(file);
-						if( fh.exists() )
+						if (fh.exists())
 						{
 							game.transition();
 							MainLineLevelLoader mll = new MainLineLevelLoader(game, file, l);
@@ -109,7 +109,7 @@ public class ChooseCustomsScreen implements Screen
 		st.draw();
 
 		batch.begin();
-		for( int i = 0; i < ib.length; i++ )
+		for (int i = 0; i < ib.length; i++)
 		{
 			MyGame.font.draw(batch, "第" + i + "关", ib[i].getX(), ib[i].getY());
 		}

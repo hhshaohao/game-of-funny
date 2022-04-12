@@ -50,9 +50,9 @@ public class MagicLand implements Screen
 
 	World world;
 	//Box2DDebugRenderer ren;
-	
+
 	Res r;
-	
+
 	Mission mis;
 
 	public MagicLand(final MyGame game, SpriteBatch batch)
@@ -95,7 +95,7 @@ public class MagicLand implements Screen
 			}
 
 		};
-		mis = new Mission("提示","长按跳跃键可以重复跳",MyGame.font)
+		mis = new Mission("提示", "长按跳跃键可以重复跳", MyGame.font)
 		{
 			@Override
 			public void cilck(Dialog dialog)
@@ -120,7 +120,7 @@ public class MagicLand implements Screen
 
 		bdef.type = BodyDef.BodyType.StaticBody;
 
-		for( RectangleMapObject rt : map.getLayers().get("ground").getObjects().getByType(RectangleMapObject.class) )
+		for (RectangleMapObject rt : map.getLayers().get("ground").getObjects().getByType(RectangleMapObject.class))
 		{
 			Rectangle rect = rt.getRectangle();
 
@@ -133,13 +133,13 @@ public class MagicLand implements Screen
 			body.createFixture(fdef);
 		}
 
-		for( PolylineMapObject po : map.getLayers().get("ground").getObjects().getByType(PolylineMapObject.class) )
+		for (PolylineMapObject po : map.getLayers().get("ground").getObjects().getByType(PolylineMapObject.class))
 		{
 			float d[] = po.getPolyline().getVertices();
 			Polyline p = po.getPolyline();
 			ChainShape edge = new ChainShape();
 
-			for( int i = 0; i < d.length; i++ )
+			for (int i = 0; i < d.length; i++)
 			{
 				d[i] = d[i] / ppm;
 			}
@@ -204,20 +204,21 @@ public class MagicLand implements Screen
 
 		st.act();
 		st.draw();
-		
-		if(mis.isShow){
+
+		if (mis.isShow)
+		{
 			Gdx.input.setInputProcessor(mis);
 			mis.act();
 			mis.draw();
 		}
-		
+
 		this.cilk();
 		//ren.render(world, cam.combined);
 	}
 
 	void cilk()
 	{
-		if( ny < 0 )
+		if (ny < 0)
 		{
 			st.cancelTouchFocus();
 			Gdx.input.setInputProcessor(ds.st);
@@ -227,18 +228,18 @@ public class MagicLand implements Screen
 
 	void move()
 	{
-		if( !stop )
+		if (!stop)
 		{
-			if( left && zhu.b2body.getLinearVelocity().x > -speed )
+			if (left && zhu.b2body.getLinearVelocity().x > -speed)
 			{
 				zhu.b2body.applyForceToCenter(new Vector2(-speed, 0), true);
 			}
-			else if( zhu.b2body.getLinearVelocity().x < speed )
+			else if (zhu.b2body.getLinearVelocity().x < speed)
 			{
 				zhu.b2body.applyForceToCenter(new Vector2(speed, 0), true);
 			}
 		}
-		if( up && zhu.b2body.getLinearVelocity().y < 0.1f && zhu.b2body.getLinearVelocity().y > -0.1f )
+		if (up && zhu.b2body.getLinearVelocity().y < 0.1f && zhu.b2body.getLinearVelocity().y > -0.1f)
 		{
 			zhu.b2body.applyForceToCenter(new  Vector2(0, 600), true);
 		}

@@ -22,14 +22,14 @@ public class Drawist
 	}
 	public void act(float p1)
 	{
-		for( RendererObject ro : arr )
+		for (RendererObject ro : arr)
 		{
 			ro.act(p1);
 		}
 	}
 	public void draw(SpriteBatch batch)
 	{
-		for( RendererObject ro : arr )
+		for (RendererObject ro : arr)
 		{
 			ro.draw(batch);
 		}

@@ -36,9 +36,9 @@ public class MissionStage extends Stage
 	@Override
 	public void draw()
 	{
-		for( Mission m : mis )
+		for (Mission m : mis)
 		{
-			if( m.isShow )
+			if (m.isShow)
 			{
 				Gdx.input.setInputProcessor(m);
 				m.act();
@@ -51,7 +51,7 @@ public class MissionStage extends Stage
 	public void dispose()
 	{
 		super.dispose();
-		for(Mission m : mis)
+		for (Mission m : mis)
 		{
 			m.dispose();
 		}

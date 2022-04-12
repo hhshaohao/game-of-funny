@@ -55,7 +55,7 @@ public class Mario implements Screen
 		cam = new OrthographicCamera();
 		cam.setToOrtho(false, Res.w / (ppm + suo + MyGame.zoom), Res.h / (ppm + suo + MyGame.zoom));
 		cam.position.y = Res.h / (ppm + suo + MyGame.zoom) / 2;
-		
+
 		map = new TmxMapLoader().load("tmx/level1.tmx");
 		render = new OrthogonalTiledMapRenderer(map, 1 / ppm, batch);
 
@@ -84,7 +84,7 @@ public class Mario implements Screen
 
 		bdef.type = BodyDef.BodyType.StaticBody;
 
-		for( RectangleMapObject rt : map.getLayers().get("Ground").getObjects().getByType(RectangleMapObject.class) )
+		for (RectangleMapObject rt : map.getLayers().get("Ground").getObjects().getByType(RectangleMapObject.class))
 		{
 			Rectangle rect = rt.getRectangle();
 
@@ -97,7 +97,7 @@ public class Mario implements Screen
 			body.createFixture(fdef);
 		}
 
-		for( RectangleMapObject rt : map.getLayers().get("Pipes").getObjects().getByType(RectangleMapObject.class) )
+		for (RectangleMapObject rt : map.getLayers().get("Pipes").getObjects().getByType(RectangleMapObject.class))
 		{
 			Rectangle rect = rt.getRectangle();
 
@@ -110,7 +110,7 @@ public class Mario implements Screen
 			body.createFixture(fdef);
 		}
 
-		for( RectangleMapObject rt : map.getLayers().get("Bricks").getObjects().getByType(RectangleMapObject.class) )
+		for (RectangleMapObject rt : map.getLayers().get("Bricks").getObjects().getByType(RectangleMapObject.class))
 		{
 			Rectangle rect = rt.getRectangle();
 
@@ -123,7 +123,7 @@ public class Mario implements Screen
 			body.createFixture(fdef);
 		}
 
-		for( RectangleMapObject rt : map.getLayers().get("Coins").getObjects().getByType(RectangleMapObject.class) )
+		for (RectangleMapObject rt : map.getLayers().get("Coins").getObjects().getByType(RectangleMapObject.class))
 		{
 			Rectangle rect = rt.getRectangle();
 
@@ -190,18 +190,18 @@ public class Mario implements Screen
 
 	void move()
 	{
-		if( !stop )
+		if (!stop)
 		{
-			if( left && zhu.b2body.getLinearVelocity().x > -speed )
+			if (left && zhu.b2body.getLinearVelocity().x > -speed)
 			{
 				zhu.b2body.applyForceToCenter(new Vector2(-speed, 0), true);
 			}
-			else if( zhu.b2body.getLinearVelocity().x < speed )
+			else if (zhu.b2body.getLinearVelocity().x < speed)
 			{
 				zhu.b2body.applyForceToCenter(new Vector2(speed, 0), true);
 			}
 		}
-		if( up && zhu.b2body.getLinearVelocity().y < 0.01f && zhu.b2body.getLinearVelocity().y > -0.01f )
+		if (up && zhu.b2body.getLinearVelocity().y < 0.01f && zhu.b2body.getLinearVelocity().y > -0.01f)
 		{
 			zhu.b2body.applyForceToCenter(new  Vector2(0, 500), true);
 		}

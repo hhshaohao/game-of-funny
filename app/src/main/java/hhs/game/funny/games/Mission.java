@@ -100,7 +100,7 @@ public class Mission extends Stage
 		skin.dispose();
 	}
 
-	
+
 	public void cilck(Dialog dialog)
 	{
 		dialog.remove();

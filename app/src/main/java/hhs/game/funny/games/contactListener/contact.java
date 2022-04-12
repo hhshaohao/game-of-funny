@@ -17,19 +17,19 @@ public class contact implements ContactListener
 		Fixture fixa = p1.getFixtureA();
 		Fixture fixb = p1.getFixtureB();
 		Fixture zhu = null,lost = null;
-		if( fixa.getUserData() == "zhu" )
+		if (fixa.getUserData() == "zhu")
 		{
 			zhu = fixa;
 		}
-		else if( fixb.getUserData() == "zhu" )
+		else if (fixb.getUserData() == "zhu")
 			zhu = fixb;
-		if( fixa.getUserData() == "lost" )
+		if (fixa.getUserData() == "lost")
 		{
 			lost = fixa;
 		}
-		else if( fixb.getUserData() == "lost" )
+		else if (fixb.getUserData() == "lost")
 			lost = fixb;
-		if( zhu != null && lost != null )
+		if (zhu != null && lost != null)
 		{
 			is = true;
 		}

@@ -20,7 +20,7 @@ public class CommonlyScreen extends UniversalScreen
 	{
 		ui.ac(role);
 	}
-	
+
 	@Override
 	public void show()
 	{
@@ -29,7 +29,7 @@ public class CommonlyScreen extends UniversalScreen
 	@Override
 	public void render(float p1)
 	{
-		if( showUI )
+		if (showUI)
 		{
 			ui.act();
 			ui.draw();
