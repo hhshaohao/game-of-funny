@@ -20,6 +20,7 @@ import hhs.game.funny.MainActivity;
 import hhs.game.funny.games.MainLineLevel.MainLineLevelLoader;
 import hhs.game.funny.games.Screen.ChooseCustomsScreen;
 import hhs.game.funny.games.Screen.Jumper;
+import hhs.game.funny.games.Screen.PractiseScreen;
 import hhs.game.funny.games.Screen.SettingScreen;
 //游戏入口类
 public class MyGame extends Game
@@ -38,12 +39,13 @@ public class MyGame extends Game
 	public hscreen h;					//选择页
 	public Level1 lev;					//第一关
 	public ChooseCustomsScreen ccs;		//选关页面
-//公众资源
-	public static Label fps,heap;				//帧率显示
-	public static SpriteBatch batch,Misbatch;	//公共资源：渲染器
+	public PractiseScreen  ps;			//练习关卡
+	//公众资源
+	public static Label fps,heap;				//帧率显示，内存占用显示
+	public static SpriteBatch batch,Misbatch;	//渲染器
 	public static BitmapFont font;				//中文支持
 	public static AssetManager ass;				//图像资源
-	public static Preferences archive,setting;	//存档读取（暂未使用)
+	public static Preferences archive,setting;	//本地数据读取
 	public static Jumper jump;					//滑稽跳舞
 	public static int zoom;						//屏幕缩放
 	public static Color clearColor;				//清屏颜色
@@ -72,7 +74,7 @@ public class MyGame extends Game
 		settingscreen = new SettingScreen(this);
 		so = new so(this);
 		ccs = new ChooseCustomsScreen(this);
-
+		ps = new PractiseScreen(this);
 		/*TextureRegion[] tr = new TextureRegion[14];
 
 		 for (int i = 1; i <= 14; i++) 
@@ -211,6 +213,15 @@ public class MyGame extends Game
 		Gdx.input.setInputProcessor(settingscreen.st);
 		font.getData().setScale(1.5f);
 		setScreen(settingscreen);
+	}
+	public void goPractise()
+	{
+		transition();
+		font.getData().setScale(1);
+		font.setColor(Color.BLACK);
+		Gdx.input.setInputProcessor(ps.st);
+		this.setScreen(ps);
+		
 	}
 	public void reStart()
 	{

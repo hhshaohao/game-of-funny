@@ -23,7 +23,7 @@ public class hscreen implements Screen
 	SpriteBatch batch;
 	Stage st;
 	Table ta;
-	ImageButton start,br,so,mario,openWorld,setting,goC,newStart;
+	ImageButton start,br,so,mario,openWorld,setting,goC,newStart,practise;
 	Texture l,r;
 	float t;
 	boolean z;
@@ -64,17 +64,20 @@ public class hscreen implements Screen
 		mario = tool.createButton("ui6.png");
 		openWorld = tool.createButton("ui7.png");
 		setting = tool.createButton("ui9.png");
+		practise = tool.createButton("ui13.png","s0.png");
 
 		setting.setPosition(Res.w - 200, Res.h - 100);
 		mario.setPosition(0, Res.h - 100);
 		openWorld.setPosition(mario.getX(), mario.getHeight() - 100);
-
+		practise.setPosition(Res.w / 2 - practise.getWidth() / 2,0);
+		
 		st.addActor(mario);
 		if (MyGame.archive.getBoolean("WIN"))
 		{
 			st.addActor(openWorld);
 		}
 		st.addActor(setting);
+		st.addActor(practise);
 
 		this.addListener();
 
@@ -276,7 +279,20 @@ public class hscreen implements Screen
 					//super.touchUp(event, x, y, pointer, button);
 				}
 			});
+		practise.addListener(new InputListener()
+		{
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
+				{
+					return true;
+				}
 
+				@Override
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button)
+				{
+					g.goPractise();
+				}
+		});
 	}
 
 	@Override
