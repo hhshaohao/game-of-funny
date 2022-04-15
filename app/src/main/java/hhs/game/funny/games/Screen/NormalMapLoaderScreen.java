@@ -56,9 +56,8 @@ public class NormalMapLoaderScreen extends CommonlyScreen
 	Mission mis;
 	MissionStage ms;
 	
-	Runnable run;
 
-    public NormalMapLoaderScreen(final MyGame game, String tmxFile, Runnable l)
+    public NormalMapLoaderScreen(final MyGame game, String tmxFile)
 	{
 		super(game, new  RoleLogic()
 			{
@@ -92,7 +91,6 @@ public class NormalMapLoaderScreen extends CommonlyScreen
 		cam = new OrthographicCamera();
 		cam.setToOrtho(false, Res.w / (ppm + zoom + MyGame.zoom), Res.h / (ppm + zoom + MyGame.zoom));
 		batch = MyGame.batch;
-		run = l;
 
 		map = new TmxMapLoader().load(tmxFile);
 
@@ -153,7 +151,8 @@ public class NormalMapLoaderScreen extends CommonlyScreen
 		}
 		if (nx > ex)
 		{
-			run.run();
+			game.goPractise();
+			MainActivity.use.showQuickTip("成功通过");
 		}
 	}
 

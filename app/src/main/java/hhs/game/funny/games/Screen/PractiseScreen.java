@@ -1,5 +1,6 @@
 package hhs.game.funny.games.Screen;
 
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.files.FileHandle;
@@ -9,11 +10,10 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import hhs.game.funny.MainActivity;
-import hhs.game.funny.games.MainLineLevel.MainLineLevelLoader;
 import hhs.game.funny.games.MyGame;
 import hhs.game.funny.games.Res;
 import hhs.game.funny.games.tool;
+import hhs.game.funny.games.MainLineLevel.MainLineLevelLoader;
 
 public class PractiseScreen implements Screen
 {
@@ -28,6 +28,8 @@ public class PractiseScreen implements Screen
 
 	final String file = "tmx/practise/";
 	FileHandle fd;
+	
+	String filearr[];
 
 	public PractiseScreen(final MyGame game)
 	{
@@ -37,8 +39,15 @@ public class PractiseScreen implements Screen
 		fd = Gdx.files.internal(file);
 
 		st = new Stage();
-
-		ib = new ImageButton[fd.list().length];
+		
+		filearr = new String[fd.list().length];
+		for (int i = 0; i < fd.list().length; ++i) 
+		{
+			filearr[i] = fd.list()[i].name();
+		}
+		
+		ib = new ImageButton[filearr.length];
+		
 		int max = (Res.w - 200) / 225;
 		int b = 0;//一行的量
 		int c = 0;//下多少行
@@ -57,14 +66,8 @@ public class PractiseScreen implements Screen
 				a--;
 			}
 		}
-		/*for (int i = 0; i < ib.length; i++) 
-		 {
-		 ib[i] = tool.createButton("s0.png");
-		 }*/
-		ta  = new Table();
-		ta.setFillParent(true);
-		ta.center().top();
-		for (i = 0;i < ib.length;++i)
+		
+		for (i = 0;i < filearr.length;++i)
 		{
 			ib[i].addListener(new InputListener()
 				{
@@ -72,26 +75,16 @@ public class PractiseScreen implements Screen
 					@Override
 					public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 					{	
-						game.transition();
-						NormalMapLoaderScreen mll = new NormalMapLoaderScreen(game, file + fd.list()[i].name(), new Runnable(){
-
-								@Override
-								public void run()
-								{
-									game.goPractise();
-								}
-
-
-							});
+						PractiseScreen.this.game.transition();
+						NormalMapLoaderScreen mll = new NormalMapLoaderScreen(game, file + filearr[i - 1]);
 						Gdx.input.setInputProcessor(mll.ui);
-						game.setScreen(mll);
+						PractiseScreen.this.game.setScreen(mll);
 						return true;
 					}
 				});
 			st.addActor(ib[i]);
 		}
 		st.addActor(new Res(game).exit);
-		st.addActor(ta);
 	}
 
 	@Override
@@ -108,7 +101,7 @@ public class PractiseScreen implements Screen
 		batch.begin();
 		for (int i = 0; i < ib.length; i++)
 		{
-			MyGame.font.draw(batch, fd.list()[i].name(), ib[i].getX(), ib[i].getY());
+			MyGame.font.draw(batch, filearr[i], ib[i].getX(), ib[i].getY());
 		}
 		batch.end();
 	}
