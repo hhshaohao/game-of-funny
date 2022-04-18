@@ -18,7 +18,7 @@ public class SettingScreen implements Screen
 	public Stage st;
 	ImageButton b0,b1;
 	Table ta;
-	Label l0;
+	Label l0,l1;
 
 	int zoom;
 
@@ -60,6 +60,7 @@ public class SettingScreen implements Screen
 		s.font = MyGame.font;
 		s.fontColor = Color.BLACK;
 		l0 = new Label("null", s);
+		l1 = new Label("本游戏完全免费，请不要在非官方途径下载\n联系方式：\nQQ:1265177365\n微信：quququqqq",s);
 
 		b0.addListener(new InputListener()
 			{
@@ -90,6 +91,8 @@ public class SettingScreen implements Screen
 		ta.add(b0);
 		ta.add(l0);
 		ta.add(b1);
+		ta.row();
+		ta.add(l1);
 
 		st.addActor(ta);
 	}

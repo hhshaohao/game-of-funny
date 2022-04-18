@@ -69,7 +69,7 @@ public class MyGame extends Game
 		}
 
 		font = ass.get("font.fnt", BitmapFont.class);	
-
+		//加载一些场景
 		h = new hscreen(this, batch);
 		settingscreen = new SettingScreen(this);
 		so = new so(this);
@@ -82,7 +82,7 @@ public class MyGame extends Game
 		 tr[i - 1] =new TextureRegion(ass.get("anim/e" + i + ".png",Texture.class));
 		 }
 		 boom = new Animation(0.1f,tr);*/
-
+		//去到主场景
 		goMain();
 		//Gdx.input.setInputProcessor(l.ui);
 	}
