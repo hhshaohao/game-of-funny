@@ -33,7 +33,7 @@ public class DeadScreen implements Screen
 		back = MyGame.ass.get("background/dead.jpg", Texture.class);
 
 		fu = tool.createButton(MyGame.ass.get("ui5.png", Texture.class));
-		fu.setPosition(Res.w / 2, Res.h / 2);
+		fu.setPosition(Res.w / 2 - fu.getWidth() / 2, Res.h / 2 - fu.getHeight() / 2);
 		fu.addListener(new InputListener(){
 
 				@Override

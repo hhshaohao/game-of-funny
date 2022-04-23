@@ -22,6 +22,7 @@ import hhs.game.funny.games.Screen.ChooseCustomsScreen;
 import hhs.game.funny.games.Screen.Jumper;
 import hhs.game.funny.games.Screen.PractiseScreen;
 import hhs.game.funny.games.Screen.SettingScreen;
+import hhs.game.funny.games.Screen.LocalMapEntrance;
 //游戏入口类
 public class MyGame extends Game
 {
@@ -40,6 +41,7 @@ public class MyGame extends Game
 	public Level1 lev;					//第一关
 	public ChooseCustomsScreen ccs;		//选关页面
 	public PractiseScreen  ps;			//练习关卡
+	public LocalMapEntrance lmp;		//本地地图入口
 	//公众资源
 	public static Label fps,heap;				//帧率显示，内存占用显示
 	public static SpriteBatch batch,Misbatch;	//渲染器
@@ -75,6 +77,7 @@ public class MyGame extends Game
 		so = new so(this);
 		ccs = new ChooseCustomsScreen(this);
 		ps = new PractiseScreen(this);
+		lmp = new LocalMapEntrance(this);
 		/*TextureRegion[] tr = new TextureRegion[14];
 
 		 for (int i = 1; i <= 14; i++) 
@@ -222,6 +225,14 @@ public class MyGame extends Game
 		Gdx.input.setInputProcessor(ps.st);
 		this.setScreen(ps);
 		
+	}
+	public void goLocal()
+	{
+		transition();
+		font.getData().setScale(1);
+		font.setColor(Color.BLACK);
+		Gdx.input.setInputProcessor(lmp.st);
+		this.setScreen(lmp);
 	}
 	public void reStart()
 	{
