@@ -14,6 +14,11 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import hhs.game.funny.games.Res;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.Gdx;
+import hhs.game.funny.MainActivity;
 
 public class LocalMapEntrance implements Screen
 {
@@ -26,7 +31,7 @@ public class LocalMapEntrance implements Screen
 	TextField tf;
 	ImageButton start;
 
-	public LocalMapEntrance(MyGame game)
+	public LocalMapEntrance(final MyGame game)
 	{
 		this.game = game;
 
@@ -60,6 +65,40 @@ public class LocalMapEntrance implements Screen
 
 		st.addActor(r.exit);
 		st.addActor(tf);
+		
+		start.addListener(new InputListener(){
+
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
+				{
+					return true;
+				}
+
+				@Override
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button)
+				{
+					FileHandle fd = Gdx.files.internal(tf.getText());
+					if(fd.exists())
+					{
+						if(fd.isDirectory())
+						{
+							PractiseScreen ps = new PractiseScreen(game,tf.getText());
+							Gdx.input.setInputProcessor(ps.st);
+							game.setScreen(ps);
+						}else
+						{
+							NormalMapLoaderScreen nmls = new NormalMapLoaderScreen(game,tf.getText());
+							Gdx.input.setInputProcessor(nmls.ui);
+							game.setScreen(nmls);
+						}
+					}else
+					{
+						MainActivity.use.showQuickTip(tf.getText());
+					}
+					//super.touchUp(event, x, y, pointer, button);
+				}
+
+			});
 	}
 
 	@Override

@@ -27,14 +27,16 @@ public class PractiseScreen implements Screen
 	ImageButton ib[];
 	Table ta;
 
-	final String file = "tmx/";
+	String file;
 	FileHandle fd;
 
 	String filearr[];
 
-	public PractiseScreen(final MyGame game)
+	public PractiseScreen(final MyGame game,String d)
 	{
 		this.game = game;
+		file= d;
+		
 		batch = game.Misbatch;
 
 		fd = Gdx.files.internal(file);

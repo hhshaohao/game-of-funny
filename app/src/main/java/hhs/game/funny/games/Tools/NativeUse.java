@@ -63,7 +63,7 @@ public class NativeUse implements PlatformResolver
 				public void run()
 				{
 					// TODO Auto-generated method stub
-					Toast.makeText(_context, context, Toast.LENGTH_LONG).show();
+					Toast.makeText(_context, context, Toast.LENGTH_SHORT).show();
 				}
 			});
 

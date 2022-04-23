@@ -76,7 +76,7 @@ public class MyGame extends Game
 		settingscreen = new SettingScreen(this);
 		so = new so(this);
 		ccs = new ChooseCustomsScreen(this);
-		ps = new PractiseScreen(this);
+		ps = new PractiseScreen(this,"tmx/practise/");
 		lmp = new LocalMapEntrance(this);
 		/*TextureRegion[] tr = new TextureRegion[14];
 
