@@ -55,7 +55,7 @@ public class NormalMapLoaderScreen extends CommonlyScreen
 
 	Mission mis;
 	MissionStage ms;
-	
+
 
     public NormalMapLoaderScreen(final MyGame game, String tmxFile)
 	{
@@ -170,50 +170,81 @@ public class NormalMapLoaderScreen extends CommonlyScreen
 		FixtureDef fdef = new FixtureDef();
 		fdef.shape = shape;
 
-		for (RectangleMapObject ro : map.getLayers().get("ground").getObjects().getByType(RectangleMapObject.class))
+		try
 		{
-			Rectangle r = ro.getRectangle();
+			for (RectangleMapObject ro : map.getLayers().get("ground").getObjects().getByType(RectangleMapObject.class))
+			{
+				Rectangle r = ro.getRectangle();
 
-			shape.setAsBox(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm);
+				shape.setAsBox(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm);
 
-			bdef.position.set((r.getX() + r.getWidth() / 2) / ppm, (r.getY() + r.getHeight() / 2) / ppm);
+				bdef.position.set((r.getX() + r.getWidth() / 2) / ppm, (r.getY() + r.getHeight() / 2) / ppm);
 
-			body = world.createBody(bdef);
+				body = world.createBody(bdef);
 
-			body.createFixture(fdef);
+				body.createFixture(fdef);
+			}
+		}catch (NullPointerException npe)
+		{
+			MainActivity.use.showQuickTip("缺失ground层");
 		}
-		for (RectangleMapObject ro : map.getLayers().get("born").getObjects().getByType(RectangleMapObject.class))
+
+		try
 		{
-			Rectangle r = ro.getRectangle();
+			for (RectangleMapObject ro : map.getLayers().get("born").getObjects().getByType(RectangleMapObject.class))
+			{
+				Rectangle r = ro.getRectangle();
+				zhu = new funny(world,
+								new Vector2(ox = (r.getX() + r.getWidth() / 2) / ppm, oy = (r.getY() + r.getHeight() / 2) / ppm),
+								"w0.png", r.getWidth() / 2 / ppm
+								);
+				super.ac(zhu);
+				break;
+			}
+		}catch (NullPointerException npe)
+		{
+			MainActivity.use.showQuickTip("缺失born层");
 			zhu = new funny(world,
-							new Vector2(ox = (r.getX() + r.getWidth() / 2) / ppm, oy = (r.getY() + r.getHeight() / 2) / ppm),
-							"w0.png", r.getWidth() / 2 / ppm
-							);
-			super.ac(zhu);
-			break;
+							new Vector2(ox = 0, oy = 50),
+							"w0.png", 18 / 2 / ppm);
 		}
-		for (RectangleMapObject ro : map.getLayers().get("moveAble").getObjects().getByType(RectangleMapObject.class))
+
+		try
 		{
-			Rectangle r = ro.getRectangle();
-			bdef.type = BodyDef.BodyType.KinematicBody;
+			for (RectangleMapObject ro : map.getLayers().get("moveAble").getObjects().getByType(RectangleMapObject.class))
+			{
+				Rectangle r = ro.getRectangle();
+				bdef.type = BodyDef.BodyType.KinematicBody;
 
-			shape.setAsBox(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm);
-			bdef.position.set(r.getX() / ppm + shape.getRadius(), r.getY() / ppm + shape.getRadius());
+				shape.setAsBox(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm);
+				bdef.position.set(r.getX() / ppm + shape.getRadius(), r.getY() / ppm + shape.getRadius());
 
-			dist.addRenderer(new PlatformActor(new Texture("background/dead.jpg"),
-											   new Vector2(MathUtils.random(Integer.parseInt(ro.getProperties().get("s", String.class)), Integer.parseInt(ro.getProperties().get("e", String.class))) / ppm, r.getY() / ppm + r.getHeight() / 2 / ppm),
-											   shape,
-											   Integer.parseInt(ro.getProperties().get("s", String.class)) / ppm,
-											   Integer.parseInt(ro.getProperties().get("e", String.class)) / ppm,
-											   new Vector2(2, 0),
-											   world,
-											   new Vector2(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm),
-											   new Vector2(r.getWidth() / ppm, r.getHeight() / ppm)));
+				dist.addRenderer(new PlatformActor(new Texture("background/dead.jpg"),
+												   new Vector2(MathUtils.random(Integer.parseInt(ro.getProperties().get("s", String.class)), Integer.parseInt(ro.getProperties().get("e", String.class))) / ppm, r.getY() / ppm + r.getHeight() / 2 / ppm),
+												   shape,
+												   Integer.parseInt(ro.getProperties().get("s", String.class)) / ppm,
+												   Integer.parseInt(ro.getProperties().get("e", String.class)) / ppm,
+												   new Vector2(2, 0),
+												   world,
+												   new Vector2(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm),
+												   new Vector2(r.getWidth() / ppm, r.getHeight() / ppm)));
+			}
+		}catch (NullPointerException npe)
+		{
+			MainActivity.use.showQuickTip("缺失moveAble层");
 		}
-		for (RectangleMapObject ro : map.getLayers().get("e").getObjects().getByType(RectangleMapObject.class))
+
+		try
 		{
-			ex = ro.getRectangle().getX() / ppm;
-			break;
+			for (RectangleMapObject ro : map.getLayers().get("e").getObjects().getByType(RectangleMapObject.class))
+			{
+				ex = ro.getRectangle().getX() / ppm;
+				break;
+			}
+		}catch (NullPointerException npe)
+		{
+			MainActivity.use.showQuickTip("缺失e层");
+			ex = 1000;
 		}
 	}
 

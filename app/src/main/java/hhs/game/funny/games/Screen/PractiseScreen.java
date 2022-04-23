@@ -10,25 +10,26 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.SerializationException;
 import hhs.game.funny.games.MyGame;
 import hhs.game.funny.games.Res;
 import hhs.game.funny.games.tool;
-import hhs.game.funny.games.MainLineLevel.MainLineLevelLoader;
+import hhs.game.funny.games.mainScreen;
+import hhs.game.funny.MainActivity;
 
 public class PractiseScreen implements Screen
 {
     MyGame game;
 	SpriteBatch batch;
-	int i;
 
 	public Stage st;
 
 	ImageButton ib[];
 	Table ta;
 
-	final String file = "tmx/practise/";
+	final String file = "tmx/";
 	FileHandle fd;
-	
+
 	String filearr[];
 
 	public PractiseScreen(final MyGame game)
@@ -39,15 +40,15 @@ public class PractiseScreen implements Screen
 		fd = Gdx.files.internal(file);
 
 		st = new Stage();
-		
+
 		filearr = new String[fd.list().length];
 		for (int i = 0; i < fd.list().length; ++i) 
 		{
 			filearr[i] = fd.list()[i].name();
 		}
-		
+
 		ib = new ImageButton[filearr.length];
-		
+
 		int max = (Res.w - 200) / 225;
 		int b = 0;//一行的量
 		int c = 0;//下多少行
@@ -66,9 +67,10 @@ public class PractiseScreen implements Screen
 				a--;
 			}
 		}
-		
-		for (i = 0;i < filearr.length;++i)
+
+		for (int i = 0;i < filearr.length;++i)
 		{
+			final String filename = file + filearr[i];
 			ib[i].addListener(new InputListener()
 				{
 
@@ -76,9 +78,17 @@ public class PractiseScreen implements Screen
 					public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 					{	
 						PractiseScreen.this.game.transition();
-						NormalMapLoaderScreen mll = new NormalMapLoaderScreen(game, file + filearr[i - 1]);
-						Gdx.input.setInputProcessor(mll.ui);
-						PractiseScreen.this.game.setScreen(mll);
+						try
+						{
+							NormalMapLoaderScreen mll = new NormalMapLoaderScreen(game, filename);
+							Gdx.input.setInputProcessor(mll.ui);
+							PractiseScreen.this.game.setScreen(mll);
+						}
+						catch (SerializationException se)
+						{
+							MainActivity.use.showQuickTip("不是正确的地图文件");
+							Gdx.input.setInputProcessor(PractiseScreen.this.st);
+						}
 						return true;
 					}
 				});
