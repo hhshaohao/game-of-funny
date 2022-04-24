@@ -42,6 +42,7 @@ public class MyGame extends Game
 	public ChooseCustomsScreen ccs;		//选关页面
 	public PractiseScreen  ps;			//练习关卡
 	public LocalMapEntrance lmp;		//本地地图入口
+	public PractiseScreen teampScreen;			//当前场景
 	//公众资源
 	public static Label fps,heap;				//帧率显示，内存占用显示
 	public static SpriteBatch batch,Misbatch;	//渲染器
@@ -243,6 +244,14 @@ public class MyGame extends Game
 		lev = new Level1(batch, this);
 		Gdx.input.setInputProcessor(lev.st);
 		setScreen(lev);
+	}
+	public void goThat()
+	{
+		transition();
+		font.getData().setScale(1);
+		font.setColor(Color.BLACK);
+		Gdx.input.setInputProcessor(teampScreen.st);
+		this.setScreen(teampScreen);
 	}
 	//初始化线程
 	@Override

@@ -32,11 +32,11 @@ public class PractiseScreen implements Screen
 
 	String filearr[];
 
-	public PractiseScreen(final MyGame game,String d)
+	public PractiseScreen(final MyGame game, String d)
 	{
 		this.game = game;
-		file= d;
-		
+		file = d;
+
 		batch = game.Misbatch;
 
 		fd = Gdx.files.internal(file);
@@ -72,7 +72,15 @@ public class PractiseScreen implements Screen
 
 		for (int i = 0;i < filearr.length;++i)
 		{
-			final String filename = file + filearr[i];
+			final String filename;
+			if (file.getBytes()[file.getBytes().length - 1] != '/')
+			{
+				filename = file + '/' + filearr[i];
+			}
+			else
+			{
+				filename = file + filearr[i];
+			}
 			ib[i].addListener(new InputListener()
 				{
 
@@ -97,6 +105,7 @@ public class PractiseScreen implements Screen
 			st.addActor(ib[i]);
 		}
 		st.addActor(new Res(game).exit);
+		game.teampScreen = this;
 	}
 
 	@Override
@@ -116,6 +125,10 @@ public class PractiseScreen implements Screen
 			MyGame.font.draw(batch, filearr[i], ib[i].getX(), ib[i].getY());
 		}
 		batch.end();
+		if (!game.teampScreen.equals(this))
+		{
+			game.teampScreen = this;
+		}
 	}
 
 	@Override

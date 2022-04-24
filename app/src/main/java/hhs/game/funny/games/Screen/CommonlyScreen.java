@@ -11,9 +11,9 @@ public class CommonlyScreen extends UniversalScreen
 	public MyGame game;
 	public boolean showUI = true;
 
-	public CommonlyScreen(MyGame game, RoleLogic r)
+	public CommonlyScreen(MyGame game, RoleLogic r,boolean hb)
 	{
-		ui = new UserInterface(game, r);
+		ui = new UserInterface(game, r,hb);
 	}
 
 	public void ac(funny role)

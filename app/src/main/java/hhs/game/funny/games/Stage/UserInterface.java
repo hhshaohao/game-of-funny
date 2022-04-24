@@ -19,7 +19,7 @@ public class UserInterface extends Stage
 	RoleLogic logic;
 	boolean u0,u1,u2;
 
-	public UserInterface(final MyGame game, RoleLogic l)
+	public UserInterface(final MyGame game, RoleLogic l,boolean hb)
 	{
 		this.game = game;
 
@@ -31,7 +31,31 @@ public class UserInterface extends Stage
 		this.logic = l;
 		this.addButtonAction();
 
-		this.addActor(r.exit);
+		if(hb)
+		{
+			this.addActor(r.exit);
+		}else
+		{
+			ImageButton exit = r.exit;
+			exit.clearListeners();
+			exit.addListener(new InputListener(){
+
+					@Override
+					public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
+					{
+						return true;
+					}
+
+					@Override
+					public void touchUp(InputEvent event, float x, float y, int pointer, int button)
+					{
+						game.goThat();
+						//super.touchUp(event, x, y, pointer, button);
+					}
+
+				});
+			this.addActor(exit);
+		}
 		this.addActor(b0);
 		this.addActor(b1);
 		this.addActor(b2);

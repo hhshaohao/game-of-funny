@@ -86,7 +86,7 @@ public class NormalMapLoaderScreen extends CommonlyScreen
 						c.is = false;
 					}
 				}
-			});
+			},false);
 		this.game = game;
 		cam = new OrthographicCamera();
 		cam.setToOrtho(false, Res.w / (ppm + zoom + MyGame.zoom), Res.h / (ppm + zoom + MyGame.zoom));
@@ -151,7 +151,7 @@ public class NormalMapLoaderScreen extends CommonlyScreen
 		}
 		if (nx > ex)
 		{
-			game.goPractise();
+			game.goThat();
 			MainActivity.use.showQuickTip("成功通过");
 		}
 	}

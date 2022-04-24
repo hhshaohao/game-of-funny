@@ -83,6 +83,7 @@ public class LocalMapEntrance implements Screen
 						if(fd.isDirectory())
 						{
 							PractiseScreen ps = new PractiseScreen(game,tf.getText());
+							game.teampScreen = ps;
 							Gdx.input.setInputProcessor(ps.st);
 							game.setScreen(ps);
 						}else

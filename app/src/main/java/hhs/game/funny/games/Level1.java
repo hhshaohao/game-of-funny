@@ -279,12 +279,12 @@ public class Level1 implements Screen
 		if (left == true && stop == false)
 		{
 			if (zhu.b2body.getLinearVelocity().x > -speed)
-				zhu.b2body.applyForceToCenter(new Vector2(-speed, 0), true);
+				zhu.b2body.applyForceToCenter(-speed, 0, true);
 		}
 		else if (stop == false)
 		{
 			if (zhu.b2body.getLinearVelocity().x < speed)
-				zhu.b2body.applyForceToCenter(new Vector2(speed, 0), true);
+				zhu.b2body.applyForceToCenter(speed, 0, true);
 		}
 
 		/*if (jump == true) {
@@ -303,7 +303,7 @@ public class Level1 implements Screen
 			if (zhu.b2body.getLinearVelocity().y < 0.1f && zhu.b2body.getLinearVelocity().y > -0.1f)
 			{
 				MyGame.ass.get("jump.mp3", Sound.class).play();
-				zhu.b2body.applyForceToCenter(new Vector2(0, 450), true);
+				zhu.b2body.applyForceToCenter(0, 450, true);
 			}
 		}
 
@@ -316,11 +316,11 @@ public class Level1 implements Screen
 				{
 					if (zhu.b2body.getPosition().x > pei[i].b2body.getPosition().x)
 					{
-						pei[i].b2body.applyForceToCenter(new Vector2(speed * 10, 425), true);
+						pei[i].b2body.applyForceToCenter(speed * 10, 425, true);
 					}
 					else
 					{
-						pei[i].b2body.applyForceToCenter(new Vector2(-speed * 10, 425), true);
+						pei[i].b2body.applyForceToCenter(-speed * 10, 425, true);
 					}
 				}
 			}
@@ -333,11 +333,11 @@ public class Level1 implements Screen
 			{
 				if (zhu.b2body.getPosition().x > boss.b2body.getPosition().x)
 				{
-					boss.b2body.applyForceToCenter(new Vector2(speed * 15, 500), true);
+					boss.b2body.applyForceToCenter(speed * 15, 500, true);
 				}
 				else
 				{
-					boss.b2body.applyForceToCenter(new Vector2(-speed * 15, 500), true);
+					boss.b2body.applyForceToCenter(-speed * 15, 500, true);
 				}
 			}
 
