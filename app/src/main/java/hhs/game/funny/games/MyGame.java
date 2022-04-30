@@ -38,9 +38,9 @@ public class MyGame extends Game
 	//lernSkill stu;
 
 	public hscreen h;					//选择页
-	public Level1 lev;					//第一关
+	public Level1 lev;					//第一关页面
 	public ChooseCustomsScreen ccs;		//选关页面
-	public PractiseScreen  ps;			//练习关卡
+	public PractiseScreen  ps;			//练习关卡页面
 	public LocalMapEntrance lmp;		//本地地图入口
 	public PractiseScreen teampScreen;			//当前场景
 	//公众资源
@@ -53,12 +53,12 @@ public class MyGame extends Game
 	public static int zoom;						//屏幕缩放
 	public static Color clearColor;				//清屏颜色
 	public static Image image;					//场景过渡
-	public static Animation boom;				//爆炸效果
+	
 	//当主要静态资源加载完毕后
 	public void finish()
 	{
 		jump = new Jumper();
-
+		//初始化本地存储对象
 		archive = Gdx.app.getPreferences("data");
 		setting = Gdx.app.getPreferences("setting");
 
@@ -70,7 +70,7 @@ public class MyGame extends Game
 		{
 			zoom = 0;
 		}
-
+		//初始化中文字体
 		font = ass.get("font.fnt", BitmapFont.class);	
 		//加载一些场景
 		h = new hscreen(this, batch);
@@ -79,23 +79,11 @@ public class MyGame extends Game
 		ccs = new ChooseCustomsScreen(this);
 		ps = new PractiseScreen(this,"tmx/practise/");
 		lmp = new LocalMapEntrance(this);
-		/*TextureRegion[] tr = new TextureRegion[14];
 
-		 for (int i = 1; i <= 14; i++) 
-		 {
-		 tr[i - 1] =new TextureRegion(ass.get("anim/e" + i + ".png",Texture.class));
-		 }
-		 boom = new Animation(0.1f,tr);*/
 		//去到主场景
+		//这里也可以换成该类中'go'前缀的函数
 		goMain();
-		//Gdx.input.setInputProcessor(l.ui);
 	}
-
-	/*public <T extends UniversalScreen> void goClass(Stage st)
-	 {
-	 Gdx.input.setInputProcessor(st);	
-	 setScreen();
-	 }*/
 
 	public void goChooser()
 	{
@@ -267,7 +255,6 @@ public class MyGame extends Game
 		setScreen(ss);	//初始场景设置(加载资源时展示的场景)
 
 		ass.load("font.fnt", BitmapFont.class);	//加载资源
-
 		ass.load("s0.png", Texture.class);
 		ass.load("s1.png", Texture.class);
 		ass.load("f0.jpg", Texture.class);
@@ -282,13 +269,9 @@ public class MyGame extends Game
 		ass.load("ui5.png", Texture.class);
 		ass.load("ui8.png", Texture.class);
 		ass.load("down.mp3", Sound.class);
-		/*for (int i = 1; i <= 14; i++) {
-		 ass.load("anim/e" + i + ".gif",Texture.class);
-		 }*/
-		//ass.load("anim/GameOver.png",Texture.class);
-
+		
 		st = new Stage();
-
+		//初始化帧率显示和内存占用显示
 		Label.LabelStyle s = new Label.LabelStyle();
 		s.font = new BitmapFont();
 		s.font.getData().setScale(4);
@@ -300,6 +283,7 @@ public class MyGame extends Game
 
 		st.addActor(fps);
 		st.addActor(heap);
+		//初始化过渡黑场
 		image = new Image(new Texture("tran.jpg"));
 		image.setSize(st.getWidth(), st.getHeight()); 
 		image.setOrigin(st.getWidth() / 2, st.getHeight() / 2); 
@@ -316,9 +300,10 @@ public class MyGame extends Game
 		tool.clearScreen(clearColor);
 		fps.setText("fps:" + Gdx.graphics.getFramesPerSecond());	//帧率显示
 		heap.setText(((Gdx.app.getJavaHeap() / 1048576) + (Gdx.app.getNativeHeap() / 1048576)) + "MB");
-
+		
+		//渲染游戏
 		super.render();
-
+		//渲染帧率、内存占用还有过渡黑场
 		st.act();
 		st.draw();
 
