@@ -83,7 +83,7 @@ public class level1 extends CommonlyScreen
 						c.is = false;
 					}
 				}
-			},true);
+			}, true);
 		this.batch = batch;
 
 		cam = new OrthographicCamera();

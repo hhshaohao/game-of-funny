@@ -89,7 +89,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 						c.is = false;
 					}
 				}
-			},true);
+			}, true);
 		this.game = game;
 		cam = new OrthographicCamera();
 		cam.setToOrtho(false, Res.w / (ppm + zoom + MyGame.zoom), Res.h / (ppm + zoom + MyGame.zoom));

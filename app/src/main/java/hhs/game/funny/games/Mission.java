@@ -72,6 +72,7 @@ public class Mission extends Stage
 					return true;
 				}
 			});
+			
         textbutton1.setBounds(0, 0, dialog.getWidth() , 100);
         //dialog.addActor(button1);
         dialog.addActor(textbutton1);

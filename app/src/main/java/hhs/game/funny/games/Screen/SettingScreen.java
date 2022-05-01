@@ -60,7 +60,7 @@ public class SettingScreen implements Screen
 		s.font = MyGame.font;
 		s.fontColor = Color.BLACK;
 		l0 = new Label("null", s);
-		l1 = new Label("本游戏完全免费，请不要在非官方途径下载\n联系方式：\nQQ:1265177365\n微信：quququqqq",s);
+		l1 = new Label("本游戏完全免费，请不要在非官方途径下载\n联系方式：\nQQ:1265177365\n微信：quququqqq", s);
 
 		b0.addListener(new InputListener()
 			{

@@ -12,11 +12,13 @@ import com.badlogic.gdx.utils.Disposable;
 //游戏内静态变量储存
 public class Res implements Disposable
 {
-    public static int w = Gdx.graphics.getWidth();
-	public static int h = Gdx.graphics.getHeight();
+	//手机固定变量
+    public static int w = Gdx.graphics.getWidth();		//手机宽度像素
+	public static int h = Gdx.graphics.getHeight();		//手机高度像素
     static float tx = w / tool.PPM;
     static float ty = h / tool.PPM;
 
+	//静态资源
 	public ImageButton b0,b1,b2,exit,cSkin;
 	public funny role;
 	public int cv;
@@ -56,6 +58,7 @@ public class Res implements Disposable
 
 
 	}
+	//角色表情变化
 	public ImageButton getChange(final funny role)
 	{
 		this.role = role;
@@ -84,7 +87,7 @@ public class Res implements Disposable
 	@Override
 	public void dispose()
 	{
-
+		
 	}
 
 

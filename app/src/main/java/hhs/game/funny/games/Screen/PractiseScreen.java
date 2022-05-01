@@ -125,10 +125,10 @@ public class PractiseScreen implements Screen
 			MyGame.font.draw(batch, filearr[i], ib[i].getX(), ib[i].getY());
 		}
 		batch.end();
-		
+
 		MyGame.jump.act();
 		MyGame.jump.draw();
-		
+
 		if (!game.teampScreen.equals(this))
 		{
 			game.teampScreen = this;

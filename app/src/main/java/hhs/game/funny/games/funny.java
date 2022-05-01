@@ -25,18 +25,21 @@ public class funny extends Sprite
 		this.world = world;
 		defineBox(position, name, ra);
 	}
+	
 	public funny(World world, Vector2 position, String filename, String name)
 	{
 		super(MyGame.ass.get(filename, Texture.class));
 		this.world = world;
 		defineBox(position, name, 8 / tool.le1);
 	}
+	
 	public funny(World world, Vector2 position, String filename)
 	{
 		super(MyGame.ass.get(filename, Texture.class));
 		this.world = world;
 		defineBox(position, null, 8 / tool.le1);
 	}
+	
 	public funny(World world, Vector2 position, String filename, float ra)
 	{
 		super(MyGame.ass.get(filename, Texture.class));

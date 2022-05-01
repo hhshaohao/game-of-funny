@@ -86,7 +86,7 @@ public class NormalMapLoaderScreen extends CommonlyScreen
 						c.is = false;
 					}
 				}
-			},false);
+			}, false);
 		this.game = game;
 		cam = new OrthographicCamera();
 		cam.setToOrtho(false, Res.w / (ppm + zoom + MyGame.zoom), Res.h / (ppm + zoom + MyGame.zoom));
@@ -184,7 +184,8 @@ public class NormalMapLoaderScreen extends CommonlyScreen
 
 				body.createFixture(fdef);
 			}
-		}catch (NullPointerException npe)
+		}
+		catch (NullPointerException npe)
 		{
 			MainActivity.use.showQuickTip("缺失ground层");
 		}
@@ -201,7 +202,8 @@ public class NormalMapLoaderScreen extends CommonlyScreen
 				super.ac(zhu);
 				break;
 			}
-		}catch (NullPointerException npe)
+		}
+		catch (NullPointerException npe)
 		{
 			MainActivity.use.showQuickTip("缺失born层");
 			zhu = new funny(world,
@@ -229,7 +231,8 @@ public class NormalMapLoaderScreen extends CommonlyScreen
 												   new Vector2(r.getWidth() / 2 / ppm, r.getHeight() / 2 / ppm),
 												   new Vector2(r.getWidth() / ppm, r.getHeight() / ppm)));
 			}
-		}catch (NullPointerException npe)
+		}
+		catch (NullPointerException npe)
 		{
 			MainActivity.use.showQuickTip("缺失moveAble层");
 		}
@@ -241,7 +244,8 @@ public class NormalMapLoaderScreen extends CommonlyScreen
 				ex = ro.getRectangle().getX() / ppm;
 				break;
 			}
-		}catch (NullPointerException npe)
+		}
+		catch (NullPointerException npe)
 		{
 			MainActivity.use.showQuickTip("缺失e层");
 			ex = 1000;

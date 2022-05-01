@@ -105,6 +105,7 @@ public class MagicLand implements Screen
 				mis.dispose();
 			}
 		};
+		
 		mis.isShow = true;
 	}
 

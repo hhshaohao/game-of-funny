@@ -19,7 +19,7 @@ public class UserInterface extends Stage
 	RoleLogic logic;
 	boolean u0,u1,u2;
 
-	public UserInterface(final MyGame game, RoleLogic l,boolean hb)
+	public UserInterface(final MyGame game, RoleLogic l, boolean hb)
 	{
 		this.game = game;
 
@@ -31,10 +31,11 @@ public class UserInterface extends Stage
 		this.logic = l;
 		this.addButtonAction();
 
-		if(hb)
+		if (hb)
 		{
 			this.addActor(r.exit);
-		}else
+		}
+		else
 		{
 			ImageButton exit = r.exit;
 			exit.clearListeners();

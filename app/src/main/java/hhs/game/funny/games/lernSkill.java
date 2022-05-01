@@ -131,6 +131,7 @@ public class lernSkill implements Screen
 				second.isShow = true;
 			}
 		};
+		
 		second = new Mission("任务", "跳过这座山到达终点", MyGame.font)
 		{
 			public void cilck(Dialog dialog)
@@ -139,6 +140,7 @@ public class lernSkill implements Screen
 				isShow = false;
 			}
 		};
+
 		end = new Mission("恭喜", "下一关", MyGame.font)
 		{
 			public void cilck(Dialog dialog)
@@ -146,6 +148,7 @@ public class lernSkill implements Screen
 				game.goMainLine();
 			}
 		};
+
 		ms.addMission(first);
 		ms.addMission(second);
 		ms.addMission(end);

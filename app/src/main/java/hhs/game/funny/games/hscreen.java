@@ -220,6 +220,7 @@ public class hscreen implements Screen
 					//super.touchUp(event, x, y, pointer, button);
 				}
 			});
+
 		setting.addListener(new InputListener(){
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
@@ -234,6 +235,7 @@ public class hscreen implements Screen
 					//super.touchUp(event, x, y, pointer, button);
 				}
 			});
+
 		goC.addListener(new InputListener(){
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
@@ -278,6 +280,7 @@ public class hscreen implements Screen
 					//super.touchUp(event, x, y, pointer, button);
 				}
 			});
+
 		practise.addListener(new InputListener()
 			{
 				@Override
@@ -292,6 +295,7 @@ public class hscreen implements Screen
 					g.goPractise();
 				}
 			});
+		
 		goLocal.addListener(new InputListener()
 			{
 				@Override

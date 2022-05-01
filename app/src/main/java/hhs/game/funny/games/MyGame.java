@@ -84,7 +84,7 @@ public class MyGame extends Game
 		//这里也可以换成该类中'go'前缀的函数
 		goMain();
 	}
-
+	//去关卡选择
 	public void goChooser()
 	{
 		transition();
@@ -93,7 +93,7 @@ public class MyGame extends Game
 		Gdx.input.setInputProcessor(ccs.st);
 		this.setScreen(ccs);
 	}
-
+	//去主线关卡
 	public void goMainLine()
 	{
 		font.getData().setScale(1);
@@ -121,7 +121,7 @@ public class MyGame extends Game
 				});
 		}
 	}
-
+	//去一个场景
 	public void goScreen(Screen s, Stage st)
 	{
 		transition();
@@ -129,7 +129,7 @@ public class MyGame extends Game
 		Gdx.input.setInputProcessor(st);
 		setScreen(s);
 	}
-
+	//去第一关
 	public void goLevel1()
 	{
 		transition();
@@ -148,7 +148,7 @@ public class MyGame extends Game
 	 Gdx.input.setInputProcessor(stu.st);
 	 setScreen(stu);
 	 }*/
-
+	//去马里奥关
 	public void goMario()
 	{
 		transition();
@@ -158,7 +158,7 @@ public class MyGame extends Game
 		Gdx.input.setInputProcessor(mario.st);
 		setScreen(mario);
 	}
-
+	//去背景故事
 	public void goSo()
 	{
 		transition();
@@ -167,7 +167,7 @@ public class MyGame extends Game
 		font.getData().setScale(1.5f);
 		setScreen(so);
 	}
-
+	//去到学习界面
 	public void goGame()
 	{
 		transition();
@@ -178,7 +178,7 @@ public class MyGame extends Game
 		font.getData().setScale(1);
 		setScreen(m);
 	}
-
+	//去主场景
 	public void goMain()
 	{
 		transition();
@@ -187,7 +187,7 @@ public class MyGame extends Game
 		font.getData().setScale(4);
 		setScreen(h);
 	}
-
+	//去开放世界
 	public void goMagicLand()
 	{
 		transition();
@@ -198,6 +198,7 @@ public class MyGame extends Game
 		Gdx.input.setInputProcessor(magic.st);
 		setScreen(magic);
 	}
+	//去到设置
 	public void goSetting()
 	{
 		transition();
@@ -206,6 +207,7 @@ public class MyGame extends Game
 		font.getData().setScale(1.5f);
 		setScreen(settingscreen);
 	}
+	//去到练习界面
 	public void goPractise()
 	{
 		transition();
@@ -215,6 +217,7 @@ public class MyGame extends Game
 		this.setScreen(ps);
 		
 	}
+	//去到本地地图场景
 	public void goLocal()
 	{
 		transition();
@@ -223,6 +226,7 @@ public class MyGame extends Game
 		Gdx.input.setInputProcessor(lmp.st);
 		this.setScreen(lmp);
 	}
+	//重开
 	public void reStart()
 	{
 		transition();
@@ -233,6 +237,7 @@ public class MyGame extends Game
 		Gdx.input.setInputProcessor(lev.st);
 		setScreen(lev);
 	}
+	//去到TeampScreen
 	public void goThat()
 	{
 		transition();
@@ -254,7 +259,8 @@ public class MyGame extends Game
 
 		setScreen(ss);	//初始场景设置(加载资源时展示的场景)
 
-		ass.load("font.fnt", BitmapFont.class);	//加载资源
+		ass.load("font.fnt", BitmapFont.class);	//加载文字资源
+		//加载图片和声音资源
 		ass.load("s0.png", Texture.class);
 		ass.load("s1.png", Texture.class);
 		ass.load("f0.jpg", Texture.class);
@@ -320,6 +326,7 @@ public class MyGame extends Game
 		image.setColor(c);
 		image.addAction(Actions.color(Color.CLEAR, t));
 	}
+	
 	public void transition()
 	{
 		image.setColor(Color.BLACK);
@@ -345,7 +352,6 @@ public class MyGame extends Game
 			jump.dispose();
 		if (ass != null)
 			ass.dispose();
-
 	}
 	//当手机分辨率变化时
 	@Override

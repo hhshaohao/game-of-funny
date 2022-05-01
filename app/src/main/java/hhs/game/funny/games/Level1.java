@@ -120,6 +120,7 @@ public class Level1 implements Screen
 			}
 
 		};
+		
 		next  = new Mission("提示", "恭喜通过第一区域\n这一区域有BOSS出现", MyGame.font){
 
 
@@ -237,6 +238,7 @@ public class Level1 implements Screen
 				}
 
 			});
+			
 		b1.addListener(new InputListener(){
 
 				@Override
@@ -254,6 +256,7 @@ public class Level1 implements Screen
 				}
 
 			});
+			
 		b2.addListener(new InputListener(){
 
 				@Override

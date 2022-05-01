@@ -65,7 +65,7 @@ public class LocalMapEntrance implements Screen
 
 		st.addActor(r.exit);
 		st.addActor(tf);
-		
+
 		start.addListener(new InputListener(){
 
 				@Override
@@ -78,21 +78,23 @@ public class LocalMapEntrance implements Screen
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button)
 				{
 					FileHandle fd = Gdx.files.internal(tf.getText());
-					if(fd.exists())
+					if (fd.exists())
 					{
-						if(fd.isDirectory())
+						if (fd.isDirectory())
 						{
-							PractiseScreen ps = new PractiseScreen(game,tf.getText());
+							PractiseScreen ps = new PractiseScreen(game, tf.getText());
 							game.teampScreen = ps;
 							Gdx.input.setInputProcessor(ps.st);
 							game.setScreen(ps);
-						}else
+						}
+						else
 						{
-							NormalMapLoaderScreen nmls = new NormalMapLoaderScreen(game,tf.getText());
+							NormalMapLoaderScreen nmls = new NormalMapLoaderScreen(game, tf.getText());
 							Gdx.input.setInputProcessor(nmls.ui);
 							game.setScreen(nmls);
 						}
-					}else
+					}
+					else
 					{
 						MainActivity.use.showQuickTip(tf.getText());
 					}
