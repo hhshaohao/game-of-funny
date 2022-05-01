@@ -53,7 +53,7 @@ public class LocalMapEntrance implements Screen
 		style.cursor = new TextureRegionDrawable(new TextureRegion(new Texture("s1.png"), 0, 0, 10, 100));
 		style.fontColor = Color.BLACK;
 
-		tf = new TextField("请输入文件夹地址", style);
+		tf = new TextField(Gdx.files.getExternalStoragePath(), style);
 		tf.setSize(700, 100);
 		tf.setAlignment(Align.center);
 		//tf.setPosition(Res.w / 2 - 350, Res.h + 200);

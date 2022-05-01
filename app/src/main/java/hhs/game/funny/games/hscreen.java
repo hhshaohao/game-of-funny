@@ -64,20 +64,17 @@ public class hscreen implements Screen
 		mario = tool.createButton("ui6.png");
 		openWorld = tool.createButton("ui7.png");
 		setting = tool.createButton("ui9.png");
-		practise = tool.createButton("ui13.png","s0.png");
-		goLocal = tool.createButton("ui14.png","s1.png");
+		practise = tool.createButton("ui13.png", "s0.png");
+		goLocal = tool.createButton("ui14.png", "s1.png");
 
 		setting.setPosition(Res.w - 200, Res.h - 100);
 		mario.setPosition(0, Res.h - 100);
 		openWorld.setPosition(mario.getX(), mario.getHeight() - 100);
-		practise.setPosition(Res.w / 2 - practise.getWidth() / 2,0);
-		goLocal.setPosition(Res.w / 2 - goLocal.getWidth() / 2,Res.h - goLocal.getHeight());
-		
+		practise.setPosition(Res.w / 2 - practise.getWidth() / 2, 0);
+		goLocal.setPosition(Res.w / 2 - goLocal.getWidth() / 2, Res.h - goLocal.getHeight());
+
 		st.addActor(mario);
-		if (MyGame.archive.getBoolean("WIN"))
-		{
-			st.addActor(openWorld);
-		}
+		st.addActor(openWorld);
 		st.addActor(setting);
 		st.addActor(practise);
 		st.addActor(goLocal);
@@ -86,7 +83,6 @@ public class hscreen implements Screen
 
 		l = MyGame.ass.get("f0.jpg", Texture.class);
 		r = MyGame.ass.get("f1.jpg", Texture.class);
-
 
 		MyGame.font.getData().setScale(5);
 		MyGame.font.setColor(Color.BLACK);
@@ -118,7 +114,7 @@ public class hscreen implements Screen
 		batch.draw(r, Res.w / 2, 0, Res.w / 2, Res.h);
 
 		MyGame.font.draw(batch, "沙雕之主", Res.w / 2, (Res.h / 2 + 50));
-		MyGame.font.setColor(0, 0, 0, t);
+		MyGame.font.setColor(0, 0,  0, t);
 		if (z)
 		{
 			t -= p1;
@@ -283,7 +279,7 @@ public class hscreen implements Screen
 				}
 			});
 		practise.addListener(new InputListener()
-		{
+			{
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
@@ -295,7 +291,7 @@ public class hscreen implements Screen
 				{
 					g.goPractise();
 				}
-		});
+			});
 		goLocal.addListener(new InputListener()
 			{
 				@Override

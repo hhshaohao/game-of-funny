@@ -23,7 +23,7 @@ public class MainActivity extends AndroidApplication
 		use = new NativeUse(this);
         AndroidApplicationConfiguration conf = new AndroidApplicationConfiguration();
 		initialize(new MyGame(), conf);	//进入游戏
-
+		//setContentView(R.layout.community);
     }
 
 } 
