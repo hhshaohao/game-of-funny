@@ -65,7 +65,13 @@ public class PractiseScreen implements Screen
 		{
 			if (b < max)
 			{
-				ib[a] = tool.createButton("s0.png");
+				if(fd.list()[a].isDirectory())
+				{
+					ib[a] = tool.createButton("s1.png");
+				}else
+				{
+					ib[a] = tool.createButton("s0.png");
+				}
 				ib[a].setBounds((b + 1) * 225, Res.h -  (c + 1) * 200, 200, 100);
 				b++;
 			}
