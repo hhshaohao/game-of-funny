@@ -303,11 +303,13 @@ public class Level1 implements Screen
 		 }*/
 		if (jump == true)
 		{
-			if (zhu.b2body.getLinearVelocity().y < 0.1f && zhu.b2body.getLinearVelocity().y > -0.1f)
-			{
+			//if (zhu.b2body.getLinearVelocity().y < 0.1f && zhu.b2body.getLinearVelocity().y > -0.1f)
+			//{
+				if(zhu.b2body.getLinearVelocity().y == 0){
 				MyGame.ass.get("jump.mp3", Sound.class).play();
 				zhu.b2body.applyForceToCenter(0, 450, true);
-			}
+				}
+			//}
 		}
 
 		if (nextS)

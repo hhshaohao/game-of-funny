@@ -57,6 +57,8 @@ public class MyGame extends Game
 	//当主要静态资源加载完毕后
 	public void finish()
 	{
+		MainActivity.use.showQuickTip(Gdx.files.isExternalStorageAvailable() ? "true" : "false");
+		
 		jump = new Jumper();
 		//初始化本地存储对象
 		archive = Gdx.app.getPreferences("data");
@@ -77,7 +79,7 @@ public class MyGame extends Game
 		settingscreen = new SettingScreen(this);
 		so = new so(this);
 		ccs = new ChooseCustomsScreen(this);
-		ps = new PractiseScreen(this,"tmx/practise/");
+		ps = new PractiseScreen(this,"tmx/practise/",false);
 		lmp = new LocalMapEntrance(this);
 
 		//去到主场景

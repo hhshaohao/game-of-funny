@@ -54,7 +54,7 @@ public class LocalMapEntrance implements Screen
 		style.fontColor = Color.BLACK;
 
 		tf = new TextField(Gdx.files.getExternalStoragePath(), style);
-		tf.setSize(700, 100);
+		tf.setSize(Res.w, 100);
 		tf.setAlignment(Align.center);
 		//tf.setPosition(Res.w / 2 - 350, Res.h + 200);
 
@@ -77,12 +77,12 @@ public class LocalMapEntrance implements Screen
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button)
 				{
-					FileHandle fd = Gdx.files.internal(tf.getText());
+					FileHandle fd = Gdx.files.absolute(tf.getText());
 					if (fd.exists())
 					{
 						if (fd.isDirectory())
 						{
-							PractiseScreen ps = new PractiseScreen(game, tf.getText());
+							PractiseScreen ps = new PractiseScreen(game, tf.getText(),true);
 							game.teampScreen = ps;
 							Gdx.input.setInputProcessor(ps.st);
 							game.setScreen(ps);
@@ -96,7 +96,8 @@ public class LocalMapEntrance implements Screen
 					}
 					else
 					{
-						MainActivity.use.showQuickTip(tf.getText());
+						//如果目录不存在就弹出
+						MainActivity.use.showQuickTip("不存在");
 					}
 					//super.touchUp(event, x, y, pointer, button);
 				}

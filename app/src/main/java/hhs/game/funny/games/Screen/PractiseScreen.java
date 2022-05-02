@@ -32,14 +32,21 @@ public class PractiseScreen implements Screen
 
 	String filearr[];
 
-	public PractiseScreen(final MyGame game, String d)
+	public PractiseScreen(final MyGame game, String d, boolean out)
 	{
 		this.game = game;
 		file = d;
 
 		batch = game.Misbatch;
 
-		fd = Gdx.files.internal(file);
+		if (out)
+		{
+			fd = Gdx.files.absolute(file);
+		}
+		else
+		{
+			fd = Gdx.files.internal(file);
+		}
 
 		st = new Stage();
 
@@ -96,8 +103,18 @@ public class PractiseScreen implements Screen
 						}
 						catch (SerializationException se)
 						{
-							MainActivity.use.showQuickTip("不是正确的地图文件");
-							Gdx.input.setInputProcessor(PractiseScreen.this.st);
+							if (Gdx.files.absolute(filename).isDirectory())
+							{
+								PractiseScreen next = new PractiseScreen(game, filename, true);
+								Gdx.input.setInputProcessor(next.st);
+								game.teampScreen = next;
+								game.setScreen(next);
+							}
+							else
+							{
+								MainActivity.use.showQuickTip("不是正确的地图文件");
+								Gdx.input.setInputProcessor(PractiseScreen.this.st);
+							}
 						}
 						return true;
 					}
