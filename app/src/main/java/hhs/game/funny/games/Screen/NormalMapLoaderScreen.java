@@ -1,8 +1,8 @@
 package hhs.game.funny.games.Screen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.loaders.resolvers.AbsoluteFileHandleResolver;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -18,11 +18,9 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import hhs.game.funny.MainActivity;
 import hhs.game.funny.games.Actor.PlatformActor;
-import hhs.game.funny.games.MainLineLevel.MainLineLevelLoader;
 import hhs.game.funny.games.Mission;
 import hhs.game.funny.games.MyGame;
 import hhs.game.funny.games.Res;
@@ -31,7 +29,6 @@ import hhs.game.funny.games.Stage.MissionStage;
 import hhs.game.funny.games.Tools.Drawist;
 import hhs.game.funny.games.contactListener.jumpConcat;
 import hhs.game.funny.games.funny;
-import hhs.game.funny.games.hscreen;
 
 public class NormalMapLoaderScreen extends CommonlyScreen
 {
@@ -57,7 +54,7 @@ public class NormalMapLoaderScreen extends CommonlyScreen
 	MissionStage ms;
 
 
-    public NormalMapLoaderScreen(final MyGame game, String tmxFile)
+    public NormalMapLoaderScreen(final MyGame game, String tmxFile, boolean out)
 	{
 		super(game, new  RoleLogic()
 			{
@@ -92,8 +89,15 @@ public class NormalMapLoaderScreen extends CommonlyScreen
 		cam.setToOrtho(false, Res.w / (ppm + zoom + MyGame.zoom), Res.h / (ppm + zoom + MyGame.zoom));
 		batch = MyGame.batch;
 
-		map = new TmxMapLoader().load(tmxFile);
-
+		//TmxMapLoader.Parameters p = new TmxMapLoader.Parameters();
+		if (out)
+		{
+			map = new TmxMapLoader(new AbsoluteFileHandleResolver()).load(tmxFile);
+		}
+		else
+		{
+			map = new TmxMapLoader().load(tmxFile);
+		}
 		render = new OrthogonalTiledMapRenderer(map, 1 / ppm);
 		dist = new Drawist();
 		this.initBox2d();

@@ -105,7 +105,7 @@ public class LocalMapEntrance implements Screen
 						}
 						else
 						{
-							NormalMapLoaderScreen nmls = new NormalMapLoaderScreen(game, tf.getText());
+							NormalMapLoaderScreen nmls = new NormalMapLoaderScreen(game, tf.getText(),true);
 							Gdx.input.setInputProcessor(nmls.ui);
 							game.setScreen(nmls);
 						}

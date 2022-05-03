@@ -32,7 +32,7 @@ public class PractiseScreen implements Screen
 
 	String filearr[];
 
-	public PractiseScreen(final MyGame game, String d, boolean out)
+	public PractiseScreen(final MyGame game, String d, final boolean out)
 	{
 		this.game = game;
 		file = d;
@@ -65,10 +65,11 @@ public class PractiseScreen implements Screen
 		{
 			if (b < max)
 			{
-				if(fd.list()[a].isDirectory())
+				if (fd.list()[a].isDirectory())
 				{
 					ib[a] = tool.createButton("s1.png");
-				}else
+				}
+				else
 				{
 					ib[a] = tool.createButton("s0.png");
 				}
@@ -103,7 +104,7 @@ public class PractiseScreen implements Screen
 						PractiseScreen.this.game.transition();
 						try
 						{
-							NormalMapLoaderScreen mll = new NormalMapLoaderScreen(game, filename);
+							NormalMapLoaderScreen mll = new NormalMapLoaderScreen(game, filename, out);
 							Gdx.input.setInputProcessor(mll.ui);
 							PractiseScreen.this.game.setScreen(mll);
 						}
