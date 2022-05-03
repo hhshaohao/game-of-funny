@@ -223,7 +223,7 @@ public class MyGame extends Game
 	public void goLocal()
 	{
 		transition();
-		font.getData().setScale(1);
+		font.getData().setScale(1.5f);
 		font.setColor(Color.BLACK);
 		Gdx.input.setInputProcessor(lmp.st);
 		this.setScreen(lmp);

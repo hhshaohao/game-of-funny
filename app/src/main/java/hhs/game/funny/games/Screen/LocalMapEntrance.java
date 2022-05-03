@@ -19,6 +19,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.Gdx;
 import hhs.game.funny.MainActivity;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 public class LocalMapEntrance implements Screen
 {
@@ -30,6 +31,7 @@ public class LocalMapEntrance implements Screen
 
 	TextField tf;
 	ImageButton start;
+	Label l0,l1,l2;
 
 	public LocalMapEntrance(final MyGame game)
 	{
@@ -53,6 +55,10 @@ public class LocalMapEntrance implements Screen
 		style.cursor = new TextureRegionDrawable(new TextureRegion(new Texture("s1.png"), 0, 0, 10, 100));
 		style.fontColor = Color.BLACK;
 
+		Label.LabelStyle style2 = new Label.LabelStyle();
+		style2.font = MyGame.font;
+		style2.fontColor = Color.BLACK;
+		
 		tf = new TextField(Gdx.files.getExternalStoragePath(), style);
 		tf.setSize(Res.w, 100);
 		tf.setAlignment(Align.center);
@@ -60,8 +66,17 @@ public class LocalMapEntrance implements Screen
 
 		start = tool.createButton("ui15.png", "s1.png");
 
+		l0 = new Label("深色图标是文件夹",style2);
+		l1 = new Label("浅色图标是文件",style2);
+		l2 = new Label("在下面输入地图文件路径",style2);
+		
+		l.add(l0);
+		l.row();
+		l.add(l1);
 		l.row();
 		l.add(start);
+		l.row();
+		l.add(l2);
 
 		st.addActor(r.exit);
 		st.addActor(tf);
@@ -83,6 +98,7 @@ public class LocalMapEntrance implements Screen
 						if (fd.isDirectory())
 						{
 							PractiseScreen ps = new PractiseScreen(game, tf.getText(),true);
+							MyGame.font.getData().setScale(1);
 							game.teampScreen = ps;
 							Gdx.input.setInputProcessor(ps.st);
 							game.setScreen(ps);

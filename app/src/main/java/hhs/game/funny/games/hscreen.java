@@ -132,7 +132,7 @@ public class hscreen implements Screen
 
 		j.act();
 		j.draw();
-
+		
 		st.act();
 		st.draw();
 
