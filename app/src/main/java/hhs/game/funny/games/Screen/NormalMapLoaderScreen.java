@@ -35,7 +35,7 @@ public class NormalMapLoaderScreen extends CommonlyScreen
 
     MyGame game;
 	OrthographicCamera cam;
-	float ppm = 20,zoom = 30;
+	float ppm = 20,zoom = 50;
 	SpriteBatch batch;
 	DeadScreen ds;
 

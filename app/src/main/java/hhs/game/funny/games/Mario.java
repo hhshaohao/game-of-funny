@@ -42,6 +42,8 @@ public class Mario implements Screen
 
 	World world;
 	//Box2DDebugRenderer ren;
+	
+	Res r;
 
 	public Mario(MyGame game, SpriteBatch batch)
 	{
@@ -59,7 +61,7 @@ public class Mario implements Screen
 		map = new TmxMapLoader().load("tmx/level1.tmx");
 		render = new OrthogonalTiledMapRenderer(map, 1 / ppm, batch);
 
-		Res r = new Res(game);
+		r = new Res(game);
 		b0 = r.b0;
 		b1 = r.b1;
 		b2 = r.b2;
@@ -68,7 +70,6 @@ public class Mario implements Screen
 		st.addActor(b1);
 		st.addActor(b2);
 		st.addActor(r.exit);
-		st.addActor(r.getChange(zhu));
 
 		this.initBox2d();
 	}
@@ -144,7 +145,7 @@ public class Mario implements Screen
 		body.createFixture(fdef);
 
 		zhu = new funny(world, new Vector2(4 * 16 / ppm, 16 / ppm), 0);
-
+		st.addActor(r.getChange(zhu));
 		//ren = new Box2DDebugRenderer();
 	}
 
