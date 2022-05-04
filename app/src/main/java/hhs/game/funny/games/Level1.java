@@ -100,7 +100,7 @@ public class Level1 implements Screen
 		this.addListen();
 
 		this.initbox2d();
-		zhu = new funny(world, new Vector2(100 / tool.le1, 300 / tool.le1), "w0.png", "zhu", 8 / tool.le1);
+		zhu = new funny(world, new Vector2(100 / tool.le1, 300 / tool.le1), 0, "zhu", 8 / tool.le1);
 		st.addActor(bu.getChange(zhu));
 
 		world.setContactListener(con);
@@ -178,7 +178,7 @@ public class Level1 implements Screen
 
 		world = new World(new Vector2(0, -9.81f), true);
 		pei = new funny[70];
-		boss = new funny(world, new Vector2(128 / tool.le1 , 32 / tool.le1), "w2.png", "boss", 64 / tool.le1);
+		boss = new funny(world, new Vector2(128 / tool.le1 , 32 / tool.le1), 2, "boss", 64 / tool.le1);
 
 		BodyDef bdef = new BodyDef();
 		FixtureDef fdef = new FixtureDef();
@@ -215,8 +215,8 @@ public class Level1 implements Screen
 
 		for (int i =0;i < pei.length;i++)
 		{
-			int a = MathUtils.random(0, 2);
-			pei[i] = new funny(world, new Vector2(1300 / tool.le1 , MathUtils.random(700 / tool.le1, 1500 / tool.le1)), "w" + a + ".png", "pei", 8 / tool.le1);
+			int a = MathUtils.random(0, 24);
+			pei[i] = new funny(world, new Vector2(1300 / tool.le1 , MathUtils.random(700 / tool.le1, 1500 / tool.le1)), a, "pei", 8 / tool.le1);
 		}
 	}
 	private void addListen()

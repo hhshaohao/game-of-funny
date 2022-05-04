@@ -127,7 +127,7 @@ public class FastScreen implements Screen
 				body.createFixture(fdef);
 			}
 		}
-		zhu = new funny(world, new Vector2(x, y), "w" + z + ".png", ra / ppm);
+		zhu = new funny(world, new Vector2(x, y), z, ra / ppm);
 	}
 
 	@Override

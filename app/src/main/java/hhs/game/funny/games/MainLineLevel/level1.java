@@ -96,7 +96,7 @@ public class level1 extends CommonlyScreen
 
 		initBox2d();
 		world.setContactListener(c = new jumpConcat());
-		ac = new funny(world, new Vector2(36 / ppm, 36 / ppm), "w0.png", 9 / ppm);
+		ac = new funny(world, new Vector2(36 / ppm, 36 / ppm), 0, 9 / ppm);
 		nx = 1602 / ppm;
 		ny  = 108 / ppm;
 		//ac.b2body.setTransform(nx = 1602 / ppm,ny  = 108 / ppm,ac.b2body.getAngle());

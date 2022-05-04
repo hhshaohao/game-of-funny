@@ -143,7 +143,7 @@ public class Mario implements Screen
 		fdef.shape = shape;
 		body.createFixture(fdef);
 
-		zhu = new funny(world, new Vector2(4 * 16 / ppm, 16 / ppm), "w0.png");
+		zhu = new funny(world, new Vector2(4 * 16 / ppm, 16 / ppm), 0);
 
 		//ren = new Box2DDebugRenderer();
 	}

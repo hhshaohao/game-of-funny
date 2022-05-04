@@ -69,14 +69,14 @@ public class Res implements Disposable
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
-					if (cv < 2)
+					if (cv < 24)
 					{
 						cv += 1;
 						tool.changeSkin(role, cv);
 					}
 					else
 					{
-						cv = -1;
+						cv = -0;
 					}
 					return true;
 				}

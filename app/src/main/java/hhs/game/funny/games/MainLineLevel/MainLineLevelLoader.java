@@ -250,7 +250,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 			Rectangle r = ro.getRectangle();
 			zhu = new funny(world,
 							new Vector2(ox = (r.getX() + r.getWidth() / 2) / ppm, oy = (r.getY() + r.getHeight() / 2) / ppm),
-							"w0.png", r.getWidth() / 2 / ppm
+							0, r.getWidth() / 2 / ppm
 							);
 			super.ac(zhu);
 			break;

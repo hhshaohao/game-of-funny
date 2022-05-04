@@ -163,7 +163,7 @@ public class MagicLand implements Screen
 		fdef.shape = shape;
 		body.createFixture(fdef);
 
-		zhu = new funny(world, new Vector2(16 / ppm, 50 * 16 / ppm), "w0.png");
+		zhu = new funny(world, new Vector2(16 / ppm, 50 * 16 / ppm), 0);
 		st.addActor(r.getChange(zhu));
 		//ren = new Box2DDebugRenderer();
 	}

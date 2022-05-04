@@ -201,7 +201,7 @@ public class NormalMapLoaderScreen extends CommonlyScreen
 				Rectangle r = ro.getRectangle();
 				zhu = new funny(world,
 								new Vector2(ox = (r.getX() + r.getWidth() / 2) / ppm, oy = (r.getY() + r.getHeight() / 2) / ppm),
-								"w0.png", r.getWidth() / 2 / ppm
+								0, r.getWidth() / 2 / ppm
 								);
 				super.ac(zhu);
 				break;
@@ -212,7 +212,7 @@ public class NormalMapLoaderScreen extends CommonlyScreen
 			MainActivity.use.showQuickTip("缺失born层");
 			zhu = new funny(world,
 							new Vector2(ox = 0, oy = 50),
-							"w0.png", 18 / 2 / ppm);
+							0, 18 / 2 / ppm);
 		}
 
 		try

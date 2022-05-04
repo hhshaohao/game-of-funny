@@ -19,37 +19,37 @@ public class funny extends Sprite
 	public Fixture fix;
 	public float ra;
 
-    public funny(World world, Vector2 position, String filename, String name, float ra)
+    public funny(World world, Vector2 position, int filename, String name, float ra)
 	{
-		super(MyGame.ass.get(filename, Texture.class));
+		super(MyGame.emoji[filename]);
 		this.world = world;
 		defineBox(position, name, ra);
 	}
 	
-	public funny(World world, Vector2 position, String filename, String name)
+	public funny(World world, Vector2 position, int filename, String name)
 	{
-		super(MyGame.ass.get(filename, Texture.class));
+		super(MyGame.emoji[filename]);
 		this.world = world;
 		defineBox(position, name, 8 / tool.le1);
 	}
 	
-	public funny(World world, Vector2 position, String filename)
+	public funny(World world, Vector2 position, int filename)
 	{
-		super(MyGame.ass.get(filename, Texture.class));
+		super(MyGame.emoji[filename]);
 		this.world = world;
 		defineBox(position, null, 8 / tool.le1);
 	}
 	
-	public funny(World world, Vector2 position, String filename, float ra)
+	public funny(World world, Vector2 position, int filename, float ra)
 	{
-		super(MyGame.ass.get(filename, Texture.class));
+		super(MyGame.emoji[filename]);
 		this.world = world;
 		defineBox(position, null, ra);
 	}
 
-	public funny(World world, Vector2 position, String filename, float ra, float re)
+	public funny(World world, Vector2 position, int filename, float ra, float re)
 	{
-		super(MyGame.ass.get(filename, Texture.class));
+		super(MyGame.emoji[filename]);
 		this.world = world;
 		CircleShape shape = new CircleShape();
 		shape.setRadius(ra);

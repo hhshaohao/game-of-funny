@@ -23,6 +23,7 @@ import hhs.game.funny.games.Screen.Jumper;
 import hhs.game.funny.games.Screen.PractiseScreen;
 import hhs.game.funny.games.Screen.SettingScreen;
 import hhs.game.funny.games.Screen.LocalMapEntrance;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 //游戏入口类
 public class MyGame extends Game
 {
@@ -53,12 +54,27 @@ public class MyGame extends Game
 	public static int zoom;						//屏幕缩放
 	public static Color clearColor;				//清屏颜色
 	public static Image image;					//场景过渡
-	
+	public static TextureRegion emoji[];			//表情包
+
 	//当主要静态资源加载完毕后
 	public void finish()
 	{
-		MainActivity.use.showQuickTip(Gdx.files.isExternalStorageAvailable() ? "true" : "false");
-		
+		MainActivity.use.showQuickTip(Gdx.files.isExternalStorageAvailable() ? "本地文件可读取" : "失败");
+
+		//初始化所有表情
+		TextureRegion temp = new TextureRegion(ass.get("p.png", Texture.class));
+		TextureRegion temp2[][] = temp.split(128, 128);
+		emoji = new TextureRegion[25];
+		int zh = 0;
+		for (int i = 0; i < temp2.length; i++)
+		{
+			for (int j = 0; j < temp2[0].length; j++)
+			{
+				emoji[zh] = temp2[i][j];
+				++zh;
+			}
+		}
+
 		jump = new Jumper();
 		//初始化本地存储对象
 		archive = Gdx.app.getPreferences("data");
@@ -79,8 +95,8 @@ public class MyGame extends Game
 		settingscreen = new SettingScreen(this);
 		so = new so(this);
 		ccs = new ChooseCustomsScreen(this);
-		ps = new PractiseScreen(this,"tmx/practise/",false);
-		lmp = new LocalMapEntrance(this);
+		ps = new PractiseScreen(this, "tmx/practise/", false);
+		lmp = new LocalMapEntrance(this);	
 
 		//去到主场景
 		//这里也可以换成该类中'go'前缀的函数
@@ -217,7 +233,7 @@ public class MyGame extends Game
 		font.setColor(Color.BLACK);
 		Gdx.input.setInputProcessor(ps.st);
 		this.setScreen(ps);
-		
+
 	}
 	//去到本地地图场景
 	public void goLocal()
@@ -271,13 +287,14 @@ public class MyGame extends Game
 		ass.load("w0.png", Texture.class);
 		ass.load("w1.png", Texture.class);
 		ass.load("w2.png", Texture.class);
+		ass.load("p.png", Texture.class);
 		ass.load("jump.mp3", Sound.class);
 		ass.load("skill.png", Texture.class);
 		ass.load("background/dead.jpg", Texture.class);
 		ass.load("ui5.png", Texture.class);
 		ass.load("ui8.png", Texture.class);
 		ass.load("down.mp3", Sound.class);
-		
+
 		st = new Stage();
 		//初始化帧率显示和内存占用显示
 		Label.LabelStyle s = new Label.LabelStyle();
@@ -308,7 +325,7 @@ public class MyGame extends Game
 		tool.clearScreen(clearColor);
 		fps.setText("fps:" + Gdx.graphics.getFramesPerSecond());	//帧率显示
 		heap.setText(((Gdx.app.getJavaHeap() / 1048576) + (Gdx.app.getNativeHeap() / 1048576)) + "MB");
-		
+
 		//渲染游戏
 		super.render();
 		//渲染帧率、内存占用还有过渡黑场
@@ -328,7 +345,7 @@ public class MyGame extends Game
 		image.setColor(c);
 		image.addAction(Actions.color(Color.CLEAR, t));
 	}
-	
+
 	public void transition()
 	{
 		image.setColor(Color.BLACK);

@@ -76,7 +76,7 @@ public class tool
 
 	public static void changeSkin(funny role, int b)
 	{
-		role.setTexture(MyGame.ass.get("w" + b + ".png", Texture.class));
+		role.setRegion(MyGame.emoji[b]);
 	}
 
 }
