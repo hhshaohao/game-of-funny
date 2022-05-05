@@ -24,7 +24,7 @@ public class hscreen implements Screen
 	Stage st;
 	Table ta;
 	ImageButton start,br,so,mario,openWorld,setting,goC,newStart,practise,goLocal;
-	Texture l,r;
+	Texture b;
 	float t;
 	boolean z;
 	OrthographicCamera cam;
@@ -81,8 +81,7 @@ public class hscreen implements Screen
 
 		this.addListener();
 
-		l = MyGame.ass.get("f0.jpg", Texture.class);
-		r = MyGame.ass.get("f1.jpg", Texture.class);
+		b = MyGame.ass.get("f0.jpg", Texture.class);
 
 		MyGame.font.getData().setScale(5);
 		MyGame.font.setColor(Color.BLACK);
@@ -109,10 +108,10 @@ public class hscreen implements Screen
 	{
 
 		batch.setProjectionMatrix(cam.combined);
+		
 		batch.begin();
-		batch.draw(l, 0, 0, Res.w / 2, Res.h);
-		batch.draw(r, Res.w / 2, 0, Res.w / 2, Res.h);
-
+		batch.draw(b, 0, 0, Res.w, Res.h);
+		
 		MyGame.font.draw(batch, "沙雕之主", Res.w / 2, (Res.h / 2 + 50));
 		MyGame.font.setColor(0, 0,  0, t);
 		if (z)
@@ -132,7 +131,7 @@ public class hscreen implements Screen
 
 		j.act();
 		j.draw();
-		
+
 		st.act();
 		st.draw();
 
@@ -295,7 +294,7 @@ public class hscreen implements Screen
 					g.goPractise();
 				}
 			});
-		
+
 		goLocal.addListener(new InputListener()
 			{
 				@Override
@@ -336,8 +335,7 @@ public class hscreen implements Screen
 	public void dispose()
 	{
 		st.dispose();
-		l.dispose();
-		r.dispose();
+		b.dispose();
 	}
 
 }

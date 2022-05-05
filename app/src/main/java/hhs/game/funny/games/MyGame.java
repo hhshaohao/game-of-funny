@@ -282,11 +282,7 @@ public class MyGame extends Game
 		ass.load("s0.png", Texture.class);
 		ass.load("s1.png", Texture.class);
 		ass.load("f0.jpg", Texture.class);
-		ass.load("f1.jpg", Texture.class);
 		ass.load("ui3.png", Texture.class);
-		ass.load("w0.png", Texture.class);
-		ass.load("w1.png", Texture.class);
-		ass.load("w2.png", Texture.class);
 		ass.load("p.png", Texture.class);
 		ass.load("jump.mp3", Sound.class);
 		ass.load("skill.png", Texture.class);

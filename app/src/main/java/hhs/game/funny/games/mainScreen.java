@@ -37,7 +37,7 @@ public class mainScreen implements Screen
     private OrthogonalTiledMapRenderer tiledRender;
     private Sprite msprite;
     private ImageButton b0,b1,b2,b3;
-	private Texture fun;
+	private TextureRegion fun;
 	private Label welcome,ready;
 	private Body funb[];
 	//private Rectangle[] rectm;
@@ -69,7 +69,7 @@ public class mainScreen implements Screen
         map = new TmxMapLoader().load("tmx/map0.tmx");
         tiledRender = new OrthogonalTiledMapRenderer(map, 1 / tool.PPM, batch);
 
-        msprite = new Sprite(new Texture("w0.png"));
+        msprite = new Sprite(game.emoji[0]);
 
         st = new Stage();
         Gdx.input.setInputProcessor(st);
@@ -100,7 +100,7 @@ public class mainScreen implements Screen
         st.addActor(b2);
 		st.addActor(b3);
 
-		fun = new Texture("w0.png");
+		fun = game.emoji[0];
 
 		MyGame.font.getData().setScale(1.2f);
 		Label.LabelStyle style = new Label.LabelStyle(MyGame.font, Color.BLUE);
