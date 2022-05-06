@@ -9,6 +9,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.Disableable;
 import com.badlogic.gdx.utils.Disposable;
+import com.badlogic.gdx.scenes.scene2d.Group;
+import hhs.game.funny.MainActivity;
 //游戏内静态变量储存
 public class Res implements Disposable
 {
@@ -19,7 +21,8 @@ public class Res implements Disposable
     static float ty = h / tool.PPM;
 
 	//静态资源
-	public ImageButton b0,b1,b2,exit,cSkin;
+	public ImageButton b0,b1,b2,exit;
+	public Group cSkin;
 	public funny role;
 	public int cv;
 
@@ -59,12 +62,15 @@ public class Res implements Disposable
 
 	}
 	//角色表情变化
-	public ImageButton getChange(final funny role)
+	public Group getChange(final funny role)
 	{
+		cSkin = new Group();
+		cSkin.setPosition(Res.w - 250,Res.h / 2 - 100);
+		
 		this.role = role;
-		cSkin = tool.createButton("ui12.png", "s0.png");
-		cSkin.setPosition(w - cSkin.getWidth(), h / 2 - cSkin.getHeight() / 2);
-		cSkin.addListener(new InputListener()
+		ImageButton b0 = tool.createButton("ui17.png", "s0.png");
+		b0.setPosition(w - cSkin.getWidth(), h / 2 - cSkin.getHeight() / 2);
+		b0.addListener(new InputListener()
 			{
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
@@ -73,14 +79,37 @@ public class Res implements Disposable
 					{
 						cv += 1;
 						tool.changeSkin(role, cv);
-					}
-					else
+					}else
 					{
-						cv = -0;
+						MainActivity.use.showQuickTip("已经是最后一个表情");
 					}
 					return true;
 				}
 			});
+			
+		ImageButton b1 = tool.createButton("ui16.png","s0.png");
+		b1.addListener(new InputListener()
+			{
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
+				{
+					if (cv > 0)
+					{
+						cv -= 1;
+						tool.changeSkin(role, cv);
+					}
+					else
+					{
+						MainActivity.use.showQuickTip("已经是第一个表情");
+					}
+					return true;
+				}
+			});
+		b0.setPosition(0,0);
+		cSkin.addActor(b0);
+		b1.setPosition(0,100);
+		cSkin.addActor(b1);
+		
 		return cSkin;
 	}
 
