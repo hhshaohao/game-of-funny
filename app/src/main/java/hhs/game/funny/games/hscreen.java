@@ -23,7 +23,7 @@ public class hscreen implements Screen
 	SpriteBatch batch;
 	Stage st;
 	Table ta;
-	ImageButton start,br,so,mario,openWorld,setting,goC,newStart,practise,goLocal;
+	ImageButton start,br,so,mario,openWorld,setting,goC,newStart,practise,goLocal,allEmoji;
 	Texture b;
 	float t;
 	boolean z;
@@ -66,18 +66,21 @@ public class hscreen implements Screen
 		setting = tool.createButton("ui9.png");
 		practise = tool.createButton("ui13.png", "s0.png");
 		goLocal = tool.createButton("ui14.png", "s1.png");
+		allEmoji = tool.createButton("ui18.png","s1.png");
 
 		setting.setPosition(Res.w - 200, Res.h - 100);
 		mario.setPosition(0, Res.h - 100);
 		openWorld.setPosition(mario.getX(), mario.getHeight() - 100);
 		practise.setPosition(Res.w / 2 - practise.getWidth() / 2, 0);
 		goLocal.setPosition(Res.w / 2 - goLocal.getWidth() / 2, Res.h - goLocal.getHeight());
-
+		allEmoji.setPosition(Res.w - allEmoji.getWidth(),0);
+		
 		st.addActor(mario);
 		st.addActor(openWorld);
 		st.addActor(setting);
 		st.addActor(practise);
 		st.addActor(goLocal);
+		st.addActor(allEmoji);
 
 		this.addListener();
 
@@ -309,7 +312,21 @@ public class hscreen implements Screen
 					g.goLocal();
 				}
 			});
-	}
+		allEmoji.addListener(new InputListener()
+			{
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
+				{
+					return true;
+				}
+
+				@Override
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button)
+				{
+					g.goViewEmoji();
+				}
+			});
+	};
 
 	@Override
 	public void resize(int p1, int p2)

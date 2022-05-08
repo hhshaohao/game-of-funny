@@ -24,6 +24,7 @@ import hhs.game.funny.games.Screen.PractiseScreen;
 import hhs.game.funny.games.Screen.SettingScreen;
 import hhs.game.funny.games.Screen.LocalMapEntrance;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import hhs.game.funny.games.Screen.EmojiViewScreen;
 //游戏入口类
 public class MyGame extends Game
 {
@@ -43,7 +44,8 @@ public class MyGame extends Game
 	public ChooseCustomsScreen ccs;		//选关页面
 	public PractiseScreen  ps;			//练习关卡页面
 	public LocalMapEntrance lmp;		//本地地图入口
-	public PractiseScreen teampScreen;			//当前场景
+	public PractiseScreen teampScreen;	//当前场景
+	public EmojiViewScreen evs;			//表情一览
 	//公众资源
 	public static Label fps,heap;				//帧率显示，内存占用显示
 	public static SpriteBatch batch,Misbatch;	//渲染器
@@ -96,7 +98,8 @@ public class MyGame extends Game
 		so = new so(this);
 		ccs = new ChooseCustomsScreen(this);
 		ps = new PractiseScreen(this, "tmx/practise/", false);
-		lmp = new LocalMapEntrance(this);	
+		lmp = new LocalMapEntrance(this);
+		evs = new EmojiViewScreen(this);
 
 		//去到主场景
 		//这里也可以换成该类中'go'前缀的函数
@@ -243,6 +246,15 @@ public class MyGame extends Game
 		font.setColor(Color.BLACK);
 		Gdx.input.setInputProcessor(lmp.st);
 		this.setScreen(lmp);
+	}
+	//去到表情一览
+	public void goViewEmoji()
+	{
+		transition();
+		font.getData().setScale(1.0f);
+		font.setColor(Color.BLACK);
+		Gdx.input.setInputProcessor(evs.st);
+		setScreen(evs);
 	}
 	//重开
 	public void reStart()
