@@ -338,8 +338,6 @@ public class mainScreen implements Screen
     @Override
     public void resize(int p1, int p2)
 	{
-        Res.w = Gdx.graphics.getWidth();
-        Res.h = Gdx.graphics.getHeight();
     }
 
     @Override

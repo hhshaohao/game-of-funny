@@ -296,6 +296,7 @@ public class MyGame extends Game
 		ass.load("f0.jpg", Texture.class);
 		ass.load("ui3.png", Texture.class);
 		ass.load("p0.png", Texture.class);
+		ass.load("p1.png", Texture.class);
 		ass.load("jump.mp3", Sound.class);
 		ass.load("skill.png", Texture.class);
 		ass.load("background/dead.jpg", Texture.class);
@@ -384,8 +385,6 @@ public class MyGame extends Game
 	@Override
 	public void resize(int width, int height)
 	{
-		Res.w = width;
-		Res.h = height;
 		super.resize(width, height);
 	}
 	//当游戏进入后台

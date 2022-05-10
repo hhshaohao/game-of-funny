@@ -6,28 +6,45 @@ import hhs.game.funny.games.MyGame;
 import hhs.game.funny.games.Res;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
+import hhs.game.funny.games.tool;
+import com.badlogic.gdx.graphics.Color;
 
 public class EmojiViewScreen implements Screen
 {
 
 	public Stage st;
 	SpriteBatch batch;
-	
-	Texture text;
-	
+
+	Texture text0,text1;
+
+	CheckBox cb0,cb1;
+
 	public EmojiViewScreen(MyGame game)
 	{
 		st = new Stage();
-		
+
 		Res r = new Res(game);
-		
+
 		st.addActor(r.exit);
-		
+
 		batch = MyGame.Misbatch;
-		
-		text = game.ass.get("p0.png",Texture.class);
+
+		text0 = game.ass.get("p0.png", Texture.class);
+		text1 = game.ass.get("p1.png", Texture.class);
+		CheckBox.CheckBoxStyle style = new CheckBox.CheckBoxStyle(tool.createDrawable(game.ass.get("s0.png", Texture.class)),
+																  tool.createDrawable(game.ass.get("s1.png", Texture.class)),
+																  game.font, Color.BLACK);
+		cb0 = new CheckBox("选择", style);
+		cb1 = new CheckBox("选择", style);
+
+		cb0.setPosition(0, 0);
+		cb1.setPosition(Res.w / 5, 0);
+
+		st.addActor(cb0);
+		st.addActor(cb1);
 	}
-	
+
 	@Override
 	public void show()
 	{
@@ -37,12 +54,13 @@ public class EmojiViewScreen implements Screen
 	public void render(float p1)
 	{
 		batch.begin();
-		batch.draw(text,0,0,Res.h / 3,Res.h / 3);
+		batch.draw(text0, 0, Res.h / 5, Res.h / 3, Res.h / 3);
+		batch.draw(text1, Res.w / 5, Res.h / 5, Res.h / 3, Res.h / 3);
 		batch.end();
-		
+
 		st.act();
 		st.draw();
-		
+
 		MyGame.jump.act();
 		MyGame.jump.draw();
 	}
@@ -71,8 +89,8 @@ public class EmojiViewScreen implements Screen
 	public void dispose()
 	{
 	}
-	
-    
-    
-    
+
+
+
+
 }

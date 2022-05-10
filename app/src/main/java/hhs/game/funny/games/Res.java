@@ -17,8 +17,8 @@ import com.badlogic.gdx.graphics.Color;
 public class Res implements Disposable
 {
 	//手机固定变量
-    public static int w = Gdx.graphics.getWidth();		//手机宽度像素
-	public static int h = Gdx.graphics.getHeight();		//手机高度像素
+    public static final int w = Gdx.graphics.getWidth();		//手机宽度像素
+	public static final int h = Gdx.graphics.getHeight();		//手机高度像素
     static float tx = w / tool.PPM;
     static float ty = h / tool.PPM;
 
