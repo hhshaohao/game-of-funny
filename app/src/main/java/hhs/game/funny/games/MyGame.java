@@ -64,7 +64,7 @@ public class MyGame extends Game
 		MainActivity.use.showQuickTip(Gdx.files.isExternalStorageAvailable() ? "本地文件可读取" : "失败");
 
 		//初始化所有表情
-		TextureRegion temp = new TextureRegion(ass.get("p.png", Texture.class));
+		TextureRegion temp = new TextureRegion(ass.get("p0.png", Texture.class));
 		TextureRegion temp2[][] = temp.split(128, 128);
 		emoji = new TextureRegion[25];
 		int zh = 0;
@@ -295,7 +295,7 @@ public class MyGame extends Game
 		ass.load("s1.png", Texture.class);
 		ass.load("f0.jpg", Texture.class);
 		ass.load("ui3.png", Texture.class);
-		ass.load("p.png", Texture.class);
+		ass.load("p0.png", Texture.class);
 		ass.load("jump.mp3", Sound.class);
 		ass.load("skill.png", Texture.class);
 		ass.load("background/dead.jpg", Texture.class);

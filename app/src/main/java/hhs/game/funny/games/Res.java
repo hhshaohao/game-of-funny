@@ -11,6 +11,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.Disableable;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import hhs.game.funny.MainActivity;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.graphics.Color;
 //游戏内静态变量储存
 public class Res implements Disposable
 {
@@ -25,6 +27,7 @@ public class Res implements Disposable
 	public Group cSkin;
 	public funny role;
 	public int cv;
+	public Label point;
 
 	public Res(final MyGame game)
 	{
@@ -65,8 +68,14 @@ public class Res implements Disposable
 	public Group getChange(final funny role)
 	{
 		cSkin = new Group();
-		cSkin.setPosition(Res.w - 250,Res.h / 2 - 100);
+		cSkin.setPosition(Res.w - 250, Res.h / 2 - 100);
+
+		Label.LabelStyle style = new Label.LabelStyle();
+		style.font = MyGame.font;
+		style.fontColor = Color.BLACK;
 		
+		point = new Label(1 + "/" + MyGame.emoji.length,style);
+
 		this.role = role;
 		ImageButton b0 = tool.createButton("ui17.png", "s0.png");
 		b0.setPosition(w - cSkin.getWidth(), h / 2 - cSkin.getHeight() / 2);
@@ -78,16 +87,18 @@ public class Res implements Disposable
 					if (cv < 24)
 					{
 						cv += 1;
+						point.setText((cv + 1) + "/" + MyGame.emoji.length);
 						tool.changeSkin(role, cv);
-					}else
+					}
+					else
 					{
 						MainActivity.use.showQuickTip("已经是最后一个表情");
 					}
 					return true;
 				}
 			});
-			
-		ImageButton b1 = tool.createButton("ui16.png","s0.png");
+
+		ImageButton b1 = tool.createButton("ui16.png", "s0.png");
 		b1.addListener(new InputListener()
 			{
 				@Override
@@ -96,6 +107,7 @@ public class Res implements Disposable
 					if (cv > 0)
 					{
 						cv -= 1;
+						point.setText((cv + 1) + "/" + MyGame.emoji.length);
 						tool.changeSkin(role, cv);
 					}
 					else
@@ -105,18 +117,20 @@ public class Res implements Disposable
 					return true;
 				}
 			});
-		b0.setPosition(0,0);
+		b0.setPosition(0, 0);
 		cSkin.addActor(b0);
-		b1.setPosition(0,100);
+		b1.setPosition(0, 100);
 		cSkin.addActor(b1);
-		
+		point.setPosition(0,200);
+		cSkin.addActor(point);
+
 		return cSkin;
 	}
 
 	@Override
 	public void dispose()
 	{
-		
+
 	}
 
 

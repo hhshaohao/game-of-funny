@@ -25,7 +25,7 @@ public class EmojiViewScreen implements Screen
 		
 		batch = MyGame.Misbatch;
 		
-		text = game.ass.get("p.png",Texture.class);
+		text = game.ass.get("p0.png",Texture.class);
 	}
 	
 	@Override
