@@ -4,18 +4,23 @@ package hhs.game.funny.games.Screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.SerializationException;
+import hhs.game.funny.MainActivity;
 import hhs.game.funny.games.MyGame;
 import hhs.game.funny.games.Res;
 import hhs.game.funny.games.tool;
-import hhs.game.funny.games.mainScreen;
-import hhs.game.funny.MainActivity;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.graphics.Color;
 
 public class PractiseScreen implements Screen
 {
@@ -25,12 +30,16 @@ public class PractiseScreen implements Screen
 	public Stage st;
 
 	ImageButton ib[];
+	Label lb[];
 	Table ta;
 
 	String file;
 	FileHandle fd;
 
 	String filearr[];
+	
+	ScrollPane sp;
+	Group group;
 
 	public PractiseScreen(final MyGame game, String d, final boolean out)
 	{
@@ -55,8 +64,16 @@ public class PractiseScreen implements Screen
 		{
 			filearr[i] = fd.list()[i].name();
 		}
+		
+		TextureRegionDrawable d0 =  tool.createDrawable("tran.jpg");
+		ScrollPane.ScrollPaneStyle style = new ScrollPane.ScrollPaneStyle(d0,d0,d0,d0,d0);
+		
+		Label.LabelStyle style1 = new Label.LabelStyle(game.font,Color.BLACK);
+		
+		group = new Group();
 
 		ib = new ImageButton[filearr.length];
+		lb = new Label[filearr.length];
 
 		int max = (Res.w - 200) / 225;
 		int b = 0;//一行的量
@@ -102,9 +119,10 @@ public class PractiseScreen implements Screen
 					public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 					{	
 						PractiseScreen.this.game.transition();
+						NormalMapLoaderScreen mll = null;
 						try
 						{
-							NormalMapLoaderScreen mll = new NormalMapLoaderScreen(game, filename, out);
+							mll = new NormalMapLoaderScreen(game, filename, out);
 							Gdx.input.setInputProcessor(mll.ui);
 							PractiseScreen.this.game.setScreen(mll);
 						}
@@ -126,8 +144,19 @@ public class PractiseScreen implements Screen
 						return true;
 					}
 				});
-			st.addActor(ib[i]);
+			group.addActor(ib[i]);
 		}
+		for (int i = 0; i < ib.length; i++)
+		{
+			lb[i] = new Label(filearr[i],style1);
+			lb[i].setPosition(ib[i].getX(), ib[i].getY() - 50);
+			group.addActor(lb[i]);
+		}
+		sp = new ScrollPane(group,style);
+		sp.setBounds(0,0,Res.w,Res.h - 100);
+		sp.setForceScroll(false,true);
+		
+		st.addActor(sp);
 		st.addActor(new Res(game).exit);
 		game.teampScreen = this;
 	}
@@ -144,10 +173,7 @@ public class PractiseScreen implements Screen
 		st.draw();
 
 		batch.begin();
-		for (int i = 0; i < ib.length; i++)
-		{
-			MyGame.font.draw(batch, filearr[i], ib[i].getX(), ib[i].getY());
-		}
+		
 		batch.end();
 
 		MyGame.jump.act();

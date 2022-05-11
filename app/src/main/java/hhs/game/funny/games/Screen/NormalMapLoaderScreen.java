@@ -19,6 +19,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.utils.SerializationException;
 import hhs.game.funny.MainActivity;
 import hhs.game.funny.games.Actor.PlatformActor;
 import hhs.game.funny.games.Mission;
@@ -54,7 +55,7 @@ public class NormalMapLoaderScreen extends CommonlyScreen
 	MissionStage ms;
 
 
-    public NormalMapLoaderScreen(final MyGame game, String tmxFile, boolean out)
+    public NormalMapLoaderScreen(final MyGame game, String tmxFile, boolean out) throws SerializationException
 	{
 		super(game, new  RoleLogic()
 			{
