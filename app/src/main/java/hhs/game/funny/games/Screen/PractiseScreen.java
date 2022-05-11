@@ -37,7 +37,7 @@ public class PractiseScreen implements Screen
 	FileHandle fd;
 
 	String filearr[];
-	
+
 	ScrollPane sp;
 	Group group;
 
@@ -48,7 +48,7 @@ public class PractiseScreen implements Screen
 
 		batch = game.Misbatch;
 
-		if (out)
+		if( out )
 		{
 			fd = Gdx.files.absolute(file);
 		}
@@ -60,16 +60,16 @@ public class PractiseScreen implements Screen
 		st = new Stage();
 
 		filearr = new String[fd.list().length];
-		for (int i = 0; i < fd.list().length; ++i) 
+		for( int i = 0; i < fd.list().length; ++i ) 
 		{
 			filearr[i] = fd.list()[i].name();
 		}
-		
+
 		TextureRegionDrawable d0 =  tool.createDrawable("tran.jpg");
-		ScrollPane.ScrollPaneStyle style = new ScrollPane.ScrollPaneStyle(d0,d0,d0,d0,d0);
-		
-		Label.LabelStyle style1 = new Label.LabelStyle(game.font,Color.BLACK);
-		
+		ScrollPane.ScrollPaneStyle style = new ScrollPane.ScrollPaneStyle(d0, d0, d0, d0, d0);
+
+		Label.LabelStyle style1 = new Label.LabelStyle(game.font, Color.BLACK);
+
 		group = new Group();
 
 		ib = new ImageButton[filearr.length];
@@ -78,11 +78,11 @@ public class PractiseScreen implements Screen
 		int max = (Res.w - 200) / 225;
 		int b = 0;//一行的量
 		int c = 0;//下多少行
-		for (int a = 0; a < ib.length; a++)
+		for( int a = 0; a < ib.length; a++ )
 		{
-			if (b < max)
+			if( b < max )
 			{
-				if (fd.list()[a].isDirectory())
+				if( fd.list()[a].isDirectory() )
 				{
 					ib[a] = tool.createButton("s1.png");
 				}
@@ -101,10 +101,10 @@ public class PractiseScreen implements Screen
 			}
 		}
 
-		for (int i = 0;i < filearr.length;++i)
+		for( int i = 0;i < filearr.length;++i )
 		{
 			final String filename;
-			if (file.getBytes()[file.getBytes().length - 1] != '/')
+			if( file.getBytes()[file.getBytes().length - 1] != '/' )
 			{
 				filename = file + '/' + filearr[i];
 			}
@@ -118,44 +118,52 @@ public class PractiseScreen implements Screen
 					@Override
 					public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 					{	
-						PractiseScreen.this.game.transition();
-						NormalMapLoaderScreen mll = null;
-						try
-						{
-							mll = new NormalMapLoaderScreen(game, filename, out);
-							Gdx.input.setInputProcessor(mll.ui);
-							PractiseScreen.this.game.setScreen(mll);
-						}
-						catch (SerializationException se)
-						{
-							if (Gdx.files.absolute(filename).isDirectory())
-							{
-								PractiseScreen next = new PractiseScreen(game, filename, true);
-								Gdx.input.setInputProcessor(next.st);
-								game.teampScreen = next;
-								game.setScreen(next);
-							}
-							else
-							{
-								MainActivity.use.showQuickTip("不是正确的地图文件");
-								Gdx.input.setInputProcessor(PractiseScreen.this.st);
-							}
-						}
 						return true;
+					}
+
+					@Override
+					public void touchUp(InputEvent event, float x, float y, int pointer, int button)
+					{
+						if( !event.isTouchFocusCancel() )
+						{
+							PractiseScreen.this.game.transition();
+							NormalMapLoaderScreen mll = null;
+							try
+							{
+								mll = new NormalMapLoaderScreen(game, filename, out);
+								Gdx.input.setInputProcessor(mll.ui);
+								PractiseScreen.this.game.setScreen(mll);
+							}
+							catch(SerializationException se)
+							{
+								if( Gdx.files.absolute(filename).isDirectory() )
+								{
+									PractiseScreen next = new PractiseScreen(game, filename, true);
+									Gdx.input.setInputProcessor(next.st);
+									game.teampScreen = next;
+									game.setScreen(next);
+								}
+								else
+								{
+									MainActivity.use.showQuickTip("不是正确的地图文件");
+									Gdx.input.setInputProcessor(PractiseScreen.this.st);
+								}
+							}
+						}
 					}
 				});
 			group.addActor(ib[i]);
 		}
-		for (int i = 0; i < ib.length; i++)
+		for( int i = 0; i < ib.length; i++ )
 		{
-			lb[i] = new Label(filearr[i],style1);
+			lb[i] = new Label(filearr[i], style1);
 			lb[i].setPosition(ib[i].getX(), ib[i].getY() - 50);
 			group.addActor(lb[i]);
 		}
-		sp = new ScrollPane(group,style);
-		sp.setBounds(0,0,Res.w,Res.h - 100);
-		sp.setForceScroll(false,true);
-		
+		sp = new ScrollPane(group, style);
+		sp.setBounds(0, 0, Res.w, Res.h - 100);
+		sp.setForceScroll(false, true);
+
 		st.addActor(sp);
 		st.addActor(new Res(game).exit);
 		game.teampScreen = this;
@@ -173,13 +181,13 @@ public class PractiseScreen implements Screen
 		st.draw();
 
 		batch.begin();
-		
+
 		batch.end();
 
 		MyGame.jump.act();
 		MyGame.jump.draw();
 
-		if (!game.teampScreen.equals(this))
+		if( !game.teampScreen.equals(this) )
 		{
 			game.teampScreen = this;
 		}
