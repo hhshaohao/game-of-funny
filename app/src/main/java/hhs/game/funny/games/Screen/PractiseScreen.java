@@ -163,6 +163,7 @@ public class PractiseScreen implements Screen
 		sp = new ScrollPane(group, style);
 		sp.setBounds(0, 0, Res.w, Res.h - 100);
 		sp.setForceScroll(false, true);
+		sp.setOrigin(Res.w / 2, (Res.h - 100) / 2);
 
 		st.addActor(sp);
 		st.addActor(new Res(game).exit);
@@ -183,9 +184,6 @@ public class PractiseScreen implements Screen
 		batch.begin();
 
 		batch.end();
-
-		MyGame.jump.act();
-		MyGame.jump.draw();
 
 		if( !game.teampScreen.equals(this) )
 		{
