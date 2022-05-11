@@ -9,6 +9,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import hhs.game.funny.games.tool;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 public class EmojiViewScreen implements Screen
 {
@@ -19,8 +23,9 @@ public class EmojiViewScreen implements Screen
 	Texture text0,text1;
 
 	CheckBox cb0,cb1;
+	Label l0;
 
-	public EmojiViewScreen(MyGame game)
+	public EmojiViewScreen(final MyGame game)
 	{
 		st = new Stage();
 
@@ -41,8 +46,32 @@ public class EmojiViewScreen implements Screen
 		cb0.setPosition(0, 0);
 		cb1.setPosition(Res.w / 5, 0);
 
-		st.addActor(cb0);
-		st.addActor(cb1);
+		cb0.addListener(new ChangeListener()
+			{
+				@Override
+				public void changed(ChangeListener.ChangeEvent p1, Actor p2)
+				{
+					game.emojiF.putBoolean("0",cb0.isChecked());
+				}
+			});
+		cb1.addListener(new ChangeListener()
+			{
+				@Override
+				public void changed(ChangeListener.ChangeEvent p1, Actor p2)
+				{
+					game.emojiF.putBoolean("1",cb0.isChecked());
+				}
+			});
+
+		//st.addActor(cb0);
+		//st.addActor(cb1);
+		
+		Label.LabelStyle style1 = new Label.LabelStyle(game.font,Color.BLACK);
+		
+		l0 = new Label("选择游戏中使用的表情包\n重启生效",style1);
+		
+		l0.setPosition(0,Res.h / 5 + Res.h / 3 + 25);
+		//st.addActor(l0);
 	}
 
 	@Override

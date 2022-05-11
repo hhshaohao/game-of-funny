@@ -47,37 +47,22 @@ public class MyGame extends Game
 	public PractiseScreen teampScreen;	//当前场景
 	public EmojiViewScreen evs;			//表情一览
 	//公众资源
-	public static Label fps,heap;				//帧率显示，内存占用显示
-	public static SpriteBatch batch,Misbatch;	//渲染器
-	public static BitmapFont font;				//中文支持
-	public static AssetManager ass;				//图像资源
-	public static Preferences archive,setting;	//本地数据读取
-	public static Jumper jump;					//滑稽跳舞
-	public static int zoom;						//屏幕缩放
-	public static Color clearColor;				//清屏颜色
-	public static Image image;					//场景过渡
-	public static TextureRegion emoji[];			//表情包
+	public static Label fps,heap;						//帧率显示，内存占用显示
+	public static SpriteBatch batch,Misbatch;			//渲染器
+	public static BitmapFont font;						//中文支持
+	public static AssetManager ass;						//图像资源
+	public static Preferences archive,setting,emojiF;	//本地数据读取
+	public static Jumper jump;							//滑稽跳舞
+	public static int zoom;								//屏幕缩放
+	public static Color clearColor;						//清屏颜色
+	public static Image image;							//场景过渡
+	public static TextureRegion emoji[];				//表情包
 
 	//当主要静态资源加载完毕后
 	public void finish()
 	{
 		MainActivity.use.showQuickTip(Gdx.files.isExternalStorageAvailable() ? "本地文件可读取" : "失败");
 
-		//初始化所有表情
-		TextureRegion temp = new TextureRegion(ass.get("p0.png", Texture.class));
-		TextureRegion temp2[][] = temp.split(128, 128);
-		emoji = new TextureRegion[25];
-		int zh = 0;
-		for (int i = 0; i < temp2.length; i++)
-		{
-			for (int j = 0; j < temp2[0].length; j++)
-			{
-				emoji[zh] = temp2[i][j];
-				++zh;
-			}
-		}
-
-		jump = new Jumper();
 		//初始化本地存储对象
 		archive = Gdx.app.getPreferences("data");
 		setting = Gdx.app.getPreferences("setting");
@@ -90,6 +75,34 @@ public class MyGame extends Game
 		{
 			zoom = 0;
 		}
+		
+		//初始化所有表情
+		TextureRegion temp = new TextureRegion(ass.get("p0.png", Texture.class));
+		TextureRegion temp1 = new TextureRegion(ass.get("p1.png", Texture.class));
+		int shu = 49;
+		TextureRegion temp2[][] = temp.split(128, 128);
+		TextureRegion temp3[][] = temp1.split(107, 108);
+		emoji = new TextureRegion[shu];
+		int zh = 0;
+		for (int i = 0; i < temp2.length; i++)
+		{
+			for (int j = 0; j < temp2[0].length; j++)
+			{
+				emoji[zh] = temp2[i][j];
+				++zh;
+			}
+		}
+		for (int i = 0; i < temp3.length; i++)
+		{
+			for (int j = 0; j < temp3[0].length; j++)
+			{
+				emoji[zh] = temp3[i][j];
+				++zh;
+			}
+		}
+		
+		jump = new Jumper();
+
 		//初始化中文字体
 		font = ass.get("font.fnt", BitmapFont.class);	
 		//加载一些场景

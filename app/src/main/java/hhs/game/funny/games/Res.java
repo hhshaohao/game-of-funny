@@ -14,7 +14,7 @@ import hhs.game.funny.MainActivity;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.graphics.Color;
 //游戏内静态变量储存
-public class Res implements Disposable
+public class Res
 {
 	//手机固定变量
     public static final int w = Gdx.graphics.getWidth();		//手机宽度像素
@@ -28,9 +28,11 @@ public class Res implements Disposable
 	public funny role;
 	public int cv;
 	public Label point;
+	public MyGame game;
 
 	public Res(final MyGame game)
 	{
+		this.game = game;
 		cv = 0;
 		TextureRegion a = tool.createRegion("move3.png");
         a.flip(true, false);
@@ -57,12 +59,16 @@ public class Res implements Disposable
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
-					game.goMain();
+					Res.this.exit();
 					return true;
 				}
 			});
 
 
+	}
+	public void exit()
+	{
+		game.goMain();
 	}
 	//角色表情变化
 	public Group getChange(final funny role)
@@ -84,7 +90,7 @@ public class Res implements Disposable
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
-					if (cv < 24)
+					if (cv < MyGame.emoji.length - 1)
 					{
 						cv += 1;
 						point.setText((cv + 1) + "/" + MyGame.emoji.length);
@@ -125,12 +131,6 @@ public class Res implements Disposable
 		cSkin.addActor(point);
 
 		return cSkin;
-	}
-
-	@Override
-	public void dispose()
-	{
-
 	}
 
 
