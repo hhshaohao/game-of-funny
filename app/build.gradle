@@ -13,9 +13,13 @@ android {
     }
     buildTypes {
         release {
-			//proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'//混淆配置文件,as默认自动生成了
-			signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+		debug {
+			minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+		}
     }
 }
 
