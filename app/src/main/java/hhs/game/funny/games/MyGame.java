@@ -75,7 +75,7 @@ public class MyGame extends Game
 		{
 			zoom = 0;
 		}
-		
+
 		//初始化所有表情
 		TextureRegion temp = new TextureRegion(ass.get("p0.png", Texture.class));
 		TextureRegion temp1 = new TextureRegion(ass.get("p1.png", Texture.class));
@@ -100,7 +100,7 @@ public class MyGame extends Game
 				++zh;
 			}
 		}
-		
+
 		jump = new Jumper();
 
 		//初始化中文字体
@@ -274,11 +274,14 @@ public class MyGame extends Game
 	{
 		transition();
 		font.getData().setScale(1);
-		lev.dispose();
-		lev = null;
+		if (lev != null)
+		{
+			lev.dispose();
+			lev = null;
+		}
+		h = new hscreen(this, batch);
 		lev = new Level1(batch, this);
-		Gdx.input.setInputProcessor(lev.st);
-		setScreen(lev);
+		goLevel1();
 	}
 	//去到TeampScreen
 	public void goThat()
