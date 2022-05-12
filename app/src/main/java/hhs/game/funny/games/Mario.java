@@ -18,6 +18,8 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import hhs.game.funny.games.Screen.DeadScreen;
+import com.badlogic.gdx.Gdx;
 //马里奥界面
 public class Mario implements Screen
 {
@@ -44,6 +46,8 @@ public class Mario implements Screen
 	//Box2DDebugRenderer ren;
 	
 	Res r;
+	
+	DeadScreen d;
 
 	public Mario(MyGame game, SpriteBatch batch)
 	{
@@ -147,6 +151,18 @@ public class Mario implements Screen
 		zhu = new funny(world, new Vector2(4 * 16 / ppm, 16 / ppm), 0);
 		st.addActor(r.getChange(zhu));
 		//ren = new Box2DDebugRenderer();
+		
+		d = new DeadScreen(game,game.Misbatch)
+		{
+			@Override
+			public void cilk(ImageButton bu)
+			{
+				zhu.b2body.setTransform(4 * 16 / ppm, 16 / ppm , zhu.b2body.getAngle());
+				zhu.b2body.setLinearVelocity(0, 0);
+				Gdx.input.setInputProcessor(Mario.this.st);
+				game.setScreen(Mario.this);
+			}
+		};
 	}
 
 	@Override
@@ -169,6 +185,13 @@ public class Mario implements Screen
 		ny = zhu.b2body.getPosition().y - ((16 / tool.le1) / 2);
 
 		this.move();
+		
+		if(ny < 0)
+		{
+			st.cancelTouchFocus();
+			Gdx.input.setInputProcessor(d.st);
+			game.setScreen(d);
+		}
 	}
 
 	@Override
