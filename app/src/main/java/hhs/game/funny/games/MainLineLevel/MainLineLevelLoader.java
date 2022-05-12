@@ -36,6 +36,7 @@ import hhs.game.funny.games.contactListener.jumpConcat;
 import hhs.game.funny.games.funny;
 import com.badlogic.gdx.math.MathUtils;
 import hhs.game.funny.games.hscreen;
+import com.badlogic.gdx.graphics.Color;
 //主线关卡
 public class MainLineLevelLoader extends CommonlyScreen
 {
@@ -59,7 +60,11 @@ public class MainLineLevelLoader extends CommonlyScreen
 	Mission mis;
 	MissionStage ms;
 	int l;
-
+	
+	Texture bg;
+	float az = ppm + zoom + MyGame.zoom;
+	int ax,ay;
+	
     public MainLineLevelLoader(final MyGame game, String tmxFile, final int l)
 	{
 		super(game, new  RoleLogic()
@@ -151,6 +156,10 @@ public class MainLineLevelLoader extends CommonlyScreen
 		mis.isShow = false;
 		ms = new MissionStage();
 		ms.addMission(mis);
+		
+		bg = game.ass.get("bg.png",Texture.class);
+		Color c= new Color(0,0.623f,1,1);
+		game.clearColor = c;
 	}
 
 	@Override
@@ -168,7 +177,18 @@ public class MainLineLevelLoader extends CommonlyScreen
 
 		render.setView(cam);
 		batch.setProjectionMatrix(cam.combined);
-
+		
+		batch.begin();
+		batch.draw(bg,cam.position.x - Res.w /az / 2 -0.1f * nx,
+			cam.position.y - Res.h / az /2 - 0.5f * ny,
+			Res.w / (az),
+			Res.h / (az));
+		batch.draw(bg,cam.position.x - Res.w /az / 2 -0.1f * nx + bg.getWidth() / az,
+			cam.position.y - Res.h / az /2 - 0.5f * ny,
+			Res.w / (az),
+			Res.h / (az));
+		batch.end();
+		
 		render.render();
 
 		batch.begin();

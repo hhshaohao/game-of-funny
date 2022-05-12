@@ -6,14 +6,9 @@
   <tileset firstgid="1148" name="mytileset" columns="6" tilecount="30" tileheight="16" tilewidth="16">
     <image source="mytileset.png" width="96" height="80" />
   </tileset>
-  <layer name="back" width="200" height="40">
-    <data encoding="base64" compression="zlib">
-   eJzt07ENACEMBEHz/XdMQgV+EAhZQhNMfsFt/yI6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAZS3mqjdCFX1ATh+cioc/og/I6YMq2b9WPrnjZOOfATgKlj4=
-  </data>
-  </layer>
   <layer name="层 1" width="200" height="40">
     <data encoding="base64" compression="zlib">
-   eJztmlFOGzEQhtO9QeAmpLeAN67RPnIUqAScAyrRPnCKggS8wCEoUmknSqpUaTbetcf2jPN90jytdtb2zm/PzO5kAgAAAAAAAACbOO0mkzOxL13tkQDY40p0cS32FX1AJOyxUJoHibVHsacMMacdzxp7LBqDMfySOHkX+50hXmrmDH06KD0m9Lgg5z4M47GSz6PHBTn34W38kOfdid1XXA+r72QXsbIvWOFV1uGn2FvF9eCdAAAA9HMu5+OF2CXnZBOEahMLtYsnbmSdvol9j1gvarR4csVpqDbRql1492FSa7Tca2y5/2qhxk5Bqz5HZ/3k7oEM7b9ayzmsjScnfTFA3m+H0F4+JF41Y9r72aLB0LwfHdVnSLy2EtPe8p2U+hnqo10D5c69WvvuF9L7puu7cCZZqc21/0HROqc8/cObQkjvm65vO5Nyaae0Jmv9G+WFVv/hzU2ufI48EQBClO7deu0VW8rRYonJmTzVPjliq3Sfy2tfrYUcLSZnKplnpca3xneRGMb69XRGeNofWyf33pnL/1i/ns4I6tAwLeSW3rHS/4b/aSG39A79bwAAAChFt2aw4rnbbgBj0dRbbc1+6LFazy31fA28jnssu3y2oA+AzdSMz5A+hhgs2BuxGB5qjfl81sdZYqyWYs+DPjzo8lgGdCK2rzCwQ/FxFOkn5d5/mYqPmdJ8xuIh9jzoxgpzbRws9fFRIaY+yf2fI32k3PuX6XI+M6X5hLAcY+gjnb75v3Qry7WeGn5vu5XF3jvEd8pzWtTHrujmD5MfBLs=
+   eJztmktOxDAMhktvMHAThlvAjmvAkqMAEnAOQAIWnAKQgA0cApB4eDSDBg1t87ITO/0/ydJIo6ax6z+x0zYNAAAAAAAAAAAAujhsm+aI7LgtPRMA9HFOurggu4Q+QCRYY0FuHinXnsieBXKOO5851lhoDITwSXnyRfYtkC8la4Y+HeSeE/Q4R3IdBuFoqeehxzmS6/AQd3S/e7KHgvHQ+kzGiJZ1QQtvFId3so+C8cAzAQAAAPo5of3xlOwM+2QVuHoTDb2LJa4oTtdkNxHxQo8Wj1SeunoTrt4Fz95Nao8mHWPN568aeuwUuPpz6Kwf6TMQ3/NXbTWHtvlI0pcDqPv14FrLffKVM6et7y0c+Nb90FF5fPK1lpy2Vu+k9M+gPNw9kHTtVdt7P5feu/4fw56kpTfn/gaFa5+y9A1vCi69d/0/tCdJaSe3Jkt9G2WFWr/hlUaqnkOdCABwkfvs1upZsaYaLZaYmslS7yORW7nPuayeq9VQo8XUTDnrrNT85ngvEkPouJb2CEvrY+1Ir51S44eOa2mPQB/qpoba0jpazr/Bf2qoLa2D828AAAAA5KJdMbDkpR02AELh1Ftpza71WKn75ro/B1bnHcqY9xboQyeu+CBG8pSMvc/zH3N+hPi/HhAMC73GzJ/VeeaYq6bcs6CPkrr09X+XfhyQbTBMbJvG2IkcJ+Xav0xojCmTP6FYyD0LusmBj58zbWwu9LHFkFN7dP1+5Bgp1/4yWfgzZfLHheYcgz6GSfH/tV2aVDw5xr1tlxZ7rc/YKfepUR8un/p8zDkHjvj8AEthBQw=
   </data>
   </layer>
   <objectgroup name="moveAble">
@@ -30,7 +25,7 @@
       </properties>
     </object>
   </objectgroup>
-  <objectgroup name="ground" visible="false">
+  <objectgroup name="ground">
     <object name="" type="" id="4" x="0" y="702" width="108" height="18" />
     <object name="" type="" id="5" x="162" y="702" width="306" height="18" />
     <object name="" type="" id="6" x="234" y="648" width="72" height="18" />
@@ -83,10 +78,10 @@
     <object name="" type="" id="111" x="1674" y="594" width="18" height="18" />
     <object name="" type="" id="112" x="1692" y="594" width="18" height="18" />
   </objectgroup>
-  <objectgroup name="born" visible="false">
+  <objectgroup name="born">
     <object name="" type="" id="81" x="72" y="648" width="18" height="18" />
   </objectgroup>
-  <objectgroup name="e" visible="false">
+  <objectgroup name="e">
     <object name="" type="" id="106" x="3528" y="594" width="18" height="18" />
   </objectgroup>
 </map>

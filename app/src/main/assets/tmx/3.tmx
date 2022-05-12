@@ -5,12 +5,12 @@
   </tileset>
   <layer name="层 1" width="60" height="20">
     <data encoding="base64" compression="zlib">
-   eJztwzEJAAAMA7Ay/4bqrjZ2JJBeUlVVVVV9eop+bL4=
+   eJztwTEBAAAAwqD1T20ND6AAAAAA4NcAEsAAAQ==
   </data>
   </layer>
   <layer name="g" width="60" height="20">
     <data encoding="base64" compression="zlib">
-   eJztlzsSwCAIRJH7HzpNikwK5bOIkBRb6QBvYUYcRDQc4lueGFXEE3X0Zsb75pL4scpxOq/GD038ysyr2bcwo+5E8bIxnqQexJ0I3iifpD2SnGezomagm77G++TOruHXGT3uMPvWtz277kq8WZ5p60ey7mbOeoMz8qL3YM1uHb2DR/Nq/hM7/hzefmjZPJLkRrBejncH1g==
+   eJzll0sOwCAIRPX+l+7KpGnqZwYQkZewKr+xNNJaSqkCa0hyRLERN57NjJEvU+N0vTPY/JE19/pnYr6xUh8rve+6TAz63aA+FnpZmNmf+fWeR8ByJk8lm95GJq1ZWX3HN8w+e7dHxUOv15mh/Wtq3a3Z6w72qKu9ByO7tfUOjvSnmQv9D7GErbuiTWIrtVH+6jyS4gGM
   </data>
   </layer>
   <objectgroup name="born">

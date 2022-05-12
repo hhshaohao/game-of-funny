@@ -8,6 +8,7 @@ import hhs.game.funny.games.MyGame;
 import hhs.game.funny.games.Res;
 import hhs.game.funny.games.Runnable.RoleLogic;
 import hhs.game.funny.games.funny;
+import com.badlogic.gdx.graphics.Color;
 
 public class UserInterface extends Stage
 {
@@ -23,7 +24,15 @@ public class UserInterface extends Stage
 	{
 		this.game = game;
 
-		r = new Res(game);
+		r = new Res(game)
+		{
+			@Override
+			public void exit()
+			{
+				game.clearColor = Color.WHITE;
+				game.goMain();
+			}
+		};
 		b0 = r.b0;
 		b1 = r.b1;
 		b2 = r.b2;

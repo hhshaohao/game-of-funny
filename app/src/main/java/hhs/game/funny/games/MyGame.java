@@ -309,6 +309,7 @@ public class MyGame extends Game
 		//加载图片和声音资源
 		ass.load("s0.png", Texture.class);
 		ass.load("s1.png", Texture.class);
+		ass.load("bg.png",Texture.class);
 		ass.load("f0.jpg", Texture.class);
 		ass.load("ui3.png", Texture.class);
 		ass.load("p0.png", Texture.class);

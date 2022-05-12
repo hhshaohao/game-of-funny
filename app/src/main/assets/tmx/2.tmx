@@ -5,7 +5,7 @@
   </tileset>
   <layer name="层 1" width="60" height="20">
     <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAAO2WSw6AIAxEwftfyNu5MCamAelnCq26mFUt0wcTsJZSanLt26mnWq8+6o+mOw+dmdZaTL269x5wzoHDO5KmH509rY+U1ZtXM4/Ey7peNFbEvNl5rxlQeYnOisyH5e7IwMrljcCK8snAi/RC5Hl2BlH3s5TZm3M170rNzvNb9CXerG/oz2vjbTHP3g8PL+5/hDQD1rda09f7lq5zADYeHW3AEgAA
+   H4sIAAAAAAAAAO2WSQ7AIAgA9f+fbjx4MQXZBdtJPCGFMSS0t9Z68TPBYlB8l5/trGCxNyco7v0GWE8c3x2SfOvZk9aR4Olrgaevtr61665+RP5p39mDJpfaZwZXLdReb3AdUPrN4GpVp4KvZS2LefbGax9xnaM45XuS6Hm+hS/5Vt2hUn5f2Dn6PTxqUf8juDOg3dWSPOju+p0HxJ5hocASAAA=
   </data>
   </layer>
   <objectgroup name="born">
