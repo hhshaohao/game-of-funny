@@ -39,7 +39,7 @@ public class PractiseScreen implements Screen
 	String filearr[];
 
 	ScrollPane sp;
-	Group group;
+	Table t0;
 
 	public PractiseScreen(final MyGame game, String d, final boolean out)
 	{
@@ -48,7 +48,7 @@ public class PractiseScreen implements Screen
 
 		batch = game.Misbatch;
 
-		if( out )
+		if (out)
 		{
 			fd = Gdx.files.absolute(file);
 		}
@@ -60,7 +60,7 @@ public class PractiseScreen implements Screen
 		st = new Stage();
 
 		filearr = new String[fd.list().length];
-		for( int i = 0; i < fd.list().length; ++i ) 
+		for (int i = 0; i < fd.list().length; ++i) 
 		{
 			filearr[i] = fd.list()[i].name();
 		}
@@ -70,41 +70,27 @@ public class PractiseScreen implements Screen
 
 		Label.LabelStyle style1 = new Label.LabelStyle(game.font, Color.BLACK);
 
-		group = new Group();
-
 		ib = new ImageButton[filearr.length];
 		lb = new Label[filearr.length];
 
-		int max = (Res.w - 200) / 225;
-		int b = 0;//一行的量
-		int c = 0;//下多少行
-		for( int a = 0; a < ib.length; a++ )
+		for (int a = 0; a < ib.length; a++)
 		{
-			if( b < max )
+			if (fd.list()[a].isDirectory())
 			{
-				if( fd.list()[a].isDirectory() )
-				{
-					ib[a] = tool.createButton("s1.png");
-				}
-				else
-				{
-					ib[a] = tool.createButton("s0.png");
-				}
-				ib[a].setBounds((b + 1) * 225, Res.h -  (c + 1) * 200, 200, 100);
-				b++;
+				ib[a] = tool.createButton("s1.png");
 			}
 			else
 			{
-				c++;
-				b = 0;
-				a--;
+				ib[a] = tool.createButton("s0.png");
 			}
-		}
 
-		for( int i = 0;i < filearr.length;++i )
+		}
+		t0 = new Table();
+		int num = 0;
+		for (int i = 0;i < filearr.length;++i)
 		{
 			final String filename;
-			if( file.getBytes()[file.getBytes().length - 1] != '/' )
+			if (file.getBytes()[file.getBytes().length - 1] != '/')
 			{
 				filename = file + '/' + filearr[i];
 			}
@@ -124,7 +110,7 @@ public class PractiseScreen implements Screen
 					@Override
 					public void touchUp(InputEvent event, float x, float y, int pointer, int button)
 					{
-						if( !event.isTouchFocusCancel() )
+						if (!event.isTouchFocusCancel())
 						{
 							PractiseScreen.this.game.transition();
 							NormalMapLoaderScreen mll = null;
@@ -134,9 +120,9 @@ public class PractiseScreen implements Screen
 								Gdx.input.setInputProcessor(mll.ui);
 								PractiseScreen.this.game.setScreen(mll);
 							}
-							catch(SerializationException se)
+							catch (SerializationException se)
 							{
-								if( Gdx.files.absolute(filename).isDirectory() )
+								if (Gdx.files.absolute(filename).isDirectory())
 								{
 									PractiseScreen next = new PractiseScreen(game, filename, true);
 									Gdx.input.setInputProcessor(next.st);
@@ -152,18 +138,42 @@ public class PractiseScreen implements Screen
 						}
 					}
 				});
-			group.addActor(ib[i]);
-		}
-		for( int i = 0; i < ib.length; i++ )
-		{
 			lb[i] = new Label(filearr[i], style1);
-			lb[i].setPosition(ib[i].getX(), ib[i].getY() - 50);
-			group.addActor(lb[i]);
+			if (num < 4)
+			{
+				t0.add(ib[i]).padRight(50);
+				t0.add(lb[i]);
+
+				num++;
+			}
+			else
+			{
+				t0.row().padTop(50);
+				t0.add(ib[i]);
+				t0.add(lb[i]);
+				num = 0;
+			}
 		}
-		sp = new ScrollPane(group, style);
+		float sx = 0,sy = 0;
+		/*for (int i = 0; i < ib.length; i++)
+		 {
+		 lb[i] = new Label(filearr[i], style1);
+		 lb[i].setPosition(sx,sy);
+		 if(sx < Res.w - 300)
+		 {
+		 sx += 250;
+		 }else
+		 {
+		 sx = 0;
+		 sy += 150;
+		 }
+		 t0.addActor(lb[i]);
+		 }*/
+
+		sp = new ScrollPane(t0, style);
 		sp.setBounds(0, 0, Res.w, Res.h - 100);
-		sp.setForceScroll(false, true);
-		sp.setOrigin(Res.w / 2, (Res.h - 100) / 2);
+		sp.setScrollingDisabled(false, false);
+		sp.setSmoothScrolling(true);
 
 		st.addActor(sp);
 		st.addActor(new Res(game).exit);
@@ -185,7 +195,7 @@ public class PractiseScreen implements Screen
 
 		batch.end();
 
-		if( !game.teampScreen.equals(this) )
+		if (!game.teampScreen.equals(this))
 		{
 			game.teampScreen = this;
 		}

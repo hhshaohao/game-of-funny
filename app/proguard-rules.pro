@@ -1,7 +1,7 @@
 -dontnote **
 -dontwarn **
 
--keep class com.**
+-keep class com.** {*;}
 
 -keepclasseswithmembernames class * {
 native <methods>;
