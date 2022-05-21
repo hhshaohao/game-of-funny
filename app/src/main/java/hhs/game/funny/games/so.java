@@ -47,12 +47,12 @@ public class so implements Screen
 		style.font = MyGame.ass.get("font.fnt", BitmapFont.class);
 		style.font.getData().setScale(1);
 		style.fontColor = Color.BLACK;
-		s1 = new Label("千年一遇的滑稽风暴来到了沙雕界,使沙雕界遭遇大灾难", style);
-		s2 = new Label("沙雕之神和其他表情为了使沙雕界回归正常", style);
-		s3 = new Label("使用了沙雕界神器'沙雕神符',简称'氵隹符'", style);
-		s4 = new Label("使用沙雕神符后,这件宝物消失于世间,'", style);
-		s5 = new Label("众表情们为了纪念沙雕神符,举办沙雕比拼,谁能胜利谁就是'沙雕之主", style);
-		s6 = new Label("除了滑稽一族外,还有其他表情参加(待开发)", style);
+		s1 = new Label("千年一遇的沙雕比拼来到了表情界", style);
+		s2 = new Label("各路表情都想争得沙雕之主的名号", style);
+		s3 = new Label("为了赢得关卡不掉下天空", style);
+		s4 = new Label("最终取得胜利", style);
+		s5 = new Label("各路表情训练自己的各种能力", style);
+		s6 = new Label("你可以成为那个独一无二的沙雕之主吗？", style);
 
 		ta.setFillParent(true);
 		ta.center();

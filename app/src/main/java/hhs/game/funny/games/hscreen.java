@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import hhs.game.funny.MainActivity;
 import hhs.game.funny.games.Screen.Jumper;
+import com.badlogic.gdx.audio.Music;
 /*
  选择主页面
  */
@@ -31,7 +32,8 @@ public class hscreen implements Screen
 
 	Jumper j;
 	//Box2DDebugRenderer ren = new Box2DDebugRenderer();
-
+	Music m0;
+	
 	public hscreen(MyGame m, SpriteBatch batch)
 	{
 
@@ -76,7 +78,7 @@ public class hscreen implements Screen
 		allEmoji.setPosition(Res.w - allEmoji.getWidth(),0);
 		
 		st.addActor(mario);
-		st.addActor(openWorld);
+		//st.addActor(openWorld);暂时不加上(怕有版权问题)
 		st.addActor(setting);
 		st.addActor(practise);
 		st.addActor(goLocal);
@@ -95,6 +97,7 @@ public class hscreen implements Screen
 		j = MyGame.jump;
 
 		Gdx.input.setInputProcessor(st);
+		
 	}
 
 

@@ -139,7 +139,7 @@ public class PractiseScreen implements Screen
 					}
 				});
 			lb[i] = new Label(filearr[i], style1);
-			if (num < 4)
+			if (num < 1)
 			{
 				t0.add(ib[i]).padRight(50);
 				t0.add(lb[i]);

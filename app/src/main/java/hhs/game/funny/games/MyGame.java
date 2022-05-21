@@ -25,6 +25,7 @@ import hhs.game.funny.games.Screen.SettingScreen;
 import hhs.game.funny.games.Screen.LocalMapEntrance;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import hhs.game.funny.games.Screen.EmojiViewScreen;
+import com.badlogic.gdx.audio.Music;
 //游戏入口类
 public class MyGame extends Game
 {
