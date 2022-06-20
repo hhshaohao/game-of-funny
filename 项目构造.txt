@@ -1,0 +1,159 @@
+app
+├── build.gradle
+├── libs  //依赖库文件
+│   ├── gdx-backend-android.jar
+│   ├── gdx-box2d.jar
+│   └── gdx.jar
+├── pro.txt
+├── proguard-rules.pro
+├── resource_mapping.txt
+└── src
+    └── main
+        ├── AndroidManifest.xml
+        ├── JNIlibs   //c库依赖
+        │   ├── armeabi
+        │   │   ├── libgdx-box2d.so
+        │   │   └── libgdx.so
+        │   ├── armeabi-v7a
+        │   │   ├── libgdx-box2d.so
+        │   │   └── libgdx.so
+        │   └── x86
+        │       ├── libgdx-box2d.so
+        │       └── libgdx.so
+        ├── assets  //游戏资源
+        │   ├── background
+        │   │   └── dead.jpg
+        │   ├── bg.png
+        │   ├── down.mp3
+        │   ├── f0.jpg
+        │   ├── font.fnt
+        │   ├── font.png
+        │   ├── gk.png
+        │   ├── gk1.png
+        │   ├── icon.png
+        │   ├── jump.mp3
+        │   ├── m0.png
+        │   ├── m1.png
+        │   ├── mabrick.png
+        │   ├── move0.png
+        │   ├── move1.png
+        │   ├── move2.png
+        │   ├── move3.png
+        │   ├── p0.png
+        │   ├── p1.png
+        │   ├── s0.png
+        │   ├── s1.png
+        │   ├── skill.png
+        │   ├── tmx   //地图文件
+        │   │   ├── 0.tmx
+        │   │   ├── 1.tmx
+        │   │   ├── 10.tmx
+        │   │   ├── 2.tmx
+        │   │   ├── 3.tmx
+        │   │   ├── 4.tmx
+        │   │   ├── 5.tmx
+        │   │   ├── 6.tmx
+        │   │   ├── 7.tmx
+        │   │   ├── 8.tmx
+        │   │   ├── 9.tmx
+        │   │   ├── MagicLand.tmx
+        │   │   ├── Map01.tmx
+        │   │   ├── auto.json
+        │   │   ├── le1.tmx
+        │   │   ├── le2.tmx
+        │   │   ├── level1.tmx
+        │   │   ├── mabrick.png
+        │   │   ├── magiclanddizzy_tiles.gif
+        │   │   ├── map0.tmx
+        │   │   ├── mytileset.png
+        │   │   ├── practise
+        │   │   │   ├── auto.json
+        │   │   │   ├── control.tmx
+        │   │   │   └── plat.tmx
+        │   │   └── tileset_gutter.png
+        │   ├── tran.jpg
+        │   ├── ui0.png
+        │   ├── ui1.png
+        │   ├── ui10.png
+        │   ├── ui11.png
+        │   ├── ui12.png
+        │   ├── ui13.png
+        │   ├── ui14.png
+        │   ├── ui15.png
+        │   ├── ui16.png
+        │   ├── ui17.png
+        │   ├── ui18.png
+        │   ├── ui2.png
+        │   ├── ui3.png
+        │   ├── ui4.png
+        │   ├── ui5.png
+        │   ├── ui6.png
+        │   ├── ui7.png
+        │   ├── ui8.png
+        │   └── ui9.png
+        ├── java   //所有代码
+        │   └── hhs
+        │       └── game
+        │           └── funny
+        │               ├── MainActivity.java
+        │               └── games
+        │                   ├── Actor   //演员类
+        │                   │   ├── FastRoleActor.java  //快速演员
+        │                   │   └── PlatformActor.java  //移动平台演员
+        │                   ├── Level1.java  //关卡一
+        │                   ├── MagicLand.java  //开放世界(怕侵权，所以把关卡入口删了)
+        │                   ├── MainLineLevel   //主线关卡
+        │                   │   ├── MainLineLevelLoader.java
+        │                   │   └── level1.java
+        │                   ├── Mario.java   //模仿马里奥地图
+        │                   ├── Mission.java //显示任务提示的API
+        │                   ├── MyGame.java  //游戏主入口
+        │                   ├── Res.java     //静态变量储存＋实现一些小功能
+        │                   ├── Runnable
+        │                   │   └── RoleLogic.java //设定行动逻辑的抽象类
+        │                   ├── Screen
+        │                   │   ├── BackDraw.java  //批量绘制的api
+        │                   │   ├── ChooseCustomsScreen.java  //选择关卡的页面
+        │                   │   ├── CommonlyScreen.java  //场景
+        │                   │   ├── DeadScreen.java  //死亡复活的场景
+        │                   │   ├── EmojiViewScreen.java //浏览表情的场景
+        │                   │   ├── FastScreen.java  //一步初始化的场景
+        │                   │   ├── GS.java
+        │                   │   ├── Jumper.java   //表情跳来跳去的背景
+        │                   │   ├── LocalMapEntrance.java  //本地地图进入场景
+        │                   │   ├── NormalMapLoaderScreen.java  //本地地图加载器＋渲染
+        │                   │   ├── PractiseScreen.java  //显示练习关卡的场景
+        │                   │   ├── SettingScreen.java  //调整设置的场景
+        │                   │   ├── TmxScreen.java //专门初始化tmx地图的场景
+        │                   │   └── UniversalScreen.java 
+        │                   ├── Stage
+        │                   │   ├── MissionStage.java  //显示多个任务时的场景
+        │                   │   └── UserInterface.java //用户操作ui
+        │                   ├── Tools
+        │                   │   ├── Controler.java //控制器
+        │                   │   ├── Drawist.java  //绘画抽象类
+        │                   │   ├── NativeUse.java  //在游戏中使用安卓api
+        │                   │   ├── PlatformResolver.java //移动平台
+        │                   │   └── RendererObject.java   //渲染器
+        │                   ├── contactListener
+        │                   │   ├── contact.java  //动作监听
+        │                   │   └── jumpConcat.java  //跳跃检测
+        │                   ├── funny.java  //人物类
+        │                   ├── hscreen.java  //主场景
+        │                   ├── lernSkill.java  //已废除
+        │                   ├── mainScreen.java  //新手教程
+        │                   ├── so.java  //背景故事
+        │                   ├── startScreen.java  //初始化资源
+        │                   └── tool.java  //工具
+        └── res
+            ├── drawable
+            │   └── ic.png
+            ├── layout
+            │   ├── activity_main.xml
+            │   └── community.xml
+            ├── values
+            │   ├── colors.xml
+            │   ├── strings.xml
+            │   └── styles.xml
+            └── values-v21
+                └── styles.xml
