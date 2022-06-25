@@ -78,7 +78,7 @@ public class hscreen implements Screen
 		allEmoji.setPosition(Res.w - allEmoji.getWidth(),0);
 		
 		st.addActor(mario);
-		//st.addActor(openWorld);暂时不加上(怕有版权问题)
+		st.addActor(openWorld);//暂时不加上(怕有版权问题)
 		st.addActor(setting);
 		st.addActor(practise);
 		st.addActor(goLocal);
