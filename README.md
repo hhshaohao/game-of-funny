@@ -3,7 +3,10 @@
 ## 阅读代码
 
 >可以先看看项目构造
+
 >从MyGdxGame.java开始看
+
+[项目构造](https://gitee.com/hhshaohao/game-of-funny/blob/master/%E9%A1%B9%E7%9B%AE%E6%9E%84%E9%80%A0.txt)
 
 ## 软件编译
 
