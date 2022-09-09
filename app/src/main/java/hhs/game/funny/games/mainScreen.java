@@ -247,9 +247,7 @@ public class mainScreen implements Screen
     //在绘图前更新相机，坐标，世界
     public void update()
 	{
-        cam.update();
-        cam.position.x = mbody.getPosition().x;
-		cam.position.y = mbody.getPosition().y;
+        tool.update(cam,mbody.getPosition().x,mbody.getPosition().y);
 
         batch.setProjectionMatrix(cam.combined);
 

@@ -43,8 +43,7 @@ public class Level1 implements Screen
 	private DeadScreen dead;
 	contact con;
 	float time,time1 = 6f;
-	float tmp = 0;
-	boolean s=true,first=true,nextS = true,ndead = false;
+	boolean s=true,nextS = true,ndead = false;
 	static Stage st;
 	//TextureRegionDrawable d1,d2;
 
@@ -147,7 +146,6 @@ public class Level1 implements Screen
 				zhu.b2body.setTransform(new Vector2(100 / tool.le1, 300 / tool.le1), zhu.b2body.getAngle());
 				jump = left = jumping = false;
 				s = true;
-				first = true;
 				ndead = false;
 				stop = true;
 
@@ -357,24 +355,8 @@ public class Level1 implements Screen
 	{
 		if (!show)
 			this.move();
-		cam.position.x = nx;
-		if (first)
-		{
-			tmp = cam.position.y;
-			first = false;
-		}
-
-		cam.update();
-
-		cam.position.y = tmp;
-		if (ny > cam.position.y + (Res.h / (tool.le1 + suo + MyGame.zoom)) / 4)
-		{
-			tmp += 2 / tool.le1;
-		}
-		if (ny < cam.position.y)
-		{
-			tmp -= 2 / tool.le1;
-		}
+		
+		tool.update(cam,nx,ny);
 
 		world.step(1 / 60f, 1, 1);
 

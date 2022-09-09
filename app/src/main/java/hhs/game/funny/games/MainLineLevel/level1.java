@@ -30,6 +30,7 @@ import hhs.game.funny.games.Stage.MissionStage;
 import hhs.game.funny.games.Tools.Drawist;
 import hhs.game.funny.games.contactListener.jumpConcat;
 import hhs.game.funny.games.funny;
+import hhs.game.funny.games.tool;
 //主线关卡
 public class level1 extends CommonlyScreen
 {
@@ -133,9 +134,7 @@ public class level1 extends CommonlyScreen
 	{
 		world.step(1 / 60f, 2, 6);
 
-		cam.position.x = ac.b2body.getPosition().x;
-		cam.position.y = ac.b2body.getPosition().y;
-		cam.update();
+		tool.update(cam,ac.b2body.getPosition().x,ac.b2body.getPosition().y);
 
 		nx = ac.b2body.getPosition().x - 9 / ppm;
 		ny = ac.b2body.getPosition().y - 9 / ppm;

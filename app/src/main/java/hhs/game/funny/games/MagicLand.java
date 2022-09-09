@@ -177,9 +177,7 @@ public class MagicLand implements Screen
 	{
 		world.step(1 / 60f, 2, 6);
 
-		cam.update();
-		cam.position.x = nx;
-		cam.position.y = ny;
+		tool.update(cam,nx,ny);
 
 		batch.setProjectionMatrix(cam.combined);
 

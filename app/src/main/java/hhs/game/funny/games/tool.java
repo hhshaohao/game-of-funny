@@ -1,6 +1,7 @@
 package hhs.game.funny.games;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -18,6 +19,8 @@ public class tool
     public static final float PPM = 70f;
 	public static final float le1 = 20f;
 	public static final double M_PI = 3.1415;
+	public static final short play = 0;
+	public static final short ground = 1;
 	static LabelStyle style = new LabelStyle(MyGame.font, Color.BLUE);
 
     public static ImageButton createButton(String a, String b)
@@ -78,5 +81,12 @@ public class tool
 	{
 		role.setRegion(MyGame.emoji[b]);
 	}
+	
+	public static void update(Camera camera,float targetX,float targetY){
+        float dx = (targetX - camera.position.x) / 32;
+        float dy = (targetY - camera.position.y) / 16;
+        camera.position.add(dx, dy, 0);
+		camera.update();
+    }
 
 }

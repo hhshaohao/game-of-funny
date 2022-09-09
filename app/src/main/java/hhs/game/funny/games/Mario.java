@@ -174,8 +174,7 @@ public class Mario implements Screen
 	{
 		world.step(1 / 60f, 2, 6);
 
-		cam.update();
-		cam.position.x = nx;
+		tool.update(cam,nx,cam.position.y);
 
 		batch.setProjectionMatrix(cam.combined);
 

@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.physics.box2d.Filter;
 //游戏内基本角色初始化类
 public class funny extends Sprite
 {
@@ -86,6 +87,7 @@ public class funny extends Sprite
 		sh.createChain(new float[]{-0.1f * ra,-ra,0.1f * ra,-ra});
 		fix = b2body.createFixture(sh, 1);
 		fix.setUserData("p");
+		fix.getFilterData().categoryBits = tool.play;
 	}
 
 

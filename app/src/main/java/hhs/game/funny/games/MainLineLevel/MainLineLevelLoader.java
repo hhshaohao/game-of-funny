@@ -37,6 +37,7 @@ import hhs.game.funny.games.funny;
 import com.badlogic.gdx.math.MathUtils;
 import hhs.game.funny.games.hscreen;
 import com.badlogic.gdx.graphics.Color;
+import hhs.game.funny.games.tool;
 //主线关卡
 public class MainLineLevelLoader extends CommonlyScreen
 {
@@ -170,8 +171,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 		nx = zhu.b2body.getPosition().x - zhu.ra;
 		ny = zhu.b2body.getPosition().y - zhu.ra;
 
-		cam.position.x = zhu.b2body.getPosition().x;
-		cam.position.y = zhu.b2body.getPosition().y;
+		tool.update(cam,zhu.b2body.getPosition().x,zhu.b2body.getPosition().y);
 
 		cam.update();
 
@@ -242,6 +242,8 @@ public class MainLineLevelLoader extends CommonlyScreen
 			bdef.position.set((r.getX() + r.getWidth() / 2) / ppm, (r.getY() + r.getHeight() / 2) / ppm);
 
 			body = world.createBody(bdef);
+			
+			fdef.filter.categoryBits = tool.ground;
 
 			body.createFixture(fdef);
 		}
