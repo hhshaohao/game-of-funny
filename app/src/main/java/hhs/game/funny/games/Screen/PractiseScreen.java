@@ -4,23 +4,24 @@ package hhs.game.funny.games.Screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.SerializationException;
 import hhs.game.funny.MainActivity;
 import hhs.game.funny.games.MyGame;
 import hhs.game.funny.games.Res;
 import hhs.game.funny.games.tool;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.graphics.Color;
+import java.util.Iterator;
+import java.util.HashMap;
+import com.badlogic.gdx.utils.Align;
 
 public class PractiseScreen implements Screen
 {
@@ -90,34 +91,48 @@ public class PractiseScreen implements Screen
 					{
 						if (!event.isTouchFocusCancel())
 						{
-							PractiseScreen next = new PractiseScreen(game, fd.parent().path(), true);
-							Gdx.input.setInputProcessor(next.st);
-							game.teampScreen = next;
-							game.setScreen(next);
+							if (game.map.containsKey((fd.parent().path())))
+							{
+								PractiseScreen next = game.map.get(fd.parent().path());
+								Gdx.input.setInputProcessor(next.st);
+								game.teampScreen = next;
+								game.setScreen(next);
+							}
+							else
+							{
+								PractiseScreen next = new PractiseScreen(game, fd.parent().path(), true);
+								game.map.put(fd.parent().path(), next);
+								Gdx.input.setInputProcessor(next.st);
+								game.teampScreen = next;
+								game.setScreen(next);
+							}
 						}
 					}
 
 				});
 		}
-		MainActivity.use.showQuickTip(ib.length+" "+fd.list().length);
-		for (int a = 0; a < fd.list().length; a++)
+		for (int a = 0; a < filearr.length; a++)
 		{
 			if (fd.list()[a].isDirectory())
 			{
-				ib[a+1] = tool.createButton("s1.png");
+				ib[a + 1] = tool.createButton("s1.png");
 			}
 			else
 			{
-				ib[a+1] = tool.createButton("s0.png");
+				ib[a + 1] = tool.createButton("s0.png");
 			}
 
 		}
 		t0 = new Table();
-		
-		t0.add(ib[0]).padRight(50);
-		t0.add(lb[0]);
-		
-		int num = 1;
+		t0.top();
+
+		int num = 0,size=3;
+		if (out)
+		{
+			t0.add(ib[0]);
+			t0.add(lb[0]).width(Res.w / size - 200).height(100);
+			num = 1;
+		}
 		for (int i = 0;i < filearr.length;++i)
 		{
 			final String filename;
@@ -154,10 +169,21 @@ public class PractiseScreen implements Screen
 							{
 								if (Gdx.files.absolute(filename).isDirectory())
 								{
-									PractiseScreen next = new PractiseScreen(game, filename, true);
-									Gdx.input.setInputProcessor(next.st);
-									game.teampScreen = next;
-									game.setScreen(next);
+									if (game.map.containsKey(filename))
+									{
+										PractiseScreen next = game.map.get(filename);
+										Gdx.input.setInputProcessor(next.st);
+										game.teampScreen = next;
+										game.setScreen(next);
+									}
+									else
+									{
+										PractiseScreen next = new PractiseScreen(game, filename, true);
+										game.map.put(filename, next);
+										Gdx.input.setInputProcessor(next.st);
+										game.teampScreen = next;
+										game.setScreen(next);
+									}
 								}
 								else
 								{
@@ -169,20 +195,15 @@ public class PractiseScreen implements Screen
 					}
 				});
 			lb[i + 1] = new Label(filearr[i], style1);
-			if (num < 1)
-			{
-				t0.add(ib[i+1]).padRight(50);
-				t0.add(lb[i+1]);
-
-				num++;
-			}
-			else
+	
+			if (!(num < size))
 			{
 				t0.row().padTop(50);
-				t0.add(ib[i+1]);
-				t0.add(lb[i+1]);
 				num = 0;
 			}
+			t0.add(ib[i + 1]);
+			t0.add(lb[i + 1]).width(Res.w / size - 200).height(100);
+			num++;
 		}
 
 		sp = new ScrollPane(t0, style);
@@ -191,7 +212,35 @@ public class PractiseScreen implements Screen
 		sp.setSmoothScrolling(true);
 
 		st.addActor(sp);
-		st.addActor(new Res(game).exit);
+		ImageButton exit = new Res(game).exit;
+		exit.addListener(new InputListener(){
+
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
+				{
+					return true;
+				}
+
+				@Override
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button)
+				{
+					if (!event.isTouchFocusCancel())
+					{
+						if (game.map != null)
+						{
+							Iterator<String> it=game.map.keySet().iterator();
+							String key;
+							while (it.hasNext())
+							{
+								key = it.next();
+								game.map.get(key).dispose();
+							}
+						}
+						game.map = new HashMap<>();
+					}
+				}
+			});
+		st.addActor(exit);st.setDebugAll(true);
 		game.teampScreen = this;
 	}
 

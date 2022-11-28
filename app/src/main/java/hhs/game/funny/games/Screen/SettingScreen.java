@@ -92,7 +92,7 @@ public class SettingScreen implements Screen
 		ta.add(l0);
 		ta.add(b1);
 		ta.row();
-		ta.add(l1);
+		ta.add(l1).colspan(3);
 
 		st.addActor(ta);
 	}

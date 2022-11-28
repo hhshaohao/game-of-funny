@@ -9,9 +9,9 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -19,13 +19,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import hhs.game.funny.MainActivity;
 import hhs.game.funny.games.MainLineLevel.MainLineLevelLoader;
 import hhs.game.funny.games.Screen.ChooseCustomsScreen;
+import hhs.game.funny.games.Screen.EmojiViewScreen;
 import hhs.game.funny.games.Screen.Jumper;
+import hhs.game.funny.games.Screen.LocalMapEntrance;
 import hhs.game.funny.games.Screen.PractiseScreen;
 import hhs.game.funny.games.Screen.SettingScreen;
-import hhs.game.funny.games.Screen.LocalMapEntrance;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import hhs.game.funny.games.Screen.EmojiViewScreen;
-import com.badlogic.gdx.audio.Music;
+import java.util.HashMap;
+import java.util.Iterator;
 //游戏入口类
 public class MyGame extends Game
 {
@@ -46,6 +46,7 @@ public class MyGame extends Game
 	public PractiseScreen  ps;			//练习关卡页面
 	public LocalMapEntrance lmp;		//本地地图入口
 	public PractiseScreen teampScreen;	//当前场景
+	public HashMap<String,PractiseScreen> map = new HashMap<>();//优化目录读取
 	public EmojiViewScreen evs;			//表情一览
 	//公众资源
 	public static Label fps,heap;						//帧率显示，内存占用显示
@@ -398,6 +399,14 @@ public class MyGame extends Game
 			jump.dispose();
 		if (ass != null)
 			ass.dispose();
+		if(map != null){
+			Iterator<String> it=map.keySet().iterator();
+			String key;
+			while(it.hasNext()){
+				key=it.next();
+				map.get(key).dispose();
+			}
+		}
 	}
 	//当手机分辨率变化时
 	@Override
