@@ -240,7 +240,7 @@ public class PractiseScreen implements Screen
 					}
 				}
 			});
-		st.addActor(exit);st.setDebugAll(true);
+		st.addActor(exit);
 		game.teampScreen = this;
 	}
 
