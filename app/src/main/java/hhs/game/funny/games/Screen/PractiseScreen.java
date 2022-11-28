@@ -70,23 +70,54 @@ public class PractiseScreen implements Screen
 
 		Label.LabelStyle style1 = new Label.LabelStyle(game.font, Color.BLACK);
 
-		ib = new ImageButton[filearr.length];
-		lb = new Label[filearr.length];
+		ib = new ImageButton[filearr.length + 1];
+		lb = new Label[filearr.length + 1];
+		if (out)
+		{
+			ib[0] = tool.createButton("s1.png");
+			lb[0] = new Label("上一级", style1);
 
-		for (int a = 0; a < ib.length; a++)
+			ib[0].addListener(new InputListener(){
+
+					@Override
+					public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
+					{
+						return true;
+					}
+
+					@Override
+					public void touchUp(InputEvent event, float x, float y, int pointer, int button)
+					{
+						if (!event.isTouchFocusCancel())
+						{
+							PractiseScreen next = new PractiseScreen(game, fd.parent().path(), true);
+							Gdx.input.setInputProcessor(next.st);
+							game.teampScreen = next;
+							game.setScreen(next);
+						}
+					}
+
+				});
+		}
+		MainActivity.use.showQuickTip(ib.length+" "+fd.list().length);
+		for (int a = 0; a < fd.list().length; a++)
 		{
 			if (fd.list()[a].isDirectory())
 			{
-				ib[a] = tool.createButton("s1.png");
+				ib[a+1] = tool.createButton("s1.png");
 			}
 			else
 			{
-				ib[a] = tool.createButton("s0.png");
+				ib[a+1] = tool.createButton("s0.png");
 			}
 
 		}
 		t0 = new Table();
-		int num = 0;
+		
+		t0.add(ib[0]).padRight(50);
+		t0.add(lb[0]);
+		
+		int num = 1;
 		for (int i = 0;i < filearr.length;++i)
 		{
 			final String filename;
@@ -98,7 +129,7 @@ public class PractiseScreen implements Screen
 			{
 				filename = file + filearr[i];
 			}
-			ib[i].addListener(new InputListener()
+			ib[i + 1].addListener(new InputListener()
 				{
 
 					@Override
@@ -119,8 +150,7 @@ public class PractiseScreen implements Screen
 								mll = new NormalMapLoaderScreen(game, filename, out);
 								Gdx.input.setInputProcessor(mll.ui);
 								PractiseScreen.this.game.setScreen(mll);
-							}
-							catch (SerializationException se)
+							} catch (SerializationException se)
 							{
 								if (Gdx.files.absolute(filename).isDirectory())
 								{
@@ -138,37 +168,22 @@ public class PractiseScreen implements Screen
 						}
 					}
 				});
-			lb[i] = new Label(filearr[i], style1);
+			lb[i + 1] = new Label(filearr[i], style1);
 			if (num < 1)
 			{
-				t0.add(ib[i]).padRight(50);
-				t0.add(lb[i]);
+				t0.add(ib[i+1]).padRight(50);
+				t0.add(lb[i+1]);
 
 				num++;
 			}
 			else
 			{
 				t0.row().padTop(50);
-				t0.add(ib[i]);
-				t0.add(lb[i]);
+				t0.add(ib[i+1]);
+				t0.add(lb[i+1]);
 				num = 0;
 			}
 		}
-		float sx = 0,sy = 0;
-		/*for (int i = 0; i < ib.length; i++)
-		 {
-		 lb[i] = new Label(filearr[i], style1);
-		 lb[i].setPosition(sx,sy);
-		 if(sx < Res.w - 300)
-		 {
-		 sx += 250;
-		 }else
-		 {
-		 sx = 0;
-		 sy += 150;
-		 }
-		 t0.addActor(lb[i]);
-		 }*/
 
 		sp = new ScrollPane(t0, style);
 		sp.setBounds(0, 0, Res.w, Res.h - 100);
