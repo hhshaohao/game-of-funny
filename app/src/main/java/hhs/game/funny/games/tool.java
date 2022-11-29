@@ -19,8 +19,8 @@ public class tool
     public static final float PPM = 70f;
 	public static final float le1 = 20f;
 	public static final double M_PI = 3.1415;
-	public static final short play = 0;
-	public static final short ground = 1;
+	public static final short play = 4;
+	public static final short ground = 2;
 	static LabelStyle style = new LabelStyle(MyGame.font, Color.BLUE);
 
     public static ImageButton createButton(String a, String b)

@@ -80,14 +80,21 @@ public class funny extends Sprite
 
 		FixtureDef fdef = new FixtureDef();
 		fdef.shape = shape;
+		fdef.filter.maskBits = tool.ground;
+		fdef.filter.categoryBits = 1;
 		fix = b2body.createFixture(fdef);
-		fix.setUserData(name);
+		//fix.setUserData(name);
 		ChainShape sh = new ChainShape();
 
 		sh.createChain(new float[]{-0.1f * ra,-ra,0.1f * ra,-ra});
-		fix = b2body.createFixture(sh, 1);
-		fix.setUserData("p");
-		fix.getFilterData().categoryBits = tool.play;
+		FixtureDef fdef2 = new FixtureDef();
+		fdef2.shape= sh;
+		fdef2.filter.categoryBits = tool.play;
+		fdef2.filter.maskBits = tool.ground;
+		Fixture fix2 = b2body.createFixture(fdef2);
+		fix2.setUserData(999);
+
+		
 	}
 
 

@@ -38,6 +38,7 @@ import com.badlogic.gdx.math.MathUtils;
 import hhs.game.funny.games.hscreen;
 import com.badlogic.gdx.graphics.Color;
 import hhs.game.funny.games.tool;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 //主线关卡
 public class MainLineLevelLoader extends CommonlyScreen
 {
@@ -45,6 +46,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 	OrthographicCamera cam;
 	float ppm = 20,zoom = 50;
 	SpriteBatch batch;
+	//Box2DDebugRenderer ren = new Box2DDebugRenderer();
 	DeadScreen ds;
 
 	static float speed = 8;
@@ -217,6 +219,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 			Gdx.input.setInputProcessor(mis);
 			mis.isShow = true;
 		}
+		//ren.render(world,cam.combined);
 	}
 
 	void initBox2d()
@@ -244,6 +247,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 			body = world.createBody(bdef);
 			
 			fdef.filter.categoryBits = tool.ground;
+			fdef.filter.maskBits = tool.play + 1;
 
 			body.createFixture(fdef);
 		}

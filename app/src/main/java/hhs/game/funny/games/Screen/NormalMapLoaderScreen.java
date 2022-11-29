@@ -30,6 +30,7 @@ import hhs.game.funny.games.Stage.MissionStage;
 import hhs.game.funny.games.Tools.Drawist;
 import hhs.game.funny.games.contactListener.jumpConcat;
 import hhs.game.funny.games.funny;
+import hhs.game.funny.games.tool;
 
 public class NormalMapLoaderScreen extends CommonlyScreen
 {
@@ -173,6 +174,9 @@ public class NormalMapLoaderScreen extends CommonlyScreen
 		PolygonShape shape = new PolygonShape();
 
 		FixtureDef fdef = new FixtureDef();
+		fdef.filter.categoryBits = tool.ground;
+		fdef.filter.maskBits = tool.play + 1;
+		
 		fdef.shape = shape;
 
 		try
