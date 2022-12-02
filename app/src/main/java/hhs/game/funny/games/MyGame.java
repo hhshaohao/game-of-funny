@@ -170,8 +170,7 @@ public class MyGame extends Game
 	{
 		transition();
 		font.getData().setScale(1);
-		if (lev == null)
-			lev = new Level1(batch, this);
+		lev = new Level1(batch, this);
 		Gdx.input.setInputProcessor(lev.st);
 		setScreen(lev);
 	}

@@ -1,6 +1,10 @@
 -dontnote **
 -dontwarn **
 
+-obfuscationdictionary ../../字典.txt
+-classobfuscationdictionary ../../字典.txt
+-packageobfuscationdictionary ../../字典.txt
+
 -keep class com.** {*;}
 
 -keepclasseswithmembernames class * {
