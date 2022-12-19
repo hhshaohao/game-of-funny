@@ -121,7 +121,7 @@
    eJztl0tOwzAQhp3sgLYIWHXrJdAiAQWpN+MgwJpLADlbNkzUjjodPH7ETvOQI31qao/t32P/cVKVSlV7mqsqM5nMGOH+pVddHpCud6j7AD4jNGAfsf3EjB077tjnkPXvWBannXsM6Ev0aEX+Uw+b7vH6hrIf4Ncjr1JusQ9bP13tB5f+Kcwh6/dnW4Tr7wv0I/9v8rJ0DtO2trVJuTdi90Pb/sY6h6zfH/Rv6j3UBdyPVfnfv/xdmtbXrK+lOq3+PmlSYUOKjclRaFtJD9Yt95jqp4ZWO1xx2xG+P/OLf/dWZfvzN5PpG62m61/T/5pRGe6luExmSGg1Xf9mMlNGq3T+nakDfc8rFv4dVpLvqC6/p84gt+fF8Xt7ilhfUsxPalsK/dJcS/c+/YeMiWhlvnehVfu2XFvbfKMGjqud5N85tF0Al5H7CfdlTB9Do3n3/vKY2y3U3RFPXgfEDhXbHPpEGzyoDbnk+rXBK1LbrrWbcOk3+bc5c1eEmDMY92Xf6xuy73yfOa65UU9ewe8jcCPEu/w7BN+45pByDULQFg/SMq5fC14xlVH9sWcSbc81SJqk/Jv8u9ifvWt1uA9dgwuImwHzE/t3A2O9EF4L+77bkDgs833m0LgNG7Mm9Tj+k0UHxqbQnyJ3vD+fOaRcA1/4fscxeTnXb/MKL+f6+f4I1Y/tTRokTVT/M3sGSf59IP59c6wB5x5iVsA6gX+bYylzTKrc5Dynz2nmmD9FCWND
   </data>
   </layer>
-  <objectgroup name="Ground" visible="false">
+  <objectgroup name="Ground" >
     <object id="5" x="0" y="192" width="1104" height="18" />
     <object id="11" x="1136" y="192" width="256" height="16" />
     <object id="25" x="1440" y="192" width="1024" height="16" />
@@ -155,7 +155,7 @@
     <object id="53" x="2912" y="176" width="16" height="16" />
     <object id="54" x="3184" y="176" width="16" height="16" />
   </objectgroup>
-  <objectgroup name="Pipes" visible="false">
+  <objectgroup name="Pipes" >
     <object id="61" x="3568" y="128" width="32" height="64" />
     <object id="62" x="3536" y="160" width="32" height="32" />
     <object id="63" x="2880" y="160" width="32" height="32" />
@@ -165,7 +165,7 @@
     <object id="68" x="736" y="128" width="32" height="64" />
     <object id="69" x="912" y="128" width="32" height="64" />
   </objectgroup>
-  <objectgroup name="Coins" visible="false">
+  <objectgroup name="Coins" >
     <object id="70" x="256" y="128" width="16" height="16" />
     <object id="71" x="336" y="128" width="16" height="16">
       <properties>
@@ -229,7 +229,7 @@
     <object id="116" x="320" y="128" width="16" height="16" />
     <object id="119" x="1904" y="128" width="16" height="16" />
   </objectgroup>
-  <objectgroup name="Goombas" visible="false">
+  <objectgroup name="Goombas" >
     <object id="139" x="512" y="176" width="16" height="16" />
     <object id="140" x="672" y="176" width="16" height="16" />
     <object id="141" x="832" y="176" width="16" height="16" />
@@ -237,7 +237,7 @@
     <object id="143" x="560" y="176" width="16" height="16" />
     <object id="148" x="1920" y="176" width="16" height="16" />
   </objectgroup>
-  <objectgroup name="Turtles" visible="false">
+  <objectgroup name="Turtles" >
     <object id="150" x="400" y="176" width="16" height="16" />
     <object id="151" x="864" y="176" width="16" height="16" />
     <object id="152" x="2352" y="176" width="16" height="16" />

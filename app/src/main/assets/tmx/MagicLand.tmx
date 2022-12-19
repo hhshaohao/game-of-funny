@@ -381,7 +381,7 @@
       <polyline points="0,0 60,-1.33333 " />
     </object>
   </objectgroup>
-  <objectgroup name="collectables" visible="false">
+  <objectgroup name="collectables" >
     <object name="BlueDiamond" id="4" x="5253.75" y="659.5" width="16" height="16" />
     <object name="Sword" id="5" x="5275.17" y="659" width="16" height="16" />
     <object name="SilverDiamond" id="7" x="5471.75" y="771.25" width="16" height="16" />
@@ -426,7 +426,7 @@
     <object name="BlueDiamond" id="331" x="7220" y="604" width="16" height="16" />
     <object name="GreenDiamond" id="332" x="6969" y="968" width="16" height="16" />
   </objectgroup>
-  <objectgroup name="actors" visible="false">
+  <objectgroup name="actors" >
     <object name="Confined" id="11" x="4641" y="759.5" width="32" height="28" />
     <object name="Mouse" id="40" x="4224.25" y="939" width="32" height="36" />
     <object name="CastleDoor" id="46" x="3868" y="719.636" width="20" height="64.3636" />
