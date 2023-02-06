@@ -37,8 +37,6 @@
             android:name="android.max_aspect"
             android:value="4.0"/>
 
-        <service android:name="hhs.game.funny.games.Level1"/>
-
     </application>
 
 </manifest>

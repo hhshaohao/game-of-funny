@@ -101,7 +101,7 @@ app
         │                   │   ├── FastRoleActor.java  //快速演员
         │                   │   └── PlatformActor.java  //移动平台演员
         │                   ├── Level1.java  //关卡一
-        │                   ├── MagicLand.java  //开放世界(怕侵权，所以把关卡入口删了)
+        │                   ├── MagicLand.java  //开放世界
         │                   ├── MainLineLevel   //主线关卡
         │                   │   ├── MainLineLevelLoader.java
         │                   │   └── level1.java
