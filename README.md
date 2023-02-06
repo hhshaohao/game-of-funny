@@ -26,6 +26,15 @@
 ```
 安装AIDE
 ```
+### 使用gradle编译
+
+```
+终端运行：
+gradle assembleDebug
+或
+gradlew assembleDebug
+完成编译
+```
 
 ## 游戏截图
 
