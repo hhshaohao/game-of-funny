@@ -3,7 +3,17 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
-
+	sourceSets { 		
+		main { 			
+			manifest.srcFile 'src/main/AndroidManifest.xml' 			
+			java.srcDirs = ['src/main/java'] 			
+			aidl.srcDirs = ['src/main/java'] 			
+			renderscript.srcDirs = ['src/main/java'] 			
+			res.srcDirs = ['src/main/res'] 			
+			assets.srcDirs = ['src/main/assets'] 			
+			jniLibs.srcDirs = ['src/main/JNIlibs'] 		
+		} 	
+	}
     defaultConfig {
         applicationId "hhs.game.funny"
         minSdkVersion 14
