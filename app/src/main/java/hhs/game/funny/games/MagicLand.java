@@ -198,7 +198,7 @@ public class MagicLand implements Screen
 		render.render();
 
 		batch.begin();
-		batch.draw(zhu, nx, ny, 16 / ppm, 16 / ppm);
+		zhu.draw(batch);
 		batch.end();
 
 		st.act();

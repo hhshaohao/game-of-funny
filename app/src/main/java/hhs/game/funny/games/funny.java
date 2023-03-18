@@ -1,6 +1,6 @@
 package hhs.game.funny.games;
 
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -10,7 +10,6 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.physics.box2d.Filter;
 //游戏内基本角色初始化类
 public class funny extends Sprite
 {
@@ -69,6 +68,7 @@ public class funny extends Sprite
 
 	private void defineBox(Vector2 position, String name, float ra)
 	{
+		setOrigin(ra,ra);
 		this.ra = ra;
 		CircleShape shape = new CircleShape();
 		shape.setRadius(ra);
@@ -77,24 +77,30 @@ public class funny extends Sprite
 		bdef.type = BodyDef.BodyType.DynamicBody;
 		bdef.position.set(position);
 		b2body = world.createBody(bdef);
-
+		
 		FixtureDef fdef = new FixtureDef();
+		fdef.density = 2;
 		fdef.shape = shape;
 		fdef.filter.categoryBits = 1;
 		fix = b2body.createFixture(fdef);
 		//fix.setUserData(name);
-		ChainShape sh = new ChainShape();
-
-		sh.createChain(new float[]{-0.1f * ra,-ra,0.1f * ra,-ra});
-		FixtureDef fdef2 = new FixtureDef();
-		fdef2.shape= sh;
-		fdef2.filter.categoryBits = tool.play;
-		Fixture fix2 = b2body.createFixture(fdef2);
-		fix2.setUserData(999);
-
 		
+//		ChainShape sh = new ChainShape();
+//		sh.createChain(new float[]{-0.01f * ra,-ra,0.01f * ra,-ra});
+//		FixtureDef fdef2 = new FixtureDef();
+//		fdef2.shape= sh;
+//		fdef2.filter.categoryBits = tool.play;
+//		Fixture fix2 = b2body.createFixture(fdef2);
+//		fix2.setUserData(999);
+		setSize(ra * 2, ra * 2);
 	}
 
-
+	@Override
+	public void draw(Batch batch)
+	{
+		setPosition(b2body.getPosition().x - ra,b2body.getPosition().y - ra);
+		setRotation(b2body.getAngle()*(180/3.14159265358979f));
+		super.draw(batch);
+	}
 
 }

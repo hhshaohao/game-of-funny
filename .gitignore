@@ -22,6 +22,7 @@ app/build
 
 ## Gradle:
 .gradle/
+/app/build/
 gradle-app.setting
 /build/
 /android/build/

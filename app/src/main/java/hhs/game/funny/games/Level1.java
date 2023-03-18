@@ -355,7 +355,8 @@ public class Level1 implements Screen
 	{
 		if (!show)
 			this.move();
-		
+		nx = zhu.getX();
+		ny = zhu.getY();
 		tool.update(cam,nx,ny);
 
 		world.step(1 / 60f, 1, 1);
@@ -363,9 +364,6 @@ public class Level1 implements Screen
 		render.setView(cam);
 
 		batch.setProjectionMatrix(cam.combined);
-
-		nx = zhu.b2body.getPosition().x - ((16 / tool.le1) / 2);
-		ny = zhu.b2body.getPosition().y - ((16 / tool.le1) / 2);
 
 	}
 
@@ -388,15 +386,15 @@ public class Level1 implements Screen
 
 		batch.begin();
 
-		batch.draw(zhu, nx, ny, 16 / tool.le1, 16 / tool.le1);
-
+		zhu.draw(batch);
+		
 		if (nextS)
 		{
 			for (int i = 0; i < pei.length; ++i)
 			{
 				if (pei[i].b2body.getPosition().x < nx + Res.w / (tool.le1 + suo + MyGame.zoom) && pei[i].b2body.getPosition().x > nx - Res.w / (tool.le1 + suo + MyGame.zoom))
 				{
-					batch.draw(pei[i], pei[i].b2body.getPosition().x - ((16 / tool.le1) / 2), pei[i].b2body.getPosition().y - ((16 / tool.le1) / 2), 16 / tool.le1, 16 / tool.le1);
+					pei[i].draw(batch);
 				}
 			}
 		}
@@ -404,7 +402,7 @@ public class Level1 implements Screen
 		{
 			if (boss.b2body.getPosition().x < nx + Res.w / (tool.le1 + suo + game.zoom) && boss.b2body.getPosition().x > nx - Res.w / (tool.le1 + suo + game.zoom))
 			{
-				batch.draw(boss, boss.b2body.getPosition().x - ((128 / tool.le1) / 2), boss.b2body.getPosition().y - ((128 / tool.le1) / 2), 128 / tool.le1, 128 / tool.le1);
+				boss.draw(batch);
 			}
 			if (nx < 32 / tool.le1)
 			{

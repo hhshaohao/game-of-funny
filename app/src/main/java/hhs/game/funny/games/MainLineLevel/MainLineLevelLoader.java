@@ -39,6 +39,8 @@ import hhs.game.funny.games.hscreen;
 import com.badlogic.gdx.graphics.Color;
 import hhs.game.funny.games.tool;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.RayCastCallback;
+import com.badlogic.gdx.physics.box2d.Fixture;
 //主线关卡
 public class MainLineLevelLoader extends CommonlyScreen
 {
@@ -67,6 +69,20 @@ public class MainLineLevelLoader extends CommonlyScreen
 	Texture bg;
 	float az = ppm + zoom + MyGame.zoom;
 	int ax,ay;
+	static boolean jump = false;
+	Vector2 p1 = new Vector2(),p2 = new Vector2();
+
+	RayCastCallback rb = new RayCastCallback(){
+		@Override
+		public float reportRayFixture(Fixture p1, Vector2 p2, Vector2 p3, float p4)
+		{
+			if(zhu.b2body.getLinearVelocity().y <= 0){
+				jump = true;
+				game.ass.get("down.mp3", Sound.class).play();
+			}
+			return 0;
+		}
+	};
 
     public MainLineLevelLoader(final MyGame game, String tmxFile, final int l)
 	{
@@ -90,11 +106,11 @@ public class MainLineLevelLoader extends CommonlyScreen
 				@Override
 				public void upAction()
 				{
-					if (c.is)
+					if (jump)
 					{
 						game.ass.get("jump.mp3", Sound.class).play();
 						zhu.b2body.applyForceToCenter(new  Vector2(0, 600), true);
-						c.is = false;
+						jump = false;
 					}
 				}
 			}, true);
@@ -168,12 +184,15 @@ public class MainLineLevelLoader extends CommonlyScreen
 	@Override
 	public void render(float p1)
 	{
+		nx = zhu.getX();
+		ny = zhu.getY();
+
+		this.p1.set(zhu.b2body.getPosition().x, zhu.b2body.getPosition().y);
+		p2.set(this.p1.x, ny - .1f / ppm);
+		world.rayCast(rb, this.p1, p2);
 		world.step(1 / 60f, 2, 6);
 
-		nx = zhu.b2body.getPosition().x - zhu.ra;
-		ny = zhu.b2body.getPosition().y - zhu.ra;
-
-		tool.update(cam,zhu.b2body.getPosition().x,zhu.b2body.getPosition().y);
+		tool.update(cam, zhu.b2body.getPosition().x, zhu.b2body.getPosition().y);
 
 		cam.update();
 
@@ -194,8 +213,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 		render.render();
 
 		batch.begin();
-		batch.draw(zhu, nx, ny, zhu.ra * 2, zhu.ra * 2);
-
+		zhu.draw(batch);
 		dist.act(p1);
 		dist.draw(batch);
 
@@ -206,18 +224,19 @@ public class MainLineLevelLoader extends CommonlyScreen
 
 		super.render(p1);
 
-		if (ny < 0)
-		{
-			//zhu.b2body.applyForceToCenter(new Vector2(0, 1200), true);
-			ui.cancelTouchFocus();
-			Gdx.input.setInputProcessor(ds.st);
-			game.setScreen(ds);
-		}
 		if (nx > ex)
 		{
 			ui.cancelTouchFocus();
 			Gdx.input.setInputProcessor(mis);
 			mis.isShow = true;
+		}
+		else if (ny < 0)
+		{
+			zhu.b2body.setLinearVelocity(0, 0);
+			//zhu.b2body.applyForceToCenter(new Vector2(0, 1200), true);
+			ui.cancelTouchFocus();
+			Gdx.input.setInputProcessor(ds.st);
+			game.setScreen(ds);
 		}
 		//ren.render(world,cam.combined);
 	}
@@ -225,7 +244,8 @@ public class MainLineLevelLoader extends CommonlyScreen
 	void initBox2d()
 	{
 		world = new World(new Vector2(0, -9.81f), true);
-		world.setContactListener(c = new jumpConcat());
+		//world.setContactListener(c = new jumpConcat());
+
 		BodyDef bdef = new BodyDef();
 		bdef.type = BodyDef.BodyType.StaticBody;
 
@@ -245,7 +265,7 @@ public class MainLineLevelLoader extends CommonlyScreen
 			bdef.position.set((r.getX() + r.getWidth() / 2) / ppm, (r.getY() + r.getHeight() / 2) / ppm);
 
 			body = world.createBody(bdef);
-			
+
 			fdef.filter.categoryBits = tool.ground;
 			fdef.filter.maskBits = tool.play + 1;
 

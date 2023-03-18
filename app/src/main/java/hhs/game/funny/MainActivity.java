@@ -36,7 +36,7 @@ public class MainActivity extends AndroidApplication
 			}
 		}
 		//this.requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
-		  AndroidApplicationConfiguration conf = new AndroidApplicationConfiguration();
+		AndroidApplicationConfiguration conf = new AndroidApplicationConfiguration();
 		initialize(new MyGame(), conf);	//进入游戏
 		//setContentView(R.layout.community);
     }

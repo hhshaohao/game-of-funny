@@ -34,6 +34,7 @@ android {
 }
 
 dependencies {
+	api project(':HSE')
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
 	
 }
