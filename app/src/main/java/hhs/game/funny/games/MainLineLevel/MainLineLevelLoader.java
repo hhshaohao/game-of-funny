@@ -3,22 +3,23 @@ package hhs.game.funny.games.MainLineLevel;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.objects.PolylineMapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Polyline;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.ChainShape;
+import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.physics.box2d.RayCastCallback;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
@@ -34,13 +35,8 @@ import hhs.game.funny.games.Stage.MissionStage;
 import hhs.game.funny.games.Tools.Drawist;
 import hhs.game.funny.games.contactListener.jumpConcat;
 import hhs.game.funny.games.funny;
-import com.badlogic.gdx.math.MathUtils;
 import hhs.game.funny.games.hscreen;
-import com.badlogic.gdx.graphics.Color;
 import hhs.game.funny.games.tool;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.RayCastCallback;
-import com.badlogic.gdx.physics.box2d.Fixture;
 //主线关卡
 public class MainLineLevelLoader extends CommonlyScreen
 {
@@ -76,7 +72,8 @@ public class MainLineLevelLoader extends CommonlyScreen
 		@Override
 		public float reportRayFixture(Fixture p1, Vector2 p2, Vector2 p3, float p4)
 		{
-			if(zhu.b2body.getLinearVelocity().y <= 0){
+			if (zhu.b2body.getLinearVelocity().y == 0)
+			{
 				jump = true;
 				game.ass.get("down.mp3", Sound.class).play();
 			}
@@ -106,10 +103,10 @@ public class MainLineLevelLoader extends CommonlyScreen
 				@Override
 				public void upAction()
 				{
-					if (jump)
+					if (jump && zhu.b2body.getLinearVelocity().y == 0f)
 					{
 						game.ass.get("jump.mp3", Sound.class).play();
-						zhu.b2body.applyForceToCenter(new  Vector2(0, 600), true);
+						zhu.b2body.applyForceToCenter(new  Vector2(0, 800), true);
 						jump = false;
 					}
 				}
@@ -130,8 +127,9 @@ public class MainLineLevelLoader extends CommonlyScreen
 			@Override
 			public void cilk(ImageButton bu)
 			{
-				zhu.b2body.setTransform(ox, oy, zhu.b2body.getAngle());
 				zhu.b2body.setLinearVelocity(0, 0);
+				zhu.b2body.setAngularVelocity(0);
+				zhu.b2body.setTransform(ox, oy, zhu.b2body.getAngle());
 				Gdx.input.setInputProcessor(ui);
 				cam.position.x = ox;
 				cam.position.y = oy;
@@ -184,12 +182,12 @@ public class MainLineLevelLoader extends CommonlyScreen
 	@Override
 	public void render(float p1)
 	{
-		nx = zhu.getX();
-		ny = zhu.getY();
-
-		this.p1.set(zhu.b2body.getPosition().x, zhu.b2body.getPosition().y);
-		p2.set(this.p1.x, ny - .1f / ppm);
-		world.rayCast(rb, this.p1, p2);
+		if (!jump) 
+		{
+			this.p1.set(zhu.b2body.getPosition().x, zhu.b2body.getPosition().y);
+			p2.set(this.p1.x, ny - .1f / ppm);
+			world.rayCast(rb, this.p1, p2);
+		}
 		world.step(1 / 60f, 2, 6);
 
 		tool.update(cam, zhu.b2body.getPosition().x, zhu.b2body.getPosition().y);
@@ -222,6 +220,9 @@ public class MainLineLevelLoader extends CommonlyScreen
 		ms.act();
 		ms.draw();
 
+		nx = zhu.getX();
+		ny = zhu.getY();
+
 		super.render(p1);
 
 		if (nx > ex)
@@ -232,7 +233,6 @@ public class MainLineLevelLoader extends CommonlyScreen
 		}
 		else if (ny < 0)
 		{
-			zhu.b2body.setLinearVelocity(0, 0);
 			//zhu.b2body.applyForceToCenter(new Vector2(0, 1200), true);
 			ui.cancelTouchFocus();
 			Gdx.input.setInputProcessor(ds.st);

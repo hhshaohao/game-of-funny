@@ -16,7 +16,13 @@ buildscript {
         classpath "com.android.tools.build:gradle:$androidPluginVersion"
         
     }
-    
+}
+configure(subprojects - project(':app')) {
+    apply plugin: 'java-library'
+    sourceCompatibility = 8.0
+    compileJava {
+        options.incremental = true
+    }
 }
 allprojects {
     repositories {
