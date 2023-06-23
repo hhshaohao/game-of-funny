@@ -66,16 +66,21 @@ public class MainLineLevelLoader extends CommonlyScreen
 	float az = ppm + zoom + MyGame.zoom;
 	int ax,ay;
 	static boolean jump = false;
+	static boolean showDown = false;
 	Vector2 p1 = new Vector2(),p2 = new Vector2();
 
 	RayCastCallback rb = new RayCastCallback(){
 		@Override
 		public float reportRayFixture(Fixture p1, Vector2 p2, Vector2 p3, float p4)
 		{
-			if (zhu.b2body.getLinearVelocity().y == 0)
+			if(showDown)
+			{
+				game.ass.get("down.mp3",Sound.class).play();
+				showDown = false;
+			}
+			if (!jump && zhu.b2body.getLinearVelocity().y < 16/20f)
 			{
 				jump = true;
-				game.ass.get("down.mp3", Sound.class).play();
 			}
 			return 0;
 		}
@@ -103,10 +108,10 @@ public class MainLineLevelLoader extends CommonlyScreen
 				@Override
 				public void upAction()
 				{
-					if (jump && zhu.b2body.getLinearVelocity().y == 0f)
+					if (jump && zhu.b2body.getLinearVelocity().y < 16/20f)
 					{
 						game.ass.get("jump.mp3", Sound.class).play();
-						zhu.b2body.applyForceToCenter(new  Vector2(0, 800), true);
+						zhu.b2body.setLinearVelocity(new  Vector2(zhu.b2body.getLinearVelocity().x, 240/20));
 						jump = false;
 					}
 				}
@@ -182,12 +187,10 @@ public class MainLineLevelLoader extends CommonlyScreen
 	@Override
 	public void render(float p1)
 	{
-		if (!jump) 
-		{
-			this.p1.set(zhu.b2body.getPosition().x, zhu.b2body.getPosition().y);
-			p2.set(this.p1.x, ny - .1f / ppm);
-			world.rayCast(rb, this.p1, p2);
-		}
+		this.p1.set(zhu.b2body.getPosition().x, ny);
+		p2.set(this.p1.x, ny - 1f / ppm);
+		world.rayCast(rb, this.p1, p2);
+		
 		world.step(1 / 60f, 2, 6);
 
 		tool.update(cam, zhu.b2body.getPosition().x, zhu.b2body.getPosition().y);
@@ -237,6 +240,10 @@ public class MainLineLevelLoader extends CommonlyScreen
 			ui.cancelTouchFocus();
 			Gdx.input.setInputProcessor(ds.st);
 			game.setScreen(ds);
+		}
+		if(!showDown && Math.abs(zhu.b2body.getLinearVelocity().y) > 5)
+		{
+			showDown = true;
 		}
 		//ren.render(world,cam.combined);
 	}
